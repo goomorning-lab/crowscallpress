@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crow's Call Press — Literary Workbooks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1714;
+  --cream: #f5f0e8;
+  --warm-white: #faf7f2;
+  --gold: #c8a84b;
+  --sage: #7a8c6e;
+  --rust: #b85c38;
+  --dusty-rose: #c4907a;
+  --deep-olive: #4a5240;
+  --parchment: #e8dfc8;
+  --light-sage: #d4dece;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 4rem; height: 64px;
+  background: rgba(250,247,242,0.96); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(200,168,75,0.25);
+}
+.nav-logo {
+  font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.02em; cursor: pointer;
+}
+.nav-logo span { color: var(--rust); font-style: italic; }
+.nav-links { display: flex; gap: 0; list-style: none; height: 100%; }
+.nav-links li { display: flex; align-items: center; }
+.nav-links a {
+  display: flex; align-items: center; height: 100%; padding: 0 1rem;
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none; opacity: 0.6; cursor: pointer;
+  border-bottom: 2px solid transparent; transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; border-bottom-color: var(--gold); }
+.nav-cta {
+  background: var(--ink) !important; color: var(--cream) !important;
+  opacity: 1 !important; padding: 0.5rem 1.3rem !important;
+  border-radius: 2px; border-bottom: none !important; margin-left: 0.5rem;
+}
+.nav-cta:hover { background: var(--rust) !important; }
+
+/* PAGE SYSTEM */
+.page { display: none; padding-top: 64px; min-height: 100vh; }
+.page.active { display: block; }
+
+/* BUTTONS */
+.btn-primary {
+  display: inline-block; background: var(--ink); color: var(--cream);
+  padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer; border-radius: 2px;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--rust); transform: translateY(-2px); }
+.btn-outline {
+  display: inline-block; border: 1.5px solid var(--ink); color: var(--ink);
+  padding: 0.85rem 1.8rem; font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; border-radius: 2px; background: none;
+  transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+/* SECTION SHARED */
+.section { padding: 6rem 4rem; }
+.section-label {
+  display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--rust); margin-bottom: 0.75rem;
+}
+.deco-line { display: block; height: 2px; width: 36px; background: var(--gold); margin-bottom: 1.75rem; }
+h2 {
+  font-family: 'Fraunces', serif; font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink);
+}
+h2 em { font-style: italic; color: var(--sage); }
+
+/* IMAGE PLACEHOLDERS */
+.img-ph {
+  background: #f0ebe0; border: 2px dashed #d4c9b0; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #b0a080; font-family: 'DM Sans', sans-serif;
+}
+
+/* HERO */
+.hero {
+  min-height: calc(100vh - 64px);
+  display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 5rem 4rem; background: var(--warm-white);
+}
+.hero-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust);
+  margin-bottom: 1.5rem; border-bottom: 1px solid var(--rust); padding-bottom: 0.3rem;
+  width: fit-content;
+}
+h1 {
+  font-family: 'Fraunces', serif; font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  font-weight: 300; line-height: 1.05; letter-spacing: -0.03em;
+  color: var(--ink); margin-bottom: 1.5rem;
+}
+h1 em { font-style: italic; color: var(--rust); }
+.hero-sub {
+  font-size: 1.05rem; line-height: 1.75; color: var(--ink); opacity: 0.7;
+  max-width: 420px; margin-bottom: 2.5rem;
+}
+.hero-right {
+  background: var(--parchment);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  padding: 3rem; align-content: center;
+}
+.hero-right .img-ph:first-child { grid-column: 1 / -1; aspect-ratio: 16/9; }
+.hero-right .img-ph { aspect-ratio: 4/3; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* STRIP */
+.strip {
+  background: var(--ink); color: var(--cream);
+  padding: 0.9rem 4rem; display: flex; gap: 4rem; overflow: hidden;
+}
+.strip-item { white-space: nowrap; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
+.strip-item strong { opacity: 1; color: var(--gold); }
+
+/* TWO-COL LAYOUT */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.text-col h2 { margin-bottom: 1.5rem; }
+.text-col p { font-size: 1rem; line-height: 1.8; opacity: 0.72; margin-bottom: 1rem; }
+.feature-list { list-style: none; margin: 1.5rem 0 2rem; display: flex; flex-direction: column; gap: 0.65rem; }
+.feature-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.93rem; }
+.feature-list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+/* BOOK COL */
+.book-col { display: flex; align-items: center; justify-content: center; }
+.book-col .img-ph { width: 100%; max-width: 300px; aspect-ratio: 3/4; }
+
+/* STACKED IMAGES */
+.stacked-col { display: flex; flex-direction: column; gap: 0.85rem; }
+.stacked-col .img-ph { width: 100%; aspect-ratio: 16/9; }
+
+/* LEVELS */
+.levels-header { max-width: 600px; margin-bottom: 3.5rem; }
+.levels-header p { font-size: 1rem; line-height: 1.7; opacity: 0.68; margin-top: 0.75rem; }
+.pathway { margin-bottom: 3.5rem; }
+.pathway-title {
+  font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 0.25rem;
+  display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+}
+.pathway-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.7rem; border-radius: 2px; font-weight: 500; }
+.tag-crown { background: var(--parchment); color: var(--deep-olive); }
+.tag-leaders { background: var(--deep-olive); color: var(--cream); }
+.pathway-desc { font-size: 0.88rem; opacity: 0.55; margin-bottom: 1.25rem; }
+.levels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+.level-card {
+  border: 1.5px solid var(--parchment); border-radius: 4px; padding: 1.4rem;
+  background: white; transition: border-color 0.2s, transform 0.2s;
+}
+.level-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+.level-name { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem; }
+.level-cefr { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.65rem; font-weight: 500; }
+.level-focus { font-size: 0.85rem; line-height: 1.6; opacity: 0.62; }
+
+/* PRICING */
+.pricing-dark { background: var(--ink); color: var(--cream); }
+.pricing-dark .section-label { color: var(--gold); }
+.pricing-dark h2 { color: var(--cream); }
+.pricing-dark h2 em { color: var(--dusty-rose); }
+.pricing-intro { font-size: 1rem; opacity: 0.58; margin-top: 0.75rem; margin-bottom: 3rem; max-width: 480px; line-height: 1.7; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
+.price-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 2.2rem 1.75rem; transition: border-color 0.2s; }
+.price-card:hover { border-color: rgba(200,168,75,0.5); }
+.price-card.featured { background: var(--rust); border-color: transparent; }
+.price-tier { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-bottom: 0.4rem; font-weight: 500; }
+.price-amount { font-family: 'Fraunces', serif; font-size: 2.8rem; font-weight: 300; color: var(--cream); line-height: 1; margin-bottom: 0.2rem; }
+.price-amount sup { font-size: 1.1rem; vertical-align: super; }
+.price-per { font-size: 0.78rem; opacity: 0.45; margin-bottom: 1.25rem; }
+.price-range { font-size: 0.78rem; background: rgba(255,255,255,0.1); padding: 0.35rem 0.75rem; border-radius: 2px; margin-bottom: 1.25rem; display: inline-block; opacity: 0.75; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.86rem; opacity: 0.72; }
+.price-features li::before { content: '✓  '; color: var(--gold); }
+.price-card.featured .price-features li::before { color: var(--cream); }
+.book-fee-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 1.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+.book-fee-title { font-family: 'Fraunces', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
+.book-fee-desc { font-size: 0.86rem; opacity: 0.55; line-height: 1.65; }
+.fee-item { display: flex; justify-content: space-between; font-size: 0.86rem; padding: 0.45rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); opacity: 0.72; }
+.fee-item span:last-child { color: var(--gold); font-weight: 500; }
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; margin-top: 3rem; }
+.faq-item { padding: 1.6rem 0; border-bottom: 1px solid var(--parchment); }
+.faq-q { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.65rem; line-height: 1.4; }
+.faq-a { font-size: 0.9rem; line-height: 1.75; opacity: 0.63; }
+.faq-a a { color: var(--rust); text-decoration: none; cursor: pointer; }
+
+/* HOMESCHOOL */
+.option-card { background: white; border-radius: 4px; padding: 1.4rem; display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 0.85rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.option-num {
+  width: 38px; height: 38px; border-radius: 50%; background: var(--deep-olive); color: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em;
+  flex-shrink: 0; font-family: 'DM Sans', sans-serif;
+}
+.option-title { font-family: 'Fraunces', serif; font-size: 0.98rem; font-weight: 600; margin-bottom: 0.25rem; }
+.option-desc { font-size: 0.84rem; opacity: 0.62; line-height: 1.6; }
+
+/* CONTACT */
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.field-group label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; }
+.field-group input, .field-group select, .field-group textarea {
+  border: 1.5px solid var(--parchment); border-radius: 2px; padding: 0.8rem 0.9rem;
+  font-family: 'DM Sans', sans-serif; font-size: 0.93rem; background: white; color: var(--ink);
+  outline: none; transition: border-color 0.2s; resize: vertical;
+}
+.field-group input:focus, .field-group select:focus, .field-group textarea:focus { border-color: var(--gold); }
+.checkbox-group { display: flex; gap: 0.55rem; align-items: flex-start; font-size: 0.83rem; opacity: 0.62; line-height: 1.5; }
+.checkbox-group input { width: 15px; height: 15px; margin-top: 2px; flex-shrink: 0; }
+
+/* READING LIST PAGE */
+.reading-hero { background: var(--ink); color: var(--cream); padding: 5rem 4rem 4rem; }
+.reading-hero .section-label { color: var(--gold); }
+.reading-hero h1 { color: var(--cream); margin-bottom: 0.75rem; }
+.reading-hero h1 em { color: var(--gold); font-style: italic; }
+.reading-hero p { font-size: 1rem; opacity: 0.58; max-width: 540px; line-height: 1.7; }
+
+.level-tabs {
+  display: flex; background: var(--parchment);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  overflow-x: auto; padding: 0 4rem;
+  position: sticky; top: 64px; z-index: 100;
+}
+.level-tab {
+  padding: 1rem 1.4rem; font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border: none; background: none; cursor: pointer; color: var(--ink);
+  opacity: 0.5; border-bottom: 2px solid transparent;
+  transition: all 0.2s; white-space: nowrap;
+}
+.level-tab:hover { opacity: 0.85; }
+.level-tab.active { opacity: 1; border-bottom-color: var(--rust); color: var(--rust); }
+
+.books-panel { display: none; padding: 3rem 4rem; }
+.books-panel.active { display: block; }
+.panel-header { margin-bottom: 2.5rem; }
+.panel-header h3 { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 300; color: var(--ink); margin-bottom: 0.5rem; }
+.panel-header p { font-size: 0.92rem; opacity: 0.62; line-height: 1.6; max-width: 560px; }
+
+.books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 1.5rem 1.25rem; }
+
+.book-card {
+  display: flex; flex-direction: column; border-radius: 6px; overflow: hidden;
+  background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: transform 0.25s, box-shadow 0.25s; text-decoration: none; color: inherit;
+}
+.book-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.14); }
+.book-cover {
+  height: 190px; overflow: hidden; background: var(--parchment);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.book-cover .no-cover {
+  font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #b0a080; text-align: center; padding: 1rem; line-height: 1.5;
+}
+.month-tag {
+  position: absolute; top: 8px; left: 8px;
+  background: var(--rust); color: white;
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.18rem 0.45rem; border-radius: 2px;
+}
+.book-info { padding: 0.85rem; flex: 1; display: flex; flex-direction: column; gap: 0.25rem; }
+.book-genre { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage); }
+.book-title { font-family: 'Fraunces', serif; font-size: 0.88rem; font-weight: 600; line-height: 1.3; color: var(--ink); }
+.book-link {
+  display: block; text-align: center; padding: 0.5rem;
+  background: var(--parchment); font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--deep-olive);
+  text-decoration: none; transition: background 0.2s;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.book-link:hover { background: var(--deep-olive); color: var(--cream); }
+.book-link.no-link { opacity: 0.35; pointer-events: none; }
+
+/* FOOTER */
+footer {
+  background: var(--ink); color: var(--cream);
+  padding: 3rem 4rem;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+  border-top: 2px solid var(--rust);
+}
+.footer-brand { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 300; margin-bottom: 0.65rem; }
+.footer-brand em { font-style: italic; color: var(--dusty-rose); }
+.footer-tagline { font-size: 0.86rem; opacity: 0.45; line-height: 1.6; max-width: 260px; }
+.footer-col h4 { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.footer-col ul a { font-size: 0.88rem; color: var(--cream); opacity: 0.5; text-decoration: none; cursor: pointer; transition: opacity 0.2s; }
+.footer-col ul a:hover { opacity: 1; }
+.footer-bottom {
+  background: var(--ink); padding: 1.1rem 4rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex; justify-content: space-between; font-size: 0.78rem; opacity: 0.35;
+}
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links li:not(:last-child):not(:nth-last-child(2)):not(:nth-last-child(3)) { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 4rem 1.5rem 3rem; }
+  .section { padding: 4rem 1.5rem; }
+  .two-col { grid-template-columns: 1fr; gap: 3rem; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .book-fee-box { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+  .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; gap: 0.4rem; }
+  .strip { padding: 0.9rem 1.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .reading-hero { padding: 3rem 1.5rem 2.5rem; }
+  .level-tabs { padding: 0 1rem; }
+  .books-panel { padding: 2.5rem 1.5rem; }
+  .books-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo" onclick="showPage('home')">Crow's <span>Call</span> Press</span>
+  <ul class="nav-links">
+    <li><a onclick="goTo('collection')">Collection</a></li>
+    <li><a onclick="goTo('levels')">Levels</a></li>
+    <li><a onclick="showPage('reading')">Reading List</a></li>
+    <li><a onclick="goTo('pricing')">Pricing</a></li>
+    <li><a onclick="goTo('faq')">FAQ</a></li>
+    <li><a onclick="goTo('homeschooling')">Homeschool</a></li>
+    <li><a onclick="goTo('contactus')" class="nav-cta">Free Meeting</a></li>
+  </ul>
+</nav>
+
+<!-- ======== HOME PAGE ======== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <span class="hero-tag">Literary Workbooks for Schools &amp; Homeschoolers</span>
+      <h1>Design that <em>teaches.</em> Literature that <em>lasts.</em></h1>
+      <p class="hero-sub">Top-tier visual design meets classroom-tested literacy. Crafted for students in Grades 1–6+ across schools and academies.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="goTo('collection')">Explore the Collection</button>
+        <button class="btn-outline" onclick="goTo('contactus')">Book a Free Meeting</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="img-ph">Image 1</div>
+      <div class="img-ph">Image 2</div>
+      <div class="img-ph">Image 3</div>
+    </div>
+  </div>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <span class="strip-item">Grades <strong>1–6+</strong></span>
+    <span class="strip-item"><strong>7</strong> Levels</span>
+    <span class="strip-item">CEFR <strong>A1 → C1+</strong></span>
+    <span class="strip-item">Schools &amp; <strong>Homeschoolers</strong></span>
+    <span class="strip-item">Art School <strong>Designed</strong></span>
+    <span class="strip-item">Grades <strong>1–6+</strong></span>
+    <span class="strip-item"><strong>7</strong> Levels</span>
+  </div>
+
+  <!-- COLLECTION -->
+  <div id="collection" class="section reveal">
+    <div class="two-col">
+      <div class="text-col">
+        <span class="section-label">The Literary Collection</span>
+        <span class="deco-line"></span>
+        <h2>Workbooks built to challenge <em>every</em> reader.</h2>
+        <p>Designed by a graduate from one of the world's top art and design schools, shaped by years of experience in South Korea's education system.</p>
+        <p>Every page is crafted to be both visually engaging and educationally rigorous — not drill sheets, but real literacy experiences.</p>
+        <ul class="feature-list">
+          <li>Literacy workbooks challenging all levels</li>
+          <li>Two pathways: Crown and Leaders</li>
+          <li>Curated booklist for each level</li>
+          <li>PPTs for guided writing included</li>
+          <li>Teacher training available</li>
+        </ul>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <button class="btn-primary" onclick="goTo('levels')">Explore All Levels</button>
+          <button class="btn-outline" onclick="showPage('reading')">See Reading List</button>
+        </div>
+      </div>
+      <div class="book-col">
+        <div class="img-ph">Book cover image</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEVELOPED RESPONSE -->
+  <div class="section reveal" style="background:var(--cream);">
+    <div class="two-col">
+      <div class="text-col">
+        <span class="section-label">What Students Create</span>
+        <span class="deco-line"></span>
+        <h2>Independent learners. <em>Developed responses.</em></h2>
+        <p>Students are guided through structured essay types and genre introductions — then write independently using the skills they've built. No hand-holding, but always scaffolded.</p>
+        <ul class="feature-list">
+          <li>Opinion Essays with research-based arguments</li>
+          <li>Compare &amp; Contrast Essays</li>
+          <li>Hamburger Essays with proper intro &amp; conclusion</li>
+          <li>Interpretive theses at advanced levels</li>
+          <li>Critical lenses &amp; comparative analysis at Opsis</li>
+        </ul>
+        <button class="btn-primary" onclick="showPage('reading')" style="margin-top:0.5rem;">View Full Reading List</button>
+      </div>
+      <div class="stacked-col">
+        <div class="img-ph">Image 1</div>
+        <div class="img-ph">Image 2</div>
+        <div class="img-ph">Image 3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEVELS -->
+  <div id="levels" class="section reveal">
+    <div class="levels-header">
+      <span class="section-label">Understanding Levels</span>
+      <span class="deco-line"></span>
+      <h2>Two pathways. <em>One destination.</em></h2>
+      <p>Students progress through levels aligned with ability, not just grade — ensuring every child is appropriately challenged and growing.</p>
+    </div>
+    <div class="pathway">
+      <div class="pathway-title">Crown Pathway <span class="pathway-tag tag-crown">Reading &amp; Understanding</span></div>
+      <p class="pathway-desc">Emphasizes fluency, comprehension, and confidence in tackling texts.</p>
+      <div class="levels-grid">
+        <div class="level-card"><div class="level-name">Civic</div><div class="level-cefr">A1–A2</div><div class="level-focus">Fluency, vocabulary-in-context, literal comprehension. Step Into Reading (Step 4).</div></div>
+        <div class="level-card"><div class="level-name">Candidate</div><div class="level-cefr">A1–A2</div><div class="level-focus">Summarizing chapters, character tracking, predictions. Magic Tree House &amp; more.</div></div>
+        <div class="level-card"><div class="level-name">Monarch</div><div class="level-cefr">A2–B1</div><div class="level-focus">Genre familiarity, theme spotting, text-to-self connections.</div></div>
+      </div>
+    </div>
+    <div class="pathway">
+      <div class="pathway-title">Leaders Pathway <span class="pathway-tag tag-leaders">Analysis &amp; Critical Thinking</span></div>
+      <p class="pathway-desc">Encourages students to move beyond comprehension into interpretation, argumentation, and critical thinking.</p>
+      <div class="levels-grid">
+        <div class="level-card"><div class="level-name">Junior</div><div class="level-cefr">A2–B1</div><div class="level-focus">Claim + Evidence basics, literary elements, discussion norms.</div></div>
+        <div class="level-card"><div class="level-name">Lexis</div><div class="level-cefr">B1–B2</div><div class="level-focus">Author craft, figurative language, cross-text connections.</div></div>
+        <div class="level-card"><div class="level-name">Mythos</div><div class="level-cefr">B2–C1</div><div class="level-focus">Interpretive theses, rhetoric, genre conventions. Close reading.</div></div>
+        <div class="level-card"><div class="level-name">Opsis</div><div class="level-cefr">C1+</div><div class="level-focus">Critical lenses, comparative analysis, synthesis writing.</div></div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;">
+      <button class="btn-outline" onclick="showPage('reading')">Browse the Full Reading List →</button>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div id="pricing" class="section pricing-dark reveal">
+    <span class="section-label">Price Plans</span>
+    <span class="deco-line" style="background:var(--gold)"></span>
+    <h2>Straightforward pricing. <em>Flexible</em> for every school.</h2>
+    <p class="pricing-intro">All plans include lesson plans, answer keys, vocabulary sheets, tests, and guided writing PPTs. Prices are for Korean academies and school systems.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Starter</div>
+        <div class="price-amount"><sup>$</sup>10</div>
+        <div class="price-per">per student / month</div>
+        <div class="price-range">Under 99 active students</div>
+        <ul class="price-features">
+          <li>Lesson Plans &amp; Answer Keys</li>
+          <li>Vocabulary Sheets &amp; Tests</li>
+          <li>Guided Writing PPTs</li>
+          <li>Optional Teacher Training (₩500,000 / 3hr)</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">Growth</div>
+        <div class="price-amount"><sup>$</sup>9</div>
+        <div class="price-per">per student / month</div>
+        <div class="price-range">100–199 active students</div>
+        <ul class="price-features">
+          <li>Everything in Starter</li>
+          <li>Quarterly PD (3 hrs online)</li>
+          <li>Earn 5% of book fees</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Scale</div>
+        <div class="price-amount"><sup>$</sup>8</div>
+        <div class="price-per">per student / month</div>
+        <div class="price-range">200–399 active students</div>
+        <ul class="price-features">
+          <li>Everything in Growth</li>
+          <li>Earn 10% of book fees</li>
+          <li>Annual On-site Training</li>
+        </ul>
+      </div>
+    </div>
+    <div class="book-fee-box">
+      <div>
+        <div class="book-fee-title">Student Workbooks</div>
+        <p class="book-fee-desc">Each student uses a personal, copyrighted workbook designed to last approximately 2 months. Includes activities, discussion prompts, and assessment tools.</p>
+      </div>
+      <div>
+        <div class="fee-item"><span>Price per book</span><span>$30 / student</span></div>
+        <div class="fee-item"><span>Duration</span><span>~2 months</span></div>
+        <div class="fee-item"><span>Growth tier rebate</span><span>5% back</span></div>
+        <div class="fee-item"><span>Scale tier rebate</span><span>10% back</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq" class="section reveal" style="background:var(--cream);">
+    <span class="section-label">Questions</span>
+    <span class="deco-line"></span>
+    <h2>Frequently asked <em>questions.</em></h2>
+    <div class="faq-grid">
+      <div class="faq-item"><div class="faq-q">Who are these workbooks designed for?</div><div class="faq-a">Students in Grades 1–6+ with varying reading levels. Crown emphasizes comprehension and guided learning; Leaders develops independent, critical thinkers. Levels align with ability, not just grade.</div></div>
+      <div class="faq-item"><div class="faq-q">Can homeschoolers use this program?</div><div class="faq-a">Absolutely. Materials are flexible for private schools, academies, and homeschooling families. <a onclick="goTo('homeschooling')">Learn more →</a></div></div>
+      <div class="faq-item"><div class="faq-q">What makes these different from regular workbooks?</div><div class="faq-a">Every page is designed by a top art school graduate built on years of classroom experience. Visually engaging, carefully scaffolded, and grow students from comprehension all the way to analysis.</div></div>
+      <div class="faq-item"><div class="faq-q">Do teachers need prior experience?</div><div class="faq-a">No. We provide step-by-step training and PPTs for guided writing so any motivated teacher can run a high-quality program. Partner schools receive ongoing professional development.</div></div>
+      <div class="faq-item"><div class="faq-q">Can we trial the program before committing?</div><div class="faq-a">Yes. The Starter Plan allows up to 99 active students with no licensing fee to begin — you only purchase student workbooks ($30/student) and can add teacher training if needed.</div></div>
+      <div class="faq-item"><div class="faq-q">What essay types do students learn?</div><div class="faq-a">Students progress through Opinion Essays, Compare &amp; Contrast Essays, and Hamburger Essays — each building analytical skills. Advanced levels add interpretive theses and critical analysis.</div></div>
+    </div>
+  </div>
+
+  <!-- HOMESCHOOL -->
+  <div id="homeschooling" class="section reveal" style="background:var(--light-sage);">
+    <div class="two-col">
+      <div class="text-col">
+        <span class="section-label">For Families</span>
+        <span class="deco-line"></span>
+        <h2>Bring the curriculum <em>home.</em></h2>
+        <p>Our Starter tier is perfect for families who want to bring our curriculum into the home. Parents guide their children through the same high-quality materials used in schools.</p>
+        <button class="btn-primary" onclick="goTo('contactus')">Get Started</button>
+      </div>
+      <div>
+        <div class="option-card">
+          <div class="option-num">01</div>
+          <div><div class="option-title">Starter Tier + Workbooks</div><div class="option-desc">$10 licensing + $30/student per book (~2 months). Personal copyrighted workbook including PPTs and lesson plans.</div></div>
+        </div>
+        <div class="option-card">
+          <div class="option-num">02</div>
+          <div><div class="option-title">Bimonthly Group Training</div><div class="option-desc">$400 / 3hrs (online). Join other homeschooling families for guided training on teaching and monitoring progress.</div></div>
+        </div>
+        <div class="option-card">
+          <div class="option-num">03</div>
+          <div><div class="option-title">Individual Planning Guidance</div><div class="option-desc">Personalized support sessions with tailored lesson planning and progress check-ins. Contact us for pricing.</div></div>
+        </div>
+        <div class="option-card">
+          <div class="option-num">04</div>
+          <div><div class="option-title">Flexible Pacing</div><div class="option-desc">Follow the suggested 2-month schedule or adjust to your child's learning speed.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contactus" class="section reveal">
+    <div class="two-col">
+      <div class="text-col">
+        <span class="section-label">Get in Touch</span>
+        <span class="deco-line"></span>
+        <h2>Schedule a free <em>meeting.</em></h2>
+        <p style="font-size:1rem;line-height:1.8;opacity:0.7;margin-bottom:0.75rem;">Whether you're a school, academy, or homeschooling family, we'd love to walk you through the program.</p>
+        <p style="font-size:0.84rem;opacity:0.4;">We typically respond within 1–2 business days.</p>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="field-group"><label>Name</label><input type="text" placeholder="Your name" required></div>
+          <div class="field-group"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+        </div>
+        <div class="field-group"><label>School / Organization</label><input type="text" placeholder="School name or 'Homeschool'"></div>
+        <div class="field-group">
+          <label>I'm interested in...</label>
+          <select>
+            <option value="">Select an option</option>
+            <option>School or Academy Partnership</option>
+            <option>Homeschooling Program</option>
+            <option>Teacher Training Only</option>
+            <option>Just exploring — tell me more</option>
+          </select>
+        </div>
+        <div class="field-group"><label>Message (optional)</label><textarea rows="4" placeholder="Any questions or details..."></textarea></div>
+        <div class="checkbox-group"><input type="checkbox" required><label>I accept that the above information will be used to contact me about Crow's Call Press.</label></div>
+        <button type="submit" class="btn-primary">Send Message</button>
+        <div id="form-success" style="display:none;color:var(--sage);font-size:0.88rem;padding:0.5rem 0;">✓ Message sent! We'll be in touch within 1–2 business days.</div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Crow's <em>Call</em> Press</div>
+      <p class="footer-tagline">Top-tier literary workbooks for schools and homeschoolers. Beautifully designed, classroom-tested.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a onclick="goTo('collection')">The Collection</a></li>
+        <li><a onclick="goTo('levels')">Levels</a></li>
+        <li><a onclick="showPage('reading')">Reading List</a></li>
+        <li><a onclick="goTo('pricing')">Pricing</a></li>
+        <li><a onclick="goTo('faq')">FAQ</a></li>
+        <li><a onclick="goTo('homeschooling')">Homeschool</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a onclick="goTo('contactus')">Book a Free Meeting</a></li>
+        <li><a href="mailto:hello@crowscallpress.com">Email Us</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>© 2025 Crow's Call Press. All rights reserved.</span>
+    <span>crowscallpress.com</span>
+  </div>
+
+</div><!-- end page-home -->
+
+<!-- ======== READING LIST PAGE ======== -->
+<div id="page-reading" class="page">
+
+  <div class="reading-hero">
+    <span class="section-label">Full Curriculum</span>
+    <h1>The Reading <em>List</em></h1>
+    <p>A complete year of curated literature for each level — one book per month, spanning 12 genres. Click any book to find it on Kyobo or Aladin.</p>
+  </div>
+
+  <div class="level-tabs">
+    <button class="level-tab active" onclick="switchTab('civic',this)">Civic <small>A1–A2</small></button>
+    <button class="level-tab" onclick="switchTab('candidate',this)">Candidate <small>A1–A2</small></button>
+    <button class="level-tab" onclick="switchTab('monarch',this)">Monarch <small>A2–B1</small></button>
+    <button class="level-tab" onclick="switchTab('junior',this)">Junior <small>A2–B1</small></button>
+    <button class="level-tab" onclick="switchTab('lexis',this)">Lexis <small>B1–B2</small></button>
+    <button class="level-tab" onclick="switchTab('mythos',this)">Mythos <small>B2–C1</small></button>
+    <button class="level-tab" onclick="switchTab('opsis',this)">Opsis <small>C1+</small></button>
+  </div>
+
+  <div id="panel-civic" class="books-panel active">
+    <div class="panel-header"><h3>Civic Level</h3><p>Step Into Reading: Step 4. Focus on fluency, vocabulary-in-context, and literal comprehension. CEFR A1–A2.</p></div>
+    <div class="books-grid" id="grid-civic"></div>
+  </div>
+  <div id="panel-candidate" class="books-panel">
+    <div class="panel-header"><h3>Candidate Level</h3><p>Magic Tree House, Junie B. Jones, and A to Z Mysteries series. Focus on summarizing chapters, character &amp; setting tracking, and predictions. CEFR A1–A2.</p></div>
+    <div class="books-grid" id="grid-candidate"></div>
+  </div>
+  <div id="panel-monarch" class="books-panel">
+    <div class="panel-header"><h3>Monarch Level</h3><p>Bridges Crown and Leaders. Focus on genre familiarity, theme spotting, and text-to-self connections. CEFR A2–B1.</p></div>
+    <div class="books-grid" id="grid-monarch"></div>
+  </div>
+  <div id="panel-junior" class="books-panel">
+    <div class="panel-header"><h3>Junior Level</h3><p>High-level elementary readers ready for gentle literary analysis. Claim + Evidence basics, literary elements, discussion norms. CEFR A2–B1.</p></div>
+    <div class="books-grid" id="grid-junior"></div>
+  </div>
+  <div id="panel-lexis" class="books-panel">
+    <div class="panel-header"><h3>Lexis Level</h3><p>Middle-school-level texts; handles complex themes &amp; structure. Author craft, figurative language, cross-text connections. CEFR B1–B2.</p></div>
+    <div class="books-grid" id="grid-lexis"></div>
+  </div>
+  <div id="panel-mythos" class="books-panel">
+    <div class="panel-header"><h3>Mythos Level</h3><p>Strong, independent readers. Interpretive theses, rhetoric, genre conventions. Sustained close reading &amp; annotation. CEFR B2–C1.</p></div>
+    <div class="books-grid" id="grid-mythos"></div>
+  </div>
+  <div id="panel-opsis" class="books-panel">
+    <div class="panel-header"><h3>Opsis Level</h3><p>Exceptionally advanced; college-style discussion &amp; writing. Critical lenses, comparative analysis, synthesis writing. CEFR C1+.</p></div>
+    <div class="books-grid" id="grid-opsis"></div>
+  </div>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Crow's <em>Call</em> Press</div>
+      <p class="footer-tagline">Top-tier literary workbooks for schools and homeschoolers. Beautifully designed, classroom-tested.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="goTo('pricing')">Pricing</a></li>
+        <li><a onclick="goTo('faq')">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a onclick="goTo('contactus')">Book a Free Meeting</a></li>
+        <li><a href="mailto:hello@crowscallpress.com">Email Us</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>© 2025 Crow's Call Press. All rights reserved.</span>
+    <span>crowscallpress.com</span>
+  </div>
+
+</div><!-- end page-reading -->
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('page-' + name).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function goTo(sectionId) {
+  showPage('home');
+  setTimeout(function() {
+    var el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 60);
+}
+
+function switchTab(level, btn) {
+  document.querySelectorAll('.books-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.level-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('panel-' + level).classList.add('active');
+  btn.classList.add('active');
+}
+
+var BOOKS = {
+  civic: [
+    { month:'Jan', genre:'Step into Reading: Step 4', title:'Ben Franklin and the Magic Squares', link:'#' },
+    { month:'Feb', genre:'Step into Reading: Step 4', title:'Volcanoes!', link:'#' },
+    { month:'Mar', genre:'Step into Reading: Step 4', title:'How Not to Run for Class President', link:'#' },
+    { month:'Apr', genre:'Step into Reading: Step 4', title:'Porky and Bess', link:'#' },
+    { month:'May', genre:'Step into Reading: Step 4', title:'20,000 Baseball Cards Under the Sea', link:'#' },
+    { month:'Jun', genre:'Step into Reading: Step 4', title:'The Titanic Lost... And Found!', link:'#' },
+    { month:'Jul', genre:'Step into Reading: Step 4', title:'How Not to Babysit Your Brother', link:'#' },
+    { month:'Aug', genre:'Step into Reading: Step 4', title:'The Mystery of The Pirate Ghost', link:'#' },
+    { month:'Sep', genre:'Step into Reading: Step 4', title:'Pompeii Buried Alive!', link:'#' },
+    { month:'Oct', genre:'Step into Reading: Step 4', title:'A Poor Excuse for a Dragon!', link:'#' },
+    { month:'Nov', genre:'Step into Reading: Step 4', title:'Ballerina Dreams', link:'#' },
+    { month:'Dec', genre:'Step into Reading: Step 4', title:'The Little Mermaid', link:'#' }
+  ],
+  candidate: [
+    { month:'Jan', genre:'A to Z Mysteries', title:'The Invisible Island / The Kidnapped King', link:'#' },
+    { month:'Feb', genre:'A to Z Mysteries', title:'The Missing Mummy / The Orange Outlaw', link:'#' },
+    { month:'Mar', genre:'Junie B. Jones', title:'Stupid Smelly Bus (#1) / A Little Monkey Business (#2)', link:'#' },
+    { month:'Apr', genre:'Junie B. Jones', title:"Her Big Fat Mouth (#3) / Sneaky Peeky Spying (#4)", link:'#' },
+    { month:'May', genre:'Junie B. Jones', title:"Yucky Blucky Fruitcake (#5) / Meanie Jim's Birthday (#6)", link:'#' },
+    { month:'Jun', genre:'Junie B. Jones', title:'Handsome Warren (#7) / A Monster under her Bed (#8)', link:'#' },
+    { month:'Jul', genre:'Magic Tree House', title:'Dinosaurs Before Dark (#1) / The Knight at Dawn (#2)', link:'https://product.kyobobook.co.kr/detail/S000009116669' },
+    { month:'Aug', genre:'Magic Tree House', title:'Mummies in the Morning (#3) / Pirates Past Noon (#4)', link:'#' },
+    { month:'Sep', genre:'Magic Tree House', title:'Night of the Ninjas (#5) / Afternoon on the Amazon (#6)', link:'#' },
+    { month:'Oct', genre:'Magic Tree House', title:'Sunset of the Sabertooth (#7) / Midnight on the Moon (#8)', link:'#' },
+    { month:'Nov', genre:'A to Z Mysteries', title:'The Absent Author (#A) / The Canary Caper (#C)', link:'#' },
+    { month:'Dec', genre:'A to Z Mysteries', title:"The Empty Envelope (#D) / The Goose's Gold (#G)", link:'#' }
+  ],
+  monarch: [
+    { month:'Jan', genre:'Poetry & Prose', title:'I Am Phoenix: Poems for Two Voices', link:'#' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:'The Bad Guys', link:'#' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:'Peter Rabbit and Eleven Other Favorite Tales', link:'#' },
+    { month:'Apr', genre:'Coming of Age', title:'Not Really Buddies', link:'#' },
+    { month:'May', genre:'Fantasy', title:'Tales of Wizards and Dragons', link:'#' },
+    { month:'Jun', genre:'Mythology & Folklore', title:'The Adventures of Sir Lancelot the Great', link:'#' },
+    { month:'Jul', genre:'Classics', title:'The Adventures of Pinocchio', link:'#' },
+    { month:'Aug', genre:'NonFiction', title:'The Year of Miss Agnes', link:'#' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'Tashi and the Mixed-Up Monster', link:'#' },
+    { month:'Oct', genre:'Psychological Fiction', title:'Calendar Mysteries #10: October Ogre', link:'#' },
+    { month:'Nov', genre:'Speculative Fiction', title:'Rise of the Balloon Goons', link:'#' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:'I Survived the California Wildfires, 2018', link:'#' }
+  ],
+  junior: [
+    { month:'Jan', genre:'Poetry & Prose', title:'Joyful Noise', link:'https://product.kyobobook.co.kr/detail/S000005960953' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:'Be Prepared', link:'https://product.kyobobook.co.kr/detail/S000003478746' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:"My Father's Dragon", link:'https://product.kyobobook.co.kr/detail/S000002559066' },
+    { month:'Apr', genre:'Coming of Age', title:'Tales of a Fourth Grade Nothing', link:'https://product.kyobobook.co.kr/detail/S000002294575' },
+    { month:'May', genre:'Fantasy', title:'Dragons and Marshmallows', link:'https://product.kyobobook.co.kr/detail/S000003648104' },
+    { month:'Jun', genre:'Mythology & Folklore', title:'The Skull: A Tyrolean Folktale', link:'https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=303377746' },
+    { month:'Jul', genre:'Classics', title:'The Happy Prince & Other Stories', link:'https://product.kyobobook.co.kr/detail/S000035970176' },
+    { month:'Aug', genre:'NonFiction', title:'Number the Stars', link:'https://product.kyobobook.co.kr/detail/S000002683959' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'The Cat Who Went to Heaven', link:'https://product.kyobobook.co.kr/detail/S000027326438' },
+    { month:'Oct', genre:'Psychological Fiction', title:'The Twits', link:'https://product.kyobobook.co.kr/detail/S000002294633' },
+    { month:'Nov', genre:'Speculative Fiction', title:'Fortunately, the Milk', link:'https://product.kyobobook.co.kr/detail/S000002219211' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:'Magic School Bus Dinosaur Detectives', link:'https://product.kyobobook.co.kr/detail/S000009116669' }
+  ],
+  lexis: [
+    { month:'Jan', genre:'Poetry & Prose', title:'Love That Dog', link:'https://product.kyobobook.co.kr/detail/S000002225665' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:'In Real Life', link:'https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=105484882' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:'The Hundred Dresses', link:'https://product.kyobobook.co.kr/detail/S000002299118' },
+    { month:'Apr', genre:'Coming of Age', title:'Bridge to Terabithia', link:'https://product.kyobobook.co.kr/detail/S000002225439' },
+    { month:'May', genre:'Fantasy', title:'The Tale of Despereaux', link:'https://product.kyobobook.co.kr/detail/S000002835651' },
+    { month:'Jun', genre:'Mythology & Folklore', title:'Jason, the Argonauts, and the Golden Fleece', link:'https://product.kyobobook.co.kr/detail/S000028936549' },
+    { month:'Jul', genre:'Classics', title:'Sarah, Plain and Tall', link:'https://product.kyobobook.co.kr/detail/S000002221399' },
+    { month:'Aug', genre:'NonFiction', title:'World Without Fish', link:'https://product.kyobobook.co.kr/detail/S000011624783' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'Hen Who Dreamed She Could Fly', link:'https://product.kyobobook.co.kr/detail/S000035075167' },
+    { month:'Oct', genre:'Psychological Fiction', title:'The Curse of the Campfire Weenies', link:'https://product.kyobobook.co.kr/detail/S000002844933' },
+    { month:'Nov', genre:'Speculative Fiction', title:'Animorphs: The Invasion', link:'https://product.kyobobook.co.kr/detail/S000002680634' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:'Esperanza Rising', link:'https://product.kyobobook.co.kr/detail/S000002553852' }
+  ],
+  mythos: [
+    { month:'Jan', genre:'Poetry & Prose', title:'Instructions for Traveling West', link:'https://product.kyobobook.co.kr/detail/S000211970751' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:'The Many Deaths of Laila Starr', link:'https://product.kyobobook.co.kr/detail/S000033024975' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:'The Royal Game: A Chess Story', link:'https://product.kyobobook.co.kr/detail/S000203156915' },
+    { month:'Apr', genre:'Coming of Age', title:'A Monster Calls', link:'https://product.kyobobook.co.kr/detail/S000002835114' },
+    { month:'May', genre:'Fantasy', title:'Full Tilt', link:'https://product.kyobobook.co.kr/detail/S000027328642' },
+    { month:'Jun', genre:'Mythology & Folklore', title:"The Magician's Nephew", link:'https://product.kyobobook.co.kr/detail/S000002225659' },
+    { month:'Jul', genre:'Classics', title:"The Hitchhiker's Guide to the Galaxy", link:'https://product.kyobobook.co.kr/detail/S000002464870' },
+    { month:'Aug', genre:'NonFiction', title:'Witches', link:'https://product.kyobobook.co.kr/detail/S000027542830' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'She and Her Cat', link:'https://product.kyobobook.co.kr/detail/S000211034493' },
+    { month:'Oct', genre:'Psychological Fiction', title:'The Westing Game', link:'https://product.kyobobook.co.kr/detail/S000002294133' },
+    { month:'Nov', genre:'Speculative Fiction', title:'Ready Player One', link:'https://product.kyobobook.co.kr/detail/S000006057231' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:'The Man Who Mistook His Wife for a Hat', link:'https://product.kyobobook.co.kr/detail/S000003328876' }
+  ],
+  opsis: [
+    { month:'Jan', genre:'Poetry & Prose', title:'Citizen: An American Lyric', link:'https://product.kyobobook.co.kr/detail/S000002293483' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:"It's Lonely at the Centre of the Earth", link:'https://product.kyobobook.co.kr/detail/S000030277583' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:'We Have Always Lived in the Castle', link:'https://product.kyobobook.co.kr/detail/S000212449168' },
+    { month:'Apr', genre:'Coming of Age', title:'Speak', link:'https://product.kyobobook.co.kr/detail/S000002429861' },
+    { month:'May', genre:'Fantasy', title:'Redwall', link:'https://product.kyobobook.co.kr/detail/S000006231742' },
+    { month:'Jun', genre:'Mythology & Folklore', title:'Oedipus Rex', link:'https://product.kyobobook.co.kr/detail/S000009674485' },
+    { month:'Jul', genre:'Classics', title:'The Picture of Dorian Gray', link:'https://product.kyobobook.co.kr/detail/S000002418364' },
+    { month:'Aug', genre:'NonFiction', title:"Hidden Figures (Young Readers' Edition)", link:'https://product.kyobobook.co.kr/detail/S000002222925' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'The Vegetarian', link:'https://product.kyobobook.co.kr/detail/S000003079380' },
+    { month:'Oct', genre:'Psychological Fiction', title:"The Driver's Seat", link:'https://product.kyobobook.co.kr/detail/S000216190721' },
+    { month:'Nov', genre:'Speculative Fiction', title:"Cat's Cradle", link:'https://product.kyobobook.co.kr/detail/S000002290605' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:"Why Fish Don't Exist", link:'https://product.kyobobook.co.kr/detail/S000003313335' }
+  ]
+};
+
+function renderBooks() {
+  Object.keys(BOOKS).forEach(function(level) {
+    var grid = document.getElementById('grid-' + level);
+    if (!grid) return;
+    grid.innerHTML = BOOKS[level].map(function(book) {
+      var noLink = book.link === '#';
+      return '<div class="book-card">' +
+        '<div class="book-cover">' +
+        '<div class="no-cover">' + book.title + '</div>' +
+        '<span class="month-tag">' + book.month + '</span>' +
+        '</div>' +
+        '<div class="book-info">' +
+        '<div class="book-genre">' + book.genre + '</div>' +
+        '<div class="book-title">' + book.title + '</div>' +
+        '</div>' +
+        '<a class="book-link' + (noLink ? ' no-link' : '') + '" href="' + book.link + '"' + (noLink ? '' : ' target="_blank" rel="noopener"') + '>View on Store →</a>' +
+        '</div>';
+    }).join('');
+  });
+}
+
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(function(r) { revealObs.observe(r); });
+
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-success').style.display = 'block';
+  e.target.querySelector('button[type="submit"]').style.display = 'none';
+}
+
+renderBooks();
+</script>
+</body>
+</html>
