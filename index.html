@@ -208,7 +208,7 @@ h1 em { font-style: italic; color: var(--rust); }
 .faq-a { font-size: 0.9rem; line-height: 1.75; opacity: 0.63; }
 .faq-a a { color: var(--rust); text-decoration: none; cursor: pointer; }
 
-/* HOMESCHOOL */
+/* CURRICULUM CARDS */
 .option-card { background: white; border-radius: 4px; padding: 1.4rem; display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 0.85rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 .option-num {
   width: 38px; height: 38px; border-radius: 50%; background: var(--deep-olive); color: var(--cream);
@@ -356,7 +356,7 @@ footer {
     <li><a onclick="showPage('reading')">Reading List</a></li>
     <li><a onclick="goTo('pricing')">Pricing</a></li>
     <li><a onclick="goTo('faq')">FAQ</a></li>
-    <li><a onclick="goTo('homeschooling')">Homeschool</a></li>
+    <li><a onclick="goTo('homeschooling')">Curriculum</a></li>
     <li><a onclick="goTo('contactus')" class="nav-cta">Free Meeting</a></li>
   </ul>
 </nav>
@@ -540,7 +540,7 @@ footer {
     <h2>Frequently asked <em>questions.</em></h2>
     <div class="faq-grid">
       <div class="faq-item"><div class="faq-q">Who are these workbooks designed for?</div><div class="faq-a">Students in Grades 1–6+ with varying reading levels. Crown emphasizes comprehension and guided learning; Leaders develops independent, critical thinkers. Levels align with ability, not just grade.</div></div>
-      <div class="faq-item"><div class="faq-q">Can homeschoolers use this program?</div><div class="faq-a">Absolutely. Materials are flexible for private schools, academies, and homeschooling families. <a onclick="goTo('homeschooling')">Learn more →</a></div></div>
+      <div class="faq-item"><div class="faq-q">Can homeschoolers use this program?</div><div class="faq-a">Absolutely. Materials are flexible for private schools, academies, and homeschooling families. <a onclick="goTo('homeschooling')">See other curriculum →</a></div></div>
       <div class="faq-item"><div class="faq-q">What makes these different from regular workbooks?</div><div class="faq-a">Every page is designed by a top art school graduate built on years of classroom experience. Visually engaging, carefully scaffolded, and grow students from comprehension all the way to analysis.</div></div>
       <div class="faq-item"><div class="faq-q">Do teachers need prior experience?</div><div class="faq-a">No. We provide step-by-step training and PPTs for guided writing so any motivated teacher can run a high-quality program. Partner schools receive ongoing professional development.</div></div>
       <div class="faq-item"><div class="faq-q">Can we trial the program before committing?</div><div class="faq-a">Yes. The Starter Plan allows up to 99 active students with no licensing fee to begin — you only purchase student workbooks ($30/student) and can add teacher training if needed.</div></div>
@@ -548,32 +548,47 @@ footer {
     </div>
   </div>
 
-  <!-- HOMESCHOOL -->
+  <!-- OTHER CURRICULUM -->
   <div id="homeschooling" class="section reveal" style="background:var(--light-sage);">
     <div class="two-col">
       <div class="text-col">
-        <span class="section-label">For Families</span>
+        <span class="section-label">Beyond the Workbook</span>
         <span class="deco-line"></span>
-        <h2>Bring the curriculum <em>home.</em></h2>
-        <p>Our Starter tier is perfect for families who want to bring our curriculum into the home. Parents guide their children through the same high-quality materials used in schools.</p>
-        <button class="btn-primary" onclick="goTo('contactus')">Get Started</button>
+        <h2>Other curriculum &amp; <em>workbooks.</em></h2>
+        <p>We offer a variety of supplementary programs and workbooks designed to stretch students in different directions — from critical thinking and rhetoric to vocabulary and imaginative play.</p>
+        <button class="btn-primary" onclick="goTo('contactus')">Ask Us About These</button>
       </div>
       <div>
         <div class="option-card">
           <div class="option-num">01</div>
-          <div><div class="option-title">Starter Tier + Workbooks</div><div class="option-desc">$10 licensing + $30/student per book (~2 months). Personal copyrighted workbook including PPTs and lesson plans.</div></div>
+          <div>
+            <div class="option-title">Roleplaying Game</div>
+            <div class="option-desc">An immersive, story-driven curriculum that builds reading comprehension, creative writing, and collaborative thinking through structured RPG play.</div>
+          </div>
         </div>
         <div class="option-card">
           <div class="option-num">02</div>
-          <div><div class="option-title">Bimonthly Group Training</div><div class="option-desc">$400 / 3hrs (online). Join other homeschooling families for guided training on teaching and monitoring progress.</div></div>
+          <div>
+            <div class="option-title">News Analysis</div>
+            <div class="option-desc">Students engage with real-world news to develop media literacy, critical reading, and the ability to identify bias, argument structure, and evidence.</div>
+          </div>
         </div>
         <div class="option-card">
           <div class="option-num">03</div>
-          <div><div class="option-title">Individual Planning Guidance</div><div class="option-desc">Personalized support sessions with tailored lesson planning and progress check-ins. Contact us for pricing.</div></div>
+          <div>
+            <div class="option-title">Greek &amp; Latin Roots</div>
+            <div class="option-desc">A vocabulary-building workbook that teaches the building blocks of English through roots, prefixes, and suffixes from classical languages.</div>
+          </div>
         </div>
         <div class="option-card">
-          <div class="option-num">04</div>
-          <div><div class="option-title">Flexible Pacing</div><div class="option-desc">Follow the suggested 2-month schedule or adjust to your child's learning speed.</div></div>
+          <div class="option-num" style="background:var(--rust);">04</div>
+          <div style="flex:1;">
+            <div class="option-title" style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+              Debate
+              <span style="font-size:0.65rem;background:var(--gold);color:var(--ink);padding:0.15rem 0.6rem;border-radius:2px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;">&#11088; Popular</span>
+            </div>
+            <div class="option-desc">Our most sought-after program. Students learn structured argumentation, rebuttal techniques, and confident public speaking through formal and informal debate formats.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -608,7 +623,7 @@ footer {
         <div class="field-group"><label>Message (optional)</label><textarea rows="4" placeholder="Any questions or details..."></textarea></div>
         <div class="checkbox-group"><input type="checkbox" required><label>I accept that the above information will be used to contact me about Crow's Call Press.</label></div>
         <button type="submit" class="btn-primary">Send Message</button>
-        <div id="form-success" style="display:none;color:var(--sage);font-size:0.88rem;padding:0.5rem 0;">✓ Message sent! We'll be in touch within 1–2 business days.</div>
+        <div id="form-success" style="display:none;color:var(--sage);font-size:0.88rem;padding:0.5rem 0;">&#10003; Message sent! We'll be in touch within 1–2 business days.</div>
       </form>
     </div>
   </div>
@@ -626,7 +641,7 @@ footer {
         <li><a onclick="showPage('reading')">Reading List</a></li>
         <li><a onclick="goTo('pricing')">Pricing</a></li>
         <li><a onclick="goTo('faq')">FAQ</a></li>
-        <li><a onclick="goTo('homeschooling')">Homeschool</a></li>
+        <li><a onclick="goTo('homeschooling')">Other Curriculum</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -638,7 +653,7 @@ footer {
     </div>
   </footer>
   <div class="footer-bottom">
-    <span>© 2025 Crow's Call Press. All rights reserved.</span>
+    <span>&#169; 2025 Crow's Call Press. All rights reserved.</span>
     <span>crowscallpress.com</span>
   </div>
 
@@ -700,9 +715,12 @@ footer {
     <div class="footer-col">
       <h4>Navigation</h4>
       <ul>
-        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="goTo('collection')">The Collection</a></li>
+        <li><a onclick="goTo('levels')">Levels</a></li>
+        <li><a onclick="showPage('reading')">Reading List</a></li>
         <li><a onclick="goTo('pricing')">Pricing</a></li>
         <li><a onclick="goTo('faq')">FAQ</a></li>
+        <li><a onclick="goTo('homeschooling')">Other Curriculum</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -714,7 +732,7 @@ footer {
     </div>
   </footer>
   <div class="footer-bottom">
-    <span>© 2025 Crow's Call Press. All rights reserved.</span>
+    <span>&#169; 2025 Crow's Call Press. All rights reserved.</span>
     <span>crowscallpress.com</span>
   </div>
 
@@ -740,6 +758,11 @@ function switchTab(level, btn) {
   document.querySelectorAll('.level-tab').forEach(function(t) { t.classList.remove('active'); });
   document.getElementById('panel-' + level).classList.add('active');
   btn.classList.add('active');
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-success').style.display = 'block';
 }
 
 var BOOKS = {
@@ -858,7 +881,7 @@ function renderBooks() {
         '<div class="book-genre">' + book.genre + '</div>' +
         '<div class="book-title">' + book.title + '</div>' +
         '</div>' +
-        '<a class="book-link' + (noLink ? ' no-link' : '') + '" href="' + book.link + '"' + (noLink ? '' : ' target="_blank" rel="noopener"') + '>View on Store →</a>' +
+        '<a class="book-link' + (noLink ? ' no-link' : '') + '" href="' + book.link + '"' + (noLink ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
         '</div>';
     }).join('');
   });
@@ -868,12 +891,6 @@ var revealObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(function(r) { revealObs.observe(r); });
-
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('form-success').style.display = 'block';
-  e.target.querySelector('button[type="submit"]').style.display = 'none';
-}
 
 renderBooks();
 </script>
