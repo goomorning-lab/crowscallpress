@@ -24,7 +24,6 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); overflow-x: hidden; }
 
-/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; justify-content: space-between; align-items: center;
@@ -32,10 +31,7 @@ nav {
   background: rgba(250,247,242,0.96); backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(200,168,75,0.25);
 }
-.nav-logo {
-  font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600;
-  color: var(--ink); text-decoration: none; letter-spacing: -0.02em; cursor: pointer;
-}
+.nav-logo { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; cursor: pointer; }
 .nav-logo span { color: var(--rust); font-style: italic; }
 .nav-links { display: flex; gap: 0; list-style: none; height: 100%; }
 .nav-links li { display: flex; align-items: center; }
@@ -46,138 +42,66 @@ nav {
   border-bottom: 2px solid transparent; transition: opacity 0.2s;
 }
 .nav-links a:hover { opacity: 1; border-bottom-color: var(--gold); }
-.nav-cta {
-  background: var(--ink) !important; color: var(--cream) !important;
-  opacity: 1 !important; padding: 0.5rem 1.3rem !important;
-  border-radius: 2px; border-bottom: none !important; margin-left: 0.5rem;
-}
+.nav-cta { background: var(--ink) !important; color: var(--cream) !important; opacity: 1 !important; padding: 0.5rem 1.3rem !important; border-radius: 2px; border-bottom: none !important; margin-left: 0.5rem; }
 .nav-cta:hover { background: var(--rust) !important; }
 
-/* PAGE SYSTEM */
 .page { display: none; padding-top: 64px; min-height: 100vh; }
 .page.active { display: block; }
 
-/* BUTTONS */
-.btn-primary {
-  display: inline-block; background: var(--ink); color: var(--cream);
-  padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
-  text-decoration: none; border: none; cursor: pointer; border-radius: 2px;
-  transition: background 0.2s, transform 0.2s;
-}
+.btn-primary { display: inline-block; background: var(--ink); color: var(--cream); padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; border-radius: 2px; transition: background 0.2s, transform 0.2s; }
 .btn-primary:hover { background: var(--rust); transform: translateY(-2px); }
-.btn-outline {
-  display: inline-block; border: 1.5px solid var(--ink); color: var(--ink);
-  padding: 0.85rem 1.8rem; font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
-  text-decoration: none; cursor: pointer; border-radius: 2px; background: none;
-  transition: all 0.2s;
-}
+.btn-outline { display: inline-block; border: 1.5px solid var(--ink); color: var(--ink); padding: 0.85rem 1.8rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; cursor: pointer; border-radius: 2px; background: none; transition: all 0.2s; }
 .btn-outline:hover { background: var(--ink); color: var(--cream); }
 
-/* SECTION SHARED */
 .section { padding: 6rem 4rem; }
-.section-label {
-  display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--rust); margin-bottom: 0.75rem;
-}
+.section-label { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.75rem; }
 .deco-line { display: block; height: 2px; width: 36px; background: var(--gold); margin-bottom: 1.75rem; }
-h2 {
-  font-family: 'Fraunces', serif; font-size: clamp(2rem, 3vw, 2.8rem);
-  font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink);
-}
+h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); }
 h2 em { font-style: italic; color: var(--sage); }
 
-/* IMAGE PLACEHOLDERS */
-.img-ph {
-  background: #f0ebe0; border: 2px dashed #d4c9b0; border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  color: #b0a080; font-family: 'DM Sans', sans-serif;
-}
+.img-ph { background: #f0ebe0; border: 2px dashed #d4c9b0; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #b0a080; }
 
-/* HERO */
-.hero {
-  min-height: calc(100vh - 64px);
-  display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
-}
-.hero-left {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 5rem 4rem; background: var(--warm-white);
-}
-.hero-tag {
-  display: inline-block; font-size: 0.72rem; font-weight: 500;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust);
-  margin-bottom: 1.5rem; border-bottom: 1px solid var(--rust); padding-bottom: 0.3rem;
-  width: fit-content;
-}
-h1 {
-  font-family: 'Fraunces', serif; font-size: clamp(2.8rem, 4.5vw, 4.2rem);
-  font-weight: 300; line-height: 1.05; letter-spacing: -0.03em;
-  color: var(--ink); margin-bottom: 1.5rem;
-}
+.hero { min-height: calc(100vh - 64px); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem; background: var(--warm-white); }
+.hero-tag { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); margin-bottom: 1.5rem; border-bottom: 1px solid var(--rust); padding-bottom: 0.3rem; width: fit-content; }
+h1 { font-family: 'Fraunces', serif; font-size: clamp(2.8rem, 4.5vw, 4.2rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.5rem; }
 h1 em { font-style: italic; color: var(--rust); }
-.hero-sub {
-  font-size: 1.05rem; line-height: 1.75; color: var(--ink); opacity: 0.7;
-  max-width: 420px; margin-bottom: 2.5rem;
-}
-.hero-right {
-  background: var(--parchment);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-  padding: 3rem; align-content: center;
-}
+.hero-sub { font-size: 1.05rem; line-height: 1.75; color: var(--ink); opacity: 0.7; max-width: 420px; margin-bottom: 2.5rem; }
+.hero-right { background: var(--parchment); display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 3rem; align-content: center; }
 .hero-right .img-ph:first-child { grid-column: 1 / -1; aspect-ratio: 16/9; }
 .hero-right .img-ph { aspect-ratio: 4/3; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* STRIP */
-.strip {
-  background: var(--ink); color: var(--cream);
-  padding: 0.9rem 4rem; display: flex; gap: 4rem; overflow: hidden;
-}
+.strip { background: var(--ink); color: var(--cream); padding: 0.9rem 4rem; display: flex; gap: 4rem; overflow: hidden; }
 .strip-item { white-space: nowrap; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
 .strip-item strong { opacity: 1; color: var(--gold); }
 
-/* TWO-COL LAYOUT */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .text-col h2 { margin-bottom: 1.5rem; }
 .text-col p { font-size: 1rem; line-height: 1.8; opacity: 0.72; margin-bottom: 1rem; }
 .feature-list { list-style: none; margin: 1.5rem 0 2rem; display: flex; flex-direction: column; gap: 0.65rem; }
 .feature-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.93rem; }
 .feature-list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-
-/* BOOK COL */
 .book-col { display: flex; align-items: center; justify-content: center; }
 .book-col .img-ph { width: 100%; max-width: 300px; aspect-ratio: 3/4; }
-
-/* STACKED IMAGES */
 .stacked-col { display: flex; flex-direction: column; gap: 0.85rem; }
 .stacked-col .img-ph { width: 100%; aspect-ratio: 16/9; }
 
-/* LEVELS */
 .levels-header { max-width: 600px; margin-bottom: 3.5rem; }
 .levels-header p { font-size: 1rem; line-height: 1.7; opacity: 0.68; margin-top: 0.75rem; }
 .pathway { margin-bottom: 3.5rem; }
-.pathway-title {
-  font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600;
-  color: var(--ink); margin-bottom: 0.25rem;
-  display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
-}
+.pathway-title { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
 .pathway-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.7rem; border-radius: 2px; font-weight: 500; }
 .tag-crown { background: var(--parchment); color: var(--deep-olive); }
 .tag-leaders { background: var(--deep-olive); color: var(--cream); }
 .pathway-desc { font-size: 0.88rem; opacity: 0.55; margin-bottom: 1.25rem; }
 .levels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
-.level-card {
-  border: 1.5px solid var(--parchment); border-radius: 4px; padding: 1.4rem;
-  background: white; transition: border-color 0.2s, transform 0.2s;
-}
+.level-card { border: 1.5px solid var(--parchment); border-radius: 4px; padding: 1.4rem; background: white; transition: border-color 0.2s, transform 0.2s; }
 .level-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
 .level-name { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem; }
 .level-cefr { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.65rem; font-weight: 500; }
 .level-focus { font-size: 0.85rem; line-height: 1.6; opacity: 0.62; }
 
-/* PRICING */
 .pricing-dark { background: var(--ink); color: var(--cream); }
 .pricing-dark .section-label { color: var(--gold); }
 .pricing-dark h2 { color: var(--cream); }
@@ -188,8 +112,7 @@ h1 em { font-style: italic; color: var(--rust); }
 .price-card:hover { border-color: rgba(200,168,75,0.5); }
 .price-card.featured { background: var(--rust); border-color: transparent; }
 .price-tier { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-bottom: 0.4rem; font-weight: 500; }
-.price-amount { font-family: 'Fraunces', serif; font-size: 2.8rem; font-weight: 300; color: var(--cream); line-height: 1; margin-bottom: 0.2rem; }
-.price-amount sup { font-size: 1.1rem; vertical-align: super; }
+.price-amount { font-family: 'Fraunces', serif; font-size: 2.4rem; font-weight: 300; color: var(--cream); line-height: 1; margin-bottom: 0.2rem; }
 .price-per { font-size: 0.78rem; opacity: 0.45; margin-bottom: 1.25rem; }
 .price-range { font-size: 0.78rem; background: rgba(255,255,255,0.1); padding: 0.35rem 0.75rem; border-radius: 2px; margin-bottom: 1.25rem; display: inline-block; opacity: 0.75; }
 .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.86rem; opacity: 0.72; }
@@ -201,58 +124,34 @@ h1 em { font-style: italic; color: var(--rust); }
 .fee-item { display: flex; justify-content: space-between; font-size: 0.86rem; padding: 0.45rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); opacity: 0.72; }
 .fee-item span:last-child { color: var(--gold); font-weight: 500; }
 
-/* FAQ */
 .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; margin-top: 3rem; }
 .faq-item { padding: 1.6rem 0; border-bottom: 1px solid var(--parchment); }
 .faq-q { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.65rem; line-height: 1.4; }
 .faq-a { font-size: 0.9rem; line-height: 1.75; opacity: 0.63; }
 .faq-a a { color: var(--rust); text-decoration: none; cursor: pointer; }
 
-/* CURRICULUM CARDS */
 .option-card { background: white; border-radius: 4px; padding: 1.4rem; display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 0.85rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-.option-num {
-  width: 38px; height: 38px; border-radius: 50%; background: var(--deep-olive); color: var(--cream);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em;
-  flex-shrink: 0; font-family: 'DM Sans', sans-serif;
-}
+.option-num { width: 38px; height: 38px; border-radius: 50%; background: var(--deep-olive); color: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; flex-shrink: 0; }
 .option-title { font-family: 'Fraunces', serif; font-size: 0.98rem; font-weight: 600; margin-bottom: 0.25rem; }
 .option-desc { font-size: 0.84rem; opacity: 0.62; line-height: 1.6; }
 
-/* CONTACT */
 .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .field-group { display: flex; flex-direction: column; gap: 0.35rem; }
 .field-group label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; }
-.field-group input, .field-group select, .field-group textarea {
-  border: 1.5px solid var(--parchment); border-radius: 2px; padding: 0.8rem 0.9rem;
-  font-family: 'DM Sans', sans-serif; font-size: 0.93rem; background: white; color: var(--ink);
-  outline: none; transition: border-color 0.2s; resize: vertical;
-}
+.field-group input, .field-group select, .field-group textarea { border: 1.5px solid var(--parchment); border-radius: 2px; padding: 0.8rem 0.9rem; font-family: 'DM Sans', sans-serif; font-size: 0.93rem; background: white; color: var(--ink); outline: none; transition: border-color 0.2s; resize: vertical; }
 .field-group input:focus, .field-group select:focus, .field-group textarea:focus { border-color: var(--gold); }
 .checkbox-group { display: flex; gap: 0.55rem; align-items: flex-start; font-size: 0.83rem; opacity: 0.62; line-height: 1.5; }
 .checkbox-group input { width: 15px; height: 15px; margin-top: 2px; flex-shrink: 0; }
 
-/* READING LIST PAGE */
 .reading-hero { background: var(--ink); color: var(--cream); padding: 5rem 4rem 4rem; }
 .reading-hero .section-label { color: var(--gold); }
 .reading-hero h1 { color: var(--cream); margin-bottom: 0.75rem; }
 .reading-hero h1 em { color: var(--gold); font-style: italic; }
 .reading-hero p { font-size: 1rem; opacity: 0.58; max-width: 540px; line-height: 1.7; }
 
-.level-tabs {
-  display: flex; background: var(--parchment);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  overflow-x: auto; padding: 0 4rem;
-  position: sticky; top: 64px; z-index: 100;
-}
-.level-tab {
-  padding: 1rem 1.4rem; font-size: 0.78rem; font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  border: none; background: none; cursor: pointer; color: var(--ink);
-  opacity: 0.5; border-bottom: 2px solid transparent;
-  transition: all 0.2s; white-space: nowrap;
-}
+.level-tabs { display: flex; background: var(--parchment); border-bottom: 1px solid rgba(0,0,0,0.08); overflow-x: auto; padding: 0 4rem; position: sticky; top: 64px; z-index: 100; }
+.level-tab { padding: 1rem 1.4rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; background: none; cursor: pointer; color: var(--ink); opacity: 0.5; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap; }
 .level-tab:hover { opacity: 0.85; }
 .level-tab.active { opacity: 1; border-bottom-color: var(--rust); color: var(--rust); }
 
@@ -261,50 +160,21 @@ h1 em { font-style: italic; color: var(--rust); }
 .panel-header { margin-bottom: 2.5rem; }
 .panel-header h3 { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 300; color: var(--ink); margin-bottom: 0.5rem; }
 .panel-header p { font-size: 0.92rem; opacity: 0.62; line-height: 1.6; max-width: 560px; }
-
 .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 1.5rem 1.25rem; }
 
-.book-card {
-  display: flex; flex-direction: column; border-radius: 6px; overflow: hidden;
-  background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  transition: transform 0.25s, box-shadow 0.25s; text-decoration: none; color: inherit;
-}
+.book-card { display: flex; flex-direction: column; border-radius: 6px; overflow: hidden; background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.08); transition: transform 0.25s, box-shadow 0.25s; text-decoration: none; color: inherit; }
 .book-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.14); }
-.book-cover {
-  height: 190px; overflow: hidden; background: var(--parchment);
-  display: flex; align-items: center; justify-content: center; position: relative;
-}
-.book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.book-cover .no-cover {
-  font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
-  color: #b0a080; text-align: center; padding: 1rem; line-height: 1.5;
-}
-.month-tag {
-  position: absolute; top: 8px; left: 8px;
-  background: var(--rust); color: white;
-  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.18rem 0.45rem; border-radius: 2px;
-}
+.book-cover { height: 190px; overflow: hidden; background: var(--parchment); display: flex; align-items: center; justify-content: center; position: relative; }
+.book-cover .no-cover { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: #b0a080; text-align: center; padding: 1rem; line-height: 1.5; }
+.month-tag { position: absolute; top: 8px; left: 8px; background: var(--rust); color: white; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.18rem 0.45rem; border-radius: 2px; }
 .book-info { padding: 0.85rem; flex: 1; display: flex; flex-direction: column; gap: 0.25rem; }
 .book-genre { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage); }
 .book-title { font-family: 'Fraunces', serif; font-size: 0.88rem; font-weight: 600; line-height: 1.3; color: var(--ink); }
-.book-link {
-  display: block; text-align: center; padding: 0.5rem;
-  background: var(--parchment); font-size: 0.7rem; font-weight: 500;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--deep-olive);
-  text-decoration: none; transition: background 0.2s;
-  border-top: 1px solid rgba(0,0,0,0.06);
-}
+.book-link { display: block; text-align: center; padding: 0.5rem; background: var(--parchment); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--deep-olive); text-decoration: none; transition: background 0.2s; border-top: 1px solid rgba(0,0,0,0.06); }
 .book-link:hover { background: var(--deep-olive); color: var(--cream); }
 .book-link.no-link { opacity: 0.35; pointer-events: none; }
 
-/* FOOTER */
-footer {
-  background: var(--ink); color: var(--cream);
-  padding: 3rem 4rem;
-  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
-  border-top: 2px solid var(--rust);
-}
+footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; border-top: 2px solid var(--rust); }
 .footer-brand { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 300; margin-bottom: 0.65rem; }
 .footer-brand em { font-style: italic; color: var(--dusty-rose); }
 .footer-tagline { font-size: 0.86rem; opacity: 0.45; line-height: 1.6; max-width: 260px; }
@@ -312,17 +182,11 @@ footer {
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
 .footer-col ul a { font-size: 0.88rem; color: var(--cream); opacity: 0.5; text-decoration: none; cursor: pointer; transition: opacity 0.2s; }
 .footer-col ul a:hover { opacity: 1; }
-.footer-bottom {
-  background: var(--ink); padding: 1.1rem 4rem;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  display: flex; justify-content: space-between; font-size: 0.78rem; opacity: 0.35;
-}
+.footer-bottom { background: var(--ink); padding: 1.1rem 4rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; font-size: 0.78rem; opacity: 0.35; }
 
-/* REVEAL */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* RESPONSIVE */
 @media (max-width: 900px) {
   nav { padding: 0 1.5rem; }
   .nav-links li:not(:last-child):not(:nth-last-child(2)):not(:nth-last-child(3)) { display: none; }
@@ -347,7 +211,6 @@ footer {
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <span class="nav-logo" onclick="showPage('home')">Crow's <span>Call</span> Press</span>
   <ul class="nav-links">
@@ -356,18 +219,17 @@ footer {
     <li><a onclick="showPage('reading')">Reading List</a></li>
     <li><a onclick="goTo('pricing')">Pricing</a></li>
     <li><a onclick="goTo('faq')">FAQ</a></li>
-    <li><a onclick="goTo('homeschooling')">Curriculum</a></li>
+    <li><a onclick="goTo('curriculum')">Curriculum</a></li>
     <li><a onclick="goTo('contactus')" class="nav-cta">Free Meeting</a></li>
   </ul>
 </nav>
 
-<!-- ======== HOME PAGE ======== -->
+<!-- HOME PAGE -->
 <div id="page-home" class="page active">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-left">
-      <span class="hero-tag">Literary Workbooks for Schools &amp; Homeschoolers</span>
+      <span class="hero-tag">Literary Workbooks for Schools &amp; Academies</span>
       <h1>Design that <em>teaches.</em> Literature that <em>lasts.</em></h1>
       <p class="hero-sub">Top-tier visual design meets classroom-tested literacy. Crafted for students in Grades 1–6+ across schools and academies.</p>
       <div class="hero-btns">
@@ -382,12 +244,11 @@ footer {
     </div>
   </div>
 
-  <!-- STRIP -->
   <div class="strip">
     <span class="strip-item">Grades <strong>1–6+</strong></span>
     <span class="strip-item"><strong>7</strong> Levels</span>
     <span class="strip-item">CEFR <strong>A1 → C1+</strong></span>
-    <span class="strip-item">Schools &amp; <strong>Homeschoolers</strong></span>
+    <span class="strip-item">Schools &amp; <strong>Academies</strong></span>
     <span class="strip-item">Art School <strong>Designed</strong></span>
     <span class="strip-item">Grades <strong>1–6+</strong></span>
     <span class="strip-item"><strong>7</strong> Levels</span>
@@ -414,13 +275,11 @@ footer {
           <button class="btn-outline" onclick="showPage('reading')">See Reading List</button>
         </div>
       </div>
-      <div class="book-col">
-        <div class="img-ph">Book cover image</div>
-      </div>
+      <div class="book-col"><div class="img-ph">Book cover image</div></div>
     </div>
   </div>
 
-  <!-- DEVELOPED RESPONSE -->
+  <!-- WHAT STUDENTS CREATE -->
   <div class="section reveal" style="background:var(--cream);">
     <div class="two-col">
       <div class="text-col">
@@ -486,7 +345,7 @@ footer {
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-tier">Starter</div>
-        <div class="price-amount"><sup>$</sup>10</div>
+        <div class="price-amount">₩10,000</div>
         <div class="price-per">per student / month</div>
         <div class="price-range">Under 99 active students</div>
         <ul class="price-features">
@@ -498,7 +357,7 @@ footer {
       </div>
       <div class="price-card featured">
         <div class="price-tier">Growth</div>
-        <div class="price-amount"><sup>$</sup>9</div>
+        <div class="price-amount">₩9,500</div>
         <div class="price-per">per student / month</div>
         <div class="price-range">100–199 active students</div>
         <ul class="price-features">
@@ -509,7 +368,7 @@ footer {
       </div>
       <div class="price-card">
         <div class="price-tier">Scale</div>
-        <div class="price-amount"><sup>$</sup>8</div>
+        <div class="price-amount">₩9,000</div>
         <div class="price-per">per student / month</div>
         <div class="price-range">200–399 active students</div>
         <ul class="price-features">
@@ -525,7 +384,7 @@ footer {
         <p class="book-fee-desc">Each student uses a personal, copyrighted workbook designed to last approximately 2 months. Includes activities, discussion prompts, and assessment tools.</p>
       </div>
       <div>
-        <div class="fee-item"><span>Price per book</span><span>$30 / student</span></div>
+        <div class="fee-item"><span>Price per book</span><span>₩30,000 / student</span></div>
         <div class="fee-item"><span>Duration</span><span>~2 months</span></div>
         <div class="fee-item"><span>Growth tier rebate</span><span>5% back</span></div>
         <div class="fee-item"><span>Scale tier rebate</span><span>10% back</span></div>
@@ -540,16 +399,16 @@ footer {
     <h2>Frequently asked <em>questions.</em></h2>
     <div class="faq-grid">
       <div class="faq-item"><div class="faq-q">Who are these workbooks designed for?</div><div class="faq-a">Students in Grades 1–6+ with varying reading levels. Crown emphasizes comprehension and guided learning; Leaders develops independent, critical thinkers. Levels align with ability, not just grade.</div></div>
-      <div class="faq-item"><div class="faq-q">Can homeschoolers use this program?</div><div class="faq-a">Absolutely. Materials are flexible for private schools, academies, and homeschooling families. <a onclick="goTo('homeschooling')">See other curriculum →</a></div></div>
-      <div class="faq-item"><div class="faq-q">What makes these different from regular workbooks?</div><div class="faq-a">Every page is designed by a top art school graduate built on years of classroom experience. Visually engaging, carefully scaffolded, and grow students from comprehension all the way to analysis.</div></div>
+      <div class="faq-item"><div class="faq-q">What makes these different from regular workbooks?</div><div class="faq-a">Every page is designed by a top art school graduate built on years of classroom experience. Visually engaging, carefully scaffolded, growing students from comprehension all the way to critical analysis.</div></div>
       <div class="faq-item"><div class="faq-q">Do teachers need prior experience?</div><div class="faq-a">No. We provide step-by-step training and PPTs for guided writing so any motivated teacher can run a high-quality program. Partner schools receive ongoing professional development.</div></div>
-      <div class="faq-item"><div class="faq-q">Can we trial the program before committing?</div><div class="faq-a">Yes. The Starter Plan allows up to 99 active students with no licensing fee to begin — you only purchase student workbooks ($30/student) and can add teacher training if needed.</div></div>
+      <div class="faq-item"><div class="faq-q">Can we trial the program before committing?</div><div class="faq-a">Yes. The Starter Plan allows up to 99 active students — you only purchase student workbooks (₩30,000/student) and can add teacher training if needed.</div></div>
       <div class="faq-item"><div class="faq-q">What essay types do students learn?</div><div class="faq-a">Students progress through Opinion Essays, Compare &amp; Contrast Essays, and Hamburger Essays — each building analytical skills. Advanced levels add interpretive theses and critical analysis.</div></div>
+      <div class="faq-item"><div class="faq-q">What support do partner schools receive?</div><div class="faq-a">All plans include full lesson plans, answer keys, vocabulary sheets, tests, and guided writing PPTs. Growth and Scale tiers include quarterly professional development and on-site training.</div></div>
     </div>
   </div>
 
   <!-- OTHER CURRICULUM -->
-  <div id="homeschooling" class="section reveal" style="background:var(--light-sage);">
+  <div id="curriculum" class="section reveal" style="background:var(--light-sage);">
     <div class="two-col">
       <div class="text-col">
         <span class="section-label">Beyond the Workbook</span>
@@ -601,29 +460,32 @@ footer {
         <span class="section-label">Get in Touch</span>
         <span class="deco-line"></span>
         <h2>Schedule a free <em>meeting.</em></h2>
-        <p style="font-size:1rem;line-height:1.8;opacity:0.7;margin-bottom:0.75rem;">Whether you're a school, academy, or homeschooling family, we'd love to walk you through the program.</p>
+        <p style="font-size:1rem;line-height:1.8;opacity:0.7;margin-bottom:0.75rem;">Whether you're a school or academy, we'd love to walk you through the program.</p>
         <p style="font-size:0.84rem;opacity:0.4;">We typically respond within 1–2 business days.</p>
       </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <form class="contact-form" id="contact-form">
+        <input type="hidden" name="access_key" value="3ccd1c73-401e-4126-a8ef-2ca8a9479a9f">
+        <input type="hidden" name="subject" value="New enquiry from Crow's Call Press website">
         <div class="form-row">
-          <div class="field-group"><label>Name</label><input type="text" placeholder="Your name" required></div>
-          <div class="field-group"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+          <div class="field-group"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+          <div class="field-group"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
         </div>
-        <div class="field-group"><label>School / Organization</label><input type="text" placeholder="School name or 'Homeschool'"></div>
+        <div class="field-group"><label>School / Organization</label><input type="text" name="school" placeholder="School or academy name"></div>
         <div class="field-group">
           <label>I'm interested in...</label>
-          <select>
+          <select name="interest">
             <option value="">Select an option</option>
             <option>School or Academy Partnership</option>
-            <option>Homeschooling Program</option>
             <option>Teacher Training Only</option>
+            <option>Other Curriculum Programs</option>
             <option>Just exploring — tell me more</option>
           </select>
         </div>
-        <div class="field-group"><label>Message (optional)</label><textarea rows="4" placeholder="Any questions or details..."></textarea></div>
+        <div class="field-group"><label>Message (optional)</label><textarea name="message" rows="4" placeholder="Any questions or details..."></textarea></div>
         <div class="checkbox-group"><input type="checkbox" required><label>I accept that the above information will be used to contact me about Crow's Call Press.</label></div>
         <button type="submit" class="btn-primary">Send Message</button>
         <div id="form-success" style="display:none;color:var(--sage);font-size:0.88rem;padding:0.5rem 0;">&#10003; Message sent! We'll be in touch within 1–2 business days.</div>
+        <div id="form-error" style="display:none;color:var(--rust);font-size:0.88rem;padding:0.5rem 0;">Something went wrong. Please email us at crowscallpress@gmail.com</div>
       </form>
     </div>
   </div>
@@ -631,7 +493,7 @@ footer {
   <footer>
     <div>
       <div class="footer-brand">Crow's <em>Call</em> Press</div>
-      <p class="footer-tagline">Top-tier literary workbooks for schools and homeschoolers. Beautifully designed, classroom-tested.</p>
+      <p class="footer-tagline">Top-tier literary workbooks for schools and academies. Beautifully designed, classroom-tested.</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
@@ -641,14 +503,14 @@ footer {
         <li><a onclick="showPage('reading')">Reading List</a></li>
         <li><a onclick="goTo('pricing')">Pricing</a></li>
         <li><a onclick="goTo('faq')">FAQ</a></li>
-        <li><a onclick="goTo('homeschooling')">Other Curriculum</a></li>
+        <li><a onclick="goTo('curriculum')">Other Curriculum</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
         <li><a onclick="goTo('contactus')">Book a Free Meeting</a></li>
-        <li><a href="mailto:hello@crowscallpress.com">Email Us</a></li>
+        <li><a href="mailto:crowscallpress@gmail.com">Email Us</a></li>
       </ul>
     </div>
   </footer>
@@ -659,7 +521,7 @@ footer {
 
 </div><!-- end page-home -->
 
-<!-- ======== READING LIST PAGE ======== -->
+<!-- READING LIST PAGE -->
 <div id="page-reading" class="page">
 
   <div class="reading-hero">
@@ -710,7 +572,7 @@ footer {
   <footer>
     <div>
       <div class="footer-brand">Crow's <em>Call</em> Press</div>
-      <p class="footer-tagline">Top-tier literary workbooks for schools and homeschoolers. Beautifully designed, classroom-tested.</p>
+      <p class="footer-tagline">Top-tier literary workbooks for schools and academies. Beautifully designed, classroom-tested.</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
@@ -720,14 +582,14 @@ footer {
         <li><a onclick="showPage('reading')">Reading List</a></li>
         <li><a onclick="goTo('pricing')">Pricing</a></li>
         <li><a onclick="goTo('faq')">FAQ</a></li>
-        <li><a onclick="goTo('homeschooling')">Other Curriculum</a></li>
+        <li><a onclick="goTo('curriculum')">Other Curriculum</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
         <li><a onclick="goTo('contactus')">Book a Free Meeting</a></li>
-        <li><a href="mailto:hello@crowscallpress.com">Email Us</a></li>
+        <li><a href="mailto:crowscallpress@gmail.com">Email Us</a></li>
       </ul>
     </div>
   </footer>
@@ -760,10 +622,30 @@ function switchTab(level, btn) {
   btn.classList.add('active');
 }
 
-function handleSubmit(e) {
+// Web3Forms contact form
+document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  document.getElementById('form-success').style.display = 'block';
-}
+  var form = e.target;
+  var data = new FormData(form);
+  var successEl = document.getElementById('form-success');
+  var errorEl = document.getElementById('form-error');
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: data
+  }).then(function(res) { return res.json(); }).then(function(json) {
+    if (json.success) {
+      successEl.style.display = 'block';
+      errorEl.style.display = 'none';
+      form.reset();
+    } else {
+      errorEl.style.display = 'block';
+      successEl.style.display = 'none';
+    }
+  }).catch(function() {
+    errorEl.style.display = 'block';
+    successEl.style.display = 'none';
+  });
+});
 
 var BOOKS = {
   civic: [
@@ -795,18 +677,18 @@ var BOOKS = {
     { month:'Dec', genre:'A to Z Mysteries', title:"The Empty Envelope (#D) / The Goose's Gold (#G)", link:'#' }
   ],
   monarch: [
-    { month:'Jan', genre:'Poetry & Prose', title:'I Am Phoenix: Poems for Two Voices', link:'#' },
-    { month:'Feb', genre:'Scripted & Illustrated', title:'The Bad Guys', link:'#' },
-    { month:'Mar', genre:'Anthologies & Novellas', title:'Peter Rabbit and Eleven Other Favorite Tales', link:'#' },
-    { month:'Apr', genre:'Coming of Age', title:'Not Really Buddies', link:'#' },
-    { month:'May', genre:'Fantasy', title:'Tales of Wizards and Dragons', link:'#' },
-    { month:'Jun', genre:'Mythology & Folklore', title:'The Adventures of Sir Lancelot the Great', link:'#' },
-    { month:'Jul', genre:'Classics', title:'The Adventures of Pinocchio', link:'#' },
-    { month:'Aug', genre:'NonFiction', title:'The Year of Miss Agnes', link:'#' },
-    { month:'Sep', genre:'Eastern Phil. & Translated', title:'Tashi and the Mixed-Up Monster', link:'#' },
-    { month:'Oct', genre:'Psychological Fiction', title:'Calendar Mysteries #10: October Ogre', link:'#' },
-    { month:'Nov', genre:'Speculative Fiction', title:'Rise of the Balloon Goons', link:'#' },
-    { month:'Dec', genre:'Social & Natural Sciences', title:'I Survived the California Wildfires, 2018', link:'#' }
+    { month:'Jan', genre:'Poetry & Prose', title:'I Am Phoenix: Poems for Two Voices', link:'https://product.kyobobook.co.kr/detail/S000005960952' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:'The Bad Guys', link:'https://product.kyobobook.co.kr/detail/S000010089479' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:'Peter Rabbit and Eleven Other Favorite Tales', link:'https://product.kyobobook.co.kr/detail/S000009675360' },
+    { month:'Apr', genre:'Coming of Age', title:'Not Really Buddies', link:'https://product.kyobobook.co.kr/detail/S000211149877' },
+    { month:'May', genre:'Fantasy', title:'Tales of Wizards and Dragons', link:'https://product.kyobobook.co.kr/detail/S000213782967' },
+    { month:'Jun', genre:'Mythology & Folklore', title:'The Adventures of Sir Lancelot the Great', link:'https://product.kyobobook.co.kr/detail/S000010096879' },
+    { month:'Jul', genre:'Classics', title:'The Adventures of Pinocchio', link:'https://product.kyobobook.co.kr/detail/S000009676259' },
+    { month:'Aug', genre:'NonFiction', title:'The Year of Miss Agnes', link:'https://product.kyobobook.co.kr/detail/S000011102613' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'Tashi and the Mixed-Up Monster', link:'https://www.wendybook.com/book/detail/29935' },
+    { month:'Oct', genre:'Psychological Fiction', title:'Calendar Mysteries #10: October Ogre', link:'https://product.kyobobook.co.kr/detail/S000002482504' },
+    { month:'Nov', genre:'Speculative Fiction', title:'Rise of the Balloon Goons', link:'https://product.kyobobook.co.kr/detail/S000002681343' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:'I Survived the California Wildfires, 2018', link:'https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=220216786' }
   ],
   junior: [
     { month:'Jan', genre:'Poetry & Prose', title:'Joyful Noise', link:'https://product.kyobobook.co.kr/detail/S000005960953' },
