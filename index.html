@@ -67,7 +67,7 @@ h2 em { font-style: italic; color: var(--sage); }
 h1 { font-family: 'Fraunces', serif; font-size: clamp(2.8rem, 4.5vw, 4.2rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.5rem; }
 h1 em { font-style: italic; color: var(--rust); }
 .hero-sub { font-size: 1.05rem; line-height: 1.75; color: var(--ink); opacity: 0.7; max-width: 420px; margin-bottom: 2.5rem; }
-.hero-right { background: var(--parchment); display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 3rem; align-content: center; }
+.hero-right { background: var(--parchment); display: flex; align-items: center; justify-content: center; padding: 3rem; }
 .hero-right .img-ph:first-child { grid-column: 1 / -1; aspect-ratio: 16/9; }
 .hero-right .img-ph { aspect-ratio: 4/3; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -187,6 +187,10 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+.hero-cover { width: 80%; aspect-ratio: 3/4; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.workbook-cover { width: 100%; max-width: 360px; aspect-ratio: 3/4; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.stacked-col img { width: 80%; aspect-ratio: 16/9; object-fit: cover; border-radius: 4px; }
+
 @media (max-width: 900px) {
   nav { padding: 0 1.5rem; }
   .nav-links li:not(:last-child):not(:nth-last-child(2)):not(:nth-last-child(3)) { display: none; }
@@ -207,6 +211,17 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
   .books-panel { padding: 2.5rem 1.5rem; }
   .books-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
 }
+
+.book-slideshow { position: relative; width: 100%; max-width: 650px; }
+.book-slideshow .slide { width: 100%; object-fit: contain; border-radius: 2px; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.6s ease; pointer-events: none; }
+.book-slideshow .slide.active { opacity: 1; position: relative; pointer-events: auto; }
+.slide-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(26,23,20,0.65); color: #faf7f2; border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 1rem; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
+.slide-btn:hover { background: var(--rust); }
+.slide-prev { left: 8px; }
+.slide-next { right: 8px; }
+.slide-dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--parchment); border: 1.5px solid var(--ink); cursor: pointer; transition: background 0.2s; }
+.dot.active { background: var(--rust); border-color: var(--rust); }
 </style>
 </head>
 <body>
@@ -238,9 +253,7 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
       </div>
     </div>
     <div class="hero-right">
-      <div class="img-ph">Image 1</div>
-      <div class="img-ph">Image 2</div>
-      <div class="img-ph">Image 3</div>
+      <img src="images/image02.jpg" alt="Candidate workbook cover" class="hero-cover">
     </div>
   </div>
 
@@ -273,7 +286,18 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
           <button class="btn-outline" onclick="showPage('reading')">See Reading List</button>
         </div>
       </div>
-      <div class="book-col"><div class="img-ph">Book cover image</div></div>
+      <div class="book-col">
+        <div class="book-slideshow">
+          <img src="images/Image open book.png" alt="Workbook interior spread" class="slide active">
+          <img src="images/Image open book 2.png" alt="Workbook interior spread 2" class="slide">
+          <button class="slide-btn slide-prev" onclick="moveSlide(-1)">&#8592;</button>
+          <button class="slide-btn slide-next" onclick="moveSlide(1)">&#8594;</button>
+          <div class="slide-dots">
+            <span class="dot active" onclick="goSlide(0)"></span>
+            <span class="dot" onclick="goSlide(1)"></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -295,9 +319,9 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
         <button class="btn-primary" onclick="showPage('reading')" style="margin-top:0.5rem;">View Full Reading List</button>
       </div>
       <div class="stacked-col">
-        <div class="img-ph">Image 1</div>
-        <div class="img-ph">Image 2</div>
-        <div class="img-ph">Image 3</div>
+        <img src="images/March Dev B.png" alt="Developed Response slide">
+        <img src="images/March Dev B2.png" alt="Junior level question breakdown">
+        <img src="images/March Dev B3.png" alt="Essay planning grid">
       </div>
     </div>
   </div>
@@ -775,6 +799,26 @@ var revealObs = new IntersectionObserver(function(entries) {
 document.querySelectorAll('.reveal').forEach(function(r) { revealObs.observe(r); });
 
 renderBooks();
+
+var slideIndex = 0;
+function moveSlide(dir) {
+  var slides = document.querySelectorAll('.book-slideshow .slide');
+  var dots = document.querySelectorAll('.book-slideshow .dot');
+  slides[slideIndex].classList.remove('active');
+  dots[slideIndex].classList.remove('active');
+  slideIndex = (slideIndex + dir + slides.length) % slides.length;
+  slides[slideIndex].classList.add('active');
+  dots[slideIndex].classList.add('active');
+}
+function goSlide(n) {
+  var slides = document.querySelectorAll('.book-slideshow .slide');
+  var dots = document.querySelectorAll('.book-slideshow .dot');
+  slides[slideIndex].classList.remove('active');
+  dots[slideIndex].classList.remove('active');
+  slideIndex = n;
+  slides[slideIndex].classList.add('active');
+  dots[slideIndex].classList.add('active');
+}
 </script>
 </body>
 </html>
