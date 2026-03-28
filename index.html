@@ -174,6 +174,15 @@ h1 em { font-style: italic; color: var(--rust); }
 .book-link:hover { background: var(--deep-olive); color: var(--cream); }
 .book-link.no-link { opacity: 0.35; pointer-events: none; }
 
+.book-cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.book-card-pair { grid-column: span 2; display: flex; flex-direction: column; }
+.pair-month-tag { background: var(--deep-olive); color: var(--cream); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1rem; }
+.pair-month-tag span { color: var(--parchment); font-weight: 400; text-transform: none; letter-spacing: 0; }
+.pair-covers { display: grid; grid-template-columns: 1fr 1fr; flex: 1; }
+.pair-book { display: flex; flex-direction: column; border-right: 1px solid var(--parchment); }
+.pair-book:last-child { border-right: none; }
+
 footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; border-top: 2px solid var(--rust); }
 .footer-brand { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 300; margin-bottom: 0.65rem; }
 .footer-brand em { font-style: italic; color: var(--dusty-rose); }
@@ -673,32 +682,32 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 
 var BOOKS = {
   civic: [
-    { month:'Jan', genre:'Step into Reading: Step 4', title:'Ben Franklin and the Magic Squares', link:'#' },
-    { month:'Feb', genre:'Step into Reading: Step 4', title:'Volcanoes!', link:'#' },
-    { month:'Mar', genre:'Step into Reading: Step 4', title:'How Not to Run for Class President', link:'#' },
-    { month:'Apr', genre:'Step into Reading: Step 4', title:'Porky and Bess', link:'#' },
-    { month:'May', genre:'Step into Reading: Step 4', title:'20,000 Baseball Cards Under the Sea', link:'#' },
-    { month:'Jun', genre:'Step into Reading: Step 4', title:'The Titanic Lost... And Found!', link:'#' },
-    { month:'Jul', genre:'Step into Reading: Step 4', title:'How Not to Babysit Your Brother', link:'#' },
-    { month:'Aug', genre:'Step into Reading: Step 4', title:'The Mystery of The Pirate Ghost', link:'#' },
-    { month:'Sep', genre:'Step into Reading: Step 4', title:'Pompeii Buried Alive!', link:'#' },
-    { month:'Oct', genre:'Step into Reading: Step 4', title:'A Poor Excuse for a Dragon!', link:'#' },
-    { month:'Nov', genre:'Step into Reading: Step 4', title:'Ballerina Dreams', link:'#' },
-    { month:'Dec', genre:'Step into Reading: Step 4', title:'The Little Mermaid', link:'#' }
+    { month:'Jan', genre:'Step into Reading: Step 4', title:'Ben Franklin and the Magic Squares', link:'https://product.kyobobook.co.kr/detail/S000002480708' },
+    { month:'Feb', genre:'Step into Reading: Step 4', title:'Volcanoes!', link:'https://product.kyobobook.co.kr/detail/S000003878934' },
+    { month:'Mar', genre:'Step into Reading: Step 4', title:'How Not to Run for Class President', link:'https://product.kyobobook.co.kr/detail/S000003079614' },
+    { month:'Apr', genre:'Step into Reading: Step 4', title:'Porky and Bess', link:'https://product.kyobobook.co.kr/detail/S000002482186' },
+    { month:'May', genre:'Step into Reading: Step 4', title:'20,000 Baseball Cards Under the Sea', link:'https://product.kyobobook.co.kr/detail/S000003884915' },
+    { month:'Jun', genre:'Step into Reading: Step 4', title:'The Titanic Lost... And Found!', link:'https://product.kyobobook.co.kr/detail/S000002501295' },
+    { month:'Jul', genre:'Step into Reading: Step 4', title:'How Not to Babysit Your Brother', link:'https://product.kyobobook.co.kr/detail/S000002481114' },
+    { month:'Aug', genre:'Step into Reading: Step 4', title:'The Mystery of The Pirate Ghost', link:'https://product.kyobobook.co.kr/detail/S000002501237' },
+    { month:'Sep', genre:'Step into Reading: Step 4', title:'Pompeii Buried Alive!', link:'https://product.kyobobook.co.kr/detail/S000002501308' },
+    { month:'Oct', genre:'Step into Reading: Step 4', title:'A Poor Excuse for a Dragon!', link:'https://product.kyobobook.co.kr/detail/S000002482488' },
+    { month:'Nov', genre:'Step into Reading: Step 4', title:'Ballerina Dreams', link:'https://product.kyobobook.co.kr/detail/S000002488652' },
+    { month:'Dec', genre:'Step into Reading: Step 4', title:'The Little Mermaid', link:'https://product.kyobobook.co.kr/detail/S000002736514' }
   ],
   candidate: [
-    { month:'Jan', genre:'A to Z Mysteries', title:'The Invisible Island / The Kidnapped King', link:'#' },
-    { month:'Feb', genre:'A to Z Mysteries', title:'The Missing Mummy / The Orange Outlaw', link:'#' },
-    { month:'Mar', genre:'Junie B. Jones', title:'Stupid Smelly Bus (#1) / A Little Monkey Business (#2)', link:'#' },
-    { month:'Apr', genre:'Junie B. Jones', title:"Her Big Fat Mouth (#3) / Sneaky Peeky Spying (#4)", link:'#' },
-    { month:'May', genre:'Junie B. Jones', title:"Yucky Blucky Fruitcake (#5) / Meanie Jim's Birthday (#6)", link:'#' },
-    { month:'Jun', genre:'Junie B. Jones', title:'Handsome Warren (#7) / A Monster under her Bed (#8)', link:'#' },
-    { month:'Jul', genre:'Magic Tree House', title:'Dinosaurs Before Dark (#1) / The Knight at Dawn (#2)', link:'https://product.kyobobook.co.kr/detail/S000009116669' },
-    { month:'Aug', genre:'Magic Tree House', title:'Mummies in the Morning (#3) / Pirates Past Noon (#4)', link:'#' },
-    { month:'Sep', genre:'Magic Tree House', title:'Night of the Ninjas (#5) / Afternoon on the Amazon (#6)', link:'#' },
-    { month:'Oct', genre:'Magic Tree House', title:'Sunset of the Sabertooth (#7) / Midnight on the Moon (#8)', link:'#' },
-    { month:'Nov', genre:'A to Z Mysteries', title:'The Absent Author (#A) / The Canary Caper (#C)', link:'#' },
-    { month:'Dec', genre:'A to Z Mysteries', title:"The Empty Envelope (#D) / The Goose's Gold (#G)", link:'#' }
+    { month:'Jan', genre:'A to Z Mysteries', book1:'The Invisible Island', link1:'https://product.kyobobook.co.kr/detail/S000009169412', book2:'The Kidnapped King', link2:'https://product.kyobobook.co.kr/detail/S000002737143' },
+    { month:'Feb', genre:'A to Z Mysteries', book1:'The Missing Mummy', link1:'https://product.kyobobook.co.kr/detail/S000003878898', book2:'The Orange Outlaw', link2:'https://product.kyobobook.co.kr/detail/S000003878900' },
+    { month:'Mar', genre:'Junie B. Jones', book1:'Stupid Smelly Bus (#1)', link1:'https://product.kyobobook.co.kr/detail/S000002481586', book2:'A Little Monkey Business (#2)', link2:'https://product.kyobobook.co.kr/detail/S000002736572' },
+    { month:'Apr', genre:'Junie B. Jones', book1:'Her Big Fat Mouth (#3)', link1:'https://product.kyobobook.co.kr/detail/S000002737171', book2:'Sneaky Peeky Spying (#4)', link2:'https://product.kyobobook.co.kr/detail/S000011055023' },
+    { month:'May', genre:'Junie B. Jones', book1:"Yucky Blucky Fruitcake (#5)", link1:'https://product.kyobobook.co.kr/detail/S000011055337', book2:"Meanie Jim's Birthday (#6)", link2:'https://product.kyobobook.co.kr/detail/S000011055338' },
+    { month:'Jun', genre:'Junie B. Jones', book1:'Handsome Warren (#7)', link1:'https://product.kyobobook.co.kr/detail/S000011055339', book2:'A Monster under her Bed (#8)', link2:'https://product.kyobobook.co.kr/detail/S000011055340' },
+    { month:'Jul', genre:'Magic Tree House', book1:'Dinosaurs Before Dark (#1)', link1:'https://product.kyobobook.co.kr/detail/S000009116669', book2:'The Knight at Dawn (#2)', link2:'https://product.kyobobook.co.kr/detail/S000002736521' },
+    { month:'Aug', genre:'Magic Tree House', book1:'Mummies in the Morning (#3)', link1:'https://product.kyobobook.co.kr/detail/S000002736522', book2:'Pirates Past Noon (#4)', link2:'https://product.kyobobook.co.kr/detail/S000002736523' },
+    { month:'Sep', genre:'Magic Tree House', book1:'Night of the Ninjas (#5)', link1:'https://product.kyobobook.co.kr/detail/S000002736671', book2:'Afternoon on the Amazon (#6)', link2:'https://product.kyobobook.co.kr/detail/S000002736672' },
+    { month:'Oct', genre:'Magic Tree House', book1:'Sunset of the Sabertooth (#7)', link1:'https://product.kyobobook.co.kr/detail/S000002736673', book2:'Midnight on the Moon (#8)', link2:'https://product.kyobobook.co.kr/detail/S000002736674' },
+    { month:'Nov', genre:'A to Z Mysteries', book1:'The Absent Author (#A)', link1:'https://product.kyobobook.co.kr/detail/S000002736824', book2:'The Canary Caper (#C)', link2:'https://product.kyobobook.co.kr/detail/S000002737215' },
+    { month:'Dec', genre:'A to Z Mysteries', book1:"The Empty Envelope (#D)", link1:'https://product.kyobobook.co.kr/detail/S000003878890', book2:"The Goose's Gold (#G)", link2:'https://product.kyobobook.co.kr/detail/S000002737050' }
   ],
   monarch: [
     { month:'Jan', genre:'Poetry & Prose', title:'I Am Phoenix: Poems for Two Voices', link:'https://product.kyobobook.co.kr/detail/S000005960952' },
@@ -772,24 +781,51 @@ var BOOKS = {
   ]
 };
 
+function bookCoverImg(level, month, suffix) {
+  var mon = month.toLowerCase();
+  var base = 'images/reading/' + level + '/' + mon + (suffix || '');
+  return '<img src="' + base + '.jpg" class="book-cover-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
+         '<div class="no-cover" style="display:none">' + mon.charAt(0).toUpperCase() + mon.slice(1) + '</div>';
+}
+
 function renderBooks() {
   Object.keys(BOOKS).forEach(function(level) {
     var grid = document.getElementById('grid-' + level);
     if (!grid) return;
-    grid.innerHTML = BOOKS[level].map(function(book) {
-      var noLink = book.link === '#';
-      return '<div class="book-card">' +
-        '<div class="book-cover">' +
-        '<div class="no-cover">' + book.title + '</div>' +
-        '<span class="month-tag">' + book.month + '</span>' +
-        '</div>' +
-        '<div class="book-info">' +
-        '<div class="book-genre">' + book.genre + '</div>' +
-        '<div class="book-title">' + book.title + '</div>' +
-        '</div>' +
-        '<a class="book-link' + (noLink ? ' no-link' : '') + '" href="' + book.link + '"' + (noLink ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
+    if (level === 'candidate') {
+      grid.innerHTML = BOOKS[level].map(function(book) {
+        return '<div class="book-card book-card-pair">' +
+          '<div class="pair-month-tag">' + book.month + ' &mdash; <span>' + book.genre + '</span></div>' +
+          '<div class="pair-covers">' +
+            '<div class="pair-book">' +
+              '<div class="book-cover">' + bookCoverImg('candidate', book.month, '-1') + '</div>' +
+              '<div class="book-info"><div class="book-title">' + book.book1 + '</div></div>' +
+              '<a class="book-link' + (book.link1 === '#' ? ' no-link' : '') + '" href="' + book.link1 + '"' + (book.link1 === '#' ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
+            '</div>' +
+            '<div class="pair-book">' +
+              '<div class="book-cover">' + bookCoverImg('candidate', book.month, '-2') + '</div>' +
+              '<div class="book-info"><div class="book-title">' + book.book2 + '</div></div>' +
+              '<a class="book-link' + (book.link2 === '#' ? ' no-link' : '') + '" href="' + book.link2 + '"' + (book.link2 === '#' ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
+            '</div>' +
+          '</div>' +
         '</div>';
-    }).join('');
+      }).join('');
+    } else {
+      grid.innerHTML = BOOKS[level].map(function(book) {
+        var noLink = book.link === '#';
+        return '<div class="book-card">' +
+          '<div class="book-cover">' +
+          bookCoverImg(level, book.month) +
+          '<span class="month-tag">' + book.month + '</span>' +
+          '</div>' +
+          '<div class="book-info">' +
+          '<div class="book-genre">' + book.genre + '</div>' +
+          '<div class="book-title">' + book.title + '</div>' +
+          '</div>' +
+          '<a class="book-link' + (noLink ? ' no-link' : '') + '" href="' + book.link + '"' + (noLink ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
+          '</div>';
+      }).join('');
+    }
   });
 }
 
