@@ -13,7 +13,9 @@
       "Bash(do)",
       "Bash(touch \"/c/Users/Admin/Documents/Crows Call Press/CCP Website/.claude/worktrees/kind-mclaren/images/reading/$d/.gitkeep\")",
       "Bash(done)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(gh pr:*)",
+      "Bash(where gh.exe)"
     ]
   }
 }
