@@ -232,6 +232,51 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--parchment); border: 1.5px solid var(--ink); cursor: pointer; transition: background 0.2s; }
 .dot.active { background: var(--rust); border-color: var(--rust); }
 
+/* Reading list newsletter bar */
+#reading-newsletter-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
+  background: #2a7c6f; color: #fff;
+  padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
+}
+#reading-newsletter-bar.visible { transform: translateY(0); }
+#reading-newsletter-bar p {
+  font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 300;
+  font-style: italic; color: #fff; margin: 0; white-space: nowrap;
+}
+#reading-newsletter-bar form {
+  display: flex; gap: 0; border-radius: 2px; overflow: hidden;
+}
+#reading-newsletter-bar input[type="email"] {
+  padding: 0.55rem 1rem; border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem; background: rgba(255,255,255,0.15); color: #fff;
+  outline: none; width: 220px;
+}
+#reading-newsletter-bar input[type="email"]::placeholder { color: rgba(255,255,255,0.65); }
+#reading-newsletter-bar button {
+  padding: 0.55rem 1.1rem; background: #fff; color: #2a7c6f;
+  border: none; font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+  font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s;
+  white-space: nowrap;
+}
+#reading-newsletter-bar button:hover { background: var(--parchment); }
+#reading-newsletter-bar .bar-close {
+  background: none; border: none; color: rgba(255,255,255,0.6);
+  font-size: 1.2rem; cursor: pointer; padding: 0 0.25rem; line-height: 1;
+  flex-shrink: 0;
+}
+#reading-newsletter-bar .bar-close:hover { color: #fff; }
+#reading-newsletter-success { display:none; font-family:'DM Sans',sans-serif; font-size:0.88rem; color:rgba(255,255,255,0.9); }
+@media (max-width:640px) {
+  #reading-newsletter-bar { flex-direction:column; gap:0.75rem; padding:1.25rem 1.5rem; }
+  #reading-newsletter-bar p { white-space:normal; text-align:center; font-size:0.92rem; }
+  #reading-newsletter-bar input[type="email"] { width:160px; }
+}
+
 /* Trial popup */
 #trial-popup-overlay {
   display: none; position: fixed; inset: 0; z-index: 1000;
@@ -286,6 +331,133 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 #trial-popup-success p { font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.5rem; }
 #trial-popup-success small { font-size: 0.82rem; color: #5a5650; }
 @media (max-width: 600px) { #trial-popup-img { display: none; } }
+
+/* ── About Page ─────────────────────────────────────────── */
+.about-hero {
+  background: var(--ink); color: var(--cream);
+  padding: 9rem 6rem 6rem; position: relative; overflow: hidden;
+  display: flex; align-items: flex-start; gap: 5rem;
+}
+.about-hero-left { flex: 1; min-width: 0; }
+.about-hero-right {
+  flex-shrink: 0; width: 320px; position: relative; align-self: center;
+  margin-right: 4rem;
+}
+.about-hero-right img {
+  width: 100%; border-radius: 2px; opacity: 0.88;
+  filter: sepia(0.25) contrast(1.05);
+}
+.about-hero-right figcaption {
+  font-size: 0.62rem; color: rgba(245,240,232,0.35); margin-top: 0.6rem;
+  line-height: 1.5; text-align: center;
+}
+.about-hero-tag {
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.5rem; display: block;
+}
+.about-hero h1 {
+  font-family: 'Fraunces', serif; font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300; line-height: 1.15; margin-bottom: 2.5rem;
+  max-width: 14ch;
+}
+.about-hero h1 em { font-style: italic; color: var(--gold); }
+.about-story {
+  max-width: 600px; font-size: 1rem; line-height: 1.85;
+  color: rgba(245,240,232,0.78); border-left: 2px solid var(--gold);
+  padding-left: 1.8rem;
+}
+
+/* Team — 3 columns */
+.about-team-section {
+  padding: 5rem 6rem 6rem; background: var(--warm-white);
+}
+.about-team-header {
+  margin-bottom: 4rem; border-bottom: 1px solid var(--parchment);
+  padding-bottom: 1.5rem;
+}
+.about-team-header h2 {
+  font-family: 'Fraunces', serif; font-size: 0.75rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--rust); font-weight: 400;
+}
+.team-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem;
+}
+.team-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.member-photo-placeholder {
+  width: 140px; height: 140px; border-radius: 50%;
+  background: var(--parchment); border: 2px solid rgba(200,168,75,0.3);
+  margin-bottom: 2rem; flex-shrink: 0; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.member-photo-placeholder .member-initial {
+  font-family: 'Fraunces', serif; font-size: 3.5rem; font-weight: 600;
+  color: rgba(26,23,20,0.18); line-height: 1;
+}
+.member-number {
+  font-family: 'Fraunces', serif; font-size: 0.7rem;
+  letter-spacing: 0.18em; color: var(--gold); margin-bottom: 0.4rem;
+  font-weight: 400;
+}
+.member-name {
+  font-family: 'Fraunces', serif; font-size: 1.7rem;
+  font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 0.4rem;
+}
+.member-title {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--rust); margin-bottom: 1.5rem; font-weight: 500;
+}
+.member-divider {
+  width: 32px; height: 1px; background: var(--gold);
+  margin: 0 auto 1.5rem;
+}
+.member-bio {
+  font-size: 0.9rem; line-height: 1.85; color: #4a4540;
+  margin-bottom: 1.5rem; text-align: left;
+}
+.member-quote {
+  font-family: 'Fraunces', serif; font-size: 0.95rem; font-style: italic;
+  color: var(--ink); line-height: 1.6; text-align: left;
+  padding-left: 1.2rem; border-left: 2px solid var(--gold);
+  margin-top: auto;
+}
+.member-quote cite {
+  display: block; margin-top: 0.4rem;
+  font-family: 'DM Sans', sans-serif; font-style: normal;
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #9a948c;
+}
+
+.about-footer-strip {
+  background: var(--ink); color: var(--cream);
+  padding: 4rem 6rem; display: flex; align-items: center;
+  justify-content: space-between; gap: 2rem;
+}
+.about-footer-strip p {
+  font-family: 'Fraunces', serif; font-size: 1.4rem;
+  font-style: italic; font-weight: 300; max-width: 36ch; line-height: 1.5;
+}
+.about-footer-strip a {
+  flex-shrink: 0; padding: 0.9rem 2rem;
+  border: 1px solid rgba(200,168,75,0.5); color: var(--gold);
+  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; transition: background 0.2s, color 0.2s;
+  white-space: nowrap; cursor: pointer;
+}
+.about-footer-strip a:hover { background: var(--gold); color: var(--ink); }
+
+@media (max-width: 1100px) {
+  .about-hero { flex-direction: column; padding: 8rem 3rem 4rem; }
+  .about-hero-right { width: 100%; max-width: 340px; }
+  .about-team-section { padding: 4rem 2rem; }
+  .team-grid { grid-template-columns: 1fr; gap: 4rem; }
+  .team-card { align-items: flex-start; text-align: left; }
+  .member-photo-placeholder { margin-bottom: 1.5rem; }
+  .member-divider { margin: 0 0 1.5rem; }
+  .about-footer-strip { flex-direction: column; padding: 3rem 2rem; text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -293,6 +465,7 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 <nav>
   <span class="nav-logo" onclick="showPage('home')">Crow's <span>Call</span> Press</span>
   <ul class="nav-links">
+    <li><a onclick="showPage('about')">About</a></li>
     <li><a onclick="goTo('collection')">Collection</a></li>
     <li><a onclick="goTo('levels')">Levels</a></li>
     <li><a onclick="showPage('reading')">Reading List</a></li>
@@ -609,6 +782,82 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 
 </div><!-- end page-home -->
 
+<!-- ABOUT PAGE -->
+<div id="page-about" class="page">
+
+  <div class="about-hero">
+    <div class="about-hero-left">
+      <span class="about-hero-tag">Who We Are</span>
+      <h1>Built on <em>curiosity.</em><br>Shaped by craft.</h1>
+      <p class="about-story">Crow's Call Press takes its name from an old story about a crow that lifted the water in a pitcher, pebble by pebble, until it could finally drink. We see learning in the same way: a creative, deliberate act that raises understanding one idea at a time. Founded by a team of American educators now based in Busan, South Korea, we bring together backgrounds in literature, art, and debate to reimagine what English education can be. Our programs and publications combine storytelling, analysis, and communication, helping students find voice and meaning in what they learn. We believe education is both an art and a craft, shaped by curiosity, empathy, and the willingness to look closer. Every lesson we create begins with a simple call to think, to imagine, and to reach a little higher.</p>
+    </div>
+    <figure class="about-hero-right">
+      <img src="images/The_Crow_and_the_Pitcher_-_Project_Gutenberg_etext_19994.jpg" alt="The Crow and the Pitcher — illustration from Æsop's Fables">
+      <figcaption>The Crow and the Pitcher · Illustrated by Milo Winter<br>From <em>The Æsop for Children</em> · Public Domain, Project Gutenberg (etext 19994)</figcaption>
+    </figure>
+  </div>
+
+  <div class="about-team-section">
+    <div class="about-team-header">
+      <h2>Our Team</h2>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- Zoe -->
+      <div class="team-card">
+        <div class="member-photo-placeholder">
+          <span class="member-initial">Z</span>
+        </div>
+
+        <h3 class="member-name">Zoe Yera</h3>
+        <p class="member-title">Content Developer &amp; Operations Coordinator</p>
+        <div class="member-divider"></div>
+        <p class="member-bio">Zoe Yera is the Curriculum Director at Leaders Academy Busan, where she designs literature-based programs that encourage deep interpretation and creative thought. A graduate of Savannah College of Art and Design, she brings over six years of experience in education with a focus on literary analysis and thematic writing. Her teaching combines structure and curiosity, guiding students to find new meaning in every text they read. Beyond the classroom, she enjoys immersive games like Kingdom Hearts and Final Fantasy XII. Zoe is passionate about helping students connect literature to the changing world around them.</p>
+        <blockquote class="member-quote">
+          "Silence creates its own violence."
+          <cite>— Jeff VanderMeer, Annihilation</cite>
+        </blockquote>
+      </div>
+
+      <!-- Nico -->
+      <div class="team-card">
+        <div class="member-photo-placeholder">
+          <span class="member-initial">N</span>
+        </div>
+
+        <h3 class="member-name">Nico Orsini</h3>
+        <p class="member-title">Methodology Architect &amp; Talent Developer</p>
+        <div class="member-divider"></div>
+        <p class="member-bio">Nico Orsini serves as the Head Instructor at Leaders Academy Busan and the Methodology Architect and Talent Developer for Crow's Call Press. He began teaching in 2015 through university ESL programs and writing centers before moving into full-time education after earning his degree in English from Virginia Commonwealth University in 2019. Since then, he has trained teachers in Prague through The Language House TEFL, taught university and private courses across Europe, and developed curriculum frameworks now used in schools throughout Korea. His work focuses on creative writing methodology, game-based learning, and student engagement through narrative design.</p>
+        <blockquote class="member-quote">
+          "You must not become a mere peddler of words."
+          <cite>— Sherwood Anderson, Winesburg, Ohio</cite>
+        </blockquote>
+      </div>
+
+      <!-- Mike -->
+      <div class="team-card">
+        <div class="member-photo-placeholder">
+          <span class="member-initial">M</span>
+        </div>
+
+        <h3 class="member-name">Mike Hatcher</h3>
+        <p class="member-title">Head of Debate Content &amp; Instruction</p>
+        <div class="member-divider"></div>
+        <p class="member-bio">Mike Hatcher is an educator and debate specialist with more than 15 years of experience, recognized for building some of Busan's most successful debate programs. He has taught every level from kindergarten to university and continues to lead with structure, empathy, and clarity. A certified TEFL instructor through The Language House in Prague, he focuses on critical thinking, communication, and debate systems that help students speak and reason with confidence. Mike coached Busan's first team to place in Korea's national top five and now designs curricula that support both academies and homeschool environments. When not teaching, he enjoys skateboarding, gaming, and time with his two sons.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="about-footer-strip">
+    <p>Every lesson begins with a simple call — to think, to imagine, and to reach a little higher.</p>
+    <a onclick="goTo('contactus')" style="cursor:pointer;">Book a Free Meeting</a>
+  </div>
+
+</div><!-- end page-about -->
+
 <!-- READING LIST PAGE -->
 <div id="page-reading" class="page">
 
@@ -913,6 +1162,20 @@ function goSlide(n) {
 </script>
 
 <!-- Trial popup -->
+<div id="reading-newsletter-bar" aria-live="polite">
+  <p>Sign up to the Crow's Call Press newsletter for book recommendations, updates, offers and more&hellip;</p>
+  <form id="reading-newsletter-form">
+    <input type="hidden" name="access_key" value="be3cb35c-ac5a-4cdc-84e7-a323f555ebf6">
+    <input type="hidden" name="subject" value="New newsletter signup — Crow's Call Press">
+    <input type="hidden" name="from_name" value="Crow's Call Press Website">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <input type="email" name="email" placeholder="Your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <span id="reading-newsletter-success">Thank you for subscribing!</span>
+  <button class="bar-close" id="reading-bar-close" aria-label="Dismiss">&times;</button>
+</div>
+
 <div id="trial-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="trial-popup-title">
   <div id="trial-popup">
     <button id="trial-popup-close" aria-label="Close">&times;</button>
@@ -989,6 +1252,60 @@ function goSlide(n) {
       if (json.success) {
         form.style.display = 'none';
         document.getElementById('trial-popup-success').style.display = 'block';
+      }
+    }).catch(function() {});
+  });
+})();
+
+// Reading list newsletter bar — rises when near bottom of page, only on reading page
+(function() {
+  var bar = document.getElementById('reading-newsletter-bar');
+  var shown = false;
+  var dismissed = false;
+
+  function isReadingPage() {
+    var rp = document.getElementById('page-reading');
+    return rp && rp.classList.contains('active');
+  }
+
+  function onScroll() {
+    if (dismissed) return;
+    if (!isReadingPage()) { bar.classList.remove('visible'); shown = false; return; }
+    var scrolled = window.scrollY + window.innerHeight;
+    var total = document.documentElement.scrollHeight;
+    if (scrolled >= total - 120) {
+      if (!shown) { bar.classList.add('visible'); shown = true; }
+    } else {
+      if (shown) { bar.classList.remove('visible'); shown = false; }
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Reset bar when switching pages
+  var origShowPage = window.showPage;
+  window.showPage = function(name) {
+    origShowPage(name);
+    shown = false;
+    if (name !== 'reading') { bar.classList.remove('visible'); }
+    else { setTimeout(onScroll, 100); }
+  };
+
+  document.getElementById('reading-bar-close').addEventListener('click', function() {
+    dismissed = true;
+    bar.classList.remove('visible');
+  });
+
+  document.getElementById('reading-newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    }).then(function(r) { return r.json(); }).then(function(json) {
+      if (json.success) {
+        form.style.display = 'none';
+        document.getElementById('reading-newsletter-success').style.display = 'block';
       }
     }).catch(function() {});
   });
