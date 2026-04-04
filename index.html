@@ -53,7 +53,7 @@ nav {
 .btn-outline { display: inline-block; border: 1.5px solid var(--ink); color: var(--ink); padding: 0.85rem 1.8rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; cursor: pointer; border-radius: 2px; background: none; transition: all 0.2s; }
 .btn-outline:hover { background: var(--ink); color: var(--cream); }
 
-.section { padding: 6rem 4rem; }
+.section { padding: 6rem max(4rem, calc((100vw - 1280px) / 2)); }
 .section-label { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.75rem; }
 .deco-line { display: block; height: 2px; width: 36px; background: var(--gold); margin-bottom: 1.75rem; }
 h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); }
@@ -72,7 +72,7 @@ h1 em { font-style: italic; color: var(--rust); }
 .hero-right .img-ph { aspect-ratio: 4/3; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-.strip { background: var(--ink); color: var(--cream); padding: 0.9rem 4rem; display: flex; gap: 4rem; overflow: hidden; }
+.strip { background: var(--ink); color: var(--cream); padding: 0.9rem max(4rem, calc((100vw - 1280px) / 2)); display: flex; gap: 4rem; overflow: hidden; }
 .strip-item { white-space: nowrap; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
 .strip-item strong { opacity: 1; color: var(--gold); }
 
@@ -144,13 +144,13 @@ h1 em { font-style: italic; color: var(--rust); }
 .checkbox-group { display: flex; gap: 0.55rem; align-items: flex-start; font-size: 0.83rem; opacity: 0.62; line-height: 1.5; }
 .checkbox-group input { width: 15px; height: 15px; margin-top: 2px; flex-shrink: 0; }
 
-.reading-hero { background: var(--ink); color: var(--cream); padding: 5rem 4rem 4rem; }
+.reading-hero { background: var(--ink); color: var(--cream); padding: 5rem max(4rem, calc((100vw - 1280px) / 2)) 4rem; max-width: none; }
 .reading-hero .section-label { color: var(--gold); }
 .reading-hero h1 { color: var(--cream); margin-bottom: 0.75rem; }
 .reading-hero h1 em { color: var(--gold); font-style: italic; }
 .reading-hero p { font-size: 1rem; opacity: 0.58; max-width: 540px; line-height: 1.7; }
 
-.level-tabs { display: flex; background: var(--parchment); border-bottom: 1px solid rgba(0,0,0,0.08); overflow-x: auto; padding: 0 4rem; position: sticky; top: 64px; z-index: 100; }
+.level-tabs { display: flex; background: var(--parchment); border-bottom: 1px solid rgba(0,0,0,0.08); overflow-x: auto; padding: 0 max(4rem, calc((100vw - 1280px) / 2)); position: sticky; top: 64px; z-index: 100; }
 .level-tab { padding: 1rem 1.4rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; background: none; cursor: pointer; color: var(--ink); opacity: 0.5; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap; }
 .level-tab:hover { opacity: 0.85; }
 .level-tab.active { opacity: 1; border-bottom-color: var(--rust); color: var(--rust); }
@@ -187,6 +187,7 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 .footer-brand { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 300; margin-bottom: 0.65rem; }
 .footer-brand em { font-style: italic; color: var(--dusty-rose); }
 .footer-tagline { font-size: 0.86rem; opacity: 0.45; line-height: 1.6; max-width: 260px; }
+.footer-copyright { font-size: 0.72rem; opacity: 0.3; line-height: 1.5; max-width: 280px; margin-top: 0.75rem; }
 .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
 .footer-col ul a { font-size: 0.88rem; color: var(--cream); opacity: 0.5; text-decoration: none; cursor: pointer; transition: opacity 0.2s; }
@@ -335,7 +336,7 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 /* ── About Page ─────────────────────────────────────────── */
 .about-hero {
   background: var(--ink); color: var(--cream);
-  padding: 9rem 6rem 6rem; position: relative; overflow: hidden;
+  padding: 9rem max(4rem, calc((100vw - 1280px) / 2)) 6rem; position: relative; overflow: hidden;
   display: flex; align-items: flex-start; gap: 5rem;
 }
 .about-hero-left { flex: 1; min-width: 0; }
@@ -369,7 +370,7 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 
 /* Team — 3 columns */
 .about-team-section {
-  padding: 5rem 6rem 6rem; background: var(--warm-white);
+  padding: 5rem max(4rem, calc((100vw - 1280px) / 2)) 6rem; background: var(--warm-white);
 }
 .about-team-header {
   margin-bottom: 4rem; border-bottom: 1px solid var(--parchment);
@@ -755,6 +756,7 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
     <div>
       <div class="footer-brand">Crow's <em>Call</em> Press</div>
       <p class="footer-tagline">Literary curriculum for schools and academies. Classroom-tested, globally minded.</p>
+      <p class="footer-copyright">Copyright &#9400; 2025 Crow's Call Press 크로우스콜프레스 All rights reserved.</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
@@ -775,10 +777,6 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
       </ul>
     </div>
   </footer>
-  <div class="footer-bottom">
-    <span>&#169; 2025 Crow's Call Press. All rights reserved.</span>
-    <span>crowscallpress.com</span>
-  </div>
 
 </div><!-- end page-home -->
 
@@ -851,10 +849,32 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
     </div>
   </div>
 
-  <div class="about-footer-strip">
-    <p>Every lesson begins with a simple call — to think, to imagine, and to reach a little higher.</p>
-    <a onclick="goTo('contactus')" style="cursor:pointer;">Book a Free Meeting</a>
-  </div>
+  <footer>
+    <div>
+      <div class="footer-brand">Crow's <em>Call</em> Press</div>
+      <p class="footer-tagline">Literary curriculum for schools and academies. Classroom-tested, globally minded.</p>
+      <p class="footer-copyright">Copyright &#9400; 2025 Crow's Call Press 크로우스콜프레스 All rights reserved.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a onclick="showPage('about')">About</a></li>
+        <li><a onclick="goTo('collection')">The Collection</a></li>
+        <li><a onclick="goTo('levels')">Levels</a></li>
+        <li><a onclick="showPage('reading')">Reading List</a></li>
+        <li><a onclick="goTo('pricing')">Pricing</a></li>
+        <li><a onclick="goTo('faq')">FAQ</a></li>
+        <li><a onclick="goTo('curriculum')">Other Curriculum</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a onclick="goTo('contactus')">Book a Free Meeting</a></li>
+        <li><a href="mailto:crowscallpress@gmail.com">Email Us</a></li>
+      </ul>
+    </div>
+  </footer>
 
 </div><!-- end page-about -->
 
@@ -910,6 +930,7 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
     <div>
       <div class="footer-brand">Crow's <em>Call</em> Press</div>
       <p class="footer-tagline">Literary curriculum for schools and academies. Classroom-tested, globally minded.</p>
+      <p class="footer-copyright">Copyright &#9400; 2025 Crow's Call Press 크로우스콜프레스 All rights reserved.</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
@@ -930,10 +951,6 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
       </ul>
     </div>
   </footer>
-  <div class="footer-bottom">
-    <span>&#169; 2025 Crow's Call Press. All rights reserved.</span>
-    <span>crowscallpress.com</span>
-  </div>
 
 </div><!-- end page-reading -->
 
