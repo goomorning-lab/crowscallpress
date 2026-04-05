@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading List — Crow's Call Press</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Crow's <span>Call</span> Press</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-dropdown-wrap">
+      <span class="nav-dropdown-btn">Curriculum <span class="nav-arrow">▾</span></span>
+      <ul class="nav-dropdown-menu">
+        <li><a href="overview.html">Overview</a></li>
+        <li><a href="levels.html">Levels</a></li>
+        <li><a href="reading.html">Reading List</a></li>
+        <li><a href="curriculum.html">Other Curriculum</a></li>
+      </ul>
+    </li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contactus" class="nav-cta">Free Meeting</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="overview.html">Overview</a>
+  <a class="mobile-sub" href="levels.html">↳ Levels</a>
+  <a class="mobile-sub" href="reading.html">↳ Reading List</a>
+  <a class="mobile-sub" href="curriculum.html">↳ Other Curriculum</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="about.html">About</a>
+  <a href="faq.html">FAQ</a>
+  <a href="index.html#contactus" style="color:var(--rust);opacity:1;font-weight:600;">Free Meeting</a>
+</div>
+
+<div style="padding-top: 64px;">
+
+  <div class="reading-hero">
+    <span class="section-label">Full Curriculum</span>
+    <h1>The Reading <em>List</em></h1>
+    <p>A complete year of curated literature for each level with one book per month, spanning 12 genres. Click any book to find it on Kyobo or Aladin.</p>
+  </div>
+
+  <div class="level-tabs">
+    <button class="level-tab active" onclick="switchTab('civic',this)">Civic <small>A1–A2</small></button>
+    <button class="level-tab" onclick="switchTab('candidate',this)">Candidate <small>A1–A2</small></button>
+    <button class="level-tab" onclick="switchTab('monarch',this)">Monarch <small>A2–B1</small></button>
+    <button class="level-tab" onclick="switchTab('junior',this)">Junior <small>A2–B1</small></button>
+    <button class="level-tab" onclick="switchTab('lexis',this)">Lexis <small>B1–B2</small></button>
+    <button class="level-tab" onclick="switchTab('mythos',this)">Mythos <small>B2–C1</small></button>
+    <button class="level-tab" onclick="switchTab('opsis',this)">Opsis <small>C1+</small></button>
+  </div>
+
+  <div id="panel-civic" class="books-panel active">
+    <div class="panel-header"><h3>Civic Level</h3><p>Step Into Reading: Step 4. Focus on fluency, vocabulary-in-context, and literal comprehension. CEFR A1–A2.</p></div>
+    <div class="books-grid" id="grid-civic"></div>
+  </div>
+  <div id="panel-candidate" class="books-panel">
+    <div class="panel-header"><h3>Candidate Level</h3><p>Magic Tree House, Junie B. Jones, and A to Z Mysteries series. Focus on summarizing chapters, character &amp; setting tracking, and predictions. CEFR A1–A2.</p></div>
+    <div class="books-grid" id="grid-candidate"></div>
+  </div>
+  <div id="panel-monarch" class="books-panel">
+    <div class="panel-header"><h3>Monarch Level</h3><p>Bridges Crown and Leaders. Focus on genre familiarity, theme spotting, and text-to-self connections. CEFR A2–B1.</p></div>
+    <div class="books-grid" id="grid-monarch"></div>
+  </div>
+  <div id="panel-junior" class="books-panel">
+    <div class="panel-header"><h3>Junior Level</h3><p>High-level elementary readers ready for gentle literary analysis. Claim + Evidence basics, literary elements, discussion norms. CEFR A2–B1.</p></div>
+    <div class="books-grid" id="grid-junior"></div>
+  </div>
+  <div id="panel-lexis" class="books-panel">
+    <div class="panel-header"><h3>Lexis Level</h3><p>Middle-school-level texts; handles complex themes &amp; structure. Author craft, figurative language, cross-text connections. CEFR B1–B2.</p></div>
+    <div class="books-grid" id="grid-lexis"></div>
+  </div>
+  <div id="panel-mythos" class="books-panel">
+    <div class="panel-header"><h3>Mythos Level</h3><p>Strong, independent readers. Interpretive theses, rhetoric, genre conventions. Sustained close reading &amp; annotation. CEFR B2–C1.</p></div>
+    <div class="books-grid" id="grid-mythos"></div>
+  </div>
+  <div id="panel-opsis" class="books-panel">
+    <div class="panel-header"><h3>Opsis Level</h3><p>Exceptionally advanced; college-style discussion &amp; writing. Critical lenses, comparative analysis, synthesis writing. CEFR C1+.</p></div>
+    <div class="books-grid" id="grid-opsis"></div>
+  </div>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Crow's <em>Call</em> Press</div>
+      <p class="footer-tagline">Literary curriculum for schools and academies. Classroom-tested, globally minded.</p>
+      <p class="footer-copyright">Copyright &#9400; 2025 Crow's Call Press 크로우스콜프레스 All rights reserved.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="overview.html">Overview</a></li>
+        <li><a href="levels.html">Levels</a></li>
+        <li><a href="reading.html">Reading List</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="curriculum.html">Other Curriculum</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="index.html#contactus">Book a Free Meeting</a></li>
+        <li><a href="mailto:crowscallpress@gmail.com">Email Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-socials">
+      <h4>Follow Us</h4>
+      <a class="footer-social-link" href="https://www.linkedin.com/company/crows-call-press" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="footer-social-link" href="https://www.instagram.com/crowscall.press" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        Instagram
+      </a>
+    </div>
+  </footer>
+
+</div><!-- end main wrapper -->
+
+<!-- Reading list newsletter bar -->
+<div id="reading-newsletter-bar" aria-live="polite">
+  <p>Sign up to the Crow's Call Press newsletter for book recommendations, updates, offers and more&hellip;</p>
+  <form id="reading-newsletter-form">
+    <input type="hidden" name="access_key" value="be3cb35c-ac5a-4cdc-84e7-a323f555ebf6">
+    <input type="hidden" name="subject" value="New newsletter signup — Crow's Call Press">
+    <input type="hidden" name="from_name" value="Crow's Call Press Website">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <input type="email" name="email" placeholder="Your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <span id="reading-newsletter-success">Thank you for subscribing!</span>
+  <button class="bar-close" id="reading-bar-close" aria-label="Dismiss">&times;</button>
+</div>
+
+<script src="main.js"></script>
+<script>
+function switchTab(level, btn) {
+  document.querySelectorAll('.books-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.level-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('panel-' + level).classList.add('active');
+  btn.classList.add('active');
+}
+
+var BOOKS = {
+  civic: [
+    { month:'Jan', genre:'Step into Reading: Step 4', title:'Ben Franklin and the Magic Squares', link:'https://product.kyobobook.co.kr/detail/S000002480708' },
+    { month:'Feb', genre:'Step into Reading: Step 4', title:'Volcanoes!', link:'https://product.kyobobook.co.kr/detail/S000003878934' },
+    { month:'Mar', genre:'Step into Reading: Step 4', title:'How Not to Run for Class President', link:'https://product.kyobobook.co.kr/detail/S000003079614' },
+    { month:'Apr', genre:'Step into Reading: Step 4', title:'Porky and Bess', link:'https://product.kyobobook.co.kr/detail/S000002482186' },
+    { month:'May', genre:'Step into Reading: Step 4', title:'20,000 Baseball Cards Under the Sea', link:'https://product.kyobobook.co.kr/detail/S000003884915' },
+    { month:'Jun', genre:'Step into Reading: Step 4', title:'The Titanic Lost... And Found!', link:'https://product.kyobobook.co.kr/detail/S000002501295' },
+    { month:'Jul', genre:'Step into Reading: Step 4', title:'How Not to Babysit Your Brother', link:'https://product.kyobobook.co.kr/detail/S000002481114' },
+    { month:'Aug', genre:'Step into Reading: Step 4', title:'The Mystery of The Pirate Ghost', link:'https://product.kyobobook.co.kr/detail/S000002501237' },
+    { month:'Sep', genre:'Step into Reading: Step 4', title:'Pompeii Buried Alive!', link:'https://product.kyobobook.co.kr/detail/S000002501308' },
+    { month:'Oct', genre:'Step into Reading: Step 4', title:'A Poor Excuse for a Dragon!', link:'https://product.kyobobook.co.kr/detail/S000002482488' },
+    { month:'Nov', genre:'Step into Reading: Step 4', title:'Ballerina Dreams', link:'https://product.kyobobook.co.kr/detail/S000002488652' },
+    { month:'Dec', genre:'Step into Reading: Step 4', title:'The Little Mermaid', link:'https://product.kyobobook.co.kr/detail/S000002736514' }
+  ],
+  candidate: [
+    { month:'Jan', genre:'A to Z Mysteries', book1:'The Invisible Island (#I)', link1:'https://product.kyobobook.co.kr/detail/S000003878894', book2:'The Kidnapped King (#K)', link2:'https://product.kyobobook.co.kr/detail/S000002737143' },
+    { month:'Feb', genre:'A to Z Mysteries', book1:'The Missing Mummy (#M)', link1:'https://product.kyobobook.co.kr/detail/S000003878898', book2:'The Orange Outlaw (#O)', link2:'https://product.kyobobook.co.kr/detail/S000003878900' },
+    { month:'Mar', genre:'Junie B. Jones', book1:'Stupid Smelly Bus (#1)', link1:'https://product.kyobobook.co.kr/detail/S000002481586', book2:'A Little Monkey Business (#2)', link2:'https://product.kyobobook.co.kr/detail/S000002736572' },
+    { month:'Apr', genre:'Junie B. Jones', book1:'Her Big Fat Mouth (#3)', link1:'https://product.kyobobook.co.kr/detail/S000002737171', book2:'Sneaky Peeky Spying (#4)', link2:'https://product.kyobobook.co.kr/detail/S000011055023' },
+    { month:'May', genre:'Junie B. Jones', book1:"Yucky Blucky Fruitcake (#5)", link1:'https://product.kyobobook.co.kr/detail/S000011055337', book2:"Meanie Jim's Birthday (#6)", link2:'https://product.kyobobook.co.kr/detail/S000011055338' },
+    { month:'Jun', genre:'Junie B. Jones', book1:'Handsome Warren (#7)', link1:'https://product.kyobobook.co.kr/detail/S000011055339', book2:'A Monster under her Bed (#8)', link2:'https://product.kyobobook.co.kr/detail/S000011055340' },
+    { month:'Jul', genre:'Magic Tree House', book1:'Dinosaurs Before Dark (#1)', link1:'https://product.kyobobook.co.kr/detail/S000002736520', book2:'The Knight at Dawn (#2)', link2:'https://product.kyobobook.co.kr/detail/S000002736521' },
+    { month:'Aug', genre:'Magic Tree House', book1:'Mummies in the Morning (#3)', link1:'https://product.kyobobook.co.kr/detail/S000002736522', book2:'Pirates Past Noon (#4)', link2:'https://product.kyobobook.co.kr/detail/S000002736523' },
+    { month:'Sep', genre:'Magic Tree House', book1:'Night of the Ninjas (#5)', link1:'https://product.kyobobook.co.kr/detail/S000002736671', book2:'Afternoon on the Amazon (#6)', link2:'https://product.kyobobook.co.kr/detail/S000002736672' },
+    { month:'Oct', genre:'Magic Tree House', book1:'Sunset of the Sabertooth (#7)', link1:'https://product.kyobobook.co.kr/detail/S000002736673', book2:'Midnight on the Moon (#8)', link2:'https://product.kyobobook.co.kr/detail/S000002736674' },
+    { month:'Nov', genre:'A to Z Mysteries', book1:'The Absent Author (#A)', link1:'https://product.kyobobook.co.kr/detail/S000002736824', book2:'The Canary Caper (#C)', link2:'https://product.kyobobook.co.kr/detail/S000002737215' },
+    { month:'Dec', genre:'A to Z Mysteries', book1:"The Empty Envelope (#D)", link1:'https://product.kyobobook.co.kr/detail/S000003878890', book2:"The Goose's Gold (#G)", link2:'https://product.kyobobook.co.kr/detail/S000002737050' }
+  ],
+  monarch: [
+    { month:'Jan', genre:'Poetry & Prose', title:'I Am Phoenix: Poems for Two Voices', link:'https://product.kyobobook.co.kr/detail/S000005960952' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:'The Bad Guys', link:'https://product.kyobobook.co.kr/detail/S000010089479' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:'Peter Rabbit and Eleven Other Favorite Tales', link:'https://product.kyobobook.co.kr/detail/S000009675360' },
+    { month:'Apr', genre:'Coming of Age', title:'Not Really Buddies', link:'https://product.kyobobook.co.kr/detail/S000211149877' },
+    { month:'May', genre:'Fantasy', title:'Tales of Wizards and Dragons', link:'https://product.kyobobook.co.kr/detail/S000213782967' },
+    { month:'Jun', genre:'Mythology & Folklore', title:'The Adventures of Sir Lancelot the Great', link:'https://product.kyobobook.co.kr/detail/S000010096879' },
+    { month:'Jul', genre:'Classics', title:'The Adventures of Pinocchio', link:'https://product.kyobobook.co.kr/detail/S000009676259' },
+    { month:'Aug', genre:'NonFiction', title:'The Year of Miss Agnes', link:'https://product.kyobobook.co.kr/detail/S000011102613' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'Tashi and the Mixed-Up Monster', link:'https://www.wendybook.com/book/detail/29935' },
+    { month:'Oct', genre:'Psychological Fiction', title:'Calendar Mysteries #10: October Ogre', link:'https://product.kyobobook.co.kr/detail/S000002482504' },
+    { month:'Nov', genre:'Speculative Fiction', title:'Rise of the Balloon Goons', link:'https://product.kyobobook.co.kr/detail/S000002681343' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:'I Survived the California Wildfires, 2018', link:'https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=220216786' }
+  ],
+  junior: [
+    { month:'Jan', genre:'Poetry & Prose', title:'Joyful Noise', link:'https://product.kyobobook.co.kr/detail/S000005960953' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:'Be Prepared', link:'https://product.kyobobook.co.kr/detail/S000003478746' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:"My Father's Dragon", link:'https://product.kyobobook.co.kr/detail/S000002559066' },
+    { month:'Apr', genre:'Coming of Age', title:'Tales of a Fourth Grade Nothing', link:'https://product.kyobobook.co.kr/detail/S000002294575' },
+    { month:'May', genre:'Fantasy', title:'Dragons and Marshmallows', link:'https://product.kyobobook.co.kr/detail/S000003648104' },
+    { month:'Jun', genre:'Mythology & Folklore', title:'The Skull: A Tyrolean Folktale', link:'https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=303377746' },
+    { month:'Jul', genre:'Classics', title:'The Happy Prince & Other Stories', link:'https://product.kyobobook.co.kr/detail/S000035970176' },
+    { month:'Aug', genre:'NonFiction', title:'Number the Stars', link:'https://product.kyobobook.co.kr/detail/S000002683959' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'The Cat Who Went to Heaven', link:'https://product.kyobobook.co.kr/detail/S000027326438' },
+    { month:'Oct', genre:'Psychological Fiction', title:'The Twits', link:'https://product.kyobobook.co.kr/detail/S000002294633' },
+    { month:'Nov', genre:'Speculative Fiction', title:'Fortunately, the Milk', link:'https://product.kyobobook.co.kr/detail/S000002219211' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:'Magic School Bus Dinosaur Detectives', link:'https://product.kyobobook.co.kr/detail/S000003885150' }
+  ],
+  lexis: [
+    { month:'Jan', genre:'Poetry & Prose', title:'Love That Dog', link:'https://product.kyobobook.co.kr/detail/S000002225665' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:'In Real Life', link:'https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=105484882' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:'The Hundred Dresses', link:'https://product.kyobobook.co.kr/detail/S000002299118' },
+    { month:'Apr', genre:'Coming of Age', title:'Bridge to Terabithia', link:'https://product.kyobobook.co.kr/detail/S000002225439' },
+    { month:'May', genre:'Fantasy', title:'The Tale of Despereaux', link:'https://product.kyobobook.co.kr/detail/S000002835651' },
+    { month:'Jun', genre:'Mythology & Folklore', title:'Jason, the Argonauts, and the Golden Fleece', link:'https://product.kyobobook.co.kr/detail/S000028936549' },
+    { month:'Jul', genre:'Classics', title:'Sarah, Plain and Tall', link:'https://product.kyobobook.co.kr/detail/S000002221399' },
+    { month:'Aug', genre:'NonFiction', title:'World Without Fish', link:'https://product.kyobobook.co.kr/detail/S000011624783' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'Hen Who Dreamed She Could Fly', link:'https://product.kyobobook.co.kr/detail/S000035075167' },
+    { month:'Oct', genre:'Psychological Fiction', title:'The Curse of the Campfire Weenies', link:'https://product.kyobobook.co.kr/detail/S000002844933' },
+    { month:'Nov', genre:'Speculative Fiction', title:'Animorphs: The Invasion', link:'https://product.kyobobook.co.kr/detail/S000002680634' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:'Esperanza Rising', link:'https://product.kyobobook.co.kr/detail/S000002553852' }
+  ],
+  mythos: [
+    { month:'Jan', genre:'Poetry & Prose', title:'Instructions for Traveling West', link:'https://product.kyobobook.co.kr/detail/S000211970751' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:'The Many Deaths of Laila Starr', link:'https://product.kyobobook.co.kr/detail/S000033024975' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:'The Royal Game: A Chess Story', link:'https://product.kyobobook.co.kr/detail/S000203156915' },
+    { month:'Apr', genre:'Coming of Age', title:'A Monster Calls', link:'https://product.kyobobook.co.kr/detail/S000002835114' },
+    { month:'May', genre:'Fantasy', title:'Full Tilt', link:'https://product.kyobobook.co.kr/detail/S000027328642' },
+    { month:'Jun', genre:'Mythology & Folklore', title:"The Magician's Nephew", link:'https://product.kyobobook.co.kr/detail/S000002225659' },
+    { month:'Jul', genre:'Classics', title:"The Hitchhiker's Guide to the Galaxy", link:'https://product.kyobobook.co.kr/detail/S000002464870' },
+    { month:'Aug', genre:'NonFiction', title:'Witches', link:'https://product.kyobobook.co.kr/detail/S000027542830' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'She and Her Cat', link:'https://product.kyobobook.co.kr/detail/S000211034493' },
+    { month:'Oct', genre:'Psychological Fiction', title:'The Westing Game', link:'https://product.kyobobook.co.kr/detail/S000002294133' },
+    { month:'Nov', genre:'Speculative Fiction', title:'Ready Player One', link:'https://product.kyobobook.co.kr/detail/S000006057231' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:'The Man Who Mistook His Wife for a Hat', link:'https://product.kyobobook.co.kr/detail/S000003328876' }
+  ],
+  opsis: [
+    { month:'Jan', genre:'Poetry & Prose', title:'Citizen: An American Lyric', link:'https://product.kyobobook.co.kr/detail/S000002293483' },
+    { month:'Feb', genre:'Scripted & Illustrated', title:"It's Lonely at the Centre of the Earth", link:'https://product.kyobobook.co.kr/detail/S000030277583' },
+    { month:'Mar', genre:'Anthologies & Novellas', title:'We Have Always Lived in the Castle', link:'https://product.kyobobook.co.kr/detail/S000212449168' },
+    { month:'Apr', genre:'Coming of Age', title:'Speak', link:'https://product.kyobobook.co.kr/detail/S000002429861' },
+    { month:'May', genre:'Fantasy', title:'Redwall', link:'https://product.kyobobook.co.kr/detail/S000006231742' },
+    { month:'Jun', genre:'Mythology & Folklore', title:'Oedipus Rex', link:'https://product.kyobobook.co.kr/detail/S000009674485' },
+    { month:'Jul', genre:'Classics', title:'The Picture of Dorian Gray', link:'https://product.kyobobook.co.kr/detail/S000002418364' },
+    { month:'Aug', genre:'NonFiction', title:"Hidden Figures (Young Readers' Edition)", link:'https://product.kyobobook.co.kr/detail/S000002222925' },
+    { month:'Sep', genre:'Eastern Phil. & Translated', title:'The Vegetarian', link:'https://product.kyobobook.co.kr/detail/S000003079380' },
+    { month:'Oct', genre:'Psychological Fiction', title:"The Driver's Seat", link:'https://product.kyobobook.co.kr/detail/S000216190721' },
+    { month:'Nov', genre:'Speculative Fiction', title:"Cat's Cradle", link:'https://product.kyobobook.co.kr/detail/S000002290605' },
+    { month:'Dec', genre:'Social & Natural Sciences', title:"Why Fish Don't Exist", link:'https://product.kyobobook.co.kr/detail/S000003313335' }
+  ]
+};
+
+function bookCoverImg(level, month, suffix) {
+  var mon = month.toLowerCase();
+  var base = 'images/reading/' + level + '/' + mon + (suffix || '');
+  return '<img src="' + base + '.jpg" class="book-cover-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
+         '<div class="no-cover" style="display:none">' + mon.charAt(0).toUpperCase() + mon.slice(1) + '</div>';
+}
+
+function renderBooks() {
+  Object.keys(BOOKS).forEach(function(level) {
+    var grid = document.getElementById('grid-' + level);
+    if (!grid) return;
+    if (level === 'candidate') {
+      grid.innerHTML = BOOKS[level].map(function(book) {
+        return '<div class="book-card book-card-pair">' +
+          '<div class="pair-month-tag">' + book.month + ' &mdash; <span>' + book.genre + '</span></div>' +
+          '<div class="pair-covers">' +
+            '<div class="pair-book">' +
+              '<div class="book-cover">' + bookCoverImg('candidate', book.month, '-1') + '</div>' +
+              '<div class="book-info"><div class="book-title">' + book.book1 + '</div></div>' +
+              '<a class="book-link' + (book.link1 === '#' ? ' no-link' : '') + '" href="' + book.link1 + '"' + (book.link1 === '#' ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
+            '</div>' +
+            '<div class="pair-book">' +
+              '<div class="book-cover">' + bookCoverImg('candidate', book.month, '-2') + '</div>' +
+              '<div class="book-info"><div class="book-title">' + book.book2 + '</div></div>' +
+              '<a class="book-link' + (book.link2 === '#' ? ' no-link' : '') + '" href="' + book.link2 + '"' + (book.link2 === '#' ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    } else {
+      grid.innerHTML = BOOKS[level].map(function(book) {
+        var noLink = book.link === '#';
+        return '<div class="book-card">' +
+          '<div class="book-cover">' +
+          bookCoverImg(level, book.month) +
+          '<span class="month-tag">' + book.month + '</span>' +
+          '</div>' +
+          '<div class="book-info">' +
+          '<div class="book-genre">' + book.genre + '</div>' +
+          '<div class="book-title">' + book.title + '</div>' +
+          '</div>' +
+          '<a class="book-link' + (noLink ? ' no-link' : '') + '" href="' + book.link + '"' + (noLink ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
+          '</div>';
+      }).join('');
+    }
+  });
+}
+
+renderBooks();
+
+// Reading list newsletter bar — rises when near bottom of page
+(function() {
+  if (!document.getElementById('reading-newsletter-bar')) return;
+  var bar = document.getElementById('reading-newsletter-bar');
+  var shown = false;
+  var dismissed = false;
+
+  function onScroll() {
+    if (dismissed) return;
+    var scrolled = window.scrollY + window.innerHeight;
+    var total = document.documentElement.scrollHeight;
+    if (scrolled >= total - 120) {
+      if (!shown) { bar.classList.add('visible'); shown = true; }
+    } else {
+      if (shown) { bar.classList.remove('visible'); shown = false; }
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  document.getElementById('reading-bar-close').addEventListener('click', function() {
+    dismissed = true;
+    bar.classList.remove('visible');
+  });
+
+  document.getElementById('reading-newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    }).then(function(r) { return r.json(); }).then(function(json) {
+      if (json.success) {
+        form.style.display = 'none';
+        document.getElementById('reading-newsletter-success').style.display = 'block';
+      }
+    }).catch(function() {});
+  });
+})();
+</script>
+</body>
+</html>
