@@ -488,3 +488,57 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 .curriculum-hero h1 { color: var(--cream); margin-bottom: 0.75rem; }
 .curriculum-hero h1 em { color: var(--gold); font-style: italic; }
 .curriculum-hero p { font-size: 1rem; opacity: 0.58; max-width: 540px; line-height: 1.7; }
+
+/* ── Landing page sections ── */
+.lp-img-placeholder { display: flex; flex-direction: column; justify-content: center; }
+.lp-ph { width: 100%; border-radius: 4px; font-size: 0.78rem; text-align: center; padding: 2rem; color: #8a7e6a; background: #ede8db; border: 2px dashed #c8b890; }
+.lp-ph-dark { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); }
+
+/* Problem */
+.lp-pain-list { list-style: none; padding: 0; margin: 1.5rem 0 2rem; display: flex; flex-direction: column; gap: 0.85rem; }
+.lp-pain-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; line-height: 1.6; opacity: 0.8; }
+.pain-icon { color: var(--rust); font-style: normal; flex-shrink: 0; font-weight: 700; margin-top: 0.05rem; }
+
+/* System grid */
+.lp-system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.lp-system-card { background: var(--warm-white); border-radius: 4px; padding: 1.75rem 1.5rem; border: 1px solid rgba(200,168,75,0.2); }
+.lp-system-icon { font-size: 1.6rem; margin-bottom: 0.85rem; }
+.lp-system-card h4 { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+.lp-system-card p { font-size: 0.88rem; line-height: 1.7; opacity: 0.65; }
+
+/* Transformation */
+.lp-transform-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 3rem; align-items: stretch; }
+.lp-transform-divider { display: flex; flex-direction: column; align-items: center; width: 220px; }
+.lp-transform-divider img { flex: 1; width: 100%; object-fit: cover; border-radius: 4px; display: block; min-height: 0; }
+.lp-transform-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.25rem; padding: 0.35rem 1rem; border-radius: 2px; display: inline-block; }
+.lp-before-label { background: rgba(184,92,56,0.12); color: var(--rust); }
+.lp-after-label { background: rgba(122,140,110,0.15); color: var(--sage); }
+.lp-transform-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+.lp-transform-list li { font-size: 0.92rem; line-height: 1.65; padding: 0.85rem 1rem; border-radius: 3px; }
+.lp-before-list li { background: rgba(184,92,56,0.06); border-left: 3px solid var(--rust); opacity: 0.8; }
+.lp-after-list li { background: rgba(122,140,110,0.08); border-left: 3px solid var(--sage); }
+
+/* Features */
+.lp-feature-list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-direction: column; gap: 1.25rem; }
+.lp-feature-list li { display: flex; flex-direction: column; gap: 0.2rem; }
+.lp-feature-list strong { font-size: 0.95rem; color: var(--ink); }
+.lp-feature-list span { font-size: 0.86rem; line-height: 1.65; opacity: 0.65; }
+
+/* Authority stats */
+.lp-cred-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.lp-stat { display: flex; flex-direction: column; gap: 0.25rem; }
+.lp-stat-num { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 600; color: var(--gold); line-height: 1; }
+.lp-stat-label { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.6; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .lp-system-grid { grid-template-columns: repeat(2, 1fr); }
+  .lp-transform-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .lp-transform-divider { width: 100%; }
+  .lp-cred-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .lp-system-grid { grid-template-columns: 1fr; }
+  .lp-cred-stats { grid-template-columns: repeat(2, 1fr); }
+}
+.lp-icon-ph { width: 36px; height: 36px; border-radius: 50%; background: var(--parchment); border: 2px dashed var(--gold); margin-bottom: 0.85rem; }
