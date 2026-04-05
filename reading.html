@@ -50,7 +50,7 @@
 
   <div class="reading-hero">
     <span class="section-label">Full Curriculum</span>
-    <h1>The Reading <em>List</em></h1>
+    <h1>The Reading <em style="color:var(--dusty-rose);">List</em></h1>
     <p>A complete year of curated literature for each level with one book per month, spanning 12 genres. Click any book to find it on Kyobo or Aladin.</p>
   </div>
 
@@ -317,9 +317,8 @@ renderBooks();
 
   function onScroll() {
     if (dismissed) return;
-    var scrolled = window.scrollY + window.innerHeight;
-    var total = document.documentElement.scrollHeight;
-    if (scrolled >= total - 120) {
+    var scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    if (scrolled >= 0.3) {
       if (!shown) { bar.classList.add('visible'); shown = true; }
     } else {
       if (shown) { bar.classList.remove('visible'); shown = false; }
