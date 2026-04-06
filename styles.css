@@ -63,9 +63,10 @@ h1 em { font-style: italic; color: var(--rust); }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 .strip { background: var(--ink); color: var(--cream); padding: 0.9rem 0; overflow: hidden; }
-.strip-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+.strip-track { display: flex; width: max-content; animation: marquee 50s linear infinite; }
 .strip-track:hover { animation-play-state: paused; }
-.strip-item { white-space: nowrap; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; margin-right: 4rem; }
+.strip-set { display: flex; gap: 4rem; padding-right: 4rem; }
+.strip-item { white-space: nowrap; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
 .strip-item strong { opacity: 1; color: var(--gold); }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
