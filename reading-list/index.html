@@ -3,12 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reading List — One Curated Book Per Month, 12 Genres | Crow's Call Press</title>
-<meta name="description" content="Browse the complete Crow's Call Press reading list — one curated book per month per level, spanning 12 genres annually.">
-<meta property="og:title" content="Reading List — Crow's Call Press">
-<meta property="og:description" content="Browse the complete Crow's Call Press reading list — one curated book per month per level, spanning 12 genres annually.">
+<title>The Reading List — Crow's Call Press</title>
+<meta name="description" content="A complete year of curated literature for every level. 12 genres, 12 books per level annually, spanning Civic through Opsis. Find every book on Kyobo or Aladin.">
+<meta property="og:title" content="The Reading List — Crow's Call Press">
+<meta property="og:description" content="A complete year of curated literature for every level. 12 genres, 12 books per level annually, spanning Civic through Opsis. Find every book on Kyobo or Aladin.">
 <meta property="og:url" content="https://crowscallpress.com/reading-list/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://crowscallpress.com/images/image02.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Reading List — Crow's Call Press">
+<meta name="twitter:description" content="A complete year of curated literature for every level. 12 genres, 12 books per level annually, spanning Civic through Opsis. Find every book on Kyobo or Aladin.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://crowscallpress.com/reading-list/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -265,10 +269,11 @@ var BOOKS = {
   ]
 };
 
-function bookCoverImg(level, month, suffix) {
+function bookCoverImg(level, month, suffix, title) {
   var mon = month.toLowerCase();
   var base = '../images/reading/' + level + '/' + mon + (suffix || '');
-  return '<img src="' + base + '.jpg" class="book-cover-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
+  var altText = title ? 'Book cover for ' + title : 'Book cover for ' + mon.charAt(0).toUpperCase() + mon.slice(1) + ' reading at ' + level + ' level';
+  return '<img src="' + base + '.jpg" class="book-cover-img" alt="' + altText + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
          '<div class="no-cover" style="display:none">' + mon.charAt(0).toUpperCase() + mon.slice(1) + '</div>';
 }
 
@@ -282,12 +287,12 @@ function renderBooks() {
           '<div class="pair-month-tag">' + book.month + ' - <span>' + book.genre + '</span></div>' +
           '<div class="pair-covers">' +
             '<div class="pair-book">' +
-              '<div class="book-cover">' + bookCoverImg('candidate', book.month, '-1') + '</div>' +
+              '<div class="book-cover">' + bookCoverImg('candidate', book.month, '-1', book.book1) + '</div>' +
               '<div class="book-info"><div class="book-title">' + book.book1 + '</div></div>' +
               '<a class="book-link' + (book.link1 === '#' ? ' no-link' : '') + '" href="' + book.link1 + '"' + (book.link1 === '#' ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
             '</div>' +
             '<div class="pair-book">' +
-              '<div class="book-cover">' + bookCoverImg('candidate', book.month, '-2') + '</div>' +
+              '<div class="book-cover">' + bookCoverImg('candidate', book.month, '-2', book.book2) + '</div>' +
               '<div class="book-info"><div class="book-title">' + book.book2 + '</div></div>' +
               '<a class="book-link' + (book.link2 === '#' ? ' no-link' : '') + '" href="' + book.link2 + '"' + (book.link2 === '#' ? '' : ' target="_blank" rel="noopener"') + '>View on Store &#8594;</a>' +
             '</div>' +
@@ -299,7 +304,7 @@ function renderBooks() {
         var noLink = book.link === '#';
         return '<div class="book-card">' +
           '<div class="book-cover">' +
-          bookCoverImg(level, book.month) +
+          bookCoverImg(level, book.month, null, book.title) +
           '<span class="month-tag">' + book.month + '</span>' +
           '</div>' +
           '<div class="book-info">' +
