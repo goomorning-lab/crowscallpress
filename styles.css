@@ -68,6 +68,7 @@ h1 em { font-style: italic; color: var(--rust); }
 .strip-set { display: flex; gap: 4rem; padding-right: 4rem; }
 .strip-item { white-space: nowrap; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
 .strip-item strong { opacity: 1; color: var(--gold); }
+.strip-star { color: var(--gold); opacity: 0.6; font-size: 0.6rem; line-height: 1; align-self: center; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* Hamburger nav */
