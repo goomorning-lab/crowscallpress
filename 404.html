@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — Crow's Call Press</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/images/CCP LOGO.png">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DRFNF20Z92"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DRFNF20Z92');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .error-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--warm-white);
+    padding: 4rem 2rem;
+  }
+  .error-code {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1;
+    margin-bottom: 0;
+    letter-spacing: -0.04em;
+  }
+  .error-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 300;
+    color: var(--ink);
+    margin: 0.5rem 0 1rem;
+  }
+  .error-title em { color: var(--rust); font-style: italic; }
+  .error-sub {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink);
+    opacity: 0.6;
+    max-width: 420px;
+    margin: 0 auto 2.5rem;
+  }
+  .error-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .error-divider {
+    width: 36px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1.5rem auto;
+  }
+</style>
+</head>
+<body>
+<div class="error-page">
+  <div class="error-code">404</div>
+  <h1 class="error-title">The crow dropped <em>this pebble.</em></h1>
+  <div class="error-divider"></div>
+  <p class="error-sub">Like the crow at the pitcher, sometimes you have to try a different approach. This page doesn't exist, but the water is still rising. Head back and keep going.</p>
+  <div class="error-links">
+    <a class="btn-primary" href="/">Back to Home</a>
+    <a class="btn-outline" href="/curriculum/">Explore the Curriculum</a>
+  </div>
+</div>
+</body>
+</html>
