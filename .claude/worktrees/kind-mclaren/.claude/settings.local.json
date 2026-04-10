@@ -10,7 +10,10 @@
       "Bash(done)",
       "Bash(sed -i 's|<img src=\"\"../images/The_Crow_and_the_Pitcher|<img loading=\"\"lazy\"\" src=\"\"../images/The_Crow_and_the_Pitcher|g' \"/c/Users/Admin/Documents/Crows Call Press/CCP Website/about/index.html\")",
       "Bash(__NEW_LINE_9713fbe7e76d3093__ sed:*)",
-      "Bash(__NEW_LINE_9713fbe7e76d3093__ echo:*)"
+      "Bash(__NEW_LINE_9713fbe7e76d3093__ echo:*)",
+      "Bash(sed -i 's|images/image02.jpg|images/banner.png|g' \"$file\")",
+      "Bash(sed -i 's|content=\"\"1200\"\"|content=\"\"1010\"\"|g' \"$file\")",
+      "Bash(sed -i 's|content=\"\"630\"\"|content=\"\"1424\"\"|g' \"$file\")"
     ]
   }
 }
