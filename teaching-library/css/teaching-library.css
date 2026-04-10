@@ -137,7 +137,7 @@
   gap: 1rem;
   padding: 0 2rem;
   height: 60px;
-  background: var(--ink, #1c1c1c);
+  background: var(--rust, #b85c3a);
   color: var(--cream, #f5f0e8);
 }
 
@@ -148,21 +148,21 @@
   font-weight: 600;
   color: var(--cream, #f5f0e8);
 }
-.tl-nav-logo-text em { font-style: italic; color: var(--gold, #c9a84c); }
+.tl-nav-logo-text em { font-style: italic; color: rgba(255,255,255,0.75); }
 
 .tl-nav-label {
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: 0.45;
+  opacity: 0.55;
   padding-left: 1rem;
-  border-left: 1px solid rgba(255,255,255,0.15);
+  border-left: 1px solid rgba(255,255,255,0.25);
 }
 
 .tl-signout-btn {
   margin-left: auto;
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.35);
   color: var(--cream, #f5f0e8);
   padding: 0.35rem 1rem;
   border-radius: 4px;
@@ -172,7 +172,7 @@
   letter-spacing: 0.03em;
   transition: border-color 0.2s, background 0.2s;
 }
-.tl-signout-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+.tl-signout-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.65); }
 
 /* ── Dashboard header ───────────────────────────────────── */
 .tl-dash-header {
@@ -281,7 +281,7 @@
 
 .tl-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.75rem;
 }
 
@@ -292,6 +292,8 @@
   border-radius: 8px;
   overflow: hidden;
   transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 .tl-card:hover {
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
@@ -300,25 +302,25 @@
 
 .tl-card-inner {
   display: flex;
-  min-height: 240px;
+  flex-direction: column;
+  flex: 1;
 }
 
 .tl-card-cover {
-  width: 150px;
-  flex-shrink: 0;
-  background: var(--ink, #1c1c1c);
+  width: 100%;
+  background: var(--parchment, #e8e0d0);
   overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
 }
 .tl-card-cover img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
 .tl-card-body {
   flex: 1;
-  padding: 1.4rem 1.5rem 1.4rem;
+  padding: 1.4rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -482,12 +484,5 @@
   .tl-main { padding: 1.5rem 1rem 4rem; }
   .tl-grid { grid-template-columns: 1fr; }
 
-  /* Stack card cover on top on small screens */
-  .tl-card-inner { flex-direction: column; }
-  .tl-card-cover {
-    width: 100%;
-    height: 200px;
-  }
-  .tl-card-cover img { object-position: center top; }
   .tl-card-body { padding: 1.2rem; }
 }
