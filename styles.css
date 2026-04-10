@@ -545,8 +545,3 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
   .lp-cred-stats { grid-template-columns: repeat(2, 1fr); }
 }
 .lp-icon-ph { width: 36px; height: 36px; border-radius: 50%; background: var(--parchment); border: 2px dashed var(--gold); margin-bottom: 0.85rem; }
-
-/* Breadcrumb */
-.breadcrumb { padding: 0.6rem max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem)); font-size: 0.8rem; color: var(--ink); opacity: 0.5; letter-spacing: 0.02em; }
-.breadcrumb a { color: var(--ink); text-decoration: none; }
-.breadcrumb a:hover { opacity: 0.8; text-decoration: underline; }
