@@ -563,3 +563,7 @@ footer { background: var(--ink); color: var(--cream); padding: 3rem 4rem; displa
 .cookie-banner a { color: var(--gold); text-decoration: underline; }
 .cookie-banner button { background: var(--rust); color: white; border: none; padding: 0.45rem 1.2rem; border-radius: 4px; cursor: pointer; font-size: 0.82rem; white-space: nowrap; flex-shrink: 0; }
 @media (max-width: 600px) { .cookie-banner { flex-direction: column; align-items: flex-start; } }
+
+/* Page transitions */
+body { opacity: 1; transition: opacity 0.25s ease; }
+body.fade-out { opacity: 0; }
