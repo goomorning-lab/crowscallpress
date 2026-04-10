@@ -71,7 +71,12 @@
 <script>
 (function () {
 
-  // Auth guard
+  // Auth guard — use mock token for local preview until backend is ready
+  var DEV_PREVIEW = true; // set to false when backend is live
+  if (DEV_PREVIEW && !localStorage.getItem('tl_token')) {
+    localStorage.setItem('tl_token', 'dev_preview_token');
+    localStorage.setItem('tl_name', 'Zoe');
+  }
   var token = localStorage.getItem('tl_token');
   if (!token) { window.location.href = 'index.html'; return; }
 
