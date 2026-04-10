@@ -1,3 +1,34 @@
+// Cookie consent banner
+(function() {
+  if (localStorage.getItem('cookieConsent')) return;
+  var banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.innerHTML = '<span>We use cookies to analyze site traffic via Google Analytics. By continuing to use this site, you accept our <a href="/privacy/">Privacy Policy</a>.</span><button id="cookie-accept">Got it</button>';
+  document.body.appendChild(banner);
+  setTimeout(function() { banner.classList.add('visible'); }, 800);
+  document.getElementById('cookie-accept').addEventListener('click', function() {
+    localStorage.setItem('cookieConsent', 'true');
+    banner.style.transform = 'translateY(100%)';
+  });
+})();
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = q.closest('.faq-item');
+    var answer = item.querySelector('.faq-a');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+      openItem.classList.remove('open');
+      openItem.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+
 // Hamburger menu
 function closeMenu() {
   document.getElementById('nav-mobile').classList.remove('open');
