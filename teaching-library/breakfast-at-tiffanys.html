@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breakfast at Tiffany's — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --ink-mid: #3d3028;
+    --ink-light: #7a6a5a;
+    --ink-faint: #c4b8ad;
+    --cream: #f5f0e8;
+    --cream-deep: #ede6d8;
+    --warm-white: #faf8f4;
+    --rust: #b85c3a;
+    --rust-pale: #f5e2db;
+    --gold: #c9a84c;
+    --gold-pale: #f5ecd0;
+    --sage: #4a6e5a;
+    --sage-pale: #ddeee4;
+    --parchment: #e8e0d0;
+    --dusty-rose: #d4a0a0;
+    --rule: #d4c9bc;
+    --navy: #1e2d4a;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── TOP NAV ── */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: var(--ink);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    height: 56px;
+  }
+  .top-nav a.back-link {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+  }
+  .top-nav .action-btns {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .top-nav .action-btn {
+    padding: 0.35rem 0.9rem;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--cream);
+    background: transparent;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--navy);
+    color: #fff;
+    padding: 56px 2rem 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 28px,
+      rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px
+    );
+    pointer-events: none;
+  }
+  .cover-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 18px;
+  }
+  .cover h1 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 5.5vw, 52px);
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .cover h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+    letter-spacing: 0.08em;
+  }
+  .cover-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 20px;
+  }
+  .cover-meta {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 20px;
+  }
+
+  /* ── TOC NAV BAR ── */
+  .toc-bar {
+    background: var(--cream-deep);
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 56px;
+    z-index: 100;
+  }
+  .toc-inner {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a {
+    display: block;
+    padding: 11px 13px;
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── INSTRUCTIONAL PRINCIPLE ── */
+  .principle {
+    background: var(--sage-pale);
+    border-left: 3px solid var(--sage);
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    border-radius: 0 4px 4px 0;
+  }
+  .principle strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+  .principle ul { margin: 6px 0 0 16px; font-size: 13.5px; color: var(--ink-mid); }
+  .principle ul li { margin-bottom: 3px; }
+
+  /* ── NOTE / STRUCTURAL CALLOUT ── */
+  .note {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold);
+    padding: 11px 15px;
+    margin: 18px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 13px;
+    color: var(--ink-mid);
+    font-style: italic;
+  }
+  .note strong {
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8a6a10;
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+
+  /* ── SETTING CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px;
+    margin: 22px 0;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 18px;
+  }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-sage { border-top: 3px solid var(--sage); }
+  .card-navy { border-top: 3px solid var(--navy); }
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .card .card-sub {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif {
+    font-size: 12.5px;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-top: 8px;
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
+  }
+
+  /* ── PLOT ARC ── */
+  .plot-stage {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .plot-stage-header {
+    padding: 10px 18px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stage-expo  { background: var(--sage-pale); color: var(--sage); }
+  .stage-rise  { background: var(--gold-pale);  color: #7a5a10; }
+  .stage-climb { background: var(--rust-pale);  color: var(--rust); }
+  .stage-fall  { background: var(--parchment);  color: var(--ink-light); }
+  .plot-stage-body { padding: 14px 18px; }
+  .plot-stage-body ul { margin-left: 18px; font-size: 13.5px; color: var(--ink-mid); }
+  .plot-stage-body ul li { margin-bottom: 5px; }
+  .plot-stage-body p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; }
+
+  /* ── FORESHADOWING ── */
+  .foreshadow-list { list-style: none; margin: 0; }
+  .foreshadow-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+  .foreshadow-list li:last-child { border-bottom: none; }
+  .foreshadow-num {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--rust);
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .foreshadow-text strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .foreshadow-text p { font-size: 13px; color: var(--ink-mid); }
+
+  /* ── ARCHETYPE ENTRIES ── */
+  .arch-entry {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 0;
+  }
+  .arch-entry:last-child { border-bottom: none; }
+  .arch-left {
+    padding-right: 20px;
+    border-right: 1px solid var(--rule);
+    margin-right: 20px;
+  }
+  .arch-name {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-style: italic;
+  }
+  .arch-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .badge-rust { background: var(--rust-pale); color: var(--rust); }
+  .badge-gold { background: var(--gold-pale); color: #7a5a10; }
+  .badge-sage { background: var(--sage-pale); color: var(--sage); }
+  .badge-navy { background: #e0e6f0; color: var(--navy); }
+  .badge-gray { background: var(--parchment); color: var(--ink-light); }
+  .arch-type { font-size: 11px; color: var(--ink-light); font-style: italic; }
+  .arch-right p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; }
+  .arch-right .tag {
+    font-size: 10px;
+    background: var(--parchment);
+    color: var(--ink-light);
+    padding: 1px 7px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 7px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CHARACTER MAP ── */
+  .char-block {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .char-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 18px 22px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .char-header h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+  }
+  .char-header span {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .char-body {
+    padding: 20px 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .char-field label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+  .char-field.full { grid-column: 1 / -1; }
+  .trait-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .trait {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    border: 1px solid;
+  }
+  .trait-pos { background: var(--sage-pale); color: var(--sage); border-color: #b8d4c4; }
+  .trait-neg { background: var(--rust-pale); color: var(--rust); border-color: #e8c4ba; }
+  .char-dev {
+    background: var(--parchment);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--ink-mid);
+    font-style: italic;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── ALLUSIONS / SYMBOLISM ── */
+  .allusion-block {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .allusion-title {
+    background: var(--parchment);
+    padding: 10px 18px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+  }
+  .allusion-body { padding: 14px 18px; }
+  .allusion-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+  }
+  .allusion-row:last-child { margin-bottom: 0; }
+  .allusion-key {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+    font-weight: 500;
+  }
+  .allusion-val { color: var(--ink-mid); line-height: 1.55; }
+
+  .symbol-block {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .symbol-header {
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    background: var(--cream-deep);
+  }
+  .symbol-header h3 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .symbol-eq {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    background: var(--rust-pale);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .symbol-body { padding: 14px 18px; }
+  .symbol-body ul { list-style: none; margin: 0; }
+  .symbol-body ul li {
+    font-size: 13.5px;
+    color: var(--ink-mid);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--rule);
+    padding-left: 14px;
+    position: relative;
+  }
+  .symbol-body ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-faint);
+  }
+  .symbol-body ul li:last-child { border-bottom: none; }
+
+  /* ── CONFLICT ── */
+  .conflict-block {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .conflict-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 11px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .conflict-header h3 {
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 600;
+    font-style: italic;
+  }
+  .conflict-type-badge {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.12);
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: auto;
+    color: rgba(255,255,255,0.65);
+    flex-shrink: 0;
+  }
+  .conflict-body { padding: 14px 18px; }
+  .conflict-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+  }
+  .conflict-row:last-child { margin-bottom: 0; }
+  .conflict-key {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+    font-weight: 500;
+  }
+  .conflict-val { color: var(--ink-mid); line-height: 1.55; }
+
+  /* ── COMPREHENSION ── */
+  .comp-set-label {
+    background: var(--parchment);
+    border-left: 3px solid var(--rust);
+    padding: 10px 16px;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 14px;
+    border-radius: 0 4px 4px 0;
+  }
+  .comp-item {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .comp-num {
+    display: inline-block;
+    background: var(--rust);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+  }
+  .comp-body { padding: 14px 18px; }
+  .comp-answer { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; margin-bottom: 8px; }
+  .comp-scene {
+    font-size: 11.5px;
+    color: var(--ink-light);
+    font-style: italic;
+    background: var(--warm-white);
+    padding: 6px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+  }
+  .comp-scene::before { content: 'Scene: '; font-style: normal; font-weight: 500; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+
+  /* ── THEME ── */
+  .theme-block {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .theme-header {
+    background: var(--gold-pale);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .theme-header h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .theme-topic-badge {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .theme-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+  .theme-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 8px;
+    font-size: 13.5px;
+  }
+  .theme-key {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+    font-weight: 500;
+  }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+
+  /* ── APPENDIX ── */
+  .appendix-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .appendix-card h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .appendix-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 6px;
+    margin-bottom: 6px;
+    font-size: 13.5px;
+  }
+  .appendix-key {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+    font-weight: 500;
+  }
+  .appendix-val { color: var(--ink-mid); }
+
+  /* ── UTILS ── */
+  p { margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+
+  /* ── BACK TO TOP ── */
+  .back-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    z-index: 999;
+  }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid var(--rule); padding-bottom: 10px; margin-bottom: 10px; }
+    .char-body { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row, .appendix-row { grid-template-columns: 1fr; gap: 2px; }
+    .conflict-key, .theme-key, .allusion-key, .appendix-key { padding-top: 8px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">Breakfast at Tiffany's — Teacher Compendium</span>
+  <div class="action-btns">
+    <a href="#" class="action-btn" onclick="alert('Dev Response A download — connect to API'); return false;">Dev Response A</a>
+    <a href="#" class="action-btn" onclick="alert('Dev Response B download — connect to API'); return false;">Dev Response B</a>
+    <a href="#" class="action-btn btn-gold" onclick="alert('PDF download — connect to API'); return false;">⬇ PDF</a>
+  </div>
+</nav>
+
+<!-- Cover -->
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>Breakfast at Tiffany's</h1>
+    <h2>Truman Capote</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Mythos Level</span>
+      <span>CEFR B2–C1</span>
+      <span>Journalism &amp; New Journalism</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<!-- TOC Nav -->
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+    <a href="#appendix">Appendix</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     INTRODUCTION
+══════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section" id="intro">
+    <p class="section-label">Overview</p>
+    <h2 class="section-title">About This Compendium</h2>
+    <p>This compendium provides the book-specific analytical support for the <em>Breakfast at Tiffany's</em> Mythos-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+    <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document does not replicate that methodology. Instead, it applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+    <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+  </div>
+
+<!-- ══════════════════════════════════════════════
+     LITERARY ELEMENTS
+══════════════════════════════════════════════ -->
+  <div class="section" id="literary-elements">
+    <p class="section-label">Section 01</p>
+    <h2 class="section-title">Literary Elements</h2>
+
+    <div class="principle">
+      <strong>Instructional Principle</strong>
+      <p>Literary elements function structurally. Students must correctly identify elements, explain how those elements create tension, meaning, or development, and move beyond summary into structural interpretation.</p>
+      <ul>
+        <li>Correctly identify elements (setting, plot arc, POV, tone, foreshadowing)</li>
+        <li>Explain how those elements create tension, meaning, or development</li>
+        <li>Move beyond summary into structural interpretation</li>
+      </ul>
+      <p style="margin-top:8px;">Accuracy of classification and clarity of explanation are prioritized over length.</p>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:14px;">Setting</h3>
+    <div class="card-grid">
+      <div class="card card-rust">
+        <h3>Physical Location</h3>
+        <div class="card-sub">Where</div>
+        <p>East Side Manhattan brownstone, New York City — including apartment interiors, Tiffany's jewelry store, and various social venues.</p>
+        <p class="justif">The physical setting roots the story in postwar New York's social geography, where proximity to wealth and glamour contrasts with instability and impermanence.</p>
+      </div>
+      <div class="card card-gold">
+        <h3>Chronological Time</h3>
+        <div class="card-sub">When</div>
+        <p>Early-to-mid 1940s (wartime), with the narrator recalling events from roughly a decade later (late 1950s retrospective frame).</p>
+        <p class="justif">The retrospective narration creates emotional distance, shaping events as memory rather than immediate experience and lending the story its elegiac tone.</p>
+      </div>
+      <div class="card card-sage">
+        <h3>Society Values</h3>
+        <div class="card-sub">Social Context</div>
+        <p>Postwar American aspiration, upward mobility, social performance, and the reinvention of identity through wealth, marriage, and association.</p>
+        <p class="justif">Holly navigates a world that prizes appearance over substance, enabling her calculated self-presentation while also making her ultimate rejection inevitable.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:14px;">Plot Arc</h3>
+
+    <div class="plot-stage">
+      <div class="plot-stage-header stage-expo">● Beginning — Exposition</div>
+      <div class="plot-stage-body">
+        <ul>
+          <li>The narrator, introduced years after the main events, recalls receiving news of a wooden sculpture resembling Holly Golightly, carved in Africa.</li>
+          <li>Joe Bell shares the story, prompting the narrator's extended recollection.</li>
+          <li>We meet Holly and key story components: the unnamed cat, her cluttered brownstone apartment, a mysterious social life, the un-labeled mailbox card.</li>
+        </ul>
+        <div class="note" style="margin-top:12px;"><strong>Structural Note</strong>The retrospective frame immediately signals loss. We know before the story begins that Holly will not stay.</div>
+      </div>
+    </div>
+    <div class="plot-stage">
+      <div class="plot-stage-header stage-rise">● Middle — Rising Action → Climax</div>
+      <div class="plot-stage-body">
+        <ul>
+          <li>Holly cultivates relationships with the narrator, O.J. Berman, Sally Tomato, Rusty Trawler, José Ybarra-Jaeger, and others.</li>
+          <li>Doc Golightly arrives, revealing Holly's real history: a teenage marriage, a Texas farm, and a false name.</li>
+          <li>Holly becomes engaged to José, becomes pregnant, miscarries following news of her brother Fred's death.</li>
+          <li>Holly is arrested as an unwitting courier in Sally Tomato's drug operation.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="plot-stage">
+      <div class="plot-stage-header stage-climb">● Climax</div>
+      <div class="plot-stage-body">
+        <p>José abandons Holly by letter. Holly, facing arrest and alone, decides to flee the country anyway. Her final act: releasing the unnamed cat in Harlem before her departure.</p>
+        <div class="note" style="margin-top:12px;"><strong>Justification</strong>The climax is not action but abandonment. Holly's last attempt at belonging collapses, and she reverts to flight.</div>
+      </div>
+    </div>
+    <div class="plot-stage">
+      <div class="plot-stage-header stage-fall">● End — Falling Action → Resolution</div>
+      <div class="plot-stage-body">
+        <ul>
+          <li>The narrator, devastated, searches for the cat and eventually finds it.</li>
+          <li>Years pass. Joe Bell receives a photograph — an image of a wooden carving of Holly from an African village.</li>
+          <li>The narrator ends with a quiet wish: that Holly found her place somewhere.</li>
+        </ul>
+        <div class="note" style="margin-top:12px;"><strong>Interpretive Note</strong>The resolution is deliberately open. Holly's fate is unknown; the narrator's grief and loyalty remain.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:14px;">Foreshadowing</h3>
+    <ul class="foreshadow-list">
+      <li>
+        <span class="foreshadow-num">1</span>
+        <div class="foreshadow-text">
+          <strong>The Unnamed Mailbox Card</strong>
+          <p>Holly's refusal to put her name on the mailbox hints at her unwillingness to be claimed or located by identity, love, or law.</p>
+        </div>
+      </li>
+      <li>
+        <span class="foreshadow-num">2</span>
+        <div class="foreshadow-text">
+          <strong>The Unnamed Cat</strong>
+          <p>A creature she refuses to name because "we don't belong to each other." The cat's eventual fate mirrors Holly's own displacement.</p>
+        </div>
+      </li>
+      <li>
+        <span class="foreshadow-num">3</span>
+        <div class="foreshadow-text">
+          <strong>The Bird Cage</strong>
+          <p>Holly keeps a decorative bird cage but no bird — an empty structure of freedom that foreshadows her flight without destination.</p>
+        </div>
+      </li>
+      <li>
+        <span class="foreshadow-num">4</span>
+        <div class="foreshadow-text">
+          <strong>Doc's Whistling</strong>
+          <p>Doc's folk song from Holly's past resurfaces at key moments; it signals that the self she constructed cannot fully erase the self she abandoned.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="note"><strong>Structural Function</strong>Foreshadowing in <em>Breakfast at Tiffany's</em> operates through imagery of incompleteness — nameless things and half-formed attachments — that quietly anticipates Holly's final disappearance.</div>
+
+    <div class="divider"></div>
+    <div class="card-grid">
+      <div class="card card-navy">
+        <h3>Point of View</h3>
+        <div class="card-sub">Narrative Perspective</div>
+        <p>First-person peripheral (retrospective).</p>
+        <p class="justif">The narrator is a participant in events but not their center. His perspective is shaped by admiration, affection, and loss — simultaneously reliable about his own feelings and limited in his understanding of Holly. Readers experience Holly as she is performed, not as she is.</p>
+      </div>
+      <div class="card card-rust">
+        <h3>Tone</h3>
+        <div class="card-sub">Primary Tone</div>
+        <p>Elegiac, wistful, and darkly comic. Nostalgic for something that may never have been entirely real.</p>
+        <p class="justif">Created through retrospective narration, Holly's self-aware theatricality, Capote's precision with sensory and social detail, and the unnamed cat — which carries grief without sentimentality.</p>
+      </div>
+    </div>
+  </div>
+
+<!-- ══════════════════════════════════════════════
+     ARCHETYPES
+══════════════════════════════════════════════ -->
+  <div class="section" id="archetypes">
+    <p class="section-label">Section 02</p>
+    <h2 class="section-title">Archetypes</h2>
+
+    <div class="principle">
+      <strong>Instructional Principle</strong>
+      <p>Archetypes should not be treated as personality labels. They represent motivational drives within the Order / Freedom / Ego / Social framework. Characters may express a primary archetype (dominant motivation) and a shadow distortion (when that drive becomes extreme or corrupted).</p>
+    </div>
+
+    <div class="note"><strong>True Shadow</strong>In <em>Breakfast at Tiffany's</em>, the True Shadow is <strong>Rootlessness</strong> — the distorted form of freedom that becomes an inability to belong, to be claimed, or to claim anything in return. Holly pursues independence as an end in itself, but the novel reveals that freedom without attachment is indistinguishable from flight.</div>
+
+    <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:20px 0 10px;">Characters</h3>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">The Narrator</div>
+        <span class="arch-badge badge-sage">Creator → Artist</span>
+        <div class="arch-type">Character</div>
+      </div>
+      <div class="arch-right"><p>Shapes Holly into narrative as a way of preserving and mourning her.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">Holly Golightly</div>
+        <span class="arch-badge badge-rust">Explorer → Wild Person</span>
+        <div class="arch-type">Character</div>
+      </div>
+      <div class="arch-right"><p>Refuses all structures that would contain her — names, relationships, legal identity — but her freedom destroys what she touches.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">Doc Golightly</div>
+        <span class="arch-badge badge-gold">Caregiver → Parent</span>
+        <div class="arch-type">Character</div>
+      </div>
+      <div class="arch-right"><p>Offered Holly a home and family; his love is genuine but incapable of holding her.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">Joe Bell</div>
+        <span class="arch-badge badge-gray">Everyman → Realist</span>
+        <div class="arch-type">Character</div>
+      </div>
+      <div class="arch-right"><p>Loyal, grounded, and unromantic about Holly's disappearance — he grieves without illusion.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">O.J. Berman</div>
+        <span class="arch-badge badge-navy">Magician → Visionary</span>
+        <div class="arch-type">Character</div>
+      </div>
+      <div class="arch-right"><p>Recognizes Holly's potential and attempts to shape it, seeing her as a social and commercial phenomenon before anyone else.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">Rusty Trawler</div>
+        <span class="arch-badge badge-gray">Innocent → Shadow Victim</span>
+        <div class="arch-type">Character</div>
+      </div>
+      <div class="arch-right"><p>Representing wealth without substance, he is used and discarded within Holly's social world.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">José Ybarra-Jaeger</div>
+        <span class="arch-badge badge-rust">Ruler → Politician</span>
+        <div class="arch-type">Character</div>
+      </div>
+      <div class="arch-right"><p>Presents himself as a stable future, but abandons Holly the moment she becomes a social liability.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">Mag Wildwood</div>
+        <span class="arch-badge badge-gold">Innocent → Romantic</span>
+        <div class="arch-type">Character</div>
+      </div>
+      <div class="arch-right"><p>A foil for Holly — pursues the same social world but with fewer defenses and less self-awareness.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">Sally Tomato</div>
+        <span class="arch-badge badge-navy">Sage → Shadow Elitist</span>
+        <div class="arch-type">Character</div>
+      </div>
+      <div class="arch-right"><p>Uses Holly's charm and compliance without regard for the consequences to her.</p></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:24px 0 10px;">Objects / Concepts</h3>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">The Cat (Unnamed)</div>
+        <span class="arch-badge badge-sage">Everyman → Good Person</span>
+        <div class="arch-type">Object</div>
+      </div>
+      <div class="arch-right"><p>The most honest relationship Holly has — perceived to be mutual, undemanding, and ultimately abandoned.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">Inordinate Latitude</div>
+        <span class="arch-badge badge-rust">Creator → Shadow Destroyer</span>
+        <div class="arch-type">Concept</div>
+      </div>
+      <div class="arch-right"><p>An enticing conceptualization of freedom which ultimately leads to ruin.</p></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:24px 0 10px;">Settings / Forces</h3>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">Tiffany's (As Concept)</div>
+        <span class="arch-badge badge-gold">Innocent → Utopian</span>
+        <div class="arch-type">Setting / Force</div>
+      </div>
+      <div class="arch-right"><p>An imagined place of safety and order, but one she can only visit, never truly enter.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">The Brownstone</div>
+        <span class="arch-badge badge-navy">Caregiver → Saint</span>
+        <div class="arch-type">Setting</div>
+      </div>
+      <div class="arch-right"><p>The site of the narrator's devotion — a building that holds memory, loyalty, and loss.</p></div>
+    </div>
+    <div class="arch-entry">
+      <div class="arch-left">
+        <div class="arch-name">The Mean Reds</div>
+        <span class="arch-badge badge-gray">Sage → Philosopher</span>
+        <div class="arch-type">Force</div>
+      </div>
+      <div class="arch-right"><p>Holly's articulation of unnamed existential dread — the story's most honest emotional diagnosis.</p></div>
+    </div>
+  </div>
+
+<!-- ══════════════════════════════════════════════
+     CHARACTER MAPS
+══════════════════════════════════════════════ -->
+  <div class="section" id="character-maps">
+    <p class="section-label">Section 03</p>
+    <h2 class="section-title">Character Maps</h2>
+
+    <div class="principle">
+      <strong>Instructional Principle</strong>
+      <p>Character analysis requires internal logic. Students must distinguish between goal (what a character wants) and motivation (why they want it), identify values and traits supported by textual behavior, and explain development using structural evidence. Character claims must be demonstrated through action, dialogue, or narrative consequence.</p>
+    </div>
+
+    <!-- The Narrator -->
+    <div class="char-block">
+      <div class="char-header">
+        <h3>The Narrator</h3>
+        <span>Round / Dynamic</span>
+      </div>
+      <div class="char-body">
+        <div class="char-field">
+          <label>Goal</label>
+          <p>To preserve and understand Holly through memory, through story, and through the act of writing.</p>
+        </div>
+        <div class="char-field">
+          <label>Motivation</label>
+          <p>He loves Holly in the way that survives departure — loyally and without expectation of return.</p>
+        </div>
+        <div class="char-field">
+          <label>Values</label>
+          <p>Fidelity, witness, art, and honest grief. He resists the True Shadow by choosing to stay, remember, and commit.</p>
+        </div>
+        <div class="char-field">
+          <label>Traits</label>
+          <div class="trait-row">
+            <span class="trait trait-pos">Perceptive</span>
+            <span class="trait trait-pos">Loyal</span>
+            <span class="trait trait-neg">Passive</span>
+            <span class="trait trait-neg">Self-effacing</span>
+          </div>
+        </div>
+      </div>
+      <div class="char-dev">Development: Begins as a fascinated observer and becomes, by the novel's end, a participant in grief. His final act of finding the cat and keeping faith with Holly's memory transforms him from witness into custodian of her story.</div>
+    </div>
+
+    <!-- Holly Golightly -->
+    <div class="char-block">
+      <div class="char-header">
+        <h3>Holly Golightly</h3>
+        <span>Round / Dynamic</span>
+      </div>
+      <div class="char-body">
+        <div class="char-field">
+          <label>Goal</label>
+          <p>A life that belongs entirely to herself, free from claim and obligation.</p>
+        </div>
+        <div class="char-field">
+          <label>Motivation</label>
+          <p>Early poverty, displacement, and an unwanted marriage taught her that attachment leads to confinement.</p>
+        </div>
+        <div class="char-field">
+          <label>Values</label>
+          <p>Self-determination, beauty, pleasure, and the refusal of any love that comes with conditions. She does not fully value what she cannot keep moving.</p>
+        </div>
+        <div class="char-field">
+          <label>Traits</label>
+          <div class="trait-row">
+            <span class="trait trait-pos">Magnetic</span>
+            <span class="trait trait-pos">Courageous</span>
+            <span class="trait trait-neg">Evasive</span>
+            <span class="trait trait-neg">Self-destructive</span>
+          </div>
+        </div>
+      </div>
+      <div class="char-dev">Development: Enters the novel as a dazzling mystery and leaves as a tragedy. By the end, she has become aware that her rootlessness is not freedom but flight.</div>
+    </div>
+
+    <!-- Doc Golightly -->
+    <div class="char-block">
+      <div class="char-header">
+        <h3>Doc Golightly</h3>
+        <span>Flat / Static</span>
+      </div>
+      <div class="char-body">
+        <div class="char-field">
+          <label>Goal</label>
+          <p>Holly back — not the New York Holly, but the girl he married and raised in Texas.</p>
+        </div>
+        <div class="char-field">
+          <label>Motivation</label>
+          <p>He loved her genuinely, gave her a home, and cannot understand why it was not enough.</p>
+        </div>
+        <div class="char-field">
+          <label>Values</label>
+          <p>Stability, family, duty, and rural simplicity. He represents the road not taken.</p>
+        </div>
+        <div class="char-field">
+          <label>Traits</label>
+          <div class="trait-row">
+            <span class="trait trait-pos">Dignified</span>
+            <span class="trait trait-pos">Generous</span>
+            <span class="trait trait-neg">Idealistic</span>
+            <span class="trait trait-neg">Emotionally Blind</span>
+          </div>
+        </div>
+      </div>
+      <div class="char-dev">Development: Doc does not change. His role is to embody what Holly left behind and to make concrete — for the reader if not for Holly — what rootlessness has cost her.</div>
+    </div>
+  </div>
+
+<!-- ══════════════════════════════════════════════
+     ALLUSIONS & SYMBOLISM
+══════════════════════════════════════════════ -->
+  <div class="section" id="allusions">
+    <p class="section-label">Section 04</p>
+    <h2 class="section-title">Allusions &amp; Symbolism</h2>
+
+    <div class="principle">
+      <strong>Instructional Principle — Allusions</strong>
+      <p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. Students must identify: (1) the reference, (2) its origin, (3) its narrative function. Allusions deepen meaning by connecting the text to broader cultural or literary traditions.</p>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:12px;">In-Text Allusions</h3>
+
+    <div class="allusion-block">
+      <div class="allusion-title">Holly's Prairie Melody</div>
+      <div class="allusion-body">
+        <div class="allusion-row"><span class="allusion-key">Scene</span><span class="allusion-val">Doc's folk melody, associated with Holly's Texas childhood, recurs throughout the narrative.</span></div>
+        <div class="allusion-row"><span class="allusion-key">Type</span><span class="allusion-val">Folkloric / Cultural</span></div>
+        <div class="allusion-row"><span class="allusion-key">Reference</span><span class="allusion-val">American folk and country musical tradition — songs tied to home, land, and the permanence of place.</span></div>
+        <div class="allusion-row"><span class="allusion-key">Meaning</span><span class="allusion-val">The song is everything Holly cannot be: rooted, identifiable, belonging somewhere. For the narrator it is grief; for Doc it is memory; for Holly it is the past she has tried to abandon and cannot.</span></div>
+      </div>
+    </div>
+    <div class="allusion-block">
+      <div class="allusion-title">Wuthering Heights</div>
+      <div class="allusion-body">
+        <div class="allusion-row"><span class="allusion-key">Scene</span><span class="allusion-val">The narrator and Holly discuss the novel; Holly identifies with characters who cannot be contained by social convention.</span></div>
+        <div class="allusion-row"><span class="allusion-key">Type</span><span class="allusion-val">Literary</span></div>
+        <div class="allusion-row"><span class="allusion-key">Reference</span><span class="allusion-val">Emily Brontë's <em>Wuthering Heights</em> — themes of wild, ungovernable love and the impossibility of domesticating a spirit formed outside civilization.</span></div>
+        <div class="allusion-row"><span class="allusion-key">Meaning</span><span class="allusion-val">Holly uses the allusion self-consciously, but the narrator understands it more fully. Holly's identification with Cathy is more self-flattering than accurate. The allusion also frames their relationship within a tradition of doomed, unconsummated love.</span></div>
+      </div>
+    </div>
+    <div class="allusion-block">
+      <div class="allusion-title">Tiffany's</div>
+      <div class="allusion-body">
+        <div class="allusion-row"><span class="allusion-key">Scene</span><span class="allusion-val">Holly describes her "mean reds" and explains that going to Tiffany's makes her feel safe.</span></div>
+        <div class="allusion-row"><span class="allusion-key">Type</span><span class="allusion-val">Commercial / Cultural</span></div>
+        <div class="allusion-row"><span class="allusion-key">Reference</span><span class="allusion-val">Tiffany &amp; Co. as an American cultural symbol of aspiration, elegance, and permanence.</span></div>
+        <div class="allusion-row"><span class="allusion-key">Meaning</span><span class="allusion-val">Holly's attachment to Tiffany's is not about wealth — it is about the idea of a place where nothing bad could happen. The irony is that she can only visit, never belong. The store becomes a symbol of her entire relationship with belonging.</span></div>
+      </div>
+    </div>
+
+    <p class="alt-list">Holly's "Stage Name" (self-invention) · The African Wood Carving (folk art preservation, unknowing immortalization) · "Never Love a Wild Thing" (folk wisdom on freedom and ownership)</p>
+
+    <div class="divider"></div>
+
+    <div class="principle" style="background:var(--rust-pale);border-left-color:var(--rust);">
+      <strong style="color:var(--rust);">Instructional Principle — Symbolism</strong>
+      <p>A symbol is a recurring object or image within the text that represents a deeper abstract idea. Its meaning is built through repetition, character reaction, and narrative importance. Students should identify the object, explain how characters respond to it, state the abstract idea it represents, and demonstrate interchangeability ("Object = Idea").</p>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:12px;">In-Text Symbols</h3>
+
+    <div class="symbol-block">
+      <div class="symbol-header"><h3>The Cat</h3><span class="symbol-eq">= Belonging</span></div>
+      <div class="symbol-body"><ul>
+        <li>The cat follows Holly everywhere she goes but cannot be owned by anyone.</li>
+        <li>The cat reflects what Holly wants most and understands least about herself.</li>
+        <li>The cat is abandoned in Harlem when Holly can no longer pretend she is capable of keeping it.</li>
+      </ul></div>
+    </div>
+    <div class="symbol-block">
+      <div class="symbol-header"><h3>The Bird Cage</h3><span class="symbol-eq">= Constructed Identity</span></div>
+      <div class="symbol-body"><ul>
+        <li>The bird cage is what Holly displays in her apartment as proof of a life she has chosen for herself.</li>
+        <li>The bird cage gives Holly's world its shape and style while remaining completely empty inside.</li>
+        <li>The bird cage gets left behind when Holly flees — the whole construction abandoned without a second thought.</li>
+      </ul></div>
+    </div>
+    <div class="symbol-block">
+      <div class="symbol-header"><h3>Tiffany's</h3><span class="symbol-eq">= Unattainable Happiness</span></div>
+      <div class="symbol-body"><ul>
+        <li>Tiffany's is what Holly pictures when she needs to believe a place without fear exists.</li>
+        <li>Tiffany's is what Holly dresses for, performs for, and orients her entire New York life around.</li>
+        <li>Tiffany's is what Holly can visit but never inhabit — always just outside the life she actually lives.</li>
+      </ul></div>
+    </div>
+
+    <p class="alt-list">Dark Glasses = Concealment · The Mailbox Card = Impermanence · The Prairie Song = Longing</p>
+  </div>
+
+<!-- ══════════════════════════════════════════════
+     CONFLICT ANALYSIS
+══════════════════════════════════════════════ -->
+  <div class="section" id="conflict">
+    <p class="section-label">Section 05</p>
+    <h2 class="section-title">Conflict Analysis</h2>
+
+    <div class="principle">
+      <strong>Instructional Principle</strong>
+      <p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must: (1) classify the conflict type, (2) identify what each side wants (competing solutions), (3) explain the outcome and how it resolves or reshapes the tension. Conflict is not simply a fight — it is a clash of desires, values, or forces.</p>
+    </div>
+
+    <div class="conflict-block">
+      <div class="conflict-header"><h3>Holly Golightly vs. Lulamae Barnes</h3><span class="conflict-type-badge">Character vs. Self</span></div>
+      <div class="conflict-body">
+        <div class="conflict-row"><span class="conflict-key">Character's Solution</span><span class="conflict-val">To keep moving, keep reinventing, and keep her sense of self fluid enough that no one can pin it down.</span></div>
+        <div class="conflict-row"><span class="conflict-key">Self's Solution</span><span class="conflict-val">To surface through Doc's arrival, the mean reds, and the unnamed cat — demanding to be acknowledged.</span></div>
+        <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Unresolved. Holly flees rather than faces the question. Her disappearance is the conflict's answer.</span></div>
+      </div>
+    </div>
+    <div class="conflict-block">
+      <div class="conflict-header"><h3>Holly Golightly vs. Social Expectation</h3><span class="conflict-type-badge">Character vs. Society</span></div>
+      <div class="conflict-body">
+        <div class="conflict-row"><span class="conflict-key">Character's Solution</span><span class="conflict-val">To use charm and social performance on her own terms while refusing anything that would require her to stay or commit.</span></div>
+        <div class="conflict-row"><span class="conflict-key">Society's Solution</span><span class="conflict-val">To expose, arrest, and abandon her when she becomes inconvenient — as José does, even as the law does.</span></div>
+        <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Society wins in the short-term. Holly is arrested, abandoned, and driven out. But she escapes, and the novel refuses to call this defeat.</span></div>
+      </div>
+    </div>
+    <div class="conflict-block">
+      <div class="conflict-header"><h3>The Narrator vs. Impermanence</h3><span class="conflict-type-badge">Character vs. Fate</span></div>
+      <div class="conflict-body">
+        <div class="conflict-row"><span class="conflict-key">Character's Solution</span><span class="conflict-val">To remember, to write, to find the cat, and to refuse the erasure that Holly herself chose.</span></div>
+        <div class="conflict-row"><span class="conflict-key">Fate's Solution</span><span class="conflict-val">To scatter. Holly disappears, the past recedes, nothing stays.</span></div>
+        <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Finding the cat is the closest the narrator gets to victory — and the storytelling itself is the rest of it.</span></div>
+      </div>
+    </div>
+    <div class="conflict-block">
+      <div class="conflict-header"><h3>Doc Golightly vs. Holly's Newly Constructed Life</h3><span class="conflict-type-badge">Character vs. Society</span></div>
+      <div class="conflict-body">
+        <div class="conflict-row"><span class="conflict-key">Character's Solution</span><span class="conflict-val">To have Holly return home, as though nothing has changed.</span></div>
+        <div class="conflict-row"><span class="conflict-key">Society's Solution</span><span class="conflict-val">To have already made her unreachable. By the time Doc arrives, Holly has become someone he cannot retrieve.</span></div>
+        <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Irreconcilable. Doc leaves alone. His dignity is intact, but his loss is total.</span></div>
+      </div>
+    </div>
+
+    <p class="alt-list">Joe Bell vs. Time (Character vs. Fate) · José vs. Reputation (Character vs. Society) · Sally Tomato vs. The Law (Character vs. Society)</p>
+  </div>
+
+<!-- ══════════════════════════════════════════════
+     COMPREHENSION QUESTIONS
+══════════════════════════════════════════════ -->
+  <div class="section" id="comprehension">
+    <p class="section-label">Section 06</p>
+    <h2 class="section-title">Comprehension Questions</h2>
+
+    <div class="principle">
+      <strong>Instructional Principle</strong>
+      <p>Questions are organized into three sets that broadly align with the narrative's structural progression. Specific chapter numbers are intentionally omitted — designed to encourage holistic reading rather than rigid chapter-by-chapter tracking. Each answer includes a referenced scene for teacher orientation and a model response to guide expectations.</p>
+    </div>
+
+    <div class="comp-set-label">Section 1 — A Girl Called Traveling</div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">1</span><p class="comp-answer">The narrator is immediately drawn into Holly's orbit on her terms, establishing a dynamic of unequal investment that never fully resolves in his favor.</p><div class="comp-scene">Holly buzzing the narrator's intercom and entering his apartment uninvited for the first time.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">2</span><p class="comp-answer">The sculpture intrigues the narrator because it proves Holly left an impression somewhere in the world without even knowing it — suggesting she moved through life touching people she never stayed long enough to see affected.</p><div class="comp-scene">Joe Bell showing the narrator the photograph of the African carving at the opening of the novel.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">3</span><p class="comp-answer">Holly's refusal to name the cat is her clearest statement of personal philosophy: to name something is to claim it, and to claim it is to be responsible for it — two things Holly refuses entirely.</p><div class="comp-scene">Holly explaining to the narrator that she and the cat do not belong to each other.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">4</span><p class="comp-answer">Berman means that Holly's performance is entirely genuine — that she has constructed herself so completely from scratch that there is no hidden authentic self underneath the persona.</p><div class="comp-scene">Berman describing Holly to the narrator as a real phony who believes every word she says.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">5</span><p class="comp-answer">The narrator functions as a safe and devoted audience for Holly — someone she seeks out during difficult moments precisely because he asks very little in return.</p><div class="comp-scene">Holly climbing through the narrator's window during troubled nights and treating his space as an extension of her own.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">6</span><p class="comp-answer">Holly's relationship with José represents the closest she comes to conventional aspiration, but it functions primarily as a role she is performing rather than a life she has genuinely chosen.</p><div class="comp-scene">Holly describing her plans for Brazil and her future with José in careful, rehearsed terms.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">7</span><p class="comp-answer">Holly is invested in Fred because he is the only relationship she holds without performance — the one person whose love she never made strategic or conditional.</p><div class="comp-scene">Holly's repeated references to Fred throughout the early sections and her visible tenderness whenever his name comes up.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">8</span><p class="comp-answer">Holly's concept of the mean reds establishes that her instability runs deeper than social anxiety — describing instead a dread with no clear source, which reframes her restlessness as psychological rather than circumstantial.</p><div class="comp-scene">Holly explaining the mean reds to the narrator on her fire escape, distinguishing them carefully from the ordinary blues.</div></div></div>
+
+    <div class="comp-set-label" style="margin-top:24px;">Section 2 — Everything She Built</div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">1</span><p class="comp-answer">Doc's revelation reframes Holly entirely — replacing the self-made New York sophisticate with a runaway child bride from rural Texas and shifting the central question from who she is to why she needed to become someone else.</p><div class="comp-scene">Doc arriving at the narrator's door and quietly explaining his history with the girl he knew as Lulamae.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">2</span><p class="comp-answer">The narrator's reaction to Rusty Trawler's marriage reveals a possessiveness he does not fully acknowledge, confirming that his feelings for Holly extend well beyond friendship even if he lacks the will to act on them.</p><div class="comp-scene">The narrator learning about the Trawler marriage and struggling to conceal his response to the news.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">3</span><p class="comp-answer">Holly's plan to marry José is both genuine hope and elaborate self-deception — hope because it offers stability and escape, and self-deception because Holly has never chosen anyone for love rather than exit.</p><div class="comp-scene">Holly outlining her vision of life in Brazil with the focused calm of someone who has already decided.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">4</span><p class="comp-answer">Fred's death removes the only relationship Holly held unconditionally, destroying the last version of herself that was entirely real and accelerating the collapse of everything she had carefully constructed in New York.</p><div class="comp-scene">Holly receiving the telegram about Fred's death and breaking down in a way the narrator has never seen before.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">5</span><p class="comp-answer">Holly's arrest exposes how completely her New York life was built on conditional loyalty — the people she charmed either cannot or will not protect her the moment she becomes a social and legal liability.</p><div class="comp-scene">Holly's arrest and the immediate withdrawal of her social circle in the aftermath.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">6</span><p class="comp-answer">José's letter reveals a man whose affection was always subordinate to his reputation — expressing regret in the language of love while communicating abandonment in the language of self-preservation.</p><div class="comp-scene">The narrator reading José's letter aloud to Holly in the hospital.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">7</span><p class="comp-answer">The narrator feels guilty because he participated in dismantling the last structure of belonging Holly had built — delivering the letter that confirms her abandonment at the moment she is least able to absorb it.</p><div class="comp-scene">The narrator's visible discomfort as he reads the letter and watches Holly receive it.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">8</span><p class="comp-answer">Holly's plan to flee suggests that for her, responsibility and freedom are genuinely incompatible, and that flight is not cowardice but the only response available to someone who has never learned to stay.</p><div class="comp-scene">Holly explaining her escape plan to the narrator with the same breezy certainty she applies to everything irreversible.</div></div></div>
+
+    <div class="comp-set-label" style="margin-top:24px;">Section 3 — The Long Goodbye</div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">1</span><p class="comp-answer">Holly releases the cat because she cannot take him and refuses to keep him under false pretenses — making it simultaneously her most loving choice and her most honest admission that she is not capable of belonging to anything.</p><div class="comp-scene">Holly releasing the cat from the cab window in Harlem before her departure.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">2</span><p class="comp-answer">The narrator's devastation over the cat's fate is displaced grief for Holly — and his search for the cat becomes the only form of fidelity available to him now that Holly herself cannot be found.</p><div class="comp-scene">The narrator searching the streets of Harlem for the cat in the rain after Holly's departure.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">3</span><p class="comp-answer">The novel ends without conclusion because Holly is not a problem to be resolved but a person who chose not to be found — and an ending would impose a narrative shape on a life that deliberately refused one.</p><div class="comp-scene">Joe Bell receiving the photograph of the African carving as the novel's final image.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">4</span><p class="comp-answer">The narrator's final reflection is less idealized than his earlier perspective — having moved from admiration through grief to something closer to acceptance, loving Holly still but no longer believing she could have been saved or changed.</p><div class="comp-scene">The narrator's closing meditation on Holly, the cat, and the meaning of what those years of loyalty cost him.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">5</span><p class="comp-answer">Capote uses New York as a city of performed identities and temporary arrangements, making it the only possible home for Holly and the perfect backdrop for a story about people who want more than the world they actually inhabit.</p><div class="comp-scene">The brownstone, the parties, Tiffany's, and the social geography Holly navigates throughout the novel.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">6</span><p class="comp-answer">The novel challenges traditional notions of love and romance by presenting every romantic relationship as transactional or asymmetrical — suggesting that the most enduring love in the story is the narrator's, which asks for nothing and receives nothing in return.</p><div class="comp-scene">The narrator's sustained devotion across years and the contrast with José's conditional attachment.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">7</span><p class="comp-answer">Holly navigates transactional relationships with complete self-awareness, using charm, availability, and carefully managed vulnerability as currency — while ensuring that no one ever holds enough of her to make a real claim.</p><div class="comp-scene">Holly's management of Rusty Trawler, Sally Tomato, and the broader social world she operates within.</div></div></div>
+    <div class="comp-item"><div class="comp-body"><span class="comp-num">8</span><p class="comp-answer">The narrator is reliable about his own feelings but limited in his understanding of Holly — making him a trustworthy emotional witness and an unreliable analyst, which means readers receive Holly as she is performed rather than as she actually is.</p><div class="comp-scene">The narrator's consistent inability to predict Holly's choices despite years of close observation.</div></div></div>
+  </div>
+
+<!-- ══════════════════════════════════════════════
+     THEME ANALYSIS
+══════════════════════════════════════════════ -->
+  <div class="section" id="themes">
+    <p class="section-label">Section 07</p>
+    <h2 class="section-title">Theme Analysis</h2>
+
+    <div class="principle">
+      <strong>Instructional Principle</strong>
+      <p>A topic is the subject or issue the text explores (1–3 words). A theme is the author's perspective or claim about that topic, expressed as a complete, universal statement. Themes must be: universal, arguable, supported by textual evidence, and expressed as complete statements. Avoid reducing theme to a topic, writing moral clichés, or stating plot summary as theme. The theme emerges from how conflict is resolved.</p>
+    </div>
+
+    <div class="theme-block">
+      <div class="theme-header"><h3>Belonging</h3><span class="theme-topic-badge">Topic</span></div>
+      <div class="theme-body">
+        <div class="theme-row"><span class="theme-key">Proposed Theme</span><span class="theme-val">The desire to belong cannot be satisfied by movement or reinvention, but only by the willingness to claim something as your own and to let it claim you in return.</span></div>
+        <div class="theme-row"><span class="theme-key">Evidence</span><span class="theme-val">Holly names nothing and no one, and in the end loses everything — while the narrator, who commits to memory and grief, retains more of Holly than Holly retained of herself.</span></div>
+        <div class="theme-row"><span class="theme-key">Contemporary</span><span class="theme-val">Modern experiences of social mobility, digital identity, and chosen self-presentation — where the ease of reinvention across cities and platforms carries a hidden cost in depth and permanence.</span></div>
+        <div class="theme-row"><span class="theme-key">Similar Works</span><span class="theme-val"><em>The Great Gatsby</em> by F. Scott Fitzgerald — a similar pursuit of a reinvented self within a world of wealth and performance, where escaping one's origins proves ultimately impossible.</span></div>
+      </div>
+    </div>
+    <div class="theme-block">
+      <div class="theme-header"><h3>Freedom</h3><span class="theme-topic-badge">Topic</span></div>
+      <div class="theme-body">
+        <div class="theme-row"><span class="theme-key">Proposed Theme</span><span class="theme-val">Freedom pursued as an end in itself becomes indistinguishable from flight, and flight, unlike freedom, has no destination.</span></div>
+        <div class="theme-row"><span class="theme-key">Evidence</span><span class="theme-val">Every act Holly calls freedom is an act of escape; what she names independence, the narrator determines is an inability to stop running.</span></div>
+        <div class="theme-row"><span class="theme-key">Contemporary</span><span class="theme-val">Contemporary debates about whether hyper-individualism and freedom from commitment represent genuine liberation or a structural inability to connect — visible in patterns of relationship avoidance, career nomadism, and community detachment.</span></div>
+        <div class="theme-row"><span class="theme-key">Similar Works</span><span class="theme-val"><em>On the Road</em> by Jack Kerouac — the same restlessness Capote treats with grief rendered instead as romance, two works sharing a subject but arriving at opposite emotional conclusions.</span></div>
+      </div>
+    </div>
+    <div class="theme-block">
+      <div class="theme-header"><h3>Love &amp; Loss</h3><span class="theme-topic-badge">Topic</span></div>
+      <div class="theme-body">
+        <div class="theme-row"><span class="theme-key">Proposed Theme</span><span class="theme-val">Love that cannot be named or claimed is not less real for going unspoken, but more easily lost.</span></div>
+        <div class="theme-row"><span class="theme-key">Evidence</span><span class="theme-val">The narrator loving Holly without articulating it and losing her anyway; Joe Bell left with a photograph; Doc left with a memory — every love in the novel real, and every love failing to hold.</span></div>
+        <div class="theme-row"><span class="theme-key">Contemporary</span><span class="theme-val">Emotional unavailability in cultures that reward independence, and the particular grief of loving someone not equipped to receive it.</span></div>
+        <div class="theme-row"><span class="theme-key">Similar Works</span><span class="theme-val"><em>Norwegian Wood</em> by Haruki Murakami — retrospective grief for a person who could not be held and a narrator's attempt to preserve that loss through the act of storytelling.</span></div>
+      </div>
+    </div>
+  </div>
+
+<!-- ══════════════════════════════════════════════
+     APPENDIX
+══════════════════════════════════════════════ -->
+  <div class="section" id="appendix">
+    <p class="section-label">Section 08</p>
+    <h2 class="section-title">Appendix — Additional Stories</h2>
+
+    <div class="principle">
+      <strong>Instructional Principle</strong>
+      <p>The three companion stories are not supplementary material. Each functions as a complete literary work with its own setting, character, conflict, and thematic argument. Students must: identify the central symbol and explain what it represents, classify the primary conflict, formulate a defensible thematic statement, and consider how the story's themes connect to or complicate the themes of the main novella. The companion stories reward close reading — every detail carries weight.</p>
+    </div>
+
+    <div class="appendix-card">
+      <h3>"House of Flowers"</h3>
+      <div class="appendix-row"><span class="appendix-key">Setting</span><span class="appendix-val">Rural Haiti, a hillside above Port-au-Prince.</span></div>
+      <div class="appendix-row"><span class="appendix-key">Character</span><span class="appendix-val">Ottilie — a young woman from a Port-au-Prince brothel who chooses a simpler life in the mountains.</span></div>
+      <div class="appendix-row"><span class="appendix-key">Symbol</span><span class="appendix-val">The Flowers = Authenticity</span></div>
+      <div class="appendix-row"><span class="appendix-key">Conflict</span><span class="appendix-val">Character vs. Society — Ottilie's desire for a life that belongs to her vs. a social and economic world that has already decided what she is and what she is worth.</span></div>
+      <div class="appendix-row"><span class="appendix-key">Theme</span><span class="appendix-val">Escape from an artificial life is possible, but only by surrendering everything that made you who you are.</span></div>
+    </div>
+    <div class="appendix-card">
+      <h3>"A Diamond Guitar"</h3>
+      <div class="appendix-row"><span class="appendix-key">Setting</span><span class="appendix-val">A rural prison farm in the American South.</span></div>
+      <div class="appendix-row"><span class="appendix-key">Character</span><span class="appendix-val">Mr. Schaeffer — a long-term prisoner whose quiet resignation is disrupted by the arrival of Tico Feo.</span></div>
+      <div class="appendix-row"><span class="appendix-key">Symbol</span><span class="appendix-val">The Guitar = Desire</span></div>
+      <div class="appendix-row"><span class="appendix-key">Conflict</span><span class="appendix-val">Character vs. Self — Mr. Schaeffer's capacity for beauty and longing vs. the self-protective numbness that has kept him functional inside a life with no foreseeable exit.</span></div>
+      <div class="appendix-row"><span class="appendix-key">Theme</span><span class="appendix-val">Allowing beauty to move you is an act of courage, even when the beautiful thing was never going to stay.</span></div>
+    </div>
+    <div class="appendix-card">
+      <h3>"A Christmas Memory"</h3>
+      <div class="appendix-row"><span class="appendix-key">Setting</span><span class="appendix-val">Rural Alabama — a modest house shared by a young boy and his elderly cousin.</span></div>
+      <div class="appendix-row"><span class="appendix-key">Character</span><span class="appendix-val">Buddy — a young boy whose closest relationship is with an aging distant relative who meets the world with uncomplicated joy.</span></div>
+      <div class="appendix-row"><span class="appendix-key">Symbol</span><span class="appendix-val">The Kites = Joy</span></div>
+      <div class="appendix-row"><span class="appendix-key">Conflict</span><span class="appendix-val">Character vs. Fate — Buddy's need to hold onto the people and moments that make him feel most himself vs. time, age, and the institutional forces that eventually separate him from his cousin entirely.</span></div>
+      <div class="appendix-row"><span class="appendix-key">Theme</span><span class="appendix-val">Those who give us our truest sense of the world are often taken before we fully understand the size of what they gave us.</span></div>
+    </div>
+  </div>
+</div><!-- /container -->
+
+<button class="back-to-top-btn" id="btt" aria-label="Back to top">↑</button>
+
+<script>
+var btt = document.getElementById('btt');
+window.addEventListener('scroll', function() {
+  btt.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
+</body>
+</html>

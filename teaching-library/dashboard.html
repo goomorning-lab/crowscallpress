@@ -33,7 +33,7 @@
   <!-- Filter Bar -->
   <div class="tl-filter-bar">
     <div class="tl-filter-inner">
-      <input class="tl-search" type="text" id="tl-search" placeholder="Search materials…" aria-label="Search materials">
+      <input class="tl-search" type="text" id="tl-search" placeholder="Search by title or author…" aria-label="Search materials">
       <div class="tl-filter-group">
         <label class="tl-filter-label">Grade</label>
         <select class="tl-select" id="tl-filter-grade">
@@ -45,11 +45,13 @@
         </select>
       </div>
       <div class="tl-filter-group">
-        <label class="tl-filter-label">Type</label>
-        <select class="tl-select" id="tl-filter-type">
-          <option value="">All Types</option>
-          <option value="PDF">PDF</option>
-          <option value="DOCX">DOCX</option>
+        <label class="tl-filter-label">CEFR</label>
+        <select class="tl-select" id="tl-filter-cefr">
+          <option value="">All Levels</option>
+          <option value="A1-A2">A1–A2</option>
+          <option value="B1-B2">B1–B2</option>
+          <option value="B2-C1">B2–C1</option>
+          <option value="C1-C2">C1–C2</option>
         </select>
       </div>
       <button class="tl-clear-btn" id="tl-clear-filters">Clear</button>
@@ -91,49 +93,21 @@
     window.location.href = 'index.html';
   });
 
-  // ── Sample resource data (replace with API fetch when backend is ready) ──
+  // ── Workbook data (replace with API fetch when backend is ready) ──
   var resources = [
     {
-      id: 'file_001',
-      title: 'Crown Level — April Workbook',
-      description: 'Literary elements, plot structure, point of view, tone, and symbolism. Full teacher answer key included.',
-      grade: '3-4',
-      type: 'PDF'
-    },
-    {
-      id: 'file_002',
-      title: 'Leaders Level — October Workbook',
-      description: 'Advanced close reading with Coraline. Includes allusion, symbolism, and extended response scaffolding.',
-      grade: '5-6',
-      type: 'PDF'
-    },
-    {
-      id: 'file_003',
-      title: 'Guided Writing PPT — Opinion Essay',
-      description: 'Step-by-step guided writing presentation for the opinion essay unit. Editable slides.',
-      grade: '3-4',
-      type: 'DOCX'
-    },
-    {
-      id: 'file_004',
-      title: 'Vocabulary Sheet — My Father\'s Dragon',
-      description: 'Tiered vocabulary list with definitions and sentence frames for all reading levels.',
-      grade: '1-2',
-      type: 'PDF'
-    },
-    {
-      id: 'file_005',
-      title: 'Lesson Plan — Compare & Contrast Essay',
-      description: 'Full lesson plan with timing, discussion prompts, and differentiation notes.',
-      grade: '5-6',
-      type: 'DOCX'
-    },
-    {
-      id: 'file_006',
-      title: 'Opsis Level — September Workbook',
-      description: 'The Metamorphosis unit. Advanced literary analysis for grades 7+. Includes critical reading tasks.',
+      id: 'bat',
+      title: 'Breakfast at Tiffany\'s',
+      author: 'Truman Capote',
+      level: 'Opsis Level',
+      cefr: 'B2-C1',
       grade: '7+',
-      type: 'PDF'
+      cover: '../images/trialpopup.png',
+      synopsis: 'A narrator reflects on his neighbor Holly Golightly, a charming, free-spirited young woman navigating New York City. A novella of identity, belonging, and the cost of freedom.',
+      viewUrl: 'breakfast-at-tiffanys.html',
+      fileDevA: 'file_bat_deva',
+      fileDevB: 'file_bat_devb',
+      filePDF: 'file_bat_pdf'
     }
   ];
 
@@ -141,58 +115,86 @@
   var grid = document.getElementById('tl-grid');
   var emptyMsg = document.getElementById('tl-empty');
 
+  function handleDownload(fileId, btnEl, label) {
+    btnEl.disabled = true;
+    btnEl.textContent = 'Preparing…';
+
+    if (DEV_PREVIEW) {
+      setTimeout(function () {
+        showToast('Downloads require the live backend. Preview mode active.');
+        btnEl.disabled = false;
+        btnEl.textContent = label;
+      }, 600);
+      return;
+    }
+
+    fetch('/api/files/download/' + fileId, {
+      headers: { 'Authorization': 'Bearer ' + token }
+    })
+      .then(function (res) {
+        if (res.status === 401) {
+          localStorage.removeItem('tl_token');
+          localStorage.removeItem('tl_name');
+          window.location.href = 'index.html';
+          return;
+        }
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.url) {
+          window.open(data.url, '_blank');
+        } else {
+          showToast('Could not load the file. Please try again.');
+        }
+        btnEl.disabled = false;
+        btnEl.textContent = label;
+      })
+      .catch(function () {
+        showToast('Something went wrong. Please check your connection.');
+        btnEl.disabled = false;
+        btnEl.textContent = label;
+      });
+  }
+
   function renderCards(list) {
     grid.innerHTML = '';
     if (list.length === 0) { emptyMsg.style.display = 'block'; return; }
     emptyMsg.style.display = 'none';
+
     list.forEach(function (r) {
       var card = document.createElement('div');
       card.className = 'tl-card';
       card.innerHTML =
-        '<div class="tl-card-top">' +
-          '<span class="tl-badge tl-badge--grade">Grades ' + r.grade + '</span>' +
-          '<span class="tl-badge tl-badge--' + r.type.toLowerCase() + '">' + r.type + '</span>' +
-        '</div>' +
-        '<h3 class="tl-card-title">' + r.title + '</h3>' +
-        '<p class="tl-card-desc">' + r.description + '</p>' +
-        '<button class="tl-download-btn" data-id="' + r.id + '">Download</button>';
+        '<div class="tl-card-inner">' +
+          '<div class="tl-card-cover">' +
+            '<img src="' + r.cover + '" alt="' + r.title + ' cover" loading="lazy">' +
+          '</div>' +
+          '<div class="tl-card-body">' +
+            '<div class="tl-card-meta">' +
+              '<span class="tl-badge tl-badge--cefr">' + r.cefr.replace('-', '–') + '</span>' +
+              '<span class="tl-badge tl-badge--level">' + r.level + '</span>' +
+              '<span class="tl-badge tl-badge--grade">Grades ' + r.grade + '</span>' +
+            '</div>' +
+            '<h3 class="tl-card-title">' + r.title + '</h3>' +
+            '<p class="tl-card-author">by ' + r.author + '</p>' +
+            '<p class="tl-card-desc">' + r.synopsis + '</p>' +
+            '<div class="tl-card-actions">' +
+              '<a class="tl-action-btn tl-action-btn--primary" href="' + r.viewUrl + '">View Material</a>' +
+              '<button class="tl-action-btn tl-action-btn--outline" data-file="' + r.fileDevA + '" data-label="Dev Response A">Dev Response A</button>' +
+              '<button class="tl-action-btn tl-action-btn--outline" data-file="' + r.fileDevB + '" data-label="Dev Response B">Dev Response B</button>' +
+              '<button class="tl-action-btn tl-action-btn--outline tl-action-btn--pdf" data-file="' + r.filePDF + '" data-label="Download PDF">Download PDF</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
       grid.appendChild(card);
     });
 
-    // Download handlers
-    grid.querySelectorAll('.tl-download-btn').forEach(function (btn) {
+    // Download button handlers
+    grid.querySelectorAll('.tl-action-btn[data-file]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var fileId = this.getAttribute('data-id');
-        var btnEl = this;
-        btnEl.disabled = true;
-        btnEl.textContent = 'Preparing…';
-
-        fetch('/api/files/download/' + fileId, {
-          headers: { 'Authorization': 'Bearer ' + token }
-        })
-          .then(function (res) {
-            if (res.status === 401) {
-              localStorage.removeItem('tl_token');
-              localStorage.removeItem('tl_name');
-              window.location.href = 'index.html';
-              return;
-            }
-            return res.json();
-          })
-          .then(function (data) {
-            if (data && data.url) {
-              window.open(data.url, '_blank');
-            } else {
-              showToast('Could not load the file. Please try again.');
-            }
-            btnEl.disabled = false;
-            btnEl.textContent = 'Download';
-          })
-          .catch(function () {
-            showToast('Something went wrong. Please check your connection.');
-            btnEl.disabled = false;
-            btnEl.textContent = 'Download';
-          });
+        var fileId = this.getAttribute('data-file');
+        var label = this.getAttribute('data-label');
+        handleDownload(fileId, this, label);
       });
     });
   }
@@ -202,29 +204,29 @@
   // ── Filters ──
   var searchEl = document.getElementById('tl-search');
   var gradeEl = document.getElementById('tl-filter-grade');
-  var typeEl = document.getElementById('tl-filter-type');
+  var cefrEl = document.getElementById('tl-filter-cefr');
 
   function applyFilters() {
     var q = searchEl.value.toLowerCase();
     var grade = gradeEl.value;
-    var type = typeEl.value;
+    var cefr = cefrEl.value;
     var filtered = resources.filter(function (r) {
-      var matchQ = !q || r.title.toLowerCase().includes(q) || r.description.toLowerCase().includes(q);
+      var matchQ = !q || r.title.toLowerCase().includes(q) || r.author.toLowerCase().includes(q) || r.synopsis.toLowerCase().includes(q);
       var matchGrade = !grade || r.grade === grade;
-      var matchType = !type || r.type === type;
-      return matchQ && matchGrade && matchType;
+      var matchCefr = !cefr || r.cefr === cefr;
+      return matchQ && matchGrade && matchCefr;
     });
     renderCards(filtered);
   }
 
   searchEl.addEventListener('input', applyFilters);
   gradeEl.addEventListener('change', applyFilters);
-  typeEl.addEventListener('change', applyFilters);
+  cefrEl.addEventListener('change', applyFilters);
 
   document.getElementById('tl-clear-filters').addEventListener('click', function () {
     searchEl.value = '';
     gradeEl.value = '';
-    typeEl.value = '';
+    cefrEl.value = '';
     renderCards(resources);
   });
 
