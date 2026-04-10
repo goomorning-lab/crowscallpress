@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Teaching Library — Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="css/teaching-library.css">
+</head>
+<body class="tl-body">
+
+  <!-- Dashboard Nav -->
+  <nav class="tl-nav">
+    <a class="tl-nav-logo" href="/"><span class="tl-nav-logo-text">Crow's <em>Call</em> Press</span></a>
+    <span class="tl-nav-label">Teaching Library</span>
+    <button class="tl-signout-btn" id="tl-signout">Sign Out</button>
+  </nav>
+
+  <!-- Header -->
+  <div class="tl-dash-header">
+    <div class="tl-dash-header-inner">
+      <p class="tl-welcome-label">Welcome back,</p>
+      <h1 class="tl-dash-heading" id="tl-welcome-name">Educator</h1>
+      <p class="tl-dash-sub">Your teaching materials are ready. Download, plan, and teach.</p>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="tl-filter-bar">
+    <div class="tl-filter-inner">
+      <input class="tl-search" type="text" id="tl-search" placeholder="Search materials…" aria-label="Search materials">
+      <div class="tl-filter-group">
+        <label class="tl-filter-label">Grade</label>
+        <select class="tl-select" id="tl-filter-grade">
+          <option value="">All Grades</option>
+          <option value="1-2">Grades 1–2</option>
+          <option value="3-4">Grades 3–4</option>
+          <option value="5-6">Grades 5–6</option>
+          <option value="7+">Grades 7+</option>
+        </select>
+      </div>
+      <div class="tl-filter-group">
+        <label class="tl-filter-label">Type</label>
+        <select class="tl-select" id="tl-filter-type">
+          <option value="">All Types</option>
+          <option value="PDF">PDF</option>
+          <option value="DOCX">DOCX</option>
+        </select>
+      </div>
+      <button class="tl-clear-btn" id="tl-clear-filters">Clear</button>
+    </div>
+  </div>
+
+  <!-- Resource Grid -->
+  <main class="tl-main">
+    <div class="tl-grid" id="tl-grid">
+      <!-- Cards injected by JS -->
+    </div>
+    <p class="tl-empty" id="tl-empty" style="display:none;">No materials match your filters.</p>
+  </main>
+
+  <!-- Download error toast -->
+  <div class="tl-toast" id="tl-toast" role="alert" aria-live="polite"></div>
+
+<script src="js/teaching-library.js"></script>
+<script>
+(function () {
+
+  // Auth guard
+  var token = localStorage.getItem('tl_token');
+  if (!token) { window.location.href = 'index.html'; return; }
+
+  // Welcome name
+  var name = localStorage.getItem('tl_name');
+  if (name) document.getElementById('tl-welcome-name').textContent = name;
+
+  // Sign out
+  document.getElementById('tl-signout').addEventListener('click', function () {
+    localStorage.removeItem('tl_token');
+    localStorage.removeItem('tl_name');
+    window.location.href = 'index.html';
+  });
+
+  // ── Sample resource data (replace with API fetch when backend is ready) ──
+  var resources = [
+    {
+      id: 'file_001',
+      title: 'Crown Level — April Workbook',
+      description: 'Literary elements, plot structure, point of view, tone, and symbolism. Full teacher answer key included.',
+      grade: '3-4',
+      type: 'PDF'
+    },
+    {
+      id: 'file_002',
+      title: 'Leaders Level — October Workbook',
+      description: 'Advanced close reading with Coraline. Includes allusion, symbolism, and extended response scaffolding.',
+      grade: '5-6',
+      type: 'PDF'
+    },
+    {
+      id: 'file_003',
+      title: 'Guided Writing PPT — Opinion Essay',
+      description: 'Step-by-step guided writing presentation for the opinion essay unit. Editable slides.',
+      grade: '3-4',
+      type: 'DOCX'
+    },
+    {
+      id: 'file_004',
+      title: 'Vocabulary Sheet — My Father\'s Dragon',
+      description: 'Tiered vocabulary list with definitions and sentence frames for all reading levels.',
+      grade: '1-2',
+      type: 'PDF'
+    },
+    {
+      id: 'file_005',
+      title: 'Lesson Plan — Compare & Contrast Essay',
+      description: 'Full lesson plan with timing, discussion prompts, and differentiation notes.',
+      grade: '5-6',
+      type: 'DOCX'
+    },
+    {
+      id: 'file_006',
+      title: 'Opsis Level — September Workbook',
+      description: 'The Metamorphosis unit. Advanced literary analysis for grades 7+. Includes critical reading tasks.',
+      grade: '7+',
+      type: 'PDF'
+    }
+  ];
+
+  // ── Render cards ──
+  var grid = document.getElementById('tl-grid');
+  var emptyMsg = document.getElementById('tl-empty');
+
+  function renderCards(list) {
+    grid.innerHTML = '';
+    if (list.length === 0) { emptyMsg.style.display = 'block'; return; }
+    emptyMsg.style.display = 'none';
+    list.forEach(function (r) {
+      var card = document.createElement('div');
+      card.className = 'tl-card';
+      card.innerHTML =
+        '<div class="tl-card-top">' +
+          '<span class="tl-badge tl-badge--grade">Grades ' + r.grade + '</span>' +
+          '<span class="tl-badge tl-badge--' + r.type.toLowerCase() + '">' + r.type + '</span>' +
+        '</div>' +
+        '<h3 class="tl-card-title">' + r.title + '</h3>' +
+        '<p class="tl-card-desc">' + r.description + '</p>' +
+        '<button class="tl-download-btn" data-id="' + r.id + '">Download</button>';
+      grid.appendChild(card);
+    });
+
+    // Download handlers
+    grid.querySelectorAll('.tl-download-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var fileId = this.getAttribute('data-id');
+        var btnEl = this;
+        btnEl.disabled = true;
+        btnEl.textContent = 'Preparing…';
+
+        fetch('/api/files/download/' + fileId, {
+          headers: { 'Authorization': 'Bearer ' + token }
+        })
+          .then(function (res) {
+            if (res.status === 401) {
+              localStorage.removeItem('tl_token');
+              localStorage.removeItem('tl_name');
+              window.location.href = 'index.html';
+              return;
+            }
+            return res.json();
+          })
+          .then(function (data) {
+            if (data && data.url) {
+              window.open(data.url, '_blank');
+            } else {
+              showToast('Could not load the file. Please try again.');
+            }
+            btnEl.disabled = false;
+            btnEl.textContent = 'Download';
+          })
+          .catch(function () {
+            showToast('Something went wrong. Please check your connection.');
+            btnEl.disabled = false;
+            btnEl.textContent = 'Download';
+          });
+      });
+    });
+  }
+
+  renderCards(resources);
+
+  // ── Filters ──
+  var searchEl = document.getElementById('tl-search');
+  var gradeEl = document.getElementById('tl-filter-grade');
+  var typeEl = document.getElementById('tl-filter-type');
+
+  function applyFilters() {
+    var q = searchEl.value.toLowerCase();
+    var grade = gradeEl.value;
+    var type = typeEl.value;
+    var filtered = resources.filter(function (r) {
+      var matchQ = !q || r.title.toLowerCase().includes(q) || r.description.toLowerCase().includes(q);
+      var matchGrade = !grade || r.grade === grade;
+      var matchType = !type || r.type === type;
+      return matchQ && matchGrade && matchType;
+    });
+    renderCards(filtered);
+  }
+
+  searchEl.addEventListener('input', applyFilters);
+  gradeEl.addEventListener('change', applyFilters);
+  typeEl.addEventListener('change', applyFilters);
+
+  document.getElementById('tl-clear-filters').addEventListener('click', function () {
+    searchEl.value = '';
+    gradeEl.value = '';
+    typeEl.value = '';
+    renderCards(resources);
+  });
+
+  // ── Toast ──
+  function showToast(msg) {
+    var toast = document.getElementById('tl-toast');
+    toast.textContent = msg;
+    toast.classList.add('tl-toast--visible');
+    setTimeout(function () { toast.classList.remove('tl-toast--visible'); }, 4000);
+  }
+
+})();
+</script>
+</body>
+</html>
