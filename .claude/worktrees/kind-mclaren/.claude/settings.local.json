@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -B 2 \"Privacy Policy\" \"/c/Users/Admin/Documents/Crows Call Press/CCP Website\"/**/*.html)",
+      "Bash(grep -v \":0$\")",
+      "Bash(for file:*)",
+      "Bash(do)",
+      "Bash(sed -i 's|<meta name=\"\"twitter:card\"\" content=\"\"summary_large_image\"\">|<meta name=\"\"twitter:card\"\" content=\"\"summary_large_image\"\">\\\\n<meta name=\"\"twitter:image\"\" content=\"\"https://crowscallpress.com/images/image02.jpg\"\">|' \"$file\")",
+      "Bash(echo \"Done: $file\")",
+      "Bash(done)",
+      "Bash(sed -i 's|<img src=\"\"../images/The_Crow_and_the_Pitcher|<img loading=\"\"lazy\"\" src=\"\"../images/The_Crow_and_the_Pitcher|g' \"/c/Users/Admin/Documents/Crows Call Press/CCP Website/about/index.html\")",
+      "Bash(__NEW_LINE_9713fbe7e76d3093__ sed:*)",
+      "Bash(__NEW_LINE_9713fbe7e76d3093__ echo:*)"
+    ]
+  }
+}
