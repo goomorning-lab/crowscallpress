@@ -1,3 +1,28 @@
+// Back to top button
+(function() {
+  var btt = document.createElement('button');
+  btt.className = 'back-to-top';
+  btt.setAttribute('aria-label', 'Back to top');
+  btt.innerHTML = '↑';
+  document.body.appendChild(btt);
+  btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 400) btt.classList.add('visible');
+    else btt.classList.remove('visible');
+  }, { passive: true });
+})();
+
+// Active nav highlighting
+(function() {
+  var path = window.location.pathname;
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (!href || link.classList.contains('nav-cta') || link.classList.contains('nav-lang')) return;
+    if (href === '/' && path === '/') link.classList.add('nav-active');
+    else if (href !== '/' && path.startsWith(href)) link.classList.add('nav-active');
+  });
+})();
+
 // Cookie consent banner
 (function() {
   if (localStorage.getItem('cookieConsent')) return;

@@ -55,4 +55,16 @@
     <priority>0.3</priority>
   </url>
 
+  <url>
+    <loc>https://crowscallpress.com/contact/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://crowscallpress.com/ko/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
