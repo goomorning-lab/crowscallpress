@@ -204,6 +204,94 @@
   line-height: 1.6;
 }
 
+/* ── Teaching Tools section ─────────────────────────────── */
+.tl-tools-section {
+  background: var(--cream-deep, #ede6d8);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding: 2rem 2rem 2.25rem;
+}
+.tl-tools-inner { max-width: 1200px; margin: 0 auto; }
+
+.tl-tools-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.45;
+  margin-bottom: 1rem;
+}
+
+.tl-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+
+.tl-tool-card {
+  display: flex;
+  align-items: stretch;
+  background: var(--warm-white, #faf8f4);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--ink, #1c1c1c);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.tl-tool-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.tl-tool-thumb {
+  width: 110px;
+  flex-shrink: 0;
+  background: var(--parchment, #e8e0d0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.tl-tool-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tl-tool-thumb--icon { background: var(--sage-pale, #ddeee4); }
+.tl-tool-icon { font-size: 2.2rem; line-height: 1; }
+
+.tl-tool-body {
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.tl-tool-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink, #1c1c1c);
+}
+
+.tl-tool-desc {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  opacity: 0.55;
+  flex: 1;
+}
+
+.tl-tool-cta {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--rust, #b85c3a);
+  margin-top: 0.15rem;
+}
+
 /* ── Filter bar ─────────────────────────────────────────── */
 .tl-filter-bar {
   background: var(--cream, #f5f0e8);
@@ -485,4 +573,6 @@
   .tl-grid { grid-template-columns: 1fr; }
 
   .tl-card-body { padding: 1.2rem; }
+  .tl-tools-grid { grid-template-columns: 1fr; }
+  .tl-tool-thumb { width: 90px; }
 }

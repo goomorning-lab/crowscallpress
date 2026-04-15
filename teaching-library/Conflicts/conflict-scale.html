@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conflict Scale — Crow's Call Press</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #1c1c1c;
+    --ink-mid:    #3d3028;
+    --ink-light:  #7a6a5a;
+    --ink-faint:  #c4b8ad;
+    --cream:      #f5f0e8;
+    --cream-deep: #ede6d8;
+    --warm-white: #faf8f4;
+    --rust:       #b85c3a;
+    --rust-pale:  #f5e2db;
+    --gold:       #c9a84c;
+    --gold-pale:  #f5ecd0;
+    --sage:       #4a6e5a;
+    --sage-pale:  #ddeee4;
+    --parchment:  #e8e0d0;
+    --rule:       #d4c9bc;
+    --navy:       #1e2d4a;
+    --teal:       #3a6b7a;
+    --teal-pale:  #d4eaf0;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body:    'DM Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  header h1 { font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; letter-spacing: 0.04em; }
+  header .sub { font-size: 0.75rem; opacity: 0.55; margin-top: 1px; }
+  .badge {
+    background: var(--rust); color: #fff;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em;
+    padding: 4px 12px; border-radius: 3px; text-transform: uppercase;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    background: var(--ink-mid); color: var(--cream);
+    text-align: center; padding: 15px 30px;
+    font-size: 0.875rem; line-height: 1.65;
+    border-bottom: 2px solid var(--gold);
+  }
+  .intro strong { color: var(--gold); }
+
+  /* ── PAGE ── */
+  .page { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  /* ── CARD BANK ── */
+  .bank-label {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-light); text-align: center; margin-bottom: 14px;
+  }
+
+  .card-bank {
+    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+
+  /* Conflict blocks — the draggable rounded rectangles */
+  .conflict-block {
+    display: flex; flex-direction: column; align-items: center;
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px 18px 14px;
+    width: 155px;
+    box-shadow: 0 2px 12px rgba(30,45,74,0.1);
+    border: 2px solid var(--rule);
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-align: center;
+    position: relative;
+  }
+  .conflict-block:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(30,45,74,0.16);
+  }
+  .conflict-block:active { cursor: grabbing; }
+  .conflict-block.dragging { opacity: 0.3; transform: scale(0.96); }
+
+  .drag-hint {
+    position: absolute; top: 6px; right: 8px;
+    font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint); font-style: italic;
+  }
+
+  .block-icon { font-size: 1.6rem; display: block; margin-bottom: 6px; line-height: 1; }
+  .block-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; display: block; margin-bottom: 8px; }
+  .block-chips { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; }
+  .block-chip {
+    font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 2px 6px; border-radius: 20px; font-weight: 500;
+  }
+
+  /* Type colours */
+  .type-character .block-name { color: var(--rust); }
+  .type-character .block-chip { background: var(--rust-pale); color: var(--rust); }
+  .type-character { border-color: var(--rust); }
+
+  .type-self .block-name { color: #a07c28; }
+  .type-self .block-chip { background: var(--gold-pale); color: #a07c28; }
+  .type-self { border-color: var(--gold); }
+
+  .type-society .block-name { color: var(--sage); }
+  .type-society .block-chip { background: var(--sage-pale); color: var(--sage); }
+  .type-society { border-color: var(--sage); }
+
+  .type-nature .block-name { color: var(--teal); }
+  .type-nature .block-chip { background: var(--teal-pale); color: var(--teal); }
+  .type-nature { border-color: var(--teal); }
+
+  .type-fate .block-name { color: var(--navy); }
+  .type-fate .block-chip { background: var(--parchment); color: var(--navy); }
+  .type-fate { border-color: var(--navy); }
+
+  /* ── SCALE ── */
+  .scale-section { margin-bottom: 36px; }
+
+  .scale-scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Beam assembly */
+  .beam-assembly {
+    position: relative;
+    width: 560px;
+    height: 60px;
+    flex-shrink: 0;
+  }
+
+  .beam-arm {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transform-origin: center center;
+    width: 520px;
+    height: 8px;
+    background: var(--ink-mid);
+    border-radius: 4px;
+    transition: none;
+  }
+
+  .beam-arm.settling {
+    animation: scaleSettle 1.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+  }
+
+  @keyframes scaleSettle {
+    0%   { transform: translate(-50%, -50%) rotate(0deg); }
+    18%  { transform: translate(-50%, -50%) rotate(-6deg); }
+    36%  { transform: translate(-50%, -50%) rotate(5deg); }
+    54%  { transform: translate(-50%, -50%) rotate(-3deg); }
+    70%  { transform: translate(-50%, -50%) rotate(1.8deg); }
+    84%  { transform: translate(-50%, -50%) rotate(-0.6deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+  }
+
+  .beam-pivot {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px; height: 16px;
+    background: var(--ink-mid);
+    border-radius: 50%;
+    border: 3px solid var(--warm-white);
+    z-index: 2;
+  }
+
+  /* Chains row — visually connects beam ends to pans */
+  .chains-row {
+    width: 520px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 14px;
+    height: 44px;
+  }
+
+  .chain {
+    width: 2px;
+    height: 100%;
+    background: var(--ink-faint);
+    border-radius: 1px;
+  }
+
+  /* Pans + fulcrum */
+  .pans-row {
+    display: flex;
+    width: 100%;
+    max-width: 760px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .pan-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  .pan-label {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 8px;
+  }
+
+  .scale-pan {
+    width: 100%;
+    max-width: 290px;
+    min-height: 180px;
+    border: 2.5px dashed var(--rule);
+    border-radius: 18px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 22px 18px;
+    position: relative;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    /* Pan bottom "rim" effect */
+    box-shadow: 0 4px 0 var(--rule), 0 6px 12px rgba(30,45,74,0.07);
+  }
+
+  .scale-pan.drag-over {
+    border-color: var(--gold);
+    background: var(--gold-pale);
+    box-shadow: 0 4px 0 var(--gold), 0 0 0 4px rgba(201,168,76,0.18);
+  }
+
+  .scale-pan.has-block { border-style: solid; border-width: 2.5px; }
+
+  .scale-pan.has-block.type-character {
+    border-color: var(--rust); background: #fef8f6;
+    box-shadow: 0 4px 0 var(--rust), 0 6px 14px rgba(184,92,58,0.12);
+  }
+  .scale-pan.has-block.type-self {
+    border-color: var(--gold); background: #fdf9ed;
+    box-shadow: 0 4px 0 var(--gold), 0 6px 14px rgba(201,168,76,0.12);
+  }
+  .scale-pan.has-block.type-society {
+    border-color: var(--sage); background: #f4f9f6;
+    box-shadow: 0 4px 0 var(--sage), 0 6px 14px rgba(74,110,90,0.12);
+  }
+  .scale-pan.has-block.type-nature {
+    border-color: var(--teal); background: #f2f8fa;
+    box-shadow: 0 4px 0 var(--teal), 0 6px 14px rgba(58,107,122,0.12);
+  }
+  .scale-pan.has-block.type-fate {
+    border-color: var(--navy); background: #f3f4f8;
+    box-shadow: 0 4px 0 var(--navy), 0 6px 14px rgba(30,45,74,0.14);
+  }
+
+  .pan-empty-hint { color: var(--ink-faint); font-style: italic; font-size: 0.84rem; line-height: 1.65; }
+  .pan-empty-icon { font-size: 1.8rem; display: block; margin-bottom: 8px; opacity: 0.3; }
+
+  .pan-block-icon { font-size: 1.7rem; display: block; margin-bottom: 6px; }
+  .pan-block-name {
+    font-family: var(--font-display); font-size: 1.6rem; font-weight: 600;
+    display: block; margin-bottom: 10px; line-height: 1;
+  }
+  .pan-chips { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+  .pan-chip {
+    font-size: 0.54rem; letter-spacing: 0.13em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 20px; font-weight: 500;
+  }
+
+  .pan-remove {
+    position: absolute; top: 10px; right: 10px;
+    background: none; border: 1px solid var(--rule);
+    border-radius: 50%; width: 24px; height: 24px;
+    font-size: 0.65rem; cursor: pointer; color: var(--ink-light);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    z-index: 2;
+  }
+  .pan-remove:hover { background: var(--rust); color: #fff; border-color: var(--rust); }
+
+  /* Center fulcrum column */
+  .fulcrum-col {
+    display: flex; flex-direction: column; align-items: center;
+    flex-shrink: 0; padding-top: 20px;
+  }
+
+  .vs-badge {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--cream-deep); border: 2px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 0.92rem; font-style: italic;
+    color: var(--ink-faint);
+    transition: background 0.35s, border-color 0.35s, color 0.35s, box-shadow 0.35s;
+  }
+  .vs-badge.active {
+    background: var(--navy); border-color: var(--navy);
+    color: #fff; box-shadow: 0 0 0 4px rgba(30,45,74,0.14);
+  }
+
+  .fulcrum-stem {
+    width: 5px; height: 38px; background: var(--ink-faint);
+    border-radius: 3px; margin-top: 0;
+    transition: background 0.35s;
+  }
+  .fulcrum-stem.active { background: var(--ink-mid); }
+
+  .fulcrum-base {
+    width: 0; height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 26px solid var(--ink-faint);
+    transition: border-top-color 0.35s;
+  }
+  .fulcrum-base.active { border-top-color: var(--ink-mid); }
+
+  /* ── ANALYSIS PANEL ── */
+  .analysis {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 2px 16px rgba(30,45,74,0.09);
+    overflow: hidden;
+  }
+
+  .analysis-empty {
+    padding: 38px 30px;
+    text-align: center;
+    color: var(--ink-light);
+    font-style: italic;
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+  .analysis-empty strong { font-style: normal; color: var(--ink-mid); }
+
+  .analysis-content { display: none; }
+  .analysis-content.show { display: block; animation: fadeUp 0.35s ease; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .analysis-header {
+    padding: 22px 30px 18px;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .a-label { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 2px; }
+  .a-title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 3px; }
+  .a-tagline { font-size: 0.88rem; color: var(--ink-light); font-style: italic; }
+
+  .analysis-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .analysis-col { padding: 22px 30px; }
+  .analysis-col:first-child { border-right: 1px solid var(--rule); }
+
+  .sec-label {
+    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-light); margin-bottom: 10px; display: block;
+  }
+  .analysis-text { font-size: 0.9rem; line-height: 1.75; color: var(--ink-mid); }
+
+  .tension-box {
+    background: var(--gold-pale); border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0; padding: 12px 16px; margin-top: 16px;
+  }
+  .tension-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: #a07c28; margin-bottom: 3px; font-weight: 500; }
+  .tension-q { font-family: var(--font-display); font-size: 0.93rem; font-style: italic; color: var(--ink-mid); line-height: 1.5; }
+
+  .example-box {
+    background: var(--cream-deep); border-radius: 8px; padding: 14px 16px; margin-bottom: 18px;
+  }
+  .ex-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 5px; display: block; }
+  .ex-work { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--navy); display: block; margin-bottom: 5px; }
+  .ex-detail { font-size: 0.83rem; color: var(--ink-mid); line-height: 1.65; }
+
+.btn {
+    background: var(--navy); color: var(--cream); border: none;
+    border-radius: 3px; padding: 8px 20px;
+    font-family: var(--font-body); font-size: 0.82rem;
+    font-weight: 500; letter-spacing: 0.06em;
+    cursor: pointer; transition: background 0.18s;
+  }
+  .btn:hover { background: #2a3f6b; }
+  .btn.ghost {
+    background: transparent; color: var(--ink-light);
+    border: 1px solid var(--rule);
+  }
+  .btn.ghost:hover { background: var(--cream-deep); color: var(--ink); }
+
+  /* ── TIP ── */
+  .tip-bar {
+    background: var(--sage-pale); border: 1px solid #a8c8b8;
+    border-radius: 6px; padding: 10px 18px;
+    font-size: 0.82rem; color: var(--sage);
+    margin-top: 20px;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .tip-bar strong { color: var(--sage); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .beam-assembly, .chains-row { display: none; }
+    .pans-row { flex-direction: column; align-items: center; }
+    .fulcrum-col { flex-direction: row; padding-top: 0; gap: 10px; }
+    .fulcrum-stem { width: 36px; height: 5px; }
+    .fulcrum-base { display: none; }
+    .analysis-body { grid-template-columns: 1fr; }
+    .analysis-col:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
+    header { padding: 14px 20px; }
+    .page { padding: 20px 14px 48px; }
+    .conflict-block { width: 130px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Crow's Call Press</h1>
+    <div class="sub">Literary Education Tools</div>
+  </div>
+  <span class="badge">Conflict Scale</span>
+</header>
+
+<div class="intro">
+  <strong>Drag</strong> any two conflict blocks onto the scale to explore how they oppose each other and what kind of story they create.
+</div>
+
+<div class="page">
+
+  <!-- CARD BANK -->
+  <div class="bank-label">Conflict Types — Drag to either side of the scale</div>
+  <div class="card-bank">
+
+    <div class="conflict-block type-character" draggable="true" data-type="character">
+      <span class="drag-hint">drag</span>
+      <span class="block-icon">⚔️</span>
+      <span class="block-name">Character</span>
+      <div class="block-chips">
+        <span class="block-chip">Confrontation</span>
+        <span class="block-chip">Rivalry</span>
+        <span class="block-chip">Morality</span>
+      </div>
+    </div>
+
+    <div class="conflict-block type-self" draggable="true" data-type="self">
+      <span class="drag-hint">drag</span>
+      <span class="block-icon">🪞</span>
+      <span class="block-name">Self</span>
+      <div class="block-chips">
+        <span class="block-chip">Internal</span>
+        <span class="block-chip">Emotions</span>
+        <span class="block-chip">Choices</span>
+      </div>
+    </div>
+
+    <div class="conflict-block type-society" draggable="true" data-type="society">
+      <span class="drag-hint">drag</span>
+      <span class="block-icon">⚖️</span>
+      <span class="block-name">Society</span>
+      <div class="block-chips">
+        <span class="block-chip">Rules</span>
+        <span class="block-chip">Norms</span>
+        <span class="block-chip">Rebellion</span>
+      </div>
+    </div>
+
+    <div class="conflict-block type-nature" draggable="true" data-type="nature">
+      <span class="drag-hint">drag</span>
+      <span class="block-icon">🌊</span>
+      <span class="block-name">Nature</span>
+      <div class="block-chips">
+        <span class="block-chip">Elements</span>
+        <span class="block-chip">Survival</span>
+        <span class="block-chip">Wilderness</span>
+      </div>
+    </div>
+
+    <div class="conflict-block type-fate" draggable="true" data-type="fate">
+      <span class="drag-hint">drag</span>
+      <span class="block-icon">✦</span>
+      <span class="block-name">Fate</span>
+      <div class="block-chips">
+        <span class="block-chip">Destiny</span>
+        <span class="block-chip">Fortune</span>
+        <span class="block-chip">Chance</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCALE -->
+  <div class="scale-section">
+    <div class="scale-scene">
+
+      <!-- Beam -->
+      <div class="beam-assembly">
+        <div class="beam-arm" id="beamArm"></div>
+        <div class="beam-pivot"></div>
+      </div>
+
+      <!-- Chains connecting beam ends to pans -->
+      <div class="chains-row">
+        <div class="chain"></div>
+        <div class="chain"></div>
+      </div>
+
+      <!-- The two pans + center fulcrum -->
+      <div class="pans-row">
+
+        <div class="pan-col">
+          <div class="pan-label">Side One</div>
+          <div class="scale-pan" id="zoneLeft" data-zone="left">
+            <div class="pan-empty-hint" id="emptyLeft">
+              <span class="pan-empty-icon">⬡</span>
+              Drop a conflict block here
+            </div>
+            <div id="contentLeft" style="display:none;"></div>
+          </div>
+        </div>
+
+        <div class="fulcrum-col">
+          <div class="vs-badge" id="vsBadge">vs.</div>
+          <div class="fulcrum-stem" id="fulcrumStem"></div>
+          <div class="fulcrum-base" id="fulcrumBase"></div>
+        </div>
+
+        <div class="pan-col">
+          <div class="pan-label">Side Two</div>
+          <div class="scale-pan" id="zoneRight" data-zone="right">
+            <div class="pan-empty-hint" id="emptyRight">
+              <span class="pan-empty-icon">⬡</span>
+              Drop a conflict block here
+            </div>
+            <div id="contentRight" style="display:none;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ANALYSIS PANEL -->
+  <div class="analysis">
+    <div class="analysis-empty" id="analysisEmpty">
+      Place conflict blocks on <strong>both sides</strong> of the scale to reveal how they oppose each other —
+      the dramatic tension, thematic weight, and an example from literature.
+    </div>
+    <div class="analysis-content" id="analysisContent">
+      <div class="analysis-header">
+        <div>
+          <div class="a-label">Conflict Classification</div>
+          <div class="a-title" id="aTitle"></div>
+          <div class="a-tagline" id="aTagline"></div>
+        </div>
+        <button class="btn ghost" onclick="clearAll()">Clear Scale</button>
+      </div>
+      <div class="analysis-body">
+        <div class="analysis-col">
+          <span class="sec-label">What This Conflict Explores</span>
+          <div class="analysis-text" id="aDesc"></div>
+          <div class="tension-box">
+            <div class="tension-label">Central Tension</div>
+            <div class="tension-q" id="aTension"></div>
+          </div>
+        </div>
+        <div class="analysis-col">
+          <span class="sec-label">Example from Literature</span>
+          <div class="example-box">
+            <span class="ex-label">Story</span>
+            <span class="ex-work" id="aWork"></span>
+            <span class="ex-detail" id="aDetail"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-bar">
+    <span>💡</span>
+    <span><strong>Teacher Tip:</strong> The main conflict often reveals the story's <em>theme</em> — the issue or question the author wants to explore. Ask students: what does each side of this conflict believe? What would it mean for each side to "win"?</span>
+  </div>
+
+</div>
+
+<script>
+// ── TYPE DATA ─────────────────────────────────────────────
+const TYPES = {
+  character: {
+    name: 'Character', icon: '⚔️', cssClass: 'type-character',
+    color: '#b85c3a', pale: '#f5e2db',
+    keywords: ['Confrontation', 'Opponent', 'External', 'Rivalry', 'Morality']
+  },
+  self: {
+    name: 'Self', icon: '🪞', cssClass: 'type-self',
+    color: '#a07c28', pale: '#f5ecd0',
+    keywords: ['Internal', 'Emotions', 'Choices']
+  },
+  society: {
+    name: 'Society', icon: '⚖️', cssClass: 'type-society',
+    color: '#4a6e5a', pale: '#ddeee4',
+    keywords: ['Rules', 'Norms', 'Injustice', 'Rebellion']
+  },
+  nature: {
+    name: 'Nature', icon: '🌊', cssClass: 'type-nature',
+    color: '#3a6b7a', pale: '#d4eaf0',
+    keywords: ['Environment', 'Elements', 'Survival', 'Wilderness']
+  },
+  fate: {
+    name: 'Fate', icon: '✦', cssClass: 'type-fate',
+    color: '#1e2d4a', pale: '#e8e0d0',
+    keywords: ['Circumstances', 'Destiny', 'Predestination', 'Fortune']
+  }
+};
+
+// ── COMBO DATA ────────────────────────────────────────────
+const COMBOS = {
+  'character-character': {
+    title: 'Character vs. Character',
+    tagline: 'Two wills, one victor',
+    tension: 'Who has the stronger claim — and what will each sacrifice to prevail?',
+    description: 'The most direct form of conflict: two characters with opposing goals collide. This creates rivalry, betrayal, mentorship gone wrong, or ideological war. The drama lives in the gap between what each side wants and why they want it.',
+    example: { work: 'Harry Potter', detail: 'Harry vs. Voldemort — good vs. evil, love vs. fear, two sides of the same prophecy locked in mutual destruction. Neither can live while the other survives.' }
+  },
+  'character-self': {
+    title: 'Character vs. Self',
+    tagline: 'The war within',
+    tension: 'Can this person become who they need to be — or will their own fear stop them?',
+    description: 'The character\'s greatest enemy is their own doubt, guilt, desire, or belief. The external world provides the pressure, but the real battle is internal — between who they are and who they must become.',
+    example: { work: 'Coraline', detail: 'Coraline vs. Self-Doubt — to save her parents and the ghost children, she must confront fear with bravery and take risks instead of staying passive and safe.' }
+  },
+  'character-society': {
+    title: 'Character vs. Society',
+    tagline: 'One against the many',
+    tension: 'What does it cost to stand apart — and is the fight worth what must be given up?',
+    description: 'A character finds themselves at odds with the rules, values, or expectations of their world. This conflict drives stories of rebellion, reform, outcasts, and visionaries who see what others refuse to.',
+    example: { work: 'The Hunger Games', detail: 'Katniss Everdeen vs. the Capitol — one girl\'s defiance ignites a revolution against a system designed to keep people powerless and afraid.' }
+  },
+  'character-nature': {
+    title: 'Character vs. Nature',
+    tagline: 'Human will against the wild',
+    tension: 'Can human strength and ingenuity outlast a world that doesn\'t care if we survive?',
+    description: 'A character must struggle against the indifferent power of the natural world. Nature doesn\'t hate the protagonist — it simply is. Survival depends on adaptability, courage, and resourcefulness in the face of vast indifference.',
+    example: { work: 'Hatchet', detail: 'Brian Robeson must survive alone in the Canadian wilderness after a plane crash, learning to read nature\'s rules or perish without any rescuer coming.' }
+  },
+  'character-fate': {
+    title: 'Character vs. Fate',
+    tagline: 'Defiance against the inevitable',
+    tension: 'Is free will real — or are we actors in a story already written?',
+    description: 'A character strains against destiny, prophecy, or circumstances they did not choose. This conflict asks the deepest question: can human agency overpower forces that predate and outlast any single life?',
+    example: { work: 'Coraline', detail: 'Coraline vs. The Rules of the Other Mother\'s World — she outsmarks a fate that has claimed others before her, bending the rules with cleverness and sheer willpower.' }
+  },
+  'self-self': {
+    title: 'Self vs. Self',
+    tagline: 'Divided against oneself',
+    tension: 'Which version of this person will survive — and at what cost to the other?',
+    description: 'The character holds two irreconcilable parts of themselves in direct opposition — past vs. future self, suppressed identity vs. performed identity. Rare and deeply psychological, this is the most intimate battlefield in fiction.',
+    example: { work: 'Strange Case of Dr Jekyll and Mr Hyde', detail: 'Jekyll\'s rational self wages war against Hyde\'s uninhibited nature — two personalities in one body, neither able to fully destroy the other.' }
+  },
+  'self-society': {
+    title: 'Self vs. Society',
+    tagline: 'Inner truth against outer pressure',
+    tension: 'Is belonging worth the cost of becoming someone else?',
+    description: 'The character\'s private values, identity, or sense of self conflicts with what the world demands of them. This is the conflict of conformity — of being asked to erase yourself to belong, to perform instead of simply be.',
+    example: { work: 'The Perks of Being a Wallflower', detail: 'Charlie\'s fragile inner world collides with the social performances of high school — authenticity vs. the relentless pressure to fit in and be seen.' }
+  },
+  'self-nature': {
+    title: 'Self vs. Nature',
+    tagline: 'Mind and body in the wild',
+    tension: 'When the body is at its limit, what does the inner self reveal?',
+    description: 'Physical survival strips away social armor, forcing a reckoning with who the character truly is. The wilderness becomes a mirror — reflecting the character\'s psychological state back at them with brutal clarity.',
+    example: { work: 'Into the Wild', detail: 'Christopher McCandless seeks truth in the Alaskan wilderness, but his rejection of society leads to a confrontation with both nature and his own illusions about himself.' }
+  },
+  'self-fate': {
+    title: 'Self vs. Fate',
+    tagline: 'Acceptance or resistance',
+    tension: 'How much of who we are is chosen — and how much is simply given to us?',
+    description: 'A character grapples with their own identity in relation to forces they didn\'t choose: illness, trauma, prophecy, loss. The conflict is between surrendering to what is written and insisting on the right to author oneself.',
+    example: { work: 'The Fault in Our Stars', detail: 'Hazel Grace must reconcile her sense of self with a terminal diagnosis she didn\'t choose — finding meaning and love within a fate she cannot escape or change.' }
+  },
+  'society-society': {
+    title: 'Society vs. Society',
+    tagline: 'System against system',
+    tension: 'When two worlds collide, which values survive — and which are buried with the dead?',
+    description: 'Two opposing social structures, cultures, or factions clash. Neither is purely right or wrong — each has its own internal logic. The conflict reveals how human communities construct meaning and defend it at great cost.',
+    example: { work: 'Romeo and Juliet', detail: 'The Montagues and Capulets — two social systems locked in generational hatred that destroys the very things each claims to protect.' }
+  },
+  'society-nature': {
+    title: 'Society vs. Nature',
+    tagline: 'Order vs. the untameable',
+    tension: 'Can civilization hold its shape when nature refuses to be controlled?',
+    description: 'The structures humans build — laws, cities, economies — strain against the indifference of the natural world. This conflict asks whether human order is true strength or simply fragility well-disguised.',
+    example: { work: 'Coraline', detail: 'Normal People vs. the Other World — ordinary society ignores danger while nature\'s uncanny side intrudes and consumes those who don\'t heed the warning. Coraline\'s actions keep both worlds from colliding.' }
+  },
+  'society-fate': {
+    title: 'Society vs. Fate',
+    tagline: 'Collective will against the inevitable',
+    tension: 'Can a people reshape their destiny together — or are some forces too large for any community?',
+    description: 'A society faces a fate it cannot outrun: prophecy, ecological collapse, historical reckoning. The story examines how communities respond to forces larger than any individual — with denial, sacrifice, or transformation.',
+    example: { work: 'Coraline', detail: 'Ghost Children vs. Forgetting — a lost society of souls reaches out for rescue while fate works to erase their voices and identities forever. Coraline rescues them, defeating oblivion and granting them peace.' }
+  },
+  'nature-nature': {
+    title: 'Nature vs. Nature',
+    tagline: 'Force against force',
+    tension: 'When no human will shapes the outcome, what laws govern who survives?',
+    description: 'Natural forces oppose each other — predator and prey, storm and shoreline, fire and forest. Rare as a primary conflict, but powerful as backdrop or metaphor. Characters caught between natural forces have no moral opponent to reason with.',
+    example: { work: 'The Call of the Wild', detail: 'Buck\'s domesticated nature wars against his awakening wild instincts — two versions of nature competing within one creature for dominance over who he will become.' }
+  },
+  'nature-fate': {
+    title: 'Nature vs. Fate',
+    tagline: 'Wild chance and predestined end',
+    tension: 'Is a natural disaster the hand of fate — or meaningless chaos we choose to make meaningful?',
+    description: 'The forces of the natural world intersect with questions of destiny. A storm, plague, or famine arrives not by any character\'s will — and survivors must decide whether it was random, ordained, or something they can yet defy.',
+    example: { work: 'Life of Pi', detail: 'Pi\'s survival at sea pits him against nature\'s violence and fate\'s apparent indifference — forcing him to construct meaning in circumstances no one could have chosen or prepared for.' }
+  },
+  'fate-fate': {
+    title: 'Fate vs. Fate',
+    tagline: 'Competing destinies',
+    tension: 'What happens when two ordained outcomes cannot both be true — and something must shatter?',
+    description: 'Two prophecies, two destinies, two inescapable outcomes that cannot coexist. This conflict sits at the heart of epic and mythological storytelling — when fate itself is divided, the resulting collision reshapes the world.',
+    example: { work: 'Macbeth', detail: 'Macbeth\'s prophesied rise vs. Banquo\'s prophesied line — two fates that cannot both be fulfilled in full, setting in motion a chain of destruction that ultimately consumes them both.' }
+  }
+};
+
+// ── STATE ─────────────────────────────────────────────────
+let zones = { left: null, right: null };
+let dragType = null;
+
+// ── MOUSE DRAG ────────────────────────────────────────────
+document.querySelectorAll('.conflict-block').forEach(card => {
+  card.addEventListener('dragstart', e => {
+    dragType = card.dataset.type;
+    card.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'copy';
+  });
+  card.addEventListener('dragend', () => {
+    card.classList.remove('dragging');
+    dragType = null;
+  });
+});
+
+document.querySelectorAll('.scale-pan').forEach(pan => {
+  pan.addEventListener('dragover', e => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+    pan.classList.add('drag-over');
+  });
+  pan.addEventListener('dragleave', e => {
+    if (!pan.contains(e.relatedTarget)) pan.classList.remove('drag-over');
+  });
+  pan.addEventListener('drop', e => {
+    e.preventDefault();
+    pan.classList.remove('drag-over');
+    if (dragType) setZone(pan.dataset.zone, dragType);
+  });
+});
+
+// ── TOUCH DRAG ────────────────────────────────────────────
+let touchType = null, ghost = null;
+
+document.querySelectorAll('.conflict-block').forEach(card => {
+  card.addEventListener('touchstart', e => {
+    touchType = card.dataset.type;
+    ghost = card.cloneNode(true);
+    ghost.style.cssText = `position:fixed;pointer-events:none;opacity:0.88;z-index:9999;width:${card.offsetWidth}px;transform:scale(1.07);border-radius:14px;`;
+    document.body.appendChild(ghost);
+    moveGhost(e.touches[0]);
+  }, { passive: true });
+
+  card.addEventListener('touchmove', e => {
+    e.preventDefault();
+    moveGhost(e.touches[0]);
+    highlightPanUnder(e.touches[0]);
+  }, { passive: false });
+
+  card.addEventListener('touchend', e => {
+    const touch = e.changedTouches[0];
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    const pan = el?.closest('.scale-pan');
+    if (pan && touchType) setZone(pan.dataset.zone, touchType);
+    if (ghost) { ghost.remove(); ghost = null; }
+    document.querySelectorAll('.scale-pan').forEach(p => p.classList.remove('drag-over'));
+    touchType = null;
+  });
+});
+
+function moveGhost(touch) {
+  if (!ghost) return;
+  ghost.style.left = (touch.clientX - ghost.offsetWidth / 2) + 'px';
+  ghost.style.top  = (touch.clientY - ghost.offsetHeight / 2) + 'px';
+}
+
+function highlightPanUnder(touch) {
+  document.querySelectorAll('.scale-pan').forEach(p => p.classList.remove('drag-over'));
+  const el = document.elementFromPoint(touch.clientX, touch.clientY);
+  const pan = el?.closest('.scale-pan');
+  if (pan) pan.classList.add('drag-over');
+}
+
+// ── ZONE LOGIC ────────────────────────────────────────────
+function setZone(side, type) {
+  zones[side] = type;
+  renderPan(side);
+  updateAll();
+}
+
+function clearZone(side) {
+  zones[side] = null;
+  renderPan(side);
+  updateAll();
+}
+
+function clearAll() {
+  zones = { left: null, right: null };
+  renderPan('left');
+  renderPan('right');
+  updateAll();
+}
+
+function renderPan(side) {
+  const type = zones[side];
+  const capSide = side.charAt(0).toUpperCase() + side.slice(1);
+  const pan = document.getElementById('zone' + capSide);
+  const emptyEl = document.getElementById('empty' + capSide);
+  const contentEl = document.getElementById('content' + capSide);
+
+  // remove all type classes
+  Object.values(TYPES).forEach(t => pan.classList.remove(t.cssClass));
+  pan.classList.remove('has-block');
+
+  if (!type) {
+    emptyEl.style.display = '';
+    contentEl.style.display = 'none';
+    contentEl.innerHTML = '';
+    return;
+  }
+
+  const t = TYPES[type];
+  pan.classList.add('has-block', t.cssClass);
+  emptyEl.style.display = 'none';
+  contentEl.style.display = '';
+  contentEl.innerHTML = `
+    <button class="pan-remove" onclick="clearZone('${side}')" title="Remove">✕</button>
+    <span class="pan-block-icon">${t.icon}</span>
+    <span class="pan-block-name" style="color:${t.color}">${t.name}</span>
+    <div class="pan-chips">
+      ${t.keywords.map(k => `<span class="pan-chip" style="background:${t.pale};color:${t.color}">${k}</span>`).join('')}
+    </div>
+  `;
+}
+
+function updateAll() {
+  const { left, right } = zones;
+  const bothFilled = !!(left && right);
+
+  // Fulcrum activation
+  document.getElementById('vsBadge').classList.toggle('active', bothFilled);
+  document.getElementById('fulcrumStem').classList.toggle('active', bothFilled);
+  document.getElementById('fulcrumBase').classList.toggle('active', bothFilled);
+
+  // Beam sway animation
+  const beam = document.getElementById('beamArm');
+  beam.classList.remove('settling');
+  if (bothFilled) {
+    void beam.offsetWidth; // reflow to restart animation
+    beam.classList.add('settling');
+  }
+
+  // Analysis panel
+  const empty = document.getElementById('analysisEmpty');
+  const content = document.getElementById('analysisContent');
+
+  if (!bothFilled) {
+    empty.style.display = '';
+    content.classList.remove('show');
+    return;
+  }
+
+  empty.style.display = 'none';
+
+  const key = COMBOS[`${left}-${right}`] ? `${left}-${right}` : `${right}-${left}`;
+  const combo = COMBOS[key];
+  if (!combo) return;
+
+  document.getElementById('aTitle').textContent = combo.title;
+  document.getElementById('aTagline').textContent = `"${combo.tagline}"`;
+  document.getElementById('aDesc').textContent = combo.description;
+  document.getElementById('aTension').textContent = combo.tension;
+  document.getElementById('aWork').textContent = combo.example.work;
+  document.getElementById('aDetail').textContent = combo.example.detail;
+
+  content.classList.remove('show');
+  void content.offsetWidth;
+  content.classList.add('show');
+}
+</script>
+</body>
+</html>
