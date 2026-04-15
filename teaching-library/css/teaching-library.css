@@ -259,6 +259,7 @@
   display: block;
 }
 .tl-tool-thumb--icon { background: var(--sage-pale, #ddeee4); }
+.tl-tool-thumb--gold { background: var(--gold-pale, #f5ecd0); }
 .tl-tool-icon { font-size: 2.2rem; line-height: 1; }
 
 .tl-tool-body {
