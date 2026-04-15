@@ -236,11 +236,18 @@
   overflow: hidden;
   text-decoration: none;
   color: var(--ink, #1c1c1c);
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.22s ease, transform 0.22s ease, opacity 0.15s ease;
+  position: relative;
 }
 .tl-tool-card:hover {
   box-shadow: 0 6px 24px rgba(0,0,0,0.1);
   transform: translateY(-2px);
+}
+.tl-tool-card:active {
+  transform: scale(0.97) translateY(0);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  opacity: 0.88;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, opacity 0.08s ease;
 }
 
 .tl-tool-thumb {
