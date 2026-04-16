@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Literary Theme Web — Crow's Call Press</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #0f0d0b;
+  color: #f0ebe3;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ─────────────────────────────────────────────────── */
+header {
+  background: #b85c3a;
+  color: #f5f0e8;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+.header-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 4px;
+}
+header h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.header-hint {
+  font-size: 0.68rem;
+  opacity: 0.5;
+  letter-spacing: 0.03em;
+}
+.header-back {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.header-back:hover { color: #fff; }
+
+/* ── CANVAS CONTAINER ────────────────────────────────────────── */
+.canvas-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #0f0d0b;
+  display: flex;
+}
+
+/* ── CANVAS ──────────────────────────────────────────────────── */
+#graph-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+#graph-canvas.grabbing  { cursor: grabbing; }
+#graph-canvas.on-node   { cursor: pointer;  }
+
+/* ── INFO PANEL ──────────────────────────────────────────────── */
+#panel {
+  position: fixed;
+  top: 0; right: 0;
+  width: 310px;
+  height: 100%;
+  background: rgba(14, 11, 9, 0.96);
+  border-left: 1px solid rgba(201,168,76,0.18);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow-y: auto;
+  z-index: 200;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+#panel.open { transform: translateX(0); }
+
+.panel-head {
+  padding: 18px 16px 13px;
+  position: sticky;
+  top: 0;
+  background: rgba(14, 11, 9, 0.98);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.panel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 7px;
+}
+.panel-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.panel-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.42;
+  color: rgba(255,255,255,0.92);
+}
+.panel-close {
+  position: absolute;
+  top: 13px; right: 13px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.3);
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.panel-close:hover { color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.07); }
+
+.panel-body { padding: 14px 16px 28px; }
+
+.panel-section-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin: 16px 0 8px;
+}
+.panel-section-label:first-child { margin-top: 0; }
+
+/* Clickable topic chip inside panel */
+.panel-topic-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-bottom: 12px;
+  background: rgba(255,255,255,0.04);
+}
+.panel-topic-chip:hover {
+  border-color: rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.08);
+}
+
+/* Theme cards (shown in topic panel) */
+.panel-theme-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 7px;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.75);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  border-left: 2px solid transparent;
+}
+.panel-theme-card:hover {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.95);
+}
+
+/* Questions list */
+.panel-q {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.7);
+}
+.panel-q:last-child { border-bottom: none; }
+.panel-q-bullet {
+  flex-shrink: 0;
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Parent theme ref in question panel */
+.panel-parent-stmt {
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+  padding: 9px 10px;
+  border-left: 2px solid rgba(255,255,255,0.12);
+  border-radius: 0 5px 5px 0;
+  background: rgba(255,255,255,0.03);
+  margin-bottom: 4px;
+}
+
+/* ── FLOATING CONTROLS ───────────────────────────────────────── */
+.graph-ctrl {
+  position: fixed;
+  bottom: 18px;
+  left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 100;
+}
+.ctrl-btn {
+  width: 32px; height: 32px;
+  background: rgba(18,14,10,0.88);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 7px;
+  color: rgba(255,255,255,0.45);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.ctrl-btn:hover {
+  color: rgba(255,255,255,0.88);
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(28,22,16,0.95);
+}
+
+/* ── LEGEND ──────────────────────────────────────────────────── */
+.graph-legend {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: rgba(14,11,9,0.88);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 9px;
+  padding: 9px 13px;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: right 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.graph-legend.panel-open { right: 328px; }
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.64rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 5px;
+  letter-spacing: 0.02em;
+}
+.legend-row:last-child { margin-bottom: 0; }
+.l-dot { border-radius: 50%; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-eyebrow">Crow's Call Press · Teaching Tools</div>
+    <h1>Literary Theme Web</h1>
+  </div>
+  <div class="header-meta">
+    <span class="header-hint">Drag nodes · Scroll to zoom · Click to explore</span>
+    <a class="header-back" href="../dashboard.html">← Dashboard</a>
+  </div>
+</header>
+
+<canvas id="graph-canvas"></canvas>
+
+<!-- Detail panel — slides in from right on node click -->
+<div id="panel">
+  <div class="panel-head">
+    <div class="panel-badge">
+      <div class="panel-badge-dot" id="panel-dot"></div>
+      <span id="panel-type-label"></span>
+    </div>
+    <div class="panel-title" id="panel-title"></div>
+    <button class="panel-close" id="panel-close">✕</button>
+  </div>
+  <div class="panel-body" id="panel-body"></div>
+</div>
+
+<div class="graph-ctrl">
+  <button class="ctrl-btn" id="btn-zoom-in"  title="Zoom in">+</button>
+  <button class="ctrl-btn" id="btn-zoom-out" title="Zoom out">−</button>
+  <button class="ctrl-btn" id="btn-reset"    title="Reset view" style="font-size:0.8rem;letter-spacing:-0.04em;">⟳</button>
+</div>
+
+<div class="graph-legend" id="legend">
+  <div class="legend-row"><div class="l-dot" style="width:13px;height:13px;background:#c96850;box-shadow:0 0 7px #c9685088"></div>Topic</div>
+  <div class="legend-row"><div class="l-dot" style="width:8px;height:8px;background:#c9a840;box-shadow:0 0 5px #c9a84066"></div>Theme statement</div>
+  <div class="legend-row"><div class="l-dot" style="width:5px;height:5px;background:#52a870;box-shadow:0 0 4px #52a87066"></div>Discussion question</div>
+</div>
+
+<script>
+/* ====================================================================
+   DATA
+   ─────────────────────────────────────────────────────────────────────
+   Full literary topic tree. Each topic → themes → questions.
+   To add content: add a new key to TOPICS with the same shape.
+   ==================================================================== */
+const TOPICS = {
+  "Power": {
+    themes: [
+      { statement: "Power without accountability leads to corruption.",
+        questions: ["Do modern institutions actually prevent the abuse of power?","Should effective leaders still face strict limits on what they can do?","Is corruption caused more by individuals or by the systems they operate in?"] },
+      { statement: "Power reveals a person's true character.",
+        questions: ["Does authority show who people really are, or does it change them?","Should character matter more than competence when choosing leaders?","Are people different when they gain status online vs. in real life?"] },
+      { statement: "The pursuit of power often destroys the relationships that made it worth having.",
+        questions: ["What do people sacrifice in order to succeed — and is it worth it?","Can someone hold power and still maintain genuine personal relationships?"] },
+      { statement: "Societies often trade freedom for order when power is concentrated.",
+        questions: ["Should societies sacrifice civil liberties for safety and security?","At what point does protection become control?","Who benefits most from social order — and who pays for it?"] }
+    ]
+  },
+  "Identity": {
+    themes: [
+      { statement: "Identity is shaped as much by what we resist as by what we accept.",
+        questions: ["How do the groups we reject define who we become?","Is rebellion against your upbringing self-discovery or self-deception?"] },
+      { statement: "Society often assigns identity before individuals can choose it for themselves.",
+        questions: ["How do labels given in childhood limit or liberate the people we become?","Does social media allow authentic self-expression or only perform it?","Should people be defined by categories they did not choose?"] },
+      { statement: "External pressures force individuals to mask or fragment their true identity.",
+        questions: ["Is code-switching a survival skill or a form of self-erasure?","What does it cost a person to hide who they are at work or school?","How should institutions balance cultural norms with individual expression?"] },
+      { statement: "The search for identity can lead to genuine belonging or to dangerous self-destruction.",
+        questions: ["Why do some people adopt harmful identities in order to feel seen?","How do extremist groups exploit the human need to belong?","Can the drive to 'find yourself' become its own kind of trap?"] }
+    ]
+  },
+  "Freedom": {
+    themes: [
+      { statement: "True freedom requires responsibility, not just the absence of constraint.",
+        questions: ["Can a person be free if they refuse all social obligations?","What responsibilities come with living in a free society?","Is unlimited personal freedom compatible with a functioning community?"] },
+      { statement: "The desire for freedom often conflicts with the need for security.",
+        questions: ["How much surveillance is acceptable — even for legitimate public safety?","Should governments limit individual freedoms to keep citizens safe?","Does economic security make people more willing to accept restrictions on liberty?"] },
+      { statement: "Freedom granted by others is never truly secure.",
+        questions: ["Does freedom that depends on someone else's permission really count?","Is legal freedom enough if social pressures still restrict behavior?","How do oppressed groups build lasting freedom rather than borrowed tolerance?"] },
+      { statement: "People sometimes choose comfortable captivity over the uncertainty of freedom.",
+        questions: ["Why do people stay in situations they know are harmful to them?","Is the fear of freedom a real psychological phenomenon?","How does comfort undermine the motivation to seek genuine change?"] }
+    ]
+  },
+  "Justice": {
+    themes: [
+      { statement: "Legal systems do not always deliver genuine justice.",
+        questions: ["Is a legal verdict always the same thing as justice?","How do wealth and privilege shape legal outcomes in practice?","When is it ethical to break a law you believe is unjust?"] },
+      { statement: "Justice and revenge are not the same, even when they look similar.",
+        questions: ["Can punishment ever be truly just — or is it always partly revenge?","Does restorative justice work better than punitive justice in practice?","How should victims' need for closure factor into sentencing?"] },
+      { statement: "Systemic injustice outlasts the individuals who built it.",
+        questions: ["Who is responsible for harms caused by systems they didn't personally design?","Can institutions built on injustice ever become genuinely just?","What does meaningful reparation actually require?"] },
+      { statement: "True justice demands the courage to act against social norms.",
+        questions: ["When should individuals act on conscience rather than law?","How do whistleblowers and activists shape the arc of justice?","What happens to societies that punish people for doing the right thing?"] }
+    ]
+  },
+  "Loyalty": {
+    themes: [
+      { statement: "Blind loyalty protects individuals but damages the communities they belong to.",
+        questions: ["At what point does loyalty become complicity?","Should employees, soldiers, or family members report wrongdoing by those they serve?","How do we teach loyalty without teaching blind obedience?"] },
+      { statement: "Loyalty to principle can demand betraying loyalty to people.",
+        questions: ["Is it ever right to betray a friend for a cause you believe in?","Can loyalty to a country conflict with loyalty to humanity as a whole?","How do people decide whether their first duty is to individuals or to ideals?"] },
+      { statement: "Those who demand the most loyalty often offer the least in return.",
+        questions: ["How do leaders and institutions exploit the loyalty of those beneath them?","Should loyalty be conditional on how it is repaid?","What does it mean to earn loyalty rather than simply demand it?"] },
+      { statement: "Loyalty is tested most severely when it becomes costly.",
+        questions: ["Does genuine loyalty require sacrifice, or is that just manipulation?","How do people decide when a relationship is worth staying loyal to?","What does it reveal about a person when they stay loyal under real pressure?"] }
+    ]
+  },
+  "Ambition": {
+    themes: [
+      { statement: "Unchecked ambition blinds individuals to the moral consequences of their choices.",
+        questions: ["Can someone be too ambitious to remain ethical?","Does competitive culture encourage people to rationalize harmful behavior?","How does drive become destructive — and when does it cross that line?"] },
+      { statement: "Ambition without purpose leads to emptiness even in success.",
+        questions: ["Why do highly successful people often report feeling hollow or lost?","What is the difference between ambition for recognition and ambition for meaning?","How should schools teach achievement without teaching that achievement is everything?"] },
+      { statement: "Society rewards ambition unevenly, reinforcing existing inequalities.",
+        questions: ["Is ambition itself a privilege — available mainly to those with safety nets?","How do gender, race, and class shape who gets to be 'ambitious' without penalty?","Does meritocracy reward effort, or mostly circumstance?"] },
+      { statement: "The most dangerous ambition cannot name what it actually wants.",
+        questions: ["Why do people continue pursuing goals they no longer believe in?","Can ambition be an escape from deeper questions about meaning?","How do family expectations drive people toward ambitions they didn't choose?"] }
+    ]
+  },
+  "Isolation": {
+    themes: [
+      { statement: "Chosen isolation can be protection, but it eventually becomes its own prison.",
+        questions: ["When does healthy solitude become harmful withdrawal?","Is there a meaningful difference between being alone and being lonely?","How do people who have been hurt learn to trust community again?"] },
+      { statement: "Society isolates those who threaten or disrupt its sense of order.",
+        questions: ["What groups does contemporary society push to its margins — and why?","How does social exclusion affect mental health and behavior over time?","Is social media reducing isolation or creating an illusion of connection?"] },
+      { statement: "Isolation strips away social masks and reveals who a person actually is.",
+        questions: ["What do people discover about themselves when removed from social pressure?","Does crisis — pandemic, grief, displacement — force a more honest self-knowledge?","How does solitary confinement as punishment reflect on a society's values?"] },
+      { statement: "The most dangerous isolation is internal — being surrounded by people but understood by none.",
+        questions: ["How does the loneliness of being misunderstood differ from physical solitude?","Why do people sometimes feel most alone in crowded rooms or online spaces?","How should schools respond to the epidemic of internal isolation among students?"] }
+    ]
+  },
+  "Love": {
+    themes: [
+      { statement: "Love can be a force for transformation or a vehicle for control.",
+        questions: ["How do we distinguish genuine love from possession in relationships?","Should love ever require someone to fundamentally change who they are?","What does 'unconditional love' actually mean — and is it always healthy?"] },
+      { statement: "Romantic love is often confused with need, resulting in unhealthy attachment.",
+        questions: ["Why do people so often mistake dependency for love?","How has social media changed the way people pursue and perform romantic love?","Should emotional self-sufficiency be a prerequisite for healthy relationships?"] },
+      { statement: "Societies regulate love in ways that reveal their true values.",
+        questions: ["Why have societies historically controlled who people are allowed to love?","How do laws and norms around relationships reflect cultural priorities over individual freedom?","Is love ever truly private — or is it always shaped by the society around it?"] },
+      { statement: "The love between parents and children carries the deepest potential for both nurture and damage.",
+        questions: ["How does the way we are loved as children shape the way we love as adults?","When does parental love become harmful — even when well-intentioned?","What obligations do adult children owe parents who failed them?"] }
+    ]
+  }
+};
+
+/* ====================================================================
+   COLOR PALETTE
+   Each topic gets a distinct color. Themes and questions inherit a
+   lighter, more transparent variant of that color.
+   ==================================================================== */
+const PALETTE = {
+  'Power':     { base: '#d06050', theme: '#da8272', question: '#e4a294' },
+  'Identity':  { base: '#c8a030', theme: '#d4b454', question: '#e0c878' },
+  'Freedom':   { base: '#50a872', theme: '#72b88e', question: '#94c8aa' },
+  'Justice':   { base: '#507ab0', theme: '#7294c0', question: '#94aed0' },
+  'Loyalty':   { base: '#b08262', theme: '#c09878', question: '#d0ae8e' },
+  'Ambition':  { base: '#c87838', theme: '#d49058', question: '#e0a878' },
+  'Isolation': { base: '#8878aa', theme: '#9c90ba', question: '#b0a8ca' },
+  'Love':      { base: '#c8587a', theme: '#d87892', question: '#e898aa' }
+};
+
+/* ====================================================================
+   NODE SIZE CONFIG
+   ==================================================================== */
+const NODE_R = { topic: 18, theme: 10, question: 5.5 };
+
+/* ====================================================================
+   GRAPH DATA STRUCTURES
+   Nodes carry physics state (x, y, vx, vy, fixed) plus metadata.
+   Edges reference node ids.
+   ==================================================================== */
+let nodes = [];
+let edges = [];
+let nodeMap = {}; // id → node
+
+function buildGraph() {
+  nodes = []; edges = []; nodeMap = {};
+
+  Object.keys(TOPICS).forEach(topicKey => {
+    // Topic node
+    const tId = `topic__${topicKey}`;
+    const tn = {
+      id: tId, type: 'topic', label: topicKey, topicKey,
+      x: 0, y: 0, vx: 0, vy: 0, fixed: false,
+      color: PALETTE[topicKey].base
+    };
+    nodes.push(tn); nodeMap[tId] = tn;
+
+    TOPICS[topicKey].themes.forEach((themeData, ti) => {
+      // Theme node
+      const thId = `theme__${topicKey}__${ti}`;
+      const thN = {
+        id: thId, type: 'theme', label: themeData.statement, topicKey,
+        themeIndex: ti,
+        x: 0, y: 0, vx: 0, vy: 0, fixed: false,
+        color: PALETTE[topicKey].theme
+      };
+      nodes.push(thN); nodeMap[thId] = thN;
+      edges.push({ source: tId, target: thId, kind: 'topic-theme' });
+
+      themeData.questions.forEach((qText, qi) => {
+        // Question node
+        const qId = `q__${topicKey}__${ti}__${qi}`;
+        const qN = {
+          id: qId, type: 'question', label: qText, topicKey,
+          themeIndex: ti, questionIndex: qi,
+          x: 0, y: 0, vx: 0, vy: 0, fixed: false,
+          color: PALETTE[topicKey].question
+        };
+        nodes.push(qN); nodeMap[qId] = qN;
+        edges.push({ source: thId, target: qId, kind: 'theme-question' });
+      });
+    });
+  });
+}
+
+/* ====================================================================
+   INITIAL POSITIONS
+   Arrange topics in a ring, themes around each topic, questions
+   around each theme. Gives the physics a good warm-start so it
+   converges quickly rather than exploding from random positions.
+   ==================================================================== */
+function setInitialPositions() {
+  const topicKeys = Object.keys(TOPICS);
+  const TOPIC_R   = 220;  // radius of topic ring
+  const THEME_R   = 100;  // theme offset from topic
+  const Q_R       = 75;   // question offset from theme
+
+  topicKeys.forEach((key, ti) => {
+    const tAngle = (2 * Math.PI * ti / topicKeys.length) - Math.PI / 2;
+    const tn = nodeMap[`topic__${key}`];
+    tn.x = TOPIC_R * Math.cos(tAngle);
+    tn.y = TOPIC_R * Math.sin(tAngle);
+
+    const themes = TOPICS[key].themes;
+    themes.forEach((themeData, i) => {
+      // Fan themes around topic, centered on outward direction
+      const spread = (themes.length - 1) * 0.38;
+      const thAngle = tAngle + (i - (themes.length - 1) / 2) * (spread / Math.max(themes.length - 1, 1));
+      const thN = nodeMap[`theme__${key}__${i}`];
+      thN.x = tn.x + THEME_R * Math.cos(thAngle);
+      thN.y = tn.y + THEME_R * Math.sin(thAngle);
+
+      themeData.questions.forEach((_, qi) => {
+        const qCount = themeData.questions.length;
+        const qSpread = (qCount - 1) * 0.4;
+        const qAngle = thAngle + (qi - (qCount - 1) / 2) * (qCount > 1 ? qSpread / (qCount - 1) : 0);
+        const qN = nodeMap[`q__${key}__${i}__${qi}`];
+        qN.x = thN.x + Q_R * Math.cos(qAngle);
+        qN.y = thN.y + Q_R * Math.sin(qAngle);
+      });
+    });
+  });
+}
+
+/* ====================================================================
+   PHYSICS SIMULATION
+   ─────────────────────────────────────────────────────────────────────
+   Forces applied each tick:
+     1. Repulsion  — all node pairs push away (inverse-square law)
+     2. Attraction — connected nodes pulled toward each other (spring)
+     3. Gravity    — gentle pull toward origin keeps graph centered
+   Velocities are damped each tick so the simulation cools and settles.
+   An alpha value gradually decays; when it drops below ALPHA_MIN the
+   simulation pauses to save CPU (restarts on drag).
+   ==================================================================== */
+const REPULSION      = 4500;
+const SPRING_K       = 0.032;
+const SPRING_LEN     = { 'topic-theme': 115, 'theme-question': 85 };
+const GRAVITY        = 0.0022;
+const DAMPING        = 0.82;
+const ALPHA_DECAY    = 0.9955;
+const ALPHA_MIN      = 0.004;
+
+let alpha = 1.0;
+let simActive = true;
+
+function simulate() {
+  if (!simActive) return;
+
+  // 1. Repulsion between every pair of nodes
+  for (let i = 0; i < nodes.length; i++) {
+    const a = nodes[i];
+    for (let j = i + 1; j < nodes.length; j++) {
+      const b = nodes[j];
+      let dx = a.x - b.x;
+      let dy = a.y - b.y;
+      const dist2 = dx * dx + dy * dy || 0.01;
+      const dist  = Math.sqrt(dist2);
+      // Scale force by alpha so early ticks move more aggressively
+      const f = (REPULSION / dist2) * alpha;
+      const fx = (dx / dist) * f;
+      const fy = (dy / dist) * f;
+      if (!a.fixed) { a.vx += fx; a.vy += fy; }
+      if (!b.fixed) { b.vx -= fx; b.vy -= fy; }
+    }
+  }
+
+  // 2. Spring attraction along edges
+  edges.forEach(e => {
+    const a = nodeMap[e.source];
+    const b = nodeMap[e.target];
+    const dx   = b.x - a.x;
+    const dy   = b.y - a.y;
+    const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+    const rest = SPRING_LEN[e.kind];
+    const f    = SPRING_K * (dist - rest) * alpha;
+    const fx   = (dx / dist) * f;
+    const fy   = (dy / dist) * f;
+    if (!a.fixed) { a.vx += fx; a.vy += fy; }
+    if (!b.fixed) { b.vx -= fx; b.vy -= fy; }
+  });
+
+  // 3. Center gravity
+  nodes.forEach(n => {
+    if (n.fixed) return;
+    n.vx += -n.x * GRAVITY * alpha;
+    n.vy += -n.y * GRAVITY * alpha;
+  });
+
+  // 4. Integrate + damp
+  nodes.forEach(n => {
+    if (n.fixed) return;
+    n.vx *= DAMPING;
+    n.vy *= DAMPING;
+    n.x  += n.vx;
+    n.y  += n.vy;
+  });
+
+  // Cool down
+  alpha *= ALPHA_DECAY;
+  if (alpha < ALPHA_MIN) { alpha = ALPHA_MIN; simActive = false; }
+}
+
+/* ====================================================================
+   TRANSFORM (pan + zoom)
+   World coordinates ↔ screen coordinates.
+   tx/ty = translation of world origin in screen pixels.
+   scale = zoom level.
+   ==================================================================== */
+let tx = 0, ty = 0, scale = 1;
+
+// Convert screen pixel position to world coordinate
+function toWorld(sx, sy) {
+  return { x: (sx - tx) / scale, y: (sy - ty) / scale };
+}
+
+/* ====================================================================
+   CANVAS RENDERING
+   ─────────────────────────────────────────────────────────────────────
+   Render order: background dots → edges → node glows → node circles
+   → labels. Everything drawn in world space after ctx.setTransform.
+   ==================================================================== */
+let canvas, ctx;
+
+// Draw the faint dot-grid background (Obsidian aesthetic)
+function drawBackground() {
+  // Solid background
+  ctx.fillStyle = '#0f0d0b';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Dot grid — computed in screen space to avoid scaling issues
+  const gridW = 36 * scale; // screen pixels between dots
+  const dotR  = 0.9;
+  if (gridW < 8) return; // too dense to draw
+
+  // Find first grid dot in screen space
+  const offX = ((tx % gridW) + gridW) % gridW;
+  const offY = ((ty % gridW) + gridW) % gridW;
+
+  ctx.fillStyle = 'rgba(255,255,255,0.028)';
+  for (let sx = offX; sx < canvas.width; sx += gridW) {
+    for (let sy = offY; sy < canvas.height; sy += gridW) {
+      ctx.beginPath();
+      ctx.arc(sx, sy, dotR, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+}
+
+// Draw all edges
+function drawEdges() {
+  ctx.save();
+  ctx.translate(tx, ty);
+  ctx.scale(scale, scale);
+
+  edges.forEach(e => {
+    const a = nodeMap[e.source];
+    const b = nodeMap[e.target];
+
+    // Edge color: topic's base color at low opacity
+    const col = PALETTE[a.topicKey || b.topicKey];
+    if (e.kind === 'topic-theme') {
+      ctx.strokeStyle = col.base + '44';
+      ctx.lineWidth   = 1.4 / scale;
+    } else {
+      ctx.strokeStyle = col.theme + '30';
+      ctx.lineWidth   = 0.9 / scale;
+    }
+
+    // Highlight edge if a connected node is selected/hovered
+    if (selectedNode && (selectedNode.id === a.id || selectedNode.id === b.id)) {
+      ctx.strokeStyle = col.base + 'bb';
+      ctx.lineWidth   = e.kind === 'topic-theme' ? 2 / scale : 1.4 / scale;
+    } else if (hoveredNode && (hoveredNode.id === a.id || hoveredNode.id === b.id)) {
+      ctx.strokeStyle = col.base + '88';
+      ctx.lineWidth   = e.kind === 'topic-theme' ? 1.8 / scale : 1.2 / scale;
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+  });
+
+  ctx.restore();
+}
+
+// Draw all nodes with glow effect
+function drawNodes() {
+  ctx.save();
+  ctx.translate(tx, ty);
+  ctx.scale(scale, scale);
+
+  nodes.forEach(n => {
+    const r       = NODE_R[n.type];
+    const isHover = hoveredNode  && hoveredNode.id  === n.id;
+    const isSel   = selectedNode && selectedNode.id === n.id;
+
+    // Glow (radial gradient behind node)
+    const glowR = r * (n.type === 'topic' ? 3.2 : 3.0);
+    const grd = ctx.createRadialGradient(n.x, n.y, r * 0.4, n.x, n.y, glowR);
+    let glowAlpha = n.type === 'topic' ? 0.35 : n.type === 'theme' ? 0.22 : 0.14;
+    if (isHover || isSel) glowAlpha *= 2;
+    grd.addColorStop(0, n.color + hex2(glowAlpha * 255));
+    grd.addColorStop(1, n.color + '00');
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, glowR, 0, Math.PI * 2);
+    ctx.fillStyle = grd;
+    ctx.fill();
+
+    // Node circle
+    const nodeR = isHover || isSel ? r * 1.15 : r;
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, nodeR, 0, Math.PI * 2);
+    ctx.fillStyle = n.color + (isSel ? 'ff' : isHover ? 'ee' : 'cc');
+    ctx.fill();
+
+    // Ring for selected node
+    if (isSel) {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, nodeR + 3 / scale, 0, Math.PI * 2);
+      ctx.strokeStyle = '#fff4';
+      ctx.lineWidth   = 1.2 / scale;
+      ctx.stroke();
+    }
+  });
+
+  ctx.restore();
+}
+
+// Convert 0–255 value to 2-digit hex string
+function hex2(v) {
+  const h = Math.round(Math.max(0, Math.min(255, v))).toString(16);
+  return h.length === 1 ? '0' + h : h;
+}
+
+// Draw labels — visibility depends on node type and current zoom level
+function drawLabels() {
+  ctx.save();
+  ctx.translate(tx, ty);
+  ctx.scale(scale, scale);
+  ctx.textAlign    = 'center';
+  ctx.textBaseline = 'top';
+
+  nodes.forEach(n => {
+    const r = NODE_R[n.type];
+    const isHover = hoveredNode  && hoveredNode.id  === n.id;
+    const isSel   = selectedNode && selectedNode.id === n.id;
+
+    // Decide whether to show label based on type and zoom
+    const showTopic    = true;
+    const showTheme    = scale > 0.55 || isHover || isSel;
+    const showQuestion = scale > 1.05 || isHover || isSel;
+
+    let show = (n.type === 'topic' && showTopic) ||
+               (n.type === 'theme' && showTheme) ||
+               (n.type === 'question' && showQuestion);
+
+    // Always show label for hovered or selected node
+    if (isHover || isSel) show = true;
+    if (!show) return;
+
+    // Font size in world coords — dividing by scale keeps screen size constant
+    const screenPx = n.type === 'topic' ? 12.5 : n.type === 'theme' ? 10.5 : 9.5;
+    ctx.font = `${screenPx / scale}px 'DM Sans', sans-serif`;
+
+    const maxChars = n.type === 'topic' ? 99 : n.type === 'theme' ? 38 : 42;
+    let label = n.label.length > maxChars ? n.label.slice(0, maxChars - 1) + '…' : n.label;
+
+    const labelOffset = (r * 1.15 + 5) / scale;
+    const alpha = isSel || isHover ? 0.95 : n.type === 'topic' ? 0.82 : 0.62;
+    ctx.fillStyle = `rgba(240,235,227,${alpha})`;
+
+    // Multi-line wrapping for theme and question labels at close zoom
+    if (n.type !== 'topic' && (isSel || isHover || scale > 0.85)) {
+      wrapText(ctx, label, n.x, n.y + labelOffset, 110 / scale, screenPx * 1.35 / scale);
+    } else {
+      ctx.fillText(label, n.x, n.y + labelOffset);
+    }
+  });
+
+  ctx.restore();
+}
+
+// Simple canvas text wrap helper
+function wrapText(ctx, text, x, y, maxW, lineH) {
+  const words = text.split(' ');
+  let line = '';
+  let ly   = y;
+  for (let i = 0; i < words.length; i++) {
+    const test = line + (line ? ' ' : '') + words[i];
+    if (ctx.measureText(test).width > maxW && line) {
+      ctx.fillText(line, x, ly);
+      line = words[i];
+      ly  += lineH;
+    } else {
+      line = test;
+    }
+  }
+  if (line) ctx.fillText(line, x, ly);
+}
+
+/* ====================================================================
+   MAIN RENDER + ANIMATION LOOP
+   ==================================================================== */
+function render() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBackground();
+  drawEdges();
+  drawNodes();
+  drawLabels();
+}
+
+function loop() {
+  simulate();
+  render();
+  requestAnimationFrame(loop);
+}
+
+/* ====================================================================
+   HIT TESTING — find which node (if any) is under screen coordinates
+   ==================================================================== */
+function nodeAtScreen(sx, sy) {
+  const w = toWorld(sx, sy);
+  // Iterate in reverse so top-rendered nodes (topic > theme > question) win
+  for (let i = nodes.length - 1; i >= 0; i--) {
+    const n  = nodes[i];
+    const r  = NODE_R[n.type] * 1.25; // slightly larger hit area
+    const dx = w.x - n.x;
+    const dy = w.y - n.y;
+    if (dx * dx + dy * dy <= r * r) return n;
+  }
+  return null;
+}
+
+/* ====================================================================
+   INFO PANEL
+   ==================================================================== */
+let panelEl, panelDot, panelTypeLabel, panelTitle, panelBody, panelCloseBtn;
+let selectedNode = null;
+
+function openPanel(node) {
+  selectedNode = node;
+  panelDot.style.background      = node.color;
+  panelDot.style.boxShadow       = `0 0 6px ${node.color}88`;
+  panelTypeLabel.textContent     = node.type === 'topic' ? 'Literary Topic'
+                                 : node.type === 'theme' ? 'Theme Statement'
+                                 : 'Discussion Question';
+  panelTitle.textContent         = node.label;
+  panelTitle.style.color         = 'rgba(255,255,255,0.92)';
+
+  // Build panel body based on node type
+  panelBody.innerHTML = '';
+
+  if (node.type === 'topic') {
+    // List all themes for this topic
+    const label = document.createElement('div');
+    label.className   = 'panel-section-label';
+    label.textContent = 'Theme statements';
+    panelBody.appendChild(label);
+
+    TOPICS[node.topicKey].themes.forEach((themeData, ti) => {
+      const card       = document.createElement('div');
+      card.className   = 'panel-theme-card';
+      card.style.borderLeftColor = PALETTE[node.topicKey].theme;
+      card.textContent = themeData.statement;
+      card.addEventListener('click', () => {
+        openPanel(nodeMap[`theme__${node.topicKey}__${ti}`]);
+      });
+      panelBody.appendChild(card);
+    });
+  }
+
+  else if (node.type === 'theme') {
+    const themeData = TOPICS[node.topicKey].themes[node.themeIndex];
+
+    // Parent topic chip
+    const chip = document.createElement('div');
+    chip.className = 'panel-topic-chip';
+    chip.innerHTML = `<div class="panel-badge-dot" style="background:${PALETTE[node.topicKey].base}"></div>${node.topicKey}`;
+    chip.addEventListener('click', () => openPanel(nodeMap[`topic__${node.topicKey}`]));
+    panelBody.appendChild(chip);
+
+    // Questions
+    const label = document.createElement('div');
+    label.className   = 'panel-section-label';
+    label.textContent = 'Contemporary discussion questions';
+    panelBody.appendChild(label);
+
+    themeData.questions.forEach((q, qi) => {
+      const row    = document.createElement('div');
+      row.className = 'panel-q';
+      const bullet = document.createElement('div');
+      bullet.className   = 'panel-q-bullet';
+      bullet.style.background = PALETTE[node.topicKey].question + '44';
+      bullet.style.color      = PALETTE[node.topicKey].question;
+      bullet.textContent      = '?';
+      const text  = document.createElement('div');
+      text.textContent = q;
+      // Make question clickable to focus that node
+      row.style.cursor = 'pointer';
+      row.addEventListener('click', () => openPanel(nodeMap[`q__${node.topicKey}__${node.themeIndex}__${qi}`]));
+      row.appendChild(bullet);
+      row.appendChild(text);
+      panelBody.appendChild(row);
+    });
+  }
+
+  else if (node.type === 'question') {
+    const themeData = TOPICS[node.topicKey].themes[node.themeIndex];
+
+    // Parent topic chip
+    const chip = document.createElement('div');
+    chip.className = 'panel-topic-chip';
+    chip.innerHTML = `<div class="panel-badge-dot" style="background:${PALETTE[node.topicKey].base}"></div>${node.topicKey}`;
+    chip.addEventListener('click', () => openPanel(nodeMap[`topic__${node.topicKey}`]));
+    panelBody.appendChild(chip);
+
+    // Parent theme reference
+    const themeLabel = document.createElement('div');
+    themeLabel.className   = 'panel-section-label';
+    themeLabel.textContent = 'From theme statement';
+    panelBody.appendChild(themeLabel);
+
+    const stmt = document.createElement('div');
+    stmt.className   = 'panel-parent-stmt';
+    stmt.textContent = themeData.statement;
+    stmt.style.cursor = 'pointer';
+    stmt.title = 'View this theme';
+    stmt.addEventListener('click', () => openPanel(nodeMap[`theme__${node.topicKey}__${node.themeIndex}`]));
+    panelBody.appendChild(stmt);
+
+    // All questions for this theme, highlighting current
+    const qLabel = document.createElement('div');
+    qLabel.className   = 'panel-section-label';
+    qLabel.textContent = 'All questions on this theme';
+    panelBody.appendChild(qLabel);
+
+    themeData.questions.forEach((q, qi) => {
+      const row    = document.createElement('div');
+      row.className = 'panel-q';
+      if (qi === node.questionIndex) {
+        row.style.color  = '#fff';
+        row.style.fontWeight = '500';
+      }
+      const bullet = document.createElement('div');
+      bullet.className   = 'panel-q-bullet';
+      bullet.style.background = PALETTE[node.topicKey].question + '44';
+      bullet.style.color      = PALETTE[node.topicKey].question;
+      bullet.textContent      = '?';
+      const text  = document.createElement('div');
+      text.textContent = q;
+      row.appendChild(bullet);
+      row.appendChild(text);
+      panelBody.appendChild(row);
+    });
+  }
+
+  panelEl.classList.add('open');
+  document.getElementById('legend').classList.add('panel-open');
+}
+
+function closePanel() {
+  panelEl.classList.remove('open');
+  document.getElementById('legend').classList.remove('panel-open');
+  selectedNode = null;
+}
+
+/* ====================================================================
+   MOUSE / TOUCH INTERACTION
+   (wired up inside DOMContentLoaded after canvas is assigned)
+   ==================================================================== */
+let hoveredNode = null;
+let dragNode    = null;
+let dragStarted = false;
+let mouseDownPos = null;
+let panStart     = null;
+
+function wireInteraction() {
+  canvas.addEventListener('mousemove', e => {
+    const { offsetX: sx, offsetY: sy } = e;
+
+    if (dragNode) {
+      const w = toWorld(sx, sy);
+      dragNode.x  = w.x;
+      dragNode.y  = w.y;
+      dragNode.vx = 0;
+      dragNode.vy = 0;
+      dragStarted = true;
+      simActive = true; alpha = Math.max(alpha, 0.15);
+      return;
+    }
+
+    if (panStart) {
+      tx = panStart.tx + (sx - panStart.sx);
+      ty = panStart.ty + (sy - panStart.sy);
+      dragStarted = true;
+      canvas.classList.add('grabbing');
+      return;
+    }
+
+    const hit = nodeAtScreen(sx, sy);
+    if (hit !== hoveredNode) {
+      hoveredNode = hit;
+      canvas.classList.toggle('on-node', !!hit);
+    }
+  });
+
+  canvas.addEventListener('mousedown', e => {
+    const { offsetX: sx, offsetY: sy } = e;
+    mouseDownPos = { sx, sy };
+    dragStarted  = false;
+
+    const hit = nodeAtScreen(sx, sy);
+    if (hit) {
+      dragNode       = hit;
+      dragNode.fixed = true;
+      simActive = true; alpha = Math.max(alpha, 0.3);
+    } else {
+      panStart = { sx, sy, tx, ty };
+      canvas.classList.add('grabbing');
+    }
+    e.preventDefault();
+  });
+
+  canvas.addEventListener('mouseup', () => {
+    if (dragNode) {
+      dragNode.fixed = false;
+      if (!dragStarted) openPanel(dragNode);
+      dragNode = null;
+    } else if (panStart) {
+      if (!dragStarted) closePanel();
+      panStart = null;
+      canvas.classList.remove('grabbing');
+    }
+    dragStarted = false;
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    dragNode = null;
+    panStart = null;
+    canvas.classList.remove('grabbing');
+  });
+
+  canvas.addEventListener('wheel', e => {
+    e.preventDefault();
+    const { offsetX: sx, offsetY: sy } = e;
+    const zoomFactor = e.deltaY < 0 ? 1.1 : 0.91;
+    const newScale   = Math.max(0.12, Math.min(4.5, scale * zoomFactor));
+    tx = sx - (sx - tx) * (newScale / scale);
+    ty = sy - (sy - ty) * (newScale / scale);
+    scale = newScale;
+  }, { passive: false });
+}
+
+/* ====================================================================
+   ZOOM CONTROLS + RESET
+   ==================================================================== */
+function zoomBy(factor) {
+  const cx = canvas.width  / 2;
+  const cy = canvas.height / 2;
+  const ns = Math.max(0.12, Math.min(4.5, scale * factor));
+  tx = cx - (cx - tx) * (ns / scale);
+  ty = cy - (cy - ty) * (ns / scale);
+  scale = ns;
+}
+
+function wireControls() {
+  document.getElementById('btn-zoom-in') .addEventListener('click', () => zoomBy(1.18));
+  document.getElementById('btn-zoom-out').addEventListener('click', () => zoomBy(0.85));
+  document.getElementById('btn-reset')   .addEventListener('click', resetView);
+  document.getElementById('panel-close') .addEventListener('click', closePanel);
+}
+
+function resetView() {
+  tx    = canvas.width  / 2;
+  ty    = canvas.height / 2;
+  scale = 1;
+}
+
+/* ====================================================================
+   CANVAS RESIZE
+   ==================================================================== */
+function resizeCanvas() {
+  const area  = canvas.parentElement;
+  canvas.width  = area.clientWidth;
+  canvas.height = area.clientHeight;
+  // Re-center translation on resize
+  if (tx === 0 && ty === 0) resetView();
+}
+
+window.addEventListener('resize', () => {
+  resizeCanvas();
+});
+
+/* ====================================================================
+   INIT
+   ==================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  canvas = document.getElementById('graph-canvas');
+  ctx    = canvas.getContext('2d');
+
+  panelEl        = document.getElementById('panel');
+  panelDot       = document.getElementById('panel-dot');
+  panelTypeLabel = document.getElementById('panel-type-label');
+  panelTitle     = document.getElementById('panel-title');
+  panelBody      = document.getElementById('panel-body');
+  panelCloseBtn  = document.getElementById('panel-close');
+
+  resizeCanvas();
+  resetView();
+  buildGraph();
+  setInitialPositions();
+  wireInteraction();
+  wireControls();
+  loop();
+});
+</script>
+<script>
+(function () {
+  document.body.style.opacity = '0';
+  requestAnimationFrame(function () {
+    document.body.style.transition = 'opacity 0.25s ease';
+    document.body.style.opacity = '1';
+  });
+  document.querySelectorAll('a[href]').forEach(function (link) {
+    var href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('http') || link.target === '_blank') return;
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.2s ease';
+      document.body.style.opacity = '0';
+      setTimeout(function () { window.location.href = href; }, 200);
+    });
+  });
+})();
+</script>
+</body>
+</html>
