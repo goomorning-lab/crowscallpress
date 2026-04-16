@@ -652,6 +652,36 @@ function toWorld(sx, sy) {
    ==================================================================== */
 let canvas, ctx;
 
+// ── SPARKLES ─────────────────────────────────────────────────────────
+const SPARKLES = [];
+const SPARKLE_COUNT = 90;
+
+function initSparkles() {
+  for (let i = 0; i < SPARKLE_COUNT; i++) {
+    SPARKLES.push({
+      x:     Math.random(),                         // fraction of canvas width
+      y:     Math.random(),                         // fraction of canvas height
+      phase: Math.random() * Math.PI * 2,           // offset so they don't pulse together
+      speed: 0.006 + Math.random() * 0.01,          // slow oscillation (~10-18 s cycle)
+      size:  0.5 + Math.random() * 1.1              // 0.5–1.6 px radius
+    });
+  }
+}
+
+function drawSparkles() {
+  SPARKLES.forEach(s => {
+    s.phase += s.speed;
+    // Opacity: gentle sine wave between ~0.04 and ~0.38 — soft twinkling
+    const a = 0.04 + 0.34 * (0.5 + 0.5 * Math.sin(s.phase));
+    const sx = s.x * canvas.width;
+    const sy = s.y * canvas.height;
+    ctx.beginPath();
+    ctx.arc(sx, sy, s.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${a.toFixed(3)})`;
+    ctx.fill();
+  });
+}
+
 // Draw the faint dot-grid background (Obsidian aesthetic)
 function drawBackground() {
   // Solid background
@@ -661,20 +691,23 @@ function drawBackground() {
   // Dot grid — computed in screen space to avoid scaling issues
   const gridW = 36 * scale; // screen pixels between dots
   const dotR  = 0.9;
-  if (gridW < 8) return; // too dense to draw
+  if (gridW >= 8) {
+    // Find first grid dot in screen space
+    const offX = ((tx % gridW) + gridW) % gridW;
+    const offY = ((ty % gridW) + gridW) % gridW;
 
-  // Find first grid dot in screen space
-  const offX = ((tx % gridW) + gridW) % gridW;
-  const offY = ((ty % gridW) + gridW) % gridW;
-
-  ctx.fillStyle = 'rgba(255,255,255,0.028)';
-  for (let sx = offX; sx < canvas.width; sx += gridW) {
-    for (let sy = offY; sy < canvas.height; sy += gridW) {
-      ctx.beginPath();
-      ctx.arc(sx, sy, dotR, 0, Math.PI * 2);
-      ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,0.018)';
+    for (let sx = offX; sx < canvas.width; sx += gridW) {
+      for (let sy = offY; sy < canvas.height; sy += gridW) {
+        ctx.beginPath();
+        ctx.arc(sx, sy, dotR, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
   }
+
+  // Twinkling sparkles — always drawn at full opacity (they manage their own alpha)
+  drawSparkles();
 }
 
 // Draw all edges
@@ -833,12 +866,21 @@ function wrapText(ctx, text, x, y, maxW, lineH) {
 /* ====================================================================
    MAIN RENDER + ANIMATION LOOP
    ==================================================================== */
+let sceneAlpha = 0; // starts at 0, ramps to 1 — gives slow "emerge from the dark" reveal
+
 function render() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Background + sparkles always at full opacity — they're the "stage"
   drawBackground();
+
+  // Slowly ramp in the graph: ~0.007 per frame = ~2.4 s at 60 fps
+  sceneAlpha = Math.min(1, sceneAlpha + 0.007);
+  ctx.save();
+  ctx.globalAlpha = sceneAlpha;
   drawEdges();
   drawNodes();
   drawLabels();
+  ctx.restore();
 }
 
 function loop() {
@@ -1139,6 +1181,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   resizeCanvas();
   resetView();
+  initSparkles();
   buildGraph();
   setInitialPositions();
   wireInteraction();
