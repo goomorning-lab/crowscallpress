@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching Library — Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="css/teaching-library.css">
+</head>
+<body class="tl-body">
+
+  <div class="tl-login-wrap">
+    <div class="tl-login-card">
+
+      <a href="/" class="tl-back-link">← Back to site</a>
+
+      <div class="tl-logo-mark">✎</div>
+      <h1 class="tl-login-heading">Crow's <em>Call</em> Press<br>Teaching Library</h1>
+      <p class="tl-login-sub">For Crow's Call Press partner educators. Sign in to access your materials.</p>
+
+      <form class="tl-form" id="tl-login-form" novalidate>
+        <div class="tl-field">
+          <label for="tl-email">Email</label>
+          <input type="email" id="tl-email" name="email" placeholder="you@school.com" required autocomplete="email">
+        </div>
+        <div class="tl-field">
+          <label for="tl-password">Password</label>
+          <input type="password" id="tl-password" name="password" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <div class="tl-error" id="tl-error" role="alert" aria-live="polite"></div>
+        <button type="submit" class="tl-btn-primary" id="tl-submit-btn">Sign In</button>
+      </form>
+
+      <p class="tl-login-footer">Not a partner yet? <a href="/contact/">Get in touch</a></p>
+
+    </div>
+  </div>
+
+<script src="js/teaching-library.js"></script>
+<script>
+(function () {
+  // If already logged in, go straight to dashboard
+  if (localStorage.getItem('tl_token')) {
+    window.location.href = 'dashboard.html';
+    return;
+  }
+
+  var form = document.getElementById('tl-login-form');
+  var errorEl = document.getElementById('tl-error');
+  var submitBtn = document.getElementById('tl-submit-btn');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('tl-email').value.trim();
+    var password = document.getElementById('tl-password').value;
+
+    errorEl.textContent = '';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Signing in…';
+
+    fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, password: password })
+    })
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (result) {
+        if (result.ok && result.data.token) {
+          localStorage.setItem('tl_token', result.data.token);
+          if (result.data.name) localStorage.setItem('tl_name', result.data.name);
+          window.location.href = 'dashboard.html';
+        } else {
+          errorEl.textContent = result.data.message || 'Incorrect email or password. Please try again.';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Sign In';
+        }
+      })
+      .catch(function () {
+        errorEl.textContent = 'Something went wrong. Please check your connection and try again.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign In';
+      });
+  });
+})();
+</script>
+</body>
+</html>

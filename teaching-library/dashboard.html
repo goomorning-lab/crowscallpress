@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Teaching Library — Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="css/teaching-library.css">
+</head>
+<body class="tl-body">
+
+  <!-- Dashboard Nav -->
+  <nav class="tl-nav">
+    <a class="tl-nav-logo" href="/"><span class="tl-nav-logo-text">Crow's <em>Call</em> Press</span></a>
+    <span class="tl-nav-label">Teaching Library</span>
+    <button class="tl-signout-btn" id="tl-signout">Sign Out</button>
+  </nav>
+
+  <!-- Header -->
+  <div class="tl-dash-header">
+    <div class="tl-dash-header-inner">
+      <p class="tl-welcome-label">Welcome back,</p>
+      <h1 class="tl-dash-heading" id="tl-welcome-name">Educator</h1>
+      <p class="tl-dash-sub">Your teaching materials are ready. Download, plan, and teach.</p>
+    </div>
+  </div>
+
+  <!-- Teaching Tools -->
+  <section class="tl-tools-section">
+    <div class="tl-tools-inner">
+      <p class="tl-tools-label">Teaching Tools</p>
+      <div class="tl-tools-grid">
+
+        <a class="tl-tool-card" href="Archetypes/archetype-wheel.html">
+          <div class="tl-tool-thumb tl-tool-thumb--icon tl-tool-thumb--gold">
+            <span class="tl-tool-icon">&#9654;</span>
+          </div>
+          <div class="tl-tool-body">
+            <h3 class="tl-tool-title">Archetype Wheel</h3>
+            <p class="tl-tool-desc">A visual reference mapping the 12 core archetypes — use alongside any CCP text to anchor character discussion.</p>
+            <span class="tl-tool-cta">Open Tool &rarr;</span>
+          </div>
+        </a>
+
+        <a class="tl-tool-card" href="Conflicts/conflict-scale.html">
+          <div class="tl-tool-thumb tl-tool-thumb--icon">
+            <span class="tl-tool-icon">⚖</span>
+          </div>
+          <div class="tl-tool-body">
+            <h3 class="tl-tool-title">Conflict Scale</h3>
+            <p class="tl-tool-desc">A classroom reference for identifying and categorising conflict types across any literary work.</p>
+            <span class="tl-tool-cta">Open Tool &rarr;</span>
+          </div>
+        </a>
+
+        <a class="tl-tool-card" href="Themes/theme-web.html">
+          <div class="tl-tool-thumb tl-tool-thumb--icon tl-tool-thumb--rose">
+            <span class="tl-tool-icon">&#10022;</span>
+          </div>
+          <div class="tl-tool-body">
+            <h3 class="tl-tool-title">Literary Theme Web</h3>
+            <p class="tl-tool-desc">An interactive node map of recurring literary themes — drag, zoom, and click to explore connections across texts.</p>
+            <span class="tl-tool-cta">Open Tool &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <div class="tl-filter-bar">
+    <div class="tl-filter-inner">
+      <input class="tl-search" type="text" id="tl-search" placeholder="Search by title or author…" aria-label="Search materials">
+      <div class="tl-filter-group">
+        <label class="tl-filter-label">Grade</label>
+        <select class="tl-select" id="tl-filter-grade">
+          <option value="">All Grades</option>
+          <option value="1-2">Grades 1–2</option>
+          <option value="3-4">Grades 3–4</option>
+          <option value="5-6">Grades 5–6</option>
+          <option value="7+">Grades 7+</option>
+        </select>
+      </div>
+      <div class="tl-filter-group">
+        <label class="tl-filter-label">CEFR</label>
+        <select class="tl-select" id="tl-filter-cefr">
+          <option value="">All Levels</option>
+          <option value="A1-A2">A1–A2</option>
+          <option value="B1-B2">B1–B2</option>
+          <option value="B2-C1">B2–C1</option>
+          <option value="C1-C2">C1–C2</option>
+        </select>
+      </div>
+      <button class="tl-clear-btn" id="tl-clear-filters">Clear</button>
+    </div>
+  </div>
+
+  <!-- Resource Grid -->
+  <main class="tl-main">
+    <div class="tl-grid" id="tl-grid">
+      <!-- Cards injected by JS -->
+    </div>
+    <p class="tl-empty" id="tl-empty" style="display:none;">No materials match your filters.</p>
+  </main>
+
+  <!-- Download error toast -->
+  <div class="tl-toast" id="tl-toast" role="alert" aria-live="polite"></div>
+
+<script src="js/teaching-library.js"></script>
+<script>
+(function () {
+
+  // Auth guard — use mock token for local preview until backend is ready
+  var DEV_PREVIEW = true; // set to false when backend is live
+  if (DEV_PREVIEW && !localStorage.getItem('tl_token')) {
+    localStorage.setItem('tl_token', 'dev_preview_token');
+    localStorage.setItem('tl_name', 'Zoe');
+  }
+  var token = localStorage.getItem('tl_token');
+  if (!token) { window.location.href = 'index.html'; return; }
+
+  // Welcome name
+  var name = localStorage.getItem('tl_name');
+  if (name) document.getElementById('tl-welcome-name').textContent = name;
+
+  // Sign out
+  document.getElementById('tl-signout').addEventListener('click', function () {
+    localStorage.removeItem('tl_token');
+    localStorage.removeItem('tl_name');
+    window.location.href = 'index.html';
+  });
+
+  // ── Workbook data (replace with API fetch when backend is ready) ──
+  var resources = [
+    {
+      id: 'bat',
+      title: 'Breakfast at Tiffany\'s',
+      author: 'Truman Capote',
+      level: 'Mythos Level',
+      cefr: 'B2-C1',
+      grade: '7+',
+      cover: '../images/trialpopup.png',
+      synopsis: 'A narrator reflects on his neighbor Holly Golightly, a charming, free-spirited young woman navigating New York City. A novella of identity, belonging, and the cost of freedom.',
+      viewUrl: 'breakfast-at-tiffanys.html',
+      fileDevA: 'breakfast-at-tiffanys/dev-a.pdf',
+      fileDevB: 'breakfast-at-tiffanys/dev-b.pdf',
+      fileVocab: 'breakfast-at-tiffanys/vocab.pdf'
+    }
+  ];
+
+  // ── Render cards ──
+  var grid = document.getElementById('tl-grid');
+  var emptyMsg = document.getElementById('tl-empty');
+
+  function handleDownload(fileId, btnEl, label) {
+    btnEl.disabled = true;
+    btnEl.textContent = 'Preparing…';
+
+    if (DEV_PREVIEW) {
+      setTimeout(function () {
+        showToast('Downloads require the live backend. Preview mode active.');
+        btnEl.disabled = false;
+        btnEl.textContent = label;
+      }, 600);
+      return;
+    }
+
+    fetch('/api/files/download/' + fileId, {
+      headers: { 'Authorization': 'Bearer ' + token }
+    })
+      .then(function (res) {
+        if (res.status === 401) {
+          localStorage.removeItem('tl_token');
+          localStorage.removeItem('tl_name');
+          window.location.href = 'index.html';
+          return;
+        }
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.url) {
+          window.open(data.url, '_blank');
+        } else {
+          showToast('Could not load the file. Please try again.');
+        }
+        btnEl.disabled = false;
+        btnEl.textContent = label;
+      })
+      .catch(function () {
+        showToast('Something went wrong. Please check your connection.');
+        btnEl.disabled = false;
+        btnEl.textContent = label;
+      });
+  }
+
+  function renderCards(list) {
+    grid.innerHTML = '';
+    if (list.length === 0) { emptyMsg.style.display = 'block'; return; }
+    emptyMsg.style.display = 'none';
+
+    list.forEach(function (r) {
+      var card = document.createElement('div');
+      card.className = 'tl-card';
+      card.innerHTML =
+        '<div class="tl-card-inner">' +
+          '<div class="tl-card-cover">' +
+            '<img src="' + r.cover + '" alt="' + r.title + ' cover" loading="lazy">' +
+          '</div>' +
+          '<div class="tl-card-body">' +
+            '<div class="tl-card-meta">' +
+              '<span class="tl-badge tl-badge--cefr">' + r.cefr.replace('-', '–') + '</span>' +
+              '<span class="tl-badge tl-badge--level">' + r.level + '</span>' +
+              '<span class="tl-badge tl-badge--grade">Grades ' + r.grade + '</span>' +
+            '</div>' +
+            '<h3 class="tl-card-title">' + r.title + '</h3>' +
+            '<p class="tl-card-author">by ' + r.author + '</p>' +
+            '<p class="tl-card-desc">' + r.synopsis + '</p>' +
+            '<div class="tl-card-actions">' +
+              '<a class="tl-action-btn tl-action-btn--primary" href="' + r.viewUrl + '">View Material</a>' +
+              '<button class="tl-action-btn tl-action-btn--outline" data-file="' + r.fileDevA + '" data-label="Dev Response A">Dev Response A</button>' +
+              '<button class="tl-action-btn tl-action-btn--outline" data-file="' + r.fileDevB + '" data-label="Dev Response B">Dev Response B</button>' +
+              '<button class="tl-action-btn tl-action-btn--outline tl-action-btn--pdf" data-file="' + r.fileVocab + '" data-label="Vocabulary">Vocabulary</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+
+    // Download button handlers
+    grid.querySelectorAll('.tl-action-btn[data-file]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var fileId = this.getAttribute('data-file');
+        var label = this.getAttribute('data-label');
+        handleDownload(fileId, this, label);
+      });
+    });
+  }
+
+  renderCards(resources);
+
+  // ── Filters ──
+  var searchEl = document.getElementById('tl-search');
+  var gradeEl = document.getElementById('tl-filter-grade');
+  var cefrEl = document.getElementById('tl-filter-cefr');
+
+  function applyFilters() {
+    var q = searchEl.value.toLowerCase();
+    var grade = gradeEl.value;
+    var cefr = cefrEl.value;
+    var filtered = resources.filter(function (r) {
+      var matchQ = !q || r.title.toLowerCase().includes(q) || r.author.toLowerCase().includes(q) || r.synopsis.toLowerCase().includes(q);
+      var matchGrade = !grade || r.grade === grade;
+      var matchCefr = !cefr || r.cefr === cefr;
+      return matchQ && matchGrade && matchCefr;
+    });
+    renderCards(filtered);
+  }
+
+  searchEl.addEventListener('input', applyFilters);
+  gradeEl.addEventListener('change', applyFilters);
+  cefrEl.addEventListener('change', applyFilters);
+
+  document.getElementById('tl-clear-filters').addEventListener('click', function () {
+    searchEl.value = '';
+    gradeEl.value = '';
+    cefrEl.value = '';
+    renderCards(resources);
+  });
+
+  // ── Toast ──
+  function showToast(msg) {
+    var toast = document.getElementById('tl-toast');
+    toast.textContent = msg;
+    toast.classList.add('tl-toast--visible');
+    setTimeout(function () { toast.classList.remove('tl-toast--visible'); }, 4000);
+  }
+
+})();
+</script>
+</body>
+</html>
