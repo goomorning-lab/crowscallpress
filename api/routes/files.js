@@ -31,28 +31,27 @@ function requireAuth(req, res, next) {
 }
 
 /**
- * GET /api/files/download/:fileId
+ * GET /api/files/download/*
  * Returns a signed Supabase Storage URL that expires in 60 seconds.
  *
- * fileId maps to a path in the `teaching-library` bucket.
- * Example: fileId = "file_001" → storage path "materials/file_001.pdf"
+ * The path after /download/ maps directly to the storage path inside
+ * the `teaching-library` bucket.
  *
- * In production, look up the storage path from a `files` table in Supabase
- * so educators only see files they're licensed for.
+ * Convention: {book-slug}/{file-type}.pdf
+ * Examples:
+ *   breakfast-at-tiffanys/vocab.pdf
+ *   breakfast-at-tiffanys/dev-a.pdf
+ *   old-man-and-the-sea/vocab.pdf
  */
-router.get('/download/:fileId', requireAuth, async (req, res) => {
-  const { fileId } = req.params;
+router.get('/download/*', requireAuth, async (req, res) => {
+  const storagePath = req.params[0];
 
-  if (!fileId || !/^[\w-]+$/.test(fileId)) {
-    return res.status(400).json({ message: 'Invalid file ID.' });
+  // Allow: letters, numbers, hyphens, forward slashes, dots
+  if (!storagePath || !/^[\w\-]+(\/[\w\-]+)*\.pdf$/.test(storagePath)) {
+    return res.status(400).json({ message: 'Invalid file path.' });
   }
 
   try {
-    // TODO: Look up the actual storage path from a Supabase `files` table
-    // and verify the requesting user has access to it.
-    // For now, we derive the path directly from the fileId.
-    const storagePath = `materials/${fileId}`;
-
     const { data, error } = await supabaseAdmin
       .storage
       .from(BUCKET)
