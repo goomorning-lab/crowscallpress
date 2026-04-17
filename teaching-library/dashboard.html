@@ -171,7 +171,7 @@
       return;
     }
 
-    fetch('/api/files/download/' + fileId, {
+    fetch('https://crowscallpress-production.up.railway.app/api/files/download/' + fileId, {
       headers: { 'Authorization': 'Bearer ' + token }
     })
       .then(function (res) {
