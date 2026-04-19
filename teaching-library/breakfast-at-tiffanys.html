@@ -796,9 +796,9 @@
   <span class="sep">›</span>
   <span class="doc-title">Breakfast at Tiffany's — Teacher Compendium</span>
   <div class="action-btns">
-    <a href="#" class="action-btn" onclick="alert('Dev Response A download — connect to API'); return false;">Dev Response A</a>
-    <a href="#" class="action-btn" onclick="alert('Dev Response B download — connect to API'); return false;">Dev Response B</a>
-    <a href="#" class="action-btn btn-gold" onclick="alert('PDF download — connect to API'); return false;">⬇ PDF</a>
+    <button class="action-btn" id="btn-dev-a" data-file="breakfast-at-tiffanys/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" id="btn-dev-b" data-file="breakfast-at-tiffanys/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" id="btn-vocab" data-file="breakfast-at-tiffanys/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
   </div>
 </nav>
 
@@ -1477,6 +1477,35 @@
 <button class="back-to-top-btn" id="btt" aria-label="Back to top">↑</button>
 
 <script>
+// ── Download buttons ──
+(function () {
+  var token = sessionStorage.getItem('tl_token');
+  document.querySelectorAll('.action-btn[data-file]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var fileId = btn.getAttribute('data-file');
+      var label  = btn.getAttribute('data-label');
+      btn.disabled = true;
+      btn.textContent = 'Preparing…';
+      fetch('https://crowscallpress-production.up.railway.app/api/files/download/' + fileId, {
+        headers: { 'Authorization': 'Bearer ' + (token || '') }
+      })
+      .then(function (res) {
+        if (res.status === 401) { window.location.href = 'index.html'; return null; }
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.url) { window.open(data.url, '_blank'); }
+        btn.disabled = false;
+        btn.textContent = label;
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = label;
+      });
+    });
+  });
+})();
+
 var btt = document.getElementById('btt');
 window.addEventListener('scroll', function() {
   btt.classList.toggle('visible', window.scrollY > 400);
