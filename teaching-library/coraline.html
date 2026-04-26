@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coraline — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --ink-mid: #3d3028; --ink-light: #7a6a5a; --ink-faint: #c4b8ad;
+    --cream: #f5f0e8; --cream-deep: #ede6d8; --warm-white: #faf8f4;
+    --rust: #b85c3a; --rust-pale: #f5e2db; --gold: #c9a84c; --gold-pale: #f5ecd0;
+    --sage: #4a6e5a; --sage-pale: #ddeee4; --rule: #d4c9bc;
+    --level-color: #7a5c14;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.75; }
+
+  .top-nav { position: sticky; top: 0; z-index: 200; background: var(--rust); color: var(--cream); display: flex; align-items: center; gap: 1rem; padding: 0 2rem; height: 56px; }
+  .top-nav a.back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; transition: color 0.2s; }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+  .top-nav .action-btns { margin-left: auto; display: flex; gap: 0.5rem; }
+  .top-nav .action-btn { padding: 0.35rem 0.9rem; border-radius: 3px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; border: 1px solid rgba(255,255,255,0.25); color: var(--cream); background: transparent; text-decoration: none; transition: background 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+
+  .cover { background: var(--level-color); color: #fff; padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px); pointer-events: none; }
+  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 5.5vw, 52px); line-height: 1.15; margin-bottom: 8px; color: #fff; }
+  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 32px; letter-spacing: 0.08em; }
+  .cover-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
+  .cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cover-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 20px; }
+
+  .toc-bar { background: var(--cream-deep); border-bottom: 1px solid var(--rule); position: sticky; top: 56px; z-index: 100; }
+  .toc-inner { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a { display: block; padding: 11px 13px; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+
+  .container { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+
+  .principle { background: var(--sage-pale); border-left: 3px solid var(--sage); padding: 14px 18px; margin-bottom: 28px; border-radius: 0 4px 4px 0; }
+  .principle strong { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; font-weight: 500; }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+
+  .note { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 11px 15px; margin: 18px 0; border-radius: 0 4px 4px 0; font-size: 13px; color: var(--ink-mid); font-style: italic; }
+  .note strong { font-style: normal; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a10; display: block; margin-bottom: 3px; font-weight: 500; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 22px 0; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px; }
+  .card-level { border-top: 3px solid var(--level-color); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .card .card-sub { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+
+  .plot-stage { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px 20px; margin-bottom: 10px; position: relative; }
+  .plot-stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 5px 0 0 5px; }
+  .plot-stage.stage-begin::before { background: var(--sage); }
+  .plot-stage.stage-mid::before { background: var(--gold); }
+  .plot-stage.stage-climax::before { background: var(--rust); }
+  .plot-stage.stage-end::before { background: var(--ink-light); }
+  .plot-stage h4 { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .plot-stage p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .plot-note { font-size: 12px; color: var(--ink-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--rule); }
+
+  .foreshadow-item { border-left: 2px solid var(--rule); padding: 6px 0 6px 16px; margin-bottom: 14px; }
+  .foreshadow-item h4 { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .foreshadow-item p { font-size: 13px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .arch-group-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 10px; font-weight: 500; }
+  .arch-entry { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--rule); border-radius: 5px; background: #fff; margin-bottom: 8px; overflow: hidden; }
+  .arch-left { padding: 14px 16px; border-right: 1px solid var(--rule); }
+  .arch-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .arch-type { font-size: 11px; letter-spacing: 0.08em; color: var(--rust); font-weight: 500; }
+  .arch-right { padding: 14px 16px; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .true-shadow-box { background: var(--rust-pale); border: 1px solid rgba(184,92,58,0.2); border-left: 3px solid var(--rust); border-radius: 0 5px 5px 0; padding: 16px 20px; margin-bottom: 24px; }
+  .true-shadow-box h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--rust); margin-bottom: 6px; }
+  .true-shadow-box p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .char-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 18px; overflow: hidden; }
+  .char-header { background: var(--cream-deep); padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; }
+  .char-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .char-arch-tag { font-size: 11px; color: var(--rust); letter-spacing: 0.06em; font-weight: 500; }
+  .char-body { padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .char-field label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 500; }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; line-height: 1.6; }
+  .char-traits { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trait-positive, .trait-negative { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; font-size: 13px; }
+  .trait-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 3px; }
+  .trait-positive .trait-label { color: var(--sage); }
+  .trait-negative .trait-label { color: var(--rust); }
+  .char-dev { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .char-dev label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .char-dev-tag { display: inline-block; background: var(--gold-pale); border: 1px solid var(--gold); color: #7a5a10; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; font-weight: 500; }
+  .char-dev p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .allusion-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .allusion-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); }
+  .allusion-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .allusion-type { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .allusion-body { padding: 12px 16px; }
+  .allusion-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; margin-bottom: 6px; font-size: 13.5px; }
+  .allusion-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .allusion-val { color: var(--ink-mid); line-height: 1.6; }
+  .symbol-block { border: 1px solid var(--rule); border-radius: 5px; background: #fff; padding: 14px 18px; margin-bottom: 10px; }
+  .symbol-equation { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .symbol-equation .eq-arrow { color: var(--rust); }
+  .symbol-evidence li { margin-bottom: 4px; }
+
+  .conflict-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 12px; overflow: hidden; }
+  .conflict-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .conflict-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .conflict-tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--rust-pale); color: var(--rust); padding: 2px 8px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
+  .conflict-body { padding: 12px 16px; }
+  .conflict-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; margin-bottom: 8px; font-size: 13.5px; }
+  .conflict-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .conflict-val { color: var(--ink-mid); line-height: 1.6; }
+
+  .comp-set-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 12px; font-weight: 500; }
+  .comp-item { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .comp-body { padding: 16px 18px 14px; display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; }
+  .comp-num { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink-faint); line-height: 1.3; }
+  .comp-question { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+  .comp-answer { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.65; }
+  .comp-scene { font-size: 12px; color: var(--ink-light); font-style: italic; padding: 8px 10px; background: var(--warm-white); border-radius: 3px; border-left: 2px solid var(--rule); }
+
+  .theme-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 14px; overflow: hidden; }
+  .theme-header { background: var(--cream-deep); padding: 12px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .theme-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .theme-topic-badge { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-pale); color: #7a5a10; border: 1px solid var(--gold); padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .theme-body { padding: 14px 16px; }
+  .theme-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; font-size: 13.5px; margin-bottom: 8px; }
+  .theme-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+
+  p { margin-bottom: 10px; } p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+
+  .back-to-top-btn { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; background: var(--ink); color: var(--cream); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 999; }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .char-body { grid-template-columns: 1fr; }
+    .char-traits { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row { grid-template-columns: 1fr; gap: 2px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">Coraline — Teacher Compendium</span>
+  <div class="action-btns">
+    <button class="action-btn" data-file="coraline/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" data-file="coraline/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" data-file="coraline/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>Coraline</h1>
+    <h2>Neil Gaiman</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Lexis Level</span>
+      <span>CEFR B1–B2</span>
+      <span>Dark Fantasy · Identity &amp; Courage</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="section" id="intro">
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">About This Compendium</h2>
+  <p>This compendium provides the book-specific analytical support for the <em>Coraline</em> Lexis-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+  <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+  <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+</div>
+
+<div class="section" id="literary-elements">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Literary Elements</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Literary elements function structurally. Students must correctly identify elements, explain how they create tension, meaning, or development, and move beyond summary into structural interpretation. Accuracy of classification and clarity of explanation are prioritized over length.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Setting</h3>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Physical Location</h3>
+      <div class="card-sub">Where the story takes place</div>
+      <p>An old divided house (flat) in England, including both the "real world" flat and the mirrored Other World accessed through the small door.</p>
+      <p class="justif">The physical setting shifts between two parallel domestic spaces, creating tension through contrast.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Chronological Time</h3>
+      <div class="card-sub">When the story takes place</div>
+      <p>Contemporary (late 20th / early 21st century), over a short span of days during summer break.</p>
+      <p class="justif">The story unfolds in a compressed timeframe, heightening suspense and urgency.</p>
+    </div>
+    <div class="card card-rust">
+      <h3>Society &amp; Values</h3>
+      <div class="card-sub">Cultural context</div>
+      <p>Modern middle-class domestic life, emphasizing independence, work-focused parents, and child autonomy.</p>
+      <p class="justif">The Other World exaggerates these values, offering attention, indulgence, and control disguised as care.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Plot Arc</h3>
+  <div class="plot-stage stage-begin">
+    <h4>Beginning — Exposition</h4>
+    <p>Coraline moves with her parents into a new flat in an old house. She explores the property and meets eccentric neighbors. She discovers the small locked door.</p>
+    <p class="plot-note">Structural Note: The door functions as both curiosity trigger and symbolic threshold.</p>
+  </div>
+  <div class="plot-stage stage-mid">
+    <h4>Middle — Rising Action</h4>
+    <p>Coraline unlocks the door and enters the Other World. She meets the Other Mother and Other Father. The Other Mother offers affection and comfort. The demand to sew buttons onto her eyes establishes the central conflict. Coraline's real parents disappear. Coraline meets the ghost children and accepts the challenge.</p>
+  </div>
+  <div class="plot-stage stage-climax">
+    <h4>Climax</h4>
+    <p>Coraline confronts and outwits the Other Mother in the final game of wits.</p>
+    <p class="plot-note">Justification: The climax centers on Coraline's agency and courage rather than brute force.</p>
+  </div>
+  <div class="plot-stage stage-end">
+    <h4>End — Resolution</h4>
+    <p>Coraline rescues her parents. The Other Mother's hand makes one final attempt. Coraline defeats the hand and seals the well. Order is restored, but Coraline has changed.</p>
+    <p class="plot-note">Interpretive Note: The resolution emphasizes growth, independence, and restored balance.</p>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Foreshadowing</h3>
+  <div class="foreshadow-item"><h4>The Small Locked Door</h4><p>Hints at a hidden reality beneath the ordinary.</p></div>
+  <div class="foreshadow-item"><h4>The Neighbors' Warnings (Miss Spink and Miss Forcible)</h4><p>Prophetic tone suggests danger ahead.</p></div>
+  <div class="foreshadow-item"><h4>The Stone with a Hole</h4><p>Introduced early; later becomes a critical tool for seeing truth.</p></div>
+  <div class="foreshadow-item"><h4>Button Imagery</h4><p>Early references to dolls and artificial eyes prepare readers for the Other Mother's demand.</p></div>
+  <div class="note"><strong>Structural Function</strong>Foreshadowing in Coraline creates unease rather than explicit prediction. It prepares readers emotionally before revealing danger.</div>
+
+  <div class="divider"></div>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Point of View</h3>
+      <div class="card-sub">Narrative perspective</div>
+      <p>Third-person limited. The narrator follows Coraline closely, revealing her thoughts and feelings while withholding full insight into other characters. Readers experience confusion and discovery alongside her.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Tone</h3>
+      <div class="card-sub">Emotional register</div>
+      <p>Unsettling, eerie, and suspenseful, balanced with moments of dark humor and curiosity. Created through contrast between ordinary life and distorted mirror-world imagery, sensory details, and understated narration that treats horror calmly.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="archetypes">
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Archetypes</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Archetypes should not be treated as personality labels. They represent motivational drives within the Order / Freedom / Ego / Social framework. Characters may express a primary archetype (dominant motivation) and a shadow distortion (when that drive becomes extreme or corrupted).</p></div>
+
+  <div class="true-shadow-box">
+    <h4>True Shadow: Neglect</h4>
+    <p>The True Shadow in <em>Coraline</em> is <strong>Neglect</strong> — emotional absence and inattentiveness that creates vulnerability to illusion and control. The Beldam exploits this absence by offering false care and artificial attention. Students should consider how the True Shadow catalyzes character decisions, distorts otherwise healthy motivations, and shapes the novel's central tension.</p>
+  </div>
+
+  <p class="arch-group-label">Characters</p>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Coraline</div><div class="arch-type">Explorer · Seeker</div></div>
+    <div class="arch-right">Curiosity drives her actions and she insists on exploring despite fear.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Mother</div><div class="arch-type">Caregiver · Parent</div></div>
+    <div class="arch-right">Provides food and care but in a distracted manner, leaving Coraline feeling unseen.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Father</div><div class="arch-type">Everyman · Traditionalist</div></div>
+    <div class="arch-right">Represents dull routine and "ordinary life," absorbed in work and chores.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Miss Spink &amp; Miss Forcible</div><div class="arch-type">Jester · Comedian</div></div>
+    <div class="arch-right">Over-the-top performances and humorous warnings offer levity.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Mr. Bobo</div><div class="arch-type">Magician · Visionary</div></div>
+    <div class="arch-right">Claims to hear the mice, delivers cryptic warnings of danger.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Other Mother / Beldam</div><div class="arch-type">Ruler · Shadow Tyrant</div></div>
+    <div class="arch-right">Controls the Other World, demanding Coraline's obedience and button eyes.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Other Father</div><div class="arch-type">Innocent · Shadow Victim</div></div>
+    <div class="arch-right">Puppet of the Beldam, tries to resist but is forced to betray Coraline.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Other Miss Spink &amp; Miss Forcible</div><div class="arch-type">Magician · Shadow Deceiver</div></div>
+    <div class="arch-right">Distract Coraline with endless performances and false flattery.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Other Mr. Bobo</div><div class="arch-type">Everyman · Shadow Follower</div></div>
+    <div class="arch-right">Obeys the Beldam's orders without will or resistance.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Ghost Children</div><div class="arch-type">Innocent · Daydreamer</div></div>
+    <div class="arch-right">Lost souls, longing for freedom, warn Coraline through visions.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Mice</div><div class="arch-type">Sage · Philosopher</div></div>
+    <div class="arch-right">Songs and cryptic messages carry wisdom beyond their small form.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Rats</div><div class="arch-type">Caregiver · Shadow Slave</div></div>
+    <div class="arch-right">Bound servants of the Beldam, spying and reporting in silence.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Cat</div><div class="arch-type">Everyman · Realist</div></div>
+    <div class="arch-right">Blunt truths ground Coraline in reality ("Cats don't have names here.").</div>
+  </div>
+
+  <p class="arch-group-label">Objects &amp; Concepts</p>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Hag Stone</div><div class="arch-type">Magician · Healer</div></div>
+    <div class="arch-right">Pierces illusions, reveals truth, protects Coraline from deception.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Disembodied Hand</div><div class="arch-type">Explorer · Shadow Raider</div></div>
+    <div class="arch-right">Relentless fragment, grasping for Coraline and the key.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Well</div><div class="arch-type">Creator · Shadow Destroyer</div></div>
+    <div class="arch-right">Final resting place for the hand, symbolic "grave" of danger.</div>
+  </div>
+
+  <p class="arch-group-label">Settings &amp; Forces</p>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Path Between Worlds</div><div class="arch-type">Outlaw · Iconoclast</div></div>
+    <div class="arch-right">Warps and stretches, breaking natural order between worlds.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Other World</div><div class="arch-type">Lover · Shadow Seducer</div></div>
+    <div class="arch-right">A perfect mirror reality, offering comfort at the cost of freedom.</div>
+  </div>
+
+  <div class="note"><strong>Interpretive Note</strong>This archetype key represents one interpretation of Coraline. If you or your students see characters, objects, or forces differently, you are encouraged to adapt the matches. To preserve variety and depth, avoid repeating specific archetypes across multiple elements.</div>
+</div>
+
+<div class="section" id="character-maps">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Character Maps</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Character analysis requires internal logic. Students must distinguish between goal (what a character wants) and motivation (why they want it), identify values and traits supported by textual behavior, and explain development using structural evidence. Character claims must be demonstrated through action, dialogue, or narrative consequence.</p></div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Coraline</h3>
+      <span class="char-arch-tag">Explorer · Seeker</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field">
+        <label>Goal</label>
+        <p>She wants to escape boredom and feel seen through exploration and new experiences.</p>
+      </div>
+      <div class="char-field">
+        <label>Motivation</label>
+        <p>She feels ignored by her parents and wants independence, recognition, and adventure.</p>
+      </div>
+      <div class="char-field" style="grid-column:1/-1;">
+        <label>Values</label>
+        <p>Family, independence, bravery, curiosity. She pushes against the true shadow of neglect by choosing care and courage.</p>
+      </div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive — Curious</div>She looks for hidden spaces and asks questions even when others dismiss her.</div>
+        <div class="trait-positive"><div class="trait-label">Positive — Brave</div>She confronts frightening situations to protect herself, her parents, and the ghost children.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Stubborn</div>She keeps pushing forward even when warned, which increases her risk.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Reckless</div>She takes actions (like opening the door) without thinking through the danger.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round · Dynamic</div>
+        <p>Coraline begins as a restless, overlooked child but grows into a resourceful and courageous heroine. By the end, she sees through false comforts, values her real family more deeply, and takes responsibility for herself. Her curiosity evolves into purposeful bravery.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Other Mother (Beldam)</h3>
+      <span class="char-arch-tag">Ruler · Shadow Tyrant</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field">
+        <label>Goal</label>
+        <p>She wants to control Coraline and trap her in the Other World.</p>
+      </div>
+      <div class="char-field">
+        <label>Motivation</label>
+        <p>She appears to feed on the lives of children. By keeping Coraline, she gains both sustenance and control, masking hunger as "love."</p>
+      </div>
+      <div class="char-field" style="grid-column:1/-1;">
+        <label>Values</label>
+        <p>Obedience, appearances, domination. Ultimately, she values Coraline only as food.</p>
+      </div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive — Attentive</div>She gives Coraline everything she says she wants: food, toys, attention.</div>
+        <div class="trait-positive"><div class="trait-label">Positive — Resourceful</div>She creates an entire mirrored world to ensnare Coraline.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Manipulative</div>She uses kindness, gifts, and false promises to lure Coraline in.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Predatory</div>Her kindness hides a hunger to consume Coraline, revealed in her desire for button eyes.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat · Static</div>
+        <p>The Other Mother doesn't grow. Her mask slips but her hunger and control remain constant. This contrast with Coraline's growth highlights the true shadow of neglect turned into consumption.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Miss Spink &amp; Miss Forcible</h3>
+      <span class="char-arch-tag">Jester · Comedian</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field">
+        <label>Goal</label>
+        <p>They want to relive their past as performers, while also protecting Coraline in small but important ways.</p>
+      </div>
+      <div class="char-field">
+        <label>Motivation</label>
+        <p>They enjoy attention and company, yet their care for Coraline pushes them to act, shown most clearly when they give her the witch stone.</p>
+      </div>
+      <div class="char-field" style="grid-column:1/-1;">
+        <label>Values</label>
+        <p>Performance, attention, companionship, safety. Their eccentric behaviour masks a genuine protective instinct.</p>
+      </div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive — Caring</div>They offer Coraline warnings and give her the stone to help her later.</div>
+        <div class="trait-positive"><div class="trait-label">Positive — Humorous</div>Their comedy and quirks lighten the dark tone of the story.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Silly</div>Their over-the-top personalities make Coraline dismiss them as irrelevant.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Forgetful</div>They lose focus and ramble, which makes their help seem less serious.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat · Static</div>
+        <p>They do not change, but their role is reinterpreted by Coraline — from silly old ladies to surprising protectors.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="allusions">
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Allusions &amp; Symbolism</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. A symbol is a recurring object or image within the text that represents a deeper abstract idea. Students must identify the reference or object, explain how characters respond to it, and state the abstract idea it represents.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Allusions</h3>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>Chesterton Epigraph</h4>
+      <div class="allusion-type">Literary · Philosophical</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Quotation</div><div class="allusion-val">"Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten." (Epigraph)</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">G.K. Chesterton's literary works.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Establishes the theme that stories prepare us to face fears. For Coraline and the audience, this frames her journey as one of courage against darkness.</div></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>Miss Spink's Stage Memory</h4>
+      <div class="allusion-type">Literary</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Quotation</div><div class="allusion-val">"I played Portia once," said Miss Spink. (Ch. II)</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Shakespeare, <em>Merchant of Venice</em> (Portia is a central character known for her wisdom and disguise).</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Highlights the women's fading theatrical past. For Coraline, it seems like nonsense; for readers, it layers in Shakespeare's themes of hidden truth and performance.</div></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>Ghost Children's Voices</h4>
+      <div class="allusion-type">Folkloric · Cultural</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Quotation</div><div class="allusion-val">"Flee, while there's still air in your lungs and blood in your veins and warmth in your heart. Flee while you still have your mind and your soul." (Ch. VII)</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Traditional ghost lore and changeling tales, where witches or dark forces steal children and bind their spirits.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Gives Coraline a glimpse of what her fate could be. For her, it is a warning and a call to courage; for readers, it deepens the story's Gothic roots, tying the Beldam to centuries of myth about predatory beings who consume or trap children.</div></div>
+    </div>
+  </div>
+
+  <p class="alt-list">Spider imagery alluding to mythological "weavers" and predation · "Manners makyth man" alluding to medieval proverbs · Mr. Bobo's Mouse Circus alluding to vaudeville and performance</p>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Symbolism</h3>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Door <span class="eq-arrow">→</span> Boundary</div>
+    <ul class="body-list symbol-evidence">
+      <li>The door blocks Coraline from what she wants to explore.</li>
+      <li>The door separates Coraline from her parents when they are trapped.</li>
+      <li>The door becomes the barrier Coraline must cross to face the Other Mother.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Hag Stone <span class="eq-arrow">→</span> Clarity</div>
+    <ul class="body-list symbol-evidence">
+      <li>The stone lets Coraline see things that are normally hidden.</li>
+      <li>The stone protects Coraline from being fooled by the Other Mother's lies and deception.</li>
+      <li>The stone gives Coraline confidence that she can find the children's souls.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Mirror <span class="eq-arrow">→</span> Truth</div>
+    <ul class="body-list symbol-evidence">
+      <li>The mirror shows Coraline that her actions have placed her parents in danger.</li>
+      <li>The mirror frightens Coraline because it reveals that which she cannot ignore.</li>
+      <li>The mirror reminds her that the Other World is built on lies.</li>
+    </ul>
+  </div>
+
+  <p class="alt-list">Button Eyes = Submission · Other Mother's Creations = Temptation · The Well = Finality</p>
+</div>
+
+<div class="section" id="conflict">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Conflict Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must classify the conflict type, identify what each side wants, and explain the outcome and how it resolves or reshapes the tension. Conflict is not simply a fight — it is a clash of desires, values, or forces.</p></div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Coraline vs. Self-Doubt</h4>
+      <span class="conflict-tag">Character vs. Self</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Character's Side</div><div class="conflict-val">To confront fear with bravery, and take risks to rescue her parents and the ghost children.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Opposing Side</div><div class="conflict-val">To convince Coraline to stay safe, remain passive, and avoid danger at all costs.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Coraline overcomes her fear and acts with courage, proving her independence.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Coraline vs. The Rules of the Other Mother's World</h4>
+      <span class="conflict-tag">Character vs. Fate</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Character's Side</div><div class="conflict-val">To outsmart the rules of the "game" by finding the children's souls and her parents.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Opposing Side</div><div class="conflict-val">To keep her bound, as others have been before, with no escape.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Coraline bends fate by redefining the rules, showing cleverness and willpower.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Normal People vs. Other World</h4>
+      <span class="conflict-tag">Society vs. Nature</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Society's Side</div><div class="conflict-val">To live ordinary lives, dismiss Coraline's warnings, and pretend nothing is wrong.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Nature's Side</div><div class="conflict-val">To intrude, tempt, and consume those who ignore danger.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">The "Other People" are exposed as false and unstable, while normal society remains unaware but safe because of Coraline's actions.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Ghost Children vs. Forgetting</h4>
+      <span class="conflict-tag">Society vs. Fate</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Society's Side</div><div class="conflict-val">To hold onto their memories, reach out to Coraline, and seek release.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Fate's Side</div><div class="conflict-val">To erase their voices and identities forever.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Coraline rescues their souls, defeating oblivion and granting them peace.</div></div>
+    </div>
+  </div>
+
+  <p class="alt-list">Miss Spink &amp; Miss Forcible vs. Tea Leaves (Character vs. Fate) · Cat vs. Other Mother's World (Character vs. Nature) · Rats vs. Mice (Society vs. Society)</p>
+</div>
+
+<div class="section" id="comprehension">
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Comprehension Questions</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Comprehension questions are organized into three sets that broadly align with the narrative's structural progression. Specific chapter numbers are intentionally omitted to encourage holistic reading and discussion. Each answer includes a referenced scene for teacher orientation and a model response to guide expectations.</p></div>
+
+  <p class="comp-set-label">Section 1 — The Door in The Drawing Room</p>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">1</div>
+      <div>
+        <div class="comp-question">What kind of place does Coraline move into at the start of the story?</div>
+        <div class="comp-answer">Coraline moves into a flat in a large old divided house with an overgrown garden, a well, and eccentric neighbors in the flats above and below.</div>
+        <div class="comp-scene">Scene: Coraline exploring the grounds and meeting her neighbors.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">2</div>
+      <div>
+        <div class="comp-question">Why does Coraline spend her days exploring on her own?</div>
+        <div class="comp-answer">Coraline explores because her parents are busy working and have little time for her, so she has to find ways to entertain herself.</div>
+        <div class="comp-scene">Scene: Coraline's parents working while she wanders the grounds alone.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">3</div>
+      <div>
+        <div class="comp-question">What strange discovery does Coraline make when she explores the drawing room?</div>
+        <div class="comp-answer">Coraline finds a large carved wooden door that is locked, and when her mother opens it, she sees only a brick wall on the other side.</div>
+        <div class="comp-scene">Scene: Coraline's mother unlocking the door and revealing the bricked-up opening.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">4</div>
+      <div>
+        <div class="comp-question">How do Miss Spink and Miss Forcible react after reading Coraline's tea leaves?</div>
+        <div class="comp-answer">Both women warn Coraline that she is in danger, though they cannot say what the danger is, and Miss Spink gives her a stone with a hole in it for protection.</div>
+        <div class="comp-scene">Scene: Miss Spink and Miss Forcible examining the tea leaves and gifting the holed stone.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">5</div>
+      <div>
+        <div class="comp-question">How does the door behave when Coraline opens it on her own?</div>
+        <div class="comp-answer">When Coraline uses the key herself, the bricks have disappeared and the door opens onto a dark corridor with a peculiar, very old smell emanating from it.</div>
+        <div class="comp-scene">Scene: Coraline unlocking the door while her mother is out and entering the corridor.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">6</div>
+      <div>
+        <div class="comp-question">What condition does the Other Mother give Coraline for staying forever?</div>
+        <div class="comp-answer">The Other Mother tells Coraline she must have black buttons sewn over her eyes in exchange for staying.</div>
+        <div class="comp-scene">Scene: The spool, needle, and buttons laid out on the kitchen table as the Other Mother explains what staying requires.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">7</div>
+      <div>
+        <div class="comp-question">How does Coraline react when she sees the buttons on the kitchen table?</div>
+        <div class="comp-answer">Coraline refuses and backs away, telling the Other Mother "I don't think so" before leaving the other world and returning home.</div>
+        <div class="comp-scene">Scene: Coraline shaking her head at the needle and buttons and moving away from the Other Mother's reaching hand.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">8</div>
+      <div>
+        <div class="comp-question">Why does Coraline go back through the door to the other world a second time?</div>
+        <div class="comp-answer">Coraline goes back because she believes the Other Mother has taken her parents and she knows they will not return on their own.</div>
+        <div class="comp-scene">Scene: Coraline telling the cat she is going back for her parents.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="comp-set-label">Section 2 — The Other World</p>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">1</div>
+      <div>
+        <div class="comp-question">How is the Other Mother different from Coraline's real mother?</div>
+        <div class="comp-answer">The Other Mother pays close attention to Coraline, cooks elaborate meals, and offers endless play, but she demands total control in return, unlike Coraline's real mother who is distracted and lets her be independent.</div>
+        <div class="comp-scene">Scene: The Other Mother serving roast chicken and later demanding the button eyes, compared to Coraline's real mother dismissing her boredom.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">2</div>
+      <div>
+        <div class="comp-question">What makes the Other World seem better than Coraline's real life?</div>
+        <div class="comp-answer">The Other World has delicious food, exciting toys, and attentive parents who notice everything Coraline says, which contrasts with her bored, ignored life at home.</div>
+        <div class="comp-scene">Scene: The elaborate lunch, the wind-up toys, and the theatrical performances.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">3</div>
+      <div>
+        <div class="comp-question">What are the "other" versions of her neighbors like?</div>
+        <div class="comp-answer">The other Miss Spink and Miss Forcible perform a glamorous theater show and step out of their old bodies as young women, while the other man upstairs controls the rats rather than mice and has button eyes.</div>
+        <div class="comp-scene">Scene: The two women opening their fluffy coats to reveal younger selves on stage, and the man upstairs collecting the rats into his coat.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">4</div>
+      <div>
+        <div class="comp-question">How does Coraline know that the vision the Other Mother shows her in the mirror is a lie?</div>
+        <div class="comp-answer">Coraline sees a flash of real anger cross the Other Mother's face, which makes her certain the mirror vision of her parents leaving happily was invented to trick her.</div>
+        <div class="comp-scene">Scene: Coraline watching the Other Mother's expression after refusing to believe the mirror and spotting the anger beneath it.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">5</div>
+      <div>
+        <div class="comp-question">What does the other father tell Coraline the Other Mother is doing when she wakes the next morning?</div>
+        <div class="comp-answer">The other father tells Coraline the Other Mother has gone out to fix the doors because of a vermin problem, and when Coraline asks, he reveals the vermin is the black cat.</div>
+        <div class="comp-scene">Scene: Coraline finding the other father alone in the study.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">6</div>
+      <div>
+        <div class="comp-question">How does the cat help Coraline understand the Other World?</div>
+        <div class="comp-answer">The cat tells her that the world is only as large as the Other Mother made it, warns her that her kind loves games, and suggests that Coraline use a challenge or game as her way to fight back.</div>
+        <div class="comp-scene">Scene: The cat explaining the mist is just uncreated space and advising Coraline.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">7</div>
+      <div>
+        <div class="comp-question">How does Coraline react when the Other Mother locks her behind the mirror?</div>
+        <div class="comp-answer">Coraline stops herself from crying, feels around the dark space, discovers the three ghost children, and decides she will not give up but will find a way to challenge the Other Mother.</div>
+        <div class="comp-scene">Scene: Coraline pressing her hands against the walls of the dark closet, hearing the ghost children whisper, and telling them she came to get her parents back.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">8</div>
+      <div>
+        <div class="comp-question">What deal does Coraline propose to the Other Mother at breakfast?</div>
+        <div class="comp-answer">Coraline offers to stay forever and accept the button eyes if she loses, but demands that her parents and the trapped children go free if she wins.</div>
+        <div class="comp-scene">Scene: Coraline at the kitchen table naming the terms of the game.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="comp-set-label">Section 3 — The Rescue</p>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">1</div>
+      <div>
+        <div class="comp-question">How does Coraline use the stone with the hole in it during her search?</div>
+        <div class="comp-answer">Coraline holds the stone up to her eye and looks through it to spot the hidden souls, which glow with color through the stone even when they are invisible to the naked eye.</div>
+        <div class="comp-scene">Scene: Coraline scanning the other bedroom and the abandoned theater.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">2</div>
+      <div>
+        <div class="comp-question">How does Coraline find her parents?</div>
+        <div class="comp-answer">Coraline realizes her parents must be hidden in the snow globe on the mantelpiece, since the Other Mother can only copy things and the mantelpiece at home is bare.</div>
+        <div class="comp-scene">Scene: Coraline seeing the snow globe in the drawing room and working out why the Other Mother placed it there.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">3</div>
+      <div>
+        <div class="comp-question">What dangers does Coraline face during her rescue mission?</div>
+        <div class="comp-answer">Coraline faces the creature in the cellar that tries to stop her, the dog-bats in the abandoned theater, and the rat carrying the final marble that the cat kills at the bottom of the steps.</div>
+        <div class="comp-scene">Scene: The other father lunging in the cellar, the dog-bats circling the stage, and the cat decapitating the rat at the bottom of the steps.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">4</div>
+      <div>
+        <div class="comp-question">How does Coraline trick the Other Mother into opening the door?</div>
+        <div class="comp-answer">Coraline pretends she believes her parents are hidden in the corridor behind the door, leading the Other Mother to open it in order to gloat that they are not there, which is the moment Coraline uses to escape.</div>
+        <div class="comp-scene">Scene: Coraline pointing at the door in the corner and insisting her parents are behind it until the Other Mother unlocks it.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">5</div>
+      <div>
+        <div class="comp-question">How does the cat help in the final escape?</div>
+        <div class="comp-answer">Coraline throws the cat at the Other Mother's face, and the cat claws and bites her, giving Coraline enough time to grab the snow globe and run through the door.</div>
+        <div class="comp-scene">Scene: Coraline hurling the cat at the Other Mother and then reaching up to the mantelpiece while the Other Mother is distracted.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">6</div>
+      <div>
+        <div class="comp-question">How does Coraline's attitude toward her real parents change after she returns home?</div>
+        <div class="comp-answer">After the rescue, Coraline hugs her parents tightly and notices ordinary things like her father's gray eyes and the real daylight, which she had not valued before.</div>
+        <div class="comp-scene">Scene: Coraline hugging her mother at dinner and kissing her father on the back of his head unprompted, telling him she missed him.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">7</div>
+      <div>
+        <div class="comp-question">What happens to the key to the door in the end?</div>
+        <div class="comp-answer">Coraline lures the Other Mother's severed hand to the old well by using the key as bait at a fake doll's picnic, and when the hand grabs the key, both fall into the well.</div>
+        <div class="comp-scene">Scene: Coraline laying the tablecloth over the well with the key on it and watching the hand leap onto it before everything falls.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">8</div>
+      <div>
+        <div class="comp-question">How does Coraline show she is braver at the end of the story than she was at the beginning?</div>
+        <div class="comp-answer">At the start Coraline runs away from the other world when the button eyes are proposed, but by the end she returns alone, completes the rescue, and tricks the Other Mother into opening the door herself.</div>
+        <div class="comp-scene">Scene: Coraline's first retreat through the corridor contrasted with her deliberately walking back in with the cat to face the Other Mother.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="themes">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Theme Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>A topic is the subject the text explores (1–3 words). A theme is the author's perspective or claim about that topic, expressed as a complete, universal statement. Themes should be universal, arguable, supported by textual evidence, and expressed as complete statements — not single words or plot summaries.</p></div>
+
+  <div class="theme-block">
+    <div class="theme-header">
+      <h3>True bravery means doing what's right even when you're afraid</h3>
+      <span class="theme-topic-badge">Bravery</span>
+    </div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Coraline confronts the Other Mother even though she's terrified and has no guarantee of success.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Reflects how people today stand up against fear, injustice, or bullying despite risk — bravery as moral action, not just courage in danger.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>The Lion, the Witch and the Wardrobe</em> by C.S. Lewis — the Pevensie children show courage through sacrifice and moral choice.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header">
+      <h3>Real love values care over perfection</h3>
+      <span class="theme-topic-badge">Family</span>
+    </div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Coraline learns that her real parents' neglect isn't cruelty; their flawed love is genuine, unlike the Other Mother's false affection.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Mirrors how modern families balance attention, independence, and emotional connection in a busy world.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>Matilda</em> by Roald Dahl — contrasts false parental love with chosen or found family.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header">
+      <h3>What seems perfect can hide danger beneath comfort</h3>
+      <span class="theme-topic-badge">Temptation / Desire</span>
+    </div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">The Other World appears beautiful and safe, but it masks control and consumption.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Relates to social media's illusion of ideal lives — easy satisfaction that erodes authenticity or safety.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>The Little Mermaid</em> by Hans Christian Andersen — explores temptation and the cost of getting what one wishes for.</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.container -->
+
+<button class="back-to-top-btn" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  const token = sessionStorage.getItem('tl_token');
+  if(!token){ window.location.href='index.html'; return; }
+
+  // Download buttons
+  document.querySelectorAll('.action-btn[data-file]').forEach(btn=>{
+    btn.addEventListener('click',async function(){
+      const file=this.dataset.file, label=this.dataset.label;
+      const orig=this.textContent; this.textContent='Loading…'; this.disabled=true;
+      try{
+        const r=await fetch('https://crowscallpress-production.up.railway.app/download',{
+          method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+          body:JSON.stringify({file})
+        });
+        if(!r.ok) throw new Error(await r.text());
+        const {url}=await r.json();
+        const a=document.createElement('a'); a.href=url; a.download=label+'.pdf'; a.target='_blank';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      }catch(e){ alert('Download failed: '+e.message); }
+      this.textContent=orig; this.disabled=false;
+    });
+  });
+
+  // Back to top
+  const btn=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{ btn.classList.toggle('visible',window.scrollY>400); });
+  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>

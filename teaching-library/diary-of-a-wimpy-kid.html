@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diary of a Wimpy Kid — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --ink-mid: #3d3028; --ink-light: #7a6a5a; --ink-faint: #c4b8ad;
+    --cream: #f5f0e8; --cream-deep: #ede6d8; --warm-white: #faf8f4;
+    --rust: #b85c3a; --rust-pale: #f5e2db; --gold: #c9a84c; --gold-pale: #f5ecd0;
+    --sage: #4a6e5a; --sage-pale: #ddeee4; --rule: #d4c9bc;
+    --level-color: #7a2828;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.75; }
+  .top-nav { position: sticky; top: 0; z-index: 200; background: var(--rust); color: var(--cream); display: flex; align-items: center; gap: 1rem; padding: 0 2rem; height: 56px; }
+  .top-nav a.back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; transition: color 0.2s; }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+  .top-nav .action-btns { margin-left: auto; display: flex; gap: 0.5rem; }
+  .top-nav .action-btn { padding: 0.35rem 0.9rem; border-radius: 3px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; border: 1px solid rgba(255,255,255,0.25); color: var(--cream); background: transparent; text-decoration: none; transition: background 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+  .cover { background: var(--level-color); color: #fff; padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px); pointer-events: none; }
+  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 5.5vw, 52px); line-height: 1.15; margin-bottom: 8px; color: #fff; }
+  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 32px; letter-spacing: 0.08em; }
+  .cover-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
+  .cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cover-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 20px; }
+  .toc-bar { background: var(--cream-deep); border-bottom: 1px solid var(--rule); position: sticky; top: 56px; z-index: 100; }
+  .toc-inner { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a { display: block; padding: 11px 13px; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+  .container { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .principle { background: var(--sage-pale); border-left: 3px solid var(--sage); padding: 14px 18px; margin-bottom: 28px; border-radius: 0 4px 4px 0; }
+  .principle strong { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; font-weight: 500; }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+  .note { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 11px 15px; margin: 18px 0; border-radius: 0 4px 4px 0; font-size: 13px; color: var(--ink-mid); font-style: italic; }
+  .note strong { font-style: normal; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a10; display: block; margin-bottom: 3px; font-weight: 500; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 22px 0; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px; }
+  .card-level { border-top: 3px solid var(--level-color); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .card .card-sub { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+  .plot-stage { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px 20px; margin-bottom: 10px; position: relative; }
+  .plot-stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 5px 0 0 5px; }
+  .plot-stage.stage-begin::before { background: var(--sage); }
+  .plot-stage.stage-mid::before { background: var(--gold); }
+  .plot-stage.stage-climax::before { background: var(--rust); }
+  .plot-stage.stage-end::before { background: var(--ink-light); }
+  .plot-stage h4 { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .plot-stage p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .plot-note { font-size: 12px; color: var(--ink-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--rule); }
+  .foreshadow-item { border-left: 2px solid var(--rule); padding: 6px 0 6px 16px; margin-bottom: 14px; }
+  .foreshadow-item h4 { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .foreshadow-item p { font-size: 13px; color: var(--ink-mid); margin-bottom: 0; }
+  .arch-group-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 10px; font-weight: 500; }
+  .arch-entry { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--rule); border-radius: 5px; background: #fff; margin-bottom: 8px; overflow: hidden; }
+  .arch-left { padding: 14px 16px; border-right: 1px solid var(--rule); }
+  .arch-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .arch-type { font-size: 11px; letter-spacing: 0.08em; color: var(--rust); font-weight: 500; }
+  .arch-right { padding: 14px 16px; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .true-shadow-box { background: var(--rust-pale); border: 1px solid rgba(184,92,58,0.2); border-left: 3px solid var(--rust); border-radius: 0 5px 5px 0; padding: 16px 20px; margin-bottom: 24px; }
+  .true-shadow-box h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--rust); margin-bottom: 6px; }
+  .true-shadow-box p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .char-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 18px; overflow: hidden; }
+  .char-header { background: var(--cream-deep); padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; }
+  .char-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .char-arch-tag { font-size: 11px; color: var(--rust); letter-spacing: 0.06em; font-weight: 500; }
+  .char-body { padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .char-field label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 500; }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; line-height: 1.6; }
+  .char-traits { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trait-positive, .trait-negative { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; font-size: 13px; }
+  .trait-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 3px; }
+  .trait-positive .trait-label { color: var(--sage); }
+  .trait-negative .trait-label { color: var(--rust); }
+  .char-dev { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .char-dev label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .char-dev-tag { display: inline-block; background: var(--gold-pale); border: 1px solid var(--gold); color: #7a5a10; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; font-weight: 500; }
+  .char-dev p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .allusion-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .allusion-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); }
+  .allusion-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .allusion-type { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .allusion-body { padding: 12px 16px; }
+  .allusion-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; margin-bottom: 6px; font-size: 13.5px; }
+  .allusion-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .allusion-val { color: var(--ink-mid); line-height: 1.6; }
+  .symbol-block { border: 1px solid var(--rule); border-radius: 5px; background: #fff; padding: 14px 18px; margin-bottom: 10px; }
+  .symbol-equation { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .symbol-equation .eq-arrow { color: var(--rust); }
+  .symbol-evidence li { margin-bottom: 4px; }
+  .conflict-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 12px; overflow: hidden; }
+  .conflict-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .conflict-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .conflict-tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--rust-pale); color: var(--rust); padding: 2px 8px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
+  .conflict-body { padding: 12px 16px; }
+  .conflict-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; margin-bottom: 8px; font-size: 13.5px; }
+  .conflict-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .conflict-val { color: var(--ink-mid); line-height: 1.6; }
+  .comp-set-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 12px; font-weight: 500; }
+  .comp-item { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .comp-body { padding: 16px 18px 14px; display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; }
+  .comp-num { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink-faint); line-height: 1.3; }
+  .comp-question { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+  .comp-answer { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.65; }
+  .comp-scene { font-size: 12px; color: var(--ink-light); font-style: italic; padding: 8px 10px; background: var(--warm-white); border-radius: 3px; border-left: 2px solid var(--rule); }
+  .theme-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 14px; overflow: hidden; }
+  .theme-header { background: var(--cream-deep); padding: 12px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .theme-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .theme-topic-badge { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-pale); color: #7a5a10; border: 1px solid var(--gold); padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .theme-body { padding: 14px 16px; }
+  .theme-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; font-size: 13.5px; margin-bottom: 8px; }
+  .theme-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+  p { margin-bottom: 10px; } p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+  .back-to-top-btn { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; background: var(--ink); color: var(--cream); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 999; }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .char-body { grid-template-columns: 1fr; }
+    .char-traits { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row { grid-template-columns: 1fr; gap: 2px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">Diary of a Wimpy Kid — Teacher Compendium</span>
+  <div class="action-btns">
+    <button class="action-btn" data-file="diary-of-a-wimpy-kid/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" data-file="diary-of-a-wimpy-kid/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" data-file="diary-of-a-wimpy-kid/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>Diary of a Wimpy Kid</h1>
+    <h2>Jeff Kinney</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Junior Level</span>
+      <span>CEFR A2–B1</span>
+      <span>Realistic Fiction · Humour &amp; School Life</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="section" id="intro">
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">About This Compendium</h2>
+  <p>This compendium provides the book-specific analytical support for the <em>Diary of a Wimpy Kid</em> Junior-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+  <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+  <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+</div>
+
+<div class="section" id="literary-elements">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Literary Elements</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Literary elements function structurally. Students must correctly identify elements, explain how they create tension, meaning, or development, and move beyond summary into structural interpretation. Accuracy of classification and clarity of explanation are prioritized over length.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Setting</h3>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Physical Location</h3>
+      <div class="card-sub">Where the story takes place</div>
+      <p>A suburban American neighborhood and middle school, including Greg's home, Rowley's house, the school cafeteria, gymnasium, and blacktop.</p>
+      <p class="justif">The ordinary domestic and school settings make Greg's social anxieties feel immediate and recognizable. The blacktop functions as the story's social arena, where status is won, lost, and enforced by the peer group.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Chronological Time</h3>
+      <div class="card-sub">When the story takes place</div>
+      <p>Contemporary, spanning one full school year from September through June.</p>
+      <p class="justif">The school-year structure creates a built-in deadline. Greg begins with ambitions for popularity and ends the year having achieved none of them, which gives the story its comedic and slightly deflating arc.</p>
+    </div>
+    <div class="card card-rust">
+      <h3>Society &amp; Values</h3>
+      <div class="card-sub">Cultural context</div>
+      <p>A middle school world governed by popularity rankings, fear of embarrassment, and the social rules that kids enforce on each other far more strictly than any adult does.</p>
+      <p class="justif">Greg's decisions are driven by how he assumes his choices will be viewed by other kids. This social pressure shapes every major event, from avoiding the Cheese Touch to taking the blame for its disappearance.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Plot Arc</h3>
+  <div class="plot-stage stage-begin">
+    <h4>Beginning — Exposition</h4>
+    <p>Greg starts middle school and immediately begins calculating his place in the social hierarchy. He introduces Rowley as his best friend and makes clear he considers Rowley an embarrassment. The Cheese Touch is established as the school's most feared social contagion. Greg attempts and fails at several schemes: a student government campaign, a haunted house business, and a weight-lifting program.</p>
+    <p class="plot-note">Structural Note: The exposition establishes Greg as an unreliable narrator whose ambitions consistently outrun his judgment. Every plan fails, and Greg rarely acknowledges his own role in the failure.</p>
+  </div>
+  <div class="plot-stage stage-mid">
+    <h4>Middle — Rising Action</h4>
+    <p>Greg's mother forces him into the school play, where he ends up as a Tree who refuses to sing. The Safety Patrol arc gives Greg temporary authority, which he abuses by chasing kindergartners with worms while wearing Rowley's coat. Rowley takes the blame, then rats Greg out, and the friendship breaks down. Rowley's Zoo-Wee Mama comic is published, earning him the fame Greg always wanted.</p>
+  </div>
+  <div class="plot-stage stage-climax">
+    <h4>Climax</h4>
+    <p>The teenagers force Rowley to eat the Cheese. Greg talks his way out of doing the same. When students notice the Cheese is gone, Greg claims he threw it away, taking on the Cheese Touch to protect Rowley.</p>
+    <p class="plot-note">Justification: This is the one moment Greg acts entirely for someone else. Every other plan has been self-serving, which makes this the story's emotional and structural turning point.</p>
+  </div>
+  <div class="plot-stage stage-end">
+    <h4>End — Resolution</h4>
+    <p>Greg carries the Cheese Touch through the rest of the year. He and Rowley quietly resume their friendship without a formal reconciliation. Greg ends the journal the same way he began: certain he is destined for greatness, with little evidence to support it.</p>
+    <p class="plot-note">Interpretive Note: Greg does not become more self-aware by June. The novel treats his lack of personal development as funny rather than tragic, while leaving the reader to notice what Greg cannot.</p>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Foreshadowing</h3>
+  <div class="foreshadow-item"><h4>The Cheese Touch</h4><p>The Cheese sits on the blacktop from day one, feared by everyone, quietly waiting to matter.</p></div>
+  <div class="foreshadow-item"><h4>Greg's Pattern of Letting Others Take Blame</h4><p>Greg avoids consequences repeatedly throughout the year, making it meaningful when he finally doesn't.</p></div>
+  <div class="foreshadow-item"><h4>Rowley's Naivety</h4><p>Rowley misreads situations from the start, signaling he will keep creating problems for Greg.</p></div>
+  <div class="foreshadow-item"><h4>Greg's Failed Schemes</h4><p>Every plan Greg makes falls apart, preparing the reader to expect the same from his Class Clown campaign.</p></div>
+  <div class="note"><strong>Structural Function</strong>Foreshadowing here works through repeated patterns. The reader learns Greg's habits early, which makes the climax feel earned.</div>
+
+  <div class="divider"></div>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Point of View</h3>
+      <div class="card-sub">Narrative perspective</div>
+      <p>First-person unreliable narrator. Greg tells the whole story himself, and his version is consistently self-serving. The gap between what Greg claims and what actually happened is where most of the humor lives.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Tone</h3>
+      <div class="card-sub">Emotional register</div>
+      <p>Self-important and comedic, with an undercurrent of genuine social anxiety. Greg treats minor middle school events as matters of enormous importance. His flat, matter-of-fact voice makes embarrassing moments land harder than dramatic language.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="archetypes">
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Archetypes</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Archetypes represent motivational drives within the Order / Freedom / Ego / Social framework. Characters may express a primary archetype (dominant motivation) and a shadow distortion (when that drive becomes extreme or corrupted).</p></div>
+
+  <div class="true-shadow-box">
+    <h4>True Shadow: The Need to Be Seen</h4>
+    <p>The True Shadow in <em>Diary of a Wimpy Kid</em> is <strong>The Need to Be Seen</strong> — the distorted desire for recognition and status that drives characters to manipulate, deflect blame, and sacrifice genuine connection in pursuit of social importance. Students should consider how this catalyzes Greg's decisions, distorts otherwise healthy motivations, and shapes the novel's central tension.</p>
+  </div>
+
+  <p class="arch-group-label">Characters</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Greg Heffley</div><div class="arch-type">Outlaw · Misfit</div></div><div class="arch-right">Constantly bends rules and schemes for status without ever quite fitting the social world he is trying to enter.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Manny Heffley</div><div class="arch-type">Ruler · Shadow Tyrant</div></div><div class="arch-right">Operates above consequences through parental protection he exploits without awareness.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Rodrick Heffley</div><div class="arch-type">Jester · Shadow Hater</div></div><div class="arch-right">Uses humor and mockery to embarrass Greg at every opportunity.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Dad</div><div class="arch-type">Everyman · Realist</div></div><div class="arch-right">Practical and well-meaning but largely disconnected from Greg's social world.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Mom</div><div class="arch-type">Caregiver · Parent</div></div><div class="arch-right">Consistently pushes Greg toward growth he resists at every turn.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Rowley Jefferson</div><div class="arch-type">Innocent · Daydreamer</div></div><div class="arch-right">Genuinely unbothered by social pressure in a way Greg cannot understand.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Patty Farrell</div><div class="arch-type">Ruler · Shadow Tyrant</div></div><div class="arch-right">Enforces her own version of order on everyone around her, putting her directly in Greg's way at several key moments.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Fregley</div><div class="arch-type">Jester · Fool</div></div><div class="arch-right">Genuinely strange in a way that is not strategic, making him unpredictable and impossible to manage.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Teenagers</div><div class="arch-type">Outlaw · Shadow Criminal</div></div><div class="arch-right">Operate outside the school world's rules, appearing at key moments to impose real consequences.</div></div>
+
+  <p class="arch-group-label">Objects &amp; Concepts</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Cheese Touch</div><div class="arch-type">Sage · Philosopher</div></div><div class="arch-right">Functions as an unwritten law the entire school organizes itself around without anyone questioning why.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Popularity</div><div class="arch-type">Ruler · Shadow Tyrant</div></div><div class="arch-right">Controls Greg's every decision without ever appearing as a character itself.</div></div>
+
+  <p class="arch-group-label">Settings &amp; Forces</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Blacktop</div><div class="arch-type">Ruler · Leader</div></div><div class="arch-right">The space where social hierarchy is most visibly enforced and most directly experienced.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Middle School</div><div class="arch-type">Creator · Shadow Destroyer</div></div><div class="arch-right">Promises reinvention but systematically dismantles everyone who tries.</div></div>
+</div>
+
+<div class="section" id="character-maps">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Character Maps</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Character analysis requires internal logic. Students must distinguish between goal and motivation, identify values and traits supported by textual behavior, and explain development using structural evidence. Character claims must be demonstrated through action, dialogue, or narrative consequence.</p></div>
+
+  <div class="char-card">
+    <div class="char-header"><h3>Greg Heffley</h3><span class="char-arch-tag">Outlaw · Misfit</span></div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants to become popular and be recognized as someone important at his middle school.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He genuinely believes he is smarter and more deserving than the people above him on the social ladder, and cannot understand why the world hasn't caught up yet.</p></div>
+      <div class="char-field" style="grid-column:1/-1;"><label>Values</label><p>Status, recognition, self-preservation. He consistently prioritizes how things look over how they actually are.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive — Resourceful</div>He consistently finds creative solutions to problems, even when those solutions backfire.</div>
+        <div class="trait-positive"><div class="trait-label">Positive — Loyal</div>He takes on the Cheese Touch publicly to protect Rowley from humiliation, the one moment his loyalty costs him something real.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Self-serving</div>He allows others to take blame for his actions repeatedly throughout the year without stepping in.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Oblivious</div>He cannot see how his own behavior drives away the things he claims to want, including friendship and respect.</div>
+      </div>
+      <div class="char-dev"><label>Development</label><div class="char-dev-tag">Round · Dynamic</div><p>Greg begins the year entirely focused on his own advancement and ends it having performed one genuinely selfless act. He does not become a better person in any sustained way, but the Cheese Touch moment shows he is capable of it.</p></div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header"><h3>Rodrick Heffley</h3><span class="char-arch-tag">Jester · Shadow Hater</span></div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants to humiliate Greg and avoid any responsibility placed on him by his parents.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He enjoys the power his age and position give him over Greg, and has no interest in giving it up.</p></div>
+      <div class="char-field" style="grid-column:1/-1;"><label>Values</label><p>Freedom, entertainment, avoiding effort. He treats every rule and expectation as something to be dodged rather than met.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive — Clever</div>He constructs elaborate tricks that consistently fool Greg despite Greg's belief that he is the smarter one.</div>
+        <div class="trait-positive"><div class="trait-label">Positive — Committed</div>He follows through on his schemes with genuine dedication, from the 3 a.m. prank to recording the school play.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Cruel</div>He targets Greg's vulnerabilities deliberately and without remorse.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Irresponsible</div>He consistently avoids consequences for his behavior, largely because Greg is too afraid to escalate.</div>
+      </div>
+      <div class="char-dev"><label>Development</label><div class="char-dev-tag">Flat · Static</div><p>Rodrick does not change. His role is to function as a constant source of humiliation for Greg, and he fulfills it the same way from September through June.</p></div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header"><h3>Rowley Jefferson</h3><span class="char-arch-tag">Innocent · Daydreamer</span></div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants to have fun and spend time with his best friend.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He takes genuine pleasure in simple things and does not feel the social pressure Greg feels at all.</p></div>
+      <div class="char-field" style="grid-column:1/-1;"><label>Values</label><p>Friendship, enjoyment, kindness. He engages with the world without suspicion or strategy, which Greg reads as embarrassing but which the novel treats as quietly admirable.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive — Genuine</div>He means everything he says and never performs for an audience the way Greg does.</div>
+        <div class="trait-positive"><div class="trait-label">Positive — Forgiving</div>He resumes the friendship after the worm incident without demanding an apology Greg never fully gives.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Naive</div>He cannot read social situations, which repeatedly creates problems for both himself and Greg.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Passive</div>He allows Greg to take advantage of him for most of the year before finally speaking up.</div>
+      </div>
+      <div class="char-dev"><label>Development</label><div class="char-dev-tag">Round · Static</div><p>Rowley does not change internally, but the world around him shifts in his favor. By June he has the comic strip, the Class Clown title, and the friendship intact. His consistency — which Greg treats as a flaw — turns out to be the thing that serves him best.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="allusions">
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Allusions &amp; Symbolism</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. A symbol is a recurring object or image that represents a deeper abstract idea. Its meaning is built through repetition, character reaction, and narrative importance.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Allusions</h3>
+
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>The Wizard of Oz</h4><div class="allusion-type">Literary · Cultural</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Scene</div><div class="allusion-val">The school stages a full production of The Wizard of Oz, and Greg's decisions about which role to pursue depend entirely on his knowledge of the source material.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">The 1939 MGM film and L. Frank Baum's original novel.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Greg uses the story strategically rather than appreciating it, treating the Witch role and the Tree role as social tools. For the reader, it frames Greg's entire approach to the play as self-serving from the start.</div></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Professional Wrestling</h4><div class="allusion-type">Cultural · Sporting</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Scene</div><div class="allusion-val">Greg and his classmates are excited for the wrestling unit until they discover it has nothing to do with what they watch on television.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">American professional wrestling as a televised entertainment spectacle, distinct from the actual sport.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">The gap between the TV version and the real thing mirrors Greg's broader problem throughout the novel, where his expectations of how things should work consistently clash with how they actually do.</div></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Guinness Book of World Records</h4><div class="allusion-type">Cultural</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Scene</div><div class="allusion-val">Greg and Rowley frame their snowman attempt around breaking an official world record, treating the book as the ultimate external authority on achievement.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">The Guinness World Records publication, which since 1955 has catalogued human achievement as a form of popular entertainment.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Greg's ambition is always tied to being recognized by some external standard. The snowman plan fails before it starts, which is consistent with every other scheme he attempts.</div></div>
+    </div>
+  </div>
+
+  <p class="alt-list">Rodrick's "Löded Diper" band alluding to heavy metal culture · The Giving Tree gift mix-up alluding to charitable giving traditions · Dad's campaign poster alluding to American student government culture</p>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Symbolism</h3>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Journal <span class="eq-arrow">→</span> Wishful Thinking</div>
+    <ul class="body-list symbol-evidence">
+      <li>Greg writes in the journal because he believes it will serve as proof of his greatness one day.</li>
+      <li>The journal follows Greg through every failed plan, every embarrassment, and every moment he blames someone else.</li>
+      <li>Greg returns to the journal after every setback, certain that his side of the story is the right one.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Weight Set <span class="eq-arrow">→</span> Ambition</div>
+    <ul class="body-list symbol-evidence">
+      <li>Greg pursues the weight set with total conviction the moment wrestling with Fregley becomes unbearable.</li>
+      <li>The weight set arrives on Christmas morning as the one gift Dad is genuinely proud to give.</li>
+      <li>The weight set sits untouched in the garage because Greg has moved on by the time he gets it.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Yearbook <span class="eq-arrow">→</span> Others' Perceptions</div>
+    <ul class="body-list symbol-evidence">
+      <li>The yearbook is what Greg spends the second half of the school year trying to shape in his favor.</li>
+      <li>The yearbook delivers its verdict on the last day of school with Rowley's photo on the Class Favorites page.</li>
+      <li>Greg throws the yearbook in the cafeteria trash can because he cannot stand what it says about him.</li>
+    </ul>
+  </div>
+
+  <p class="alt-list">The Hot Chocolate = Inequality · The Campaign Posters = Too Much Too Soon · Zoo-Wee Mama = Stolen Credit</p>
+</div>
+
+<div class="section" id="conflict">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Conflict Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must classify the conflict type, identify what each side wants, and explain the outcome and how it resolves or reshapes the tension.</p></div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Greg vs. His Moral Compass</h4><span class="conflict-tag">Character vs. Self</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Greg's Side</div><div class="conflict-val">To protect his own reputation and let others absorb consequences on his behalf.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Opposing Side</div><div class="conflict-val">To act with honesty and loyalty even when it costs him something.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Greg chooses self-protection for most of the year before taking on the Cheese Touch publicly to shield Rowley.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Greg vs. Rowley</h4><span class="conflict-tag">Character vs. Character</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Greg's Side</div><div class="conflict-val">To receive credit and loyalty from Rowley without offering much in return.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Rowley's Side</div><div class="conflict-val">To be treated as a genuine equal rather than a sidekick.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">The friendship breaks down over the worm incident and the Zoo-Wee Mama dispute before quietly resuming without a formal resolution.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Middle School Students vs. The Social Hierarchy</h4><span class="conflict-tag">Society vs. Society</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Students' Side</div><div class="conflict-val">To find a place within the ranking system and protect it at all costs.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Hierarchy's Side</div><div class="conflict-val">To enforce the ranking strictly enough that no one can rise without permission.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">The system holds. Greg ends the year no higher than he started, and the hierarchy remains fully intact.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>The Teenagers vs. Childhood</h4><span class="conflict-tag">Society vs. Fate</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Teenagers' Side</div><div class="conflict-val">To operate by the rules of the adult world, where actions have real consequences.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Fate's Side</div><div class="conflict-val">To preserve the gap between childhood and adulthood for as long as possible.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">The teenagers breach that gap twice — on Halloween and at the Cheese climax — making clear that childhood's rules offer no real protection.</div></div>
+    </div>
+  </div>
+
+  <p class="alt-list">Greg vs. His Parents' Expectations (Character vs. Society) · Rowley vs. Blame (Character vs. Fate) · The Student Body vs. The Cheese Touch (Society vs. Self)</p>
+</div>
+
+<div class="section" id="comprehension">
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Comprehension Questions</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Questions are organized into three sets aligned with the narrative's structural progression. Specific chapter numbers are intentionally omitted to encourage holistic reading. Each answer includes a referenced scene for teacher orientation and a model response to guide expectations.</p></div>
+
+  <p class="comp-set-label">Section 1 — Just Call It a Journal</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div><div class="comp-question">What does Greg tell the reader about the word "diary" on the cover of his book?</div><div class="comp-answer">Greg says he does not want anyone to get the wrong idea about him carrying a book with the word diary on the cover.</div><div class="comp-scene">Scene: Greg's opening entry on the first day of school.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div><div class="comp-question">What does Greg say will happen to his ranking when Charlie Davies gets braces next week?</div><div class="comp-answer">Greg says he will move up one spot because Charlie Davies is getting braces and will drop below him.</div><div class="comp-scene">Scene: Greg explaining the popularity system and Charlie Davies getting braces.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div><div class="comp-question">What does Greg do to protect himself from the Cheese Touch?</div><div class="comp-answer">Greg tapes his fingers together to keep them permanently crossed so he cannot accidentally get the Cheese Touch during the school day.</div><div class="comp-scene">Scene: Greg discovering the Cheese is still on the blacktop during Phys Ed.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div><div class="comp-question">What happens to Greg's campaign posters when he puts them up at school?</div><div class="comp-answer">Vice Principal Roy takes them down almost immediately because they contain false claims about Marty Porter, the other candidate running for treasurer.</div><div class="comp-scene">Scene: Mr. Roy removing the posters and telling Greg he cannot write fabrications.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div><div class="comp-question">What goes wrong when the first kid enters Greg and Rowley's haunted house?</div><div class="comp-answer">The first kid crawls under the bed and refuses to come out, blocking the entire operation while the line outside waits.</div><div class="comp-scene">Scene: Shane Snella curling up under the bed during the Hall of Screams.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div><div class="comp-question">What happens to Greg and Rowley's Halloween candy by the time they get home?</div><div class="comp-answer">The candy gets ruined by a fire extinguisher from a passing truck and then by Dad's water at the driveway, leaving only a few cellophane mints and toothbrushes from Dr. Garrison.</div><div class="comp-scene">Scene: The teenagers in the pickup truck, Dad's ambush at the driveway, and Greg and Rowley laying out the ruined candy at the kitchen table.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div><div class="comp-question">What does Greg try to do to avoid wrestling Fregley?</div><div class="comp-answer">Greg stuffs his clothes with socks and shirts to make himself heavier.</div><div class="comp-scene">Scene: Greg trying to move up a weight class during the wrestling unit.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div><div class="comp-question">What do the other Trees do when Greg refuses to sing during the school play?</div><div class="comp-answer">The other Trees stop singing too, and then all of them start throwing apples at Patty until someone knocks her glasses off and the play shuts down.</div><div class="comp-scene">Scene: The Wizard of Oz performance and the Trees throwing apples at Patty Farrell.</div></div></div></div>
+
+  <p class="comp-set-label">Section 2 — This Is Not My Fault</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div><div class="comp-question">What do the girls at lunch do for Rowley after he comes back to school with a broken hand?</div><div class="comp-answer">The girls invite Rowley to their table and take turns feeding him.</div><div class="comp-scene">Scene: Rowley returning to school with his cast and the lunch table scene.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div><div class="comp-question">What happens when Greg wraps his own hand in gauze to copy Rowley?</div><div class="comp-answer">Nobody asks to sign Greg's gauze bandage the way they signed Rowley's cast, and the only attention he gets is from people he was not trying to impress.</div><div class="comp-scene">Scene: Greg wrapping his hand in gauze and trying to get people to sign it with a marker.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div><div class="comp-question">What does Greg do with the worms he finds while walking the kindergartners home?</div><div class="comp-answer">Greg chases the kindergartners with the worms he finds on the wet sidewalk, which Mrs. Irvine, the neighbor, sees from her front porch.</div><div class="comp-scene">Scene: Greg walking the kindergartners home alone while wearing Rowley's coat.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div><div class="comp-question">Who does the neighbor think chased the kindergartners with the worms?</div><div class="comp-answer">The neighbor thinks it was Rowley because Greg was wearing Rowley's coat at the time.</div><div class="comp-scene">Scene: Mrs. Irvine watching from her porch and calling the school.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div><div class="comp-question">What does Greg do when he finds out Rowley is being blamed for the worm incident?</div><div class="comp-answer">Greg stays quiet and lets Rowley take the blame rather than confess.</div><div class="comp-scene">Scene: Greg hearing about Rowley's meeting with Mr. Winsky and choosing to say nothing.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div><div class="comp-question">What happens to Greg after Rowley tells Mr. Winsky the truth about the worm incident?</div><div class="comp-answer">Greg is called to Mr. Winsky's office, stripped of his Safety Patrol badge, and removed from duty immediately.</div><div class="comp-scene">Scene: Greg being called to Mr. Winsky's office.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div><div class="comp-question">What does Mr. Ira do to Greg's comic before it runs in the school paper?</div><div class="comp-answer">Mr. Ira changes Greg's comic so much that Greg can barely recognize it when he reads it in the paper.</div><div class="comp-scene">Scene: Greg finding his published comic in the school paper and reading it in the bathroom.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div><div class="comp-question">What does Mr. Worth do in his class when Rowley's Zoo-Wee Mama comic comes out?</div><div class="comp-answer">Mr. Worth drops his chalk in the middle of History class to make a joke about Rowley's strip.</div><div class="comp-scene">Scene: Mr. Worth dropping his chalk in History.</div></div></div></div>
+
+  <p class="comp-set-label">Section 3 — Same Greg, Different Cheese</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div><div class="comp-question">What happens when Greg and Rowley's argument over Zoo-Wee Mama attracts a crowd?</div><div class="comp-answer">The crowd eggs them on for a fight, and before either Greg or Rowley throws a punch, the same teenagers from Halloween pull up in their truck and everybody else runs.</div><div class="comp-scene">Scene: The blacktop argument attracting a crowd and the teenagers arriving.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div><div class="comp-question">What do the teenagers do to Greg and Rowley after they pin their arms behind their backs?</div><div class="comp-answer">The teenagers drag Rowley over to the Cheese and force him to eat it.</div><div class="comp-scene">Scene: The teenagers pinning Greg and Rowley on the blacktop.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div><div class="comp-question">How does Greg get out of eating the Cheese when the teenagers force Rowley to do it?</div><div class="comp-answer">Greg talks fast and tells the teenagers he would eat the cheese, but he's allergic to dairy, so they leave him alone.</div><div class="comp-scene">Scene: Greg fast-talking his way out while the teenagers force Rowley to eat the Cheese.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div><div class="comp-question">What does Greg tell everyone happened to the Cheese when students notice it is gone?</div><div class="comp-answer">Greg tells everyone he got sick of the Cheese sitting there and threw it away himself.</div><div class="comp-scene">Scene: Greg speaking up while students crowd around the empty spot on the blacktop.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div><div class="comp-question">What do the other students think when Greg tells them he threw the Cheese away?</div><div class="comp-answer">The other students realize that if Greg threw away the Cheese, he must have touched it, which means Greg now has the Cheese Touch.</div><div class="comp-scene">Scene: Students crowding around the blacktop after Greg speaks up.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div><div class="comp-question">What does Greg say about talking to Rowley after they start spending time together again?</div><div class="comp-answer">Greg says they started hanging out after school again without either of them talking about what happened.</div><div class="comp-scene">Scene: Greg noting they have started hanging out after school again in the June entry.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div><div class="comp-question">What does Greg do with his yearbook after he finds Rowley on the Class Favorites page?</div><div class="comp-answer">Greg throws his yearbook in the cafeteria trash can on the last day of school.</div><div class="comp-scene">Scene: Greg finding Rowley's photo on the Class Favorites page.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div><div class="comp-question">What does Greg have at the end of the school year that he did not have at the start?</div><div class="comp-answer">Greg has the Cheese Touch, which he took on by telling everyone he threw the Cheese away himself.</div><div class="comp-scene">Scene: Greg claiming responsibility for the Cheese on the blacktop and his final June entry.</div></div></div></div>
+</div>
+
+<div class="section" id="themes">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Theme Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>A topic is the subject the text explores (1–3 words). A theme is the author's perspective or claim about that topic, expressed as a complete, universal statement. Themes should be universal, arguable, supported by textual evidence, and expressed as complete statements — not single words or plot summaries.</p></div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Growing up means discovering that the rules you relied on as a kid no longer protect you</h3><span class="theme-topic-badge">Growing Up</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">The teenagers breach Greg and Rowley's world twice, and neither friendship nor cleverness is enough to keep them safe.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">The shift from childhood to adolescence forces kids to navigate consequences that feel sudden and unfair; middle school is where that shift happens most visibly.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>Holes</em> by Louis Sachar — the protagonist is forced to confront a world that operates by rules he never agreed to and cannot easily escape.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Caring too much about how others see you prevents you from seeing yourself clearly</h3><span class="theme-topic-badge">Reputation</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Greg makes nearly every decision through the lens of social image; the one time he doesn't — taking on the Cheese Touch — is the moment the novel treats most seriously.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Social media puts reputation pressure on kids earlier and more visibly than ever; the fear of being seen a certain way shapes behavior in ways that are hard to recognize from the inside.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>Wonder</em> by R.J. Palacio — reputation and social image determine how characters treat someone who deserves better.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Genuine friendship survives selfishness, but only when someone is finally willing to put the other person first</h3><span class="theme-topic-badge">Power of Friendship</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Greg and Rowley's friendship fractures repeatedly throughout the year; it holds in the end because Greg absorbs the Cheese Touch rather than letting Rowley carry the humiliation alone.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Friendships at this age are tested constantly by competition and self-interest; the ones that last are usually the ones where someone eventually chooses the friend over themselves.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>Charlotte's Web</em> by E.B. White — a selfless act of loyalty defines the entire friendship and gives it lasting meaning.</div></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<button class="back-to-top-btn" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  const token = sessionStorage.getItem('tl_token');
+  if(!token){ window.location.href='index.html'; return; }
+  document.querySelectorAll('.action-btn[data-file]').forEach(btn=>{
+    btn.addEventListener('click',async function(){
+      const file=this.dataset.file, label=this.dataset.label;
+      const orig=this.textContent; this.textContent='Loading…'; this.disabled=true;
+      try{
+        const r=await fetch('https://crowscallpress-production.up.railway.app/download',{
+          method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+          body:JSON.stringify({file})
+        });
+        if(!r.ok) throw new Error(await r.text());
+        const {url}=await r.json();
+        const a=document.createElement('a'); a.href=url; a.download=label+'.pdf'; a.target='_blank';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      }catch(e){ alert('Download failed: '+e.message); }
+      this.textContent=orig; this.disabled=false;
+    });
+  });
+  const btn=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{ btn.classList.toggle('visible',window.scrollY>400); });
+  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>

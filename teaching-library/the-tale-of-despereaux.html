@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Tale of Despereaux — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --ink-mid: #3d3028; --ink-light: #7a6a5a; --ink-faint: #c4b8ad;
+    --cream: #f5f0e8; --cream-deep: #ede6d8; --warm-white: #faf8f4;
+    --rust: #b85c3a; --rust-pale: #f5e2db; --gold: #c9a84c; --gold-pale: #f5ecd0;
+    --sage: #4a6e5a; --sage-pale: #ddeee4; --rule: #d4c9bc;
+    --level-color: #7a5c14;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.75; }
+
+  .top-nav { position: sticky; top: 0; z-index: 200; background: var(--rust); color: var(--cream); display: flex; align-items: center; gap: 1rem; padding: 0 2rem; height: 56px; }
+  .top-nav a.back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; transition: color 0.2s; }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+  .top-nav .action-btns { margin-left: auto; display: flex; gap: 0.5rem; }
+  .top-nav .action-btn { padding: 0.35rem 0.9rem; border-radius: 3px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; border: 1px solid rgba(255,255,255,0.25); color: var(--cream); background: transparent; text-decoration: none; transition: background 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+
+  .cover { background: var(--level-color); color: #fff; padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px); pointer-events: none; }
+  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 5.5vw, 52px); line-height: 1.15; margin-bottom: 8px; color: #fff; }
+  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 32px; letter-spacing: 0.08em; }
+  .cover-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
+  .cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cover-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 20px; }
+
+  .toc-bar { background: var(--cream-deep); border-bottom: 1px solid var(--rule); position: sticky; top: 56px; z-index: 100; }
+  .toc-inner { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a { display: block; padding: 11px 13px; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+
+  .container { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+
+  .principle { background: var(--sage-pale); border-left: 3px solid var(--sage); padding: 14px 18px; margin-bottom: 28px; border-radius: 0 4px 4px 0; }
+  .principle strong { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; font-weight: 500; }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+
+  .note { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 11px 15px; margin: 18px 0; border-radius: 0 4px 4px 0; font-size: 13px; color: var(--ink-mid); font-style: italic; }
+  .note strong { font-style: normal; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a10; display: block; margin-bottom: 3px; font-weight: 500; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 22px 0; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px; }
+  .card-level { border-top: 3px solid var(--level-color); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .card .card-sub { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+
+  .plot-stage { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px 20px; margin-bottom: 10px; position: relative; }
+  .plot-stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 5px 0 0 5px; }
+  .plot-stage.stage-begin::before { background: var(--sage); }
+  .plot-stage.stage-mid::before { background: var(--gold); }
+  .plot-stage.stage-climax::before { background: var(--rust); }
+  .plot-stage.stage-end::before { background: var(--ink-light); }
+  .plot-stage h4 { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .plot-stage p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .plot-note { font-size: 12px; color: var(--ink-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--rule); }
+
+  .foreshadow-item { border-left: 2px solid var(--rule); padding: 6px 0 6px 16px; margin-bottom: 14px; }
+  .foreshadow-item h4 { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .foreshadow-item p { font-size: 13px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .arch-group-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 10px; font-weight: 500; }
+  .arch-entry { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--rule); border-radius: 5px; background: #fff; margin-bottom: 8px; overflow: hidden; }
+  .arch-left { padding: 14px 16px; border-right: 1px solid var(--rule); }
+  .arch-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .arch-type { font-size: 11px; letter-spacing: 0.08em; color: var(--rust); font-weight: 500; }
+  .arch-right { padding: 14px 16px; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .true-shadow-box { background: var(--rust-pale); border: 1px solid rgba(184,92,58,0.2); border-left: 3px solid var(--rust); border-radius: 0 5px 5px 0; padding: 16px 20px; margin-bottom: 24px; }
+  .true-shadow-box h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--rust); margin-bottom: 6px; }
+  .true-shadow-box p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .char-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 18px; overflow: hidden; }
+  .char-header { background: var(--cream-deep); padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; }
+  .char-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .char-arch-tag { font-size: 11px; color: var(--rust); letter-spacing: 0.06em; font-weight: 500; }
+  .char-body { padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .char-field label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 500; }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; line-height: 1.6; }
+  .char-traits { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trait-positive, .trait-negative { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; font-size: 13px; }
+  .trait-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 3px; }
+  .trait-positive .trait-label { color: var(--sage); }
+  .trait-negative .trait-label { color: var(--rust); }
+  .char-dev { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .char-dev label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .char-dev-tag { display: inline-block; background: var(--gold-pale); border: 1px solid var(--gold); color: #7a5a10; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; font-weight: 500; }
+  .char-dev p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .allusion-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .allusion-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); }
+  .allusion-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .allusion-type { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .allusion-body { padding: 12px 16px; }
+  .allusion-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; margin-bottom: 6px; font-size: 13.5px; }
+  .allusion-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .allusion-val { color: var(--ink-mid); line-height: 1.6; }
+  .symbol-block { border: 1px solid var(--rule); border-radius: 5px; background: #fff; padding: 14px 18px; margin-bottom: 10px; }
+  .symbol-equation { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .symbol-equation .eq-arrow { color: var(--rust); }
+  .symbol-evidence li { margin-bottom: 4px; }
+
+  .conflict-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 12px; overflow: hidden; }
+  .conflict-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .conflict-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .conflict-tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--rust-pale); color: var(--rust); padding: 2px 8px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
+  .conflict-body { padding: 12px 16px; }
+  .conflict-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; margin-bottom: 8px; font-size: 13.5px; }
+  .conflict-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .conflict-val { color: var(--ink-mid); line-height: 1.6; }
+
+  .comp-set-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 12px; font-weight: 500; }
+  .comp-item { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .comp-body { padding: 16px 18px 14px; display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; }
+  .comp-num { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink-faint); line-height: 1.3; }
+  .comp-question { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+  .comp-answer { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.65; }
+  .comp-scene { font-size: 12px; color: var(--ink-light); font-style: italic; padding: 8px 10px; background: var(--warm-white); border-radius: 3px; border-left: 2px solid var(--rule); }
+
+  .theme-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 14px; overflow: hidden; }
+  .theme-header { background: var(--cream-deep); padding: 12px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .theme-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .theme-topic-badge { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-pale); color: #7a5a10; border: 1px solid var(--gold); padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .theme-body { padding: 14px 16px; }
+  .theme-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; font-size: 13.5px; margin-bottom: 8px; }
+  .theme-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+
+  p { margin-bottom: 10px; } p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+
+  .back-to-top-btn { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; background: var(--ink); color: var(--cream); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 999; }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .char-body { grid-template-columns: 1fr; }
+    .char-traits { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row { grid-template-columns: 1fr; gap: 2px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">The Tale of Despereaux — Teacher Compendium</span>
+  <div class="action-btns">
+    <button class="action-btn" data-file="the-tale-of-despereaux/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" data-file="the-tale-of-despereaux/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" data-file="the-tale-of-despereaux/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>The Tale of Despereaux</h1>
+    <h2>Kate DiCamillo</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Lexis Level</span>
+      <span>CEFR B1–B2</span>
+      <span>Fantasy · Courage &amp; Forgiveness</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="section" id="intro">
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">About This Compendium</h2>
+  <p>This compendium provides the book-specific analytical support for the <em>The Tale of Despereaux</em> Lexis-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+  <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+  <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+</div>
+
+<div class="section" id="literary-elements">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Literary Elements</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Literary elements function structurally. Students must correctly identify elements, explain how they create tension, meaning, or development, and move beyond summary into structural interpretation. Accuracy of classification and clarity of explanation are prioritized over length.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Setting</h3>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Physical Location</h3>
+      <div class="card-sub">Where the story takes place</div>
+      <p>A medieval castle and its surrounding kingdom, including the sunlit upper halls, the castle library, the banquet hall, and the rat-infested dungeon beneath.</p>
+      <p class="justif">The castle divides into two vertical worlds: the lit world above and the dark world below. This vertical axis carries the novel's central moral tension — light and beauty belong to the upper castle; suffering and exile belong to the dungeon.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Chronological Time</h3>
+      <div class="card-sub">When the story takes place</div>
+      <p>An unspecified medieval past, unfolding over the course of several weeks.</p>
+      <p class="justif">The fairy-tale setting removes the action from any specific historical moment, making the moral stakes feel universal. Time is measured not by dates but by scenes of waiting, exile, and longing.</p>
+    </div>
+    <div class="card card-rust">
+      <h3>Society &amp; Values</h3>
+      <div class="card-sub">Cultural context</div>
+      <p>A feudal kingdom shaped by hierarchy, grief, and the impulse to control what cannot be controlled — including loss, rats, and soup.</p>
+      <p class="justif">The king's decrees outlaw sorrow rather than address it. The narrative treats this as the kingdom's central flaw, one that drives suffering underground rather than resolving it.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:28px 0 14px;">Plot Arc</h3>
+  <div class="plot-stage stage-begin">
+    <h4>Beginning — Exposition</h4>
+    <p>Despereaux Tilling is born in the walls of the castle: sickly, oversized-eared, and born with his eyes open. He is dismissed by his family and community as defective. He wanders the castle, drawn to music, light, and story. He discovers Princess Pea and falls in love with her. Condemned by the Mouse Council for speaking to a human, he is sentenced to the dungeon.</p>
+    <p class="plot-note">Structural Note: The opening establishes Despereaux as someone who perceives differently from those around him. His wrongness by mouse standards is precisely what makes him capable of the story's central act.</p>
+  </div>
+  <div class="plot-stage stage-mid">
+    <h4>Middle — Rising Action &amp; Climax</h4>
+    <p>In parallel, the rat Roscuro falls from the chandelier into the queen's soup bowl; the queen dies of shock, and soup is banned from the kingdom. Roscuro, exiled to the dungeon and driven by wounded longing, plots revenge against the princess. Miggery Sow, a brutalized serving girl who dreams of becoming a princess, is manipulated by Roscuro into helping him kidnap the Pea. The princess is taken to the dungeon. Despereaux, armed with a needle and a spool of red thread, chooses to return to the dungeon voluntarily to rescue her.</p>
+  </div>
+  <div class="plot-stage stage-climax">
+    <h4>Climax</h4>
+    <p>In the dungeon, Despereaux stands before Roscuro with his needle at the rat's heart. He chooses not to kill him. The princess then asks Roscuro whether he would like some soup. Roscuro, overwhelmed by the smell of soup and the memory of the light he once glimpsed, breaks down and leads the group upstairs. The climax is not won through force but through an act of mercy that neither Despereaux nor the princess was obligated to offer.</p>
+  </div>
+  <div class="plot-stage stage-end">
+    <h4>End — Falling Action &amp; Resolution</h4>
+    <p>The group returns upstairs; soup is restored to the kingdom. Roscuro is granted access to both the dungeon and the upper castle, belonging fully to neither. Mig's father is released from the dungeon and reunites with his daughter. Despereaux and the princess become friends. The narrator addresses the reader directly, framing the story as an act of light shared in the dark.</p>
+    <p class="plot-note">Interpretive Note: The resolution does not deliver uncomplicated happiness. Each character receives something, but loss and damage remain. Restoration is possible, the novel insists, even when nothing can be fully undone.</p>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:28px 0 14px;">Foreshadowing</h3>
+  <div class="foreshadow-item">
+    <h4>The Opening Epigraph</h4>
+    <p>The novel opens with the declaration that the world is dark and light is precious, addressed directly to the reader. This provides storytelling as the novel's primary rescue mechanism.</p>
+  </div>
+  <div class="foreshadow-item">
+    <h4>Despereaux Born with His Eyes Open</h4>
+    <p>Unlike any other mouse, Despereaux arrives already looking. He is a character whose defining trait is the willingness to see what others refuse to.</p>
+  </div>
+  <div class="foreshadow-item">
+    <h4>Gregory's Rope and the Red Thread</h4>
+    <p>Gregory, the jailer, warns Despereaux early on that the red thread around his neck will be his death, not his salvation. This warning is later inverted, allowing the thread to become the instrument of his quest rather than his execution.</p>
+  </div>
+  <div class="foreshadow-item">
+    <h4>Roscuro's First Sight of Light</h4>
+    <p>When Roscuro peers down from the chandelier into the banquet hall, he is transfixed by what he sees. His destructive arc is seen to come from longing rather than malice.</p>
+  </div>
+  <div class="note"><strong>Structural Function</strong>Foreshadowing in <em>The Tale of Despereaux</em> builds anticipation by layering symbolic objects and character dispositions before their consequences unfold. The technique is gentle rather than ominous — readers are given the vocabulary of the story's resolution before they fully understand it as such.</div>
+
+  <div class="card-grid" style="margin-top:28px;">
+    <div class="card card-level">
+      <h3>Point of View</h3>
+      <div class="card-sub">Narrative perspective</div>
+      <p>Second-person intrusive narrator, following multiple characters across four books.</p>
+      <p class="justif">DiCamillo's narrator addresses the reader directly and repeatedly. This is structurally significant: the narrator acts as a guide moving a young reader through morally complex territory, implicating the reader in the act of paying attention.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Tone</h3>
+      <div class="card-sub">Primary tone</div>
+      <p>Tender, melancholic, and gently urgent — a fairy tale told by a narrator who knows the story contains real sadness and chooses to tell it anyway.</p>
+      <p class="justif">Created through direct address to the reader, formal yet warm fairy-tale diction, moments of genuine grief treated seriously, and recurring imagery of light in darkness.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="archetypes">
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Archetypes</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Archetypes should not be treated as personality labels. They represent motivational drives within the Order / Freedom / Ego / Social framework. Characters may express a primary archetype (dominant motivation) and a shadow distortion (when that drive becomes extreme or corrupted).</p></div>
+
+  <div class="true-shadow-box">
+    <h4>True Shadow: The Meaning of Life</h4>
+    <p>The True Shadow in <em>The Tale of Despereaux</em> is the distorted search for purpose, beauty, and belonging that every major character pursues in ways that cause harm. Roscuro destroys what he loves most in trying to reach it. Mig surrenders her identity chasing it. The king legislates it into law and still cannot hold it. Even Despereaux risks everything because he cannot stop reaching for something larger than himself. Students should consider how the True Shadow catalyzes character decisions, distorts otherwise healthy motivations, and shapes the novel's central tension.</p>
+  </div>
+
+  <p class="arch-group-label">Characters</p>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Despereaux Tilling</div><div class="arch-type">Hero · Rescuer</div></div>
+    <div class="arch-right">Enters the dungeon by choice, not compulsion, making his rescue of the princess a deliberate moral act rather than an obligation.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Princess Pea</div><div class="arch-type">Innocent · Romantic</div></div>
+    <div class="arch-right">Extends genuine connection to a mouse and mercy to a rat, with her capacity for feeling driving the novel's resolution.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Chiaroscuro / Roscuro</div><div class="arch-type">Lover · Shadow Seducer</div></div>
+    <div class="arch-right">Pursues beauty and light by manipulating others into giving him what he cannot earn honestly.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Miggery Sow / Mig</div><div class="arch-type">Innocent · Shadow Victim</div></div>
+    <div class="arch-right">Exploited at every stage by those who dismiss what she wants; her compliance with Roscuro stems from never having been taught she could refuse.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Miggery Sow's Father</div><div class="arch-type">Explorer · Shadow Raider</div></div>
+    <div class="arch-right">Trades his daughter for small comforts and walks away without looking back, taking his own freedom at the direct cost of hers.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">King Philip</div><div class="arch-type">Ruler · Politician</div></div>
+    <div class="arch-right">Uses law as a substitute for grief, outlawing soup and rats as if making suffering illegal could make it disappear.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Antoinette</div><div class="arch-type">Caregiver · Parent</div></div>
+    <div class="arch-right">Feeds and names her son while remaining absorbed in her own disappointment, performing motherhood without fully inhabiting it.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Furlough</div><div class="arch-type">Everyman · Solid Citizen</div></div>
+    <div class="arch-right">Follows the Mouse Council's rules without question, including delivering his own brother to the dungeon.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Lester</div><div class="arch-type">Everyman · Realist</div></div>
+    <div class="arch-right">Accepts the verdict against Despereaux and only confronts what he has done when forgiveness is offered to him directly.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Cook</div><div class="arch-type">Magician · Arcanist</div></div>
+    <div class="arch-right">Guards the knowledge of soup and its power to comfort and connect, with her kitchen the one place in the castle where that magic is still practiced.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Boticelli Remorso</div><div class="arch-type">Jester · Shadow Hater</div></div>
+    <div class="arch-right">Orchestrates suffering in the dungeon for entertainment, losing all interest the moment forgiveness enters the room.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Gregory the Jailer</div><div class="arch-type">Explorer · Wanderer</div></div>
+    <div class="arch-right">Has lived so long in darkness that he speaks only in hard truths about survival, story, and the nature of being trapped.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Hovis / The Threadmaster</div><div class="arch-type">Sage · Mentor</div></div>
+    <div class="arch-right">Equips Despereaux for the quest and then cuts him free, ensuring the mouse understands he acts by choice rather than obligation.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Mouse Council</div><div class="arch-type">Sage · Shadow Elitist</div></div>
+    <div class="arch-right">Holds institutional authority and uses it to enforce conformity, refusing forgiveness or reconsideration at every turn.</div>
+  </div>
+
+  <p class="arch-group-label">Objects &amp; Concepts</p>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Light</div><div class="arch-type">Magician · Visionary</div></div>
+    <div class="arch-right">Transforms every character who encounters it, functioning as both the object of Roscuro's longing and the narrator's recurring name for what story provides.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Story / Storytelling</div><div class="arch-type">Creator · Artist</div></div>
+    <div class="arch-right">Despereaux survives the dungeon by telling himself a story out loud, and the narrator frames the entire novel as an act of illumination offered to the reader in the dark.</div>
+  </div>
+
+  <p class="arch-group-label">Settings &amp; Forces</p>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Castle</div><div class="arch-type">Ruler · Leader</div></div>
+    <div class="arch-right">Assigns every character a position within its hierarchy, with where someone stands in relation to it determining what they are permitted to want.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Dungeon</div><div class="arch-type">Creator · Shadow Destroyer</div></div>
+    <div class="arch-right">Dismantles everything the castle above tries to build — including order, identity, and hope — functioning as the dark inverse of the world it sits beneath.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Rats (Collective)</div><div class="arch-type">Outlaw · Shadow Criminal</div></div>
+    <div class="arch-right">Operate outside the king's law by design, with the dungeon as a space where the rules of the upper world simply do not apply.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Mice (Collective)</div><div class="arch-type">Everyman · Shadow Follower</div></div>
+    <div class="arch-right">Vote, chant, and condemn in unison; their collective compliance is the social force that exiles Despereaux and goes entirely unexamined.</div>
+  </div>
+</div>
+
+<div class="section" id="character-maps">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Character Maps</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Character analysis requires internal logic. Students must distinguish between goal (what a character wants) and motivation (why they want it), identify values and traits supported by textual behavior, and explain development using structural evidence. Character claims must be demonstrated through action, dialogue, or narrative consequence.</p></div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Despereaux Tilling</h3>
+      <span class="char-arch-tag">Hero · Rescuer · Round / Dynamic</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants to rescue the Princess Pea and return her safely to the world above.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He loves the princess, and for Despereaux love is not a feeling to be managed but a reason to act.</p></div>
+      <div class="char-field"><label>Values</label><p>Honor, bravery, courtesy, devotion. He orients every decision around the four words the threadmaster gives him, treating them as a code rather than a suggestion.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Perceptive</strong> — He notices beauty, music, and meaning in places no other mouse thinks to look.</div>
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Courageous</strong> — He returns to the dungeon voluntarily, knowing what it costs and going anyway.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Reckless</strong> — He acts on feeling before considering consequence, which repeatedly places him in danger.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Naive</strong> — He extends trust too quickly, including to Botticelli, because he cannot imagine cruelty without cause.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round / Dynamic</div>
+        <p>Despereaux begins as an outcast whose sensitivity is treated as defect, but his differences become the exact tools the rescue requires. By the end, he has moved from being a mouse who loves a princess to being a mouse who understands what love demands of him.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Chiaroscuro / Roscuro</h3>
+      <span class="char-arch-tag">Lover · Shadow Seducer · Round / Dynamic</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants access to the light and beauty of the world above the dungeon.</p></div>
+      <div class="char-field"><label>Motivation</label><p>A single glimpse of the banquet hall convinced him that beauty is something he deserves, and its loss becomes an injury he cannot stop picking at.</p></div>
+      <div class="char-field"><label>Values</label><p>Beauty, status, belonging. He pursues the appearance of what he wants rather than its substance, mistaking revenge for restoration.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Perceptive</strong> — He reads situations and people with precision, understanding exactly where vulnerability lies.</div>
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Resourceful</strong> — He constructs an elaborate plan using only the limited materials and relationships available to him in the dungeon.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Manipulative</strong> — He uses Miggery Sow's longing as a tool, offering her a fantasy he has no intention of delivering.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Self-deceiving</strong> — He frames every harmful act as justified, refusing to acknowledge that what he wants is simply to be forgiven.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round / Dynamic</div>
+        <p>Roscuro begins as a rat capable of genuine wonder, but shame and exile corrupt that capacity into cruelty. His arc resolves not through victory but through collapse — when the smell of soup in the dungeon breaks through his constructed justifications and forces him to admit what he actually wanted all along.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Miggery Sow / Mig</h3>
+      <span class="char-arch-tag">Innocent · Shadow Victim · Flat / Static</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>She wants to become a princess.</p></div>
+      <div class="char-field"><label>Motivation</label><p>She has spent her entire life being told her wants do not matter, and a princess is the one identity that seems to guarantee they finally will.</p></div>
+      <div class="char-field"><label>Values</label><p>Recognition, belonging, the idea of being chosen. She measures her own worth entirely by whether someone in authority has decided she deserves to exist.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Resilient</strong> — She survives compounding losses and cruelties without ever fully losing the desire for something better.</div>
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Earnest</strong> — She means everything she says and pursues her dream without cynicism, even when it is used against her.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Easily Manipulated</strong> — She follows Roscuro's plan because it promises her the one thing she has always been denied.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Unable to Distinguish Care from Control</strong> — She calls her abuser uncle and mistakes his tolerance of her presence for relationship.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat / Static</div>
+        <p>Miggery Sow does not transform. Her longing for recognition is as present at the end as it was at the beginning. Her structural purpose is to show what the True Shadow does to a person who has no one to model resistance, and whose wants have been dismissed so thoroughly that she will follow anyone who pretends to take them seriously.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="allusions">
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Allusions &amp; Symbolism</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. A symbol is a recurring object or image within the text that represents a deeper abstract idea. Students must identify each, explain narrative function, and demonstrate how meaning is built through repetition and character reaction.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Allusions</h3>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>The Knight in Shining Armour</h4>
+      <div class="allusion-type">Literary / Mythic</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Scene</div><div class="allusion-val">Despereaux discovers a story in the castle library about a knight and a princess, and the image of the knight returns to him repeatedly as he prepares to re-enter the dungeon.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Medieval chivalric romance tradition — specifically the knight-errant as a figure defined by courage, devotion, and moral obligation to protect.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">The allusion gives Despereaux a framework for understanding what he is being called to do. For him, the story is not entertainment but instruction — the model he reaches for when he has no other guide for how a small mouse becomes someone capable of a rescue.</div></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>Italian of Chiaroscuro</h4>
+      <div class="allusion-type">Artistic / Linguistic</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Scene</div><div class="allusion-val">The rat's full name, Chiaroscuro, is introduced when his story begins in Book the Second.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">The Italian Renaissance painting technique describing the dramatic contrast between light and shadow, most associated with Caravaggio.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">The name tells readers everything about Roscuro's structural role before his story begins. He is not simply a villain or a victim but the living tension between two opposing forces — drawn to light and condemned to darkness, unable to fully inhabit either.</div></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>Theseus and the Labyrinth</h4>
+      <div class="allusion-type">Mythological / Cultural</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Scene</div><div class="allusion-val">Gregory the jailer keeps a rope tied to his ankle so he can always find his way back through the dungeon's twisting passages, and Despereaux later uses a spool of red thread for the same purpose.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Greek mythology — specifically Theseus navigating the Minotaur's labyrinth using a thread given to him by Ariadne.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Frames the dungeon as a space of genuine mythic danger rather than simply a dark room. It also elevates Despereaux's quest by connecting it to one of the oldest stories of courage against an overwhelming and disorienting threat.</div></div>
+    </div>
+  </div>
+
+  <p class="alt-list">Despereaux Reading in the Castle Library (Romantic tradition of the solitary sensitive reader) · The Mouse Council's Trial (Kafka's bureaucratic judgment without recourse) · Mig's Father Selling Her (biblical and folk tradition of children traded by parents)</p>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Symbolism</h3>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Soup <span class="eq-arrow">→</span> Connection</div>
+    <ul class="body-list symbol-evidence">
+      <li>Soup brings the queen and her family together at the banquet table every night until her death ends it.</li>
+      <li>The king outlaws soup when he can no longer bear the pain of losing her.</li>
+      <li>Soup is what the princess offers Roscuro in the dungeon, and accepting it ends the standoff.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Red Thread <span class="eq-arrow">→</span> Choice</div>
+    <ul class="body-list symbol-evidence">
+      <li>The red thread is tied around Despereaux's neck by the Mouse Council as a mark of condemnation.</li>
+      <li>Hovis cuts the thread free before Despereaux descends into the dungeon a second time.</li>
+      <li>Despereaux carries the thread through the dungeon as his only guide back out.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Needle <span class="eq-arrow">→</span> Courage</div>
+    <ul class="body-list symbol-evidence">
+      <li>Hovis gives Despereaux the needle before he enters the dungeon.</li>
+      <li>Despereaux threatens Roscuro with the needle as his only weapon.</li>
+      <li>The needle is the only thing Despereaux has to defend himself and the princess.</li>
+    </ul>
+  </div>
+
+  <p class="alt-list">The Crown = Belonging · The Fairytale Book = Possibility · The Dungeon Chains = Powerlessness</p>
+</div>
+
+<div class="section" id="conflict">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Conflict Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must classify the conflict type, identify what each side wants, and explain the outcome and how it resolves or reshapes the tension. Conflict is not simply a fight — it is a clash of desires, values, or forces.</p></div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Despereaux Tilling vs. The Dungeon</h4>
+      <span class="conflict-tag">Character vs. Nature</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Character</div><div class="conflict-val">To navigate the dungeon's darkness and find the princess before the rats find him.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Nature</div><div class="conflict-val">To disorient, consume, and trap anyone who enters without belonging there.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Despereaux survives by refusing to stop moving, reaching the princess through fear rather than in spite of it.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Miggery Sow / Mig vs. Powerlessness</h4>
+      <span class="conflict-tag">Characters vs. Fate</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Character</div><div class="conflict-val">To claim an identity — specifically that of a princess — that guarantees her wants will finally matter to someone.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Fate</div><div class="conflict-val">To keep her defined by what others have decided she is worth, which is very little.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Mig does not become a princess, but her father is returned to her and treats her as one for the rest of his days.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Chiaroscuro / Roscuro vs. Princess Pea</h4>
+      <span class="conflict-tag">Character vs. Character</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Roscuro</div><div class="conflict-val">To punish the princess for the humiliation she caused him and take from her what was taken from him.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Princess Pea</div><div class="conflict-val">To resist captivity and find a way back to the world above without surrendering her dignity.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">The princess offers Roscuro soup rather than condemnation, and the act of mercy dissolves the conflict entirely.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Light vs. Darkness</h4>
+      <span class="conflict-tag">Nature vs. Nature</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Light</div><div class="conflict-val">To reach into every space, including the dungeon, and make what is hidden there visible.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Darkness</div><div class="conflict-val">To absorb and erase everything that enters, preserving its own dominion below the castle.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Light prevails structurally when soup is restored, Despereaux survives, and the narrator frames the story itself as an act of illumination offered to the reader.</div></div>
+    </div>
+  </div>
+
+  <p class="alt-list">The Kingdom vs. Grief (Society vs. Fate) · Despereaux vs. The Mouse Council (Character vs. Society) · Roscuro vs. Himself (Character vs. Self)</p>
+</div>
+
+<div class="section" id="comprehension">
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Comprehension</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Comprehension questions are organized into three sets that broadly align with the narrative's structural progression. Questions are designed to encourage holistic reading and discussion rather than rigid chapter-by-chapter tracking. Each answer includes a referenced scene for teacher orientation and a model response to guide expectations for textual grounding and analytical depth.</p></div>
+
+  <p class="comp-set-label">Section 1 — A Mouse Is Born</p>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">1</div>
+      <div>
+        <p class="comp-question">How is Despereaux's birth different from what other mice expect?</p>
+        <p class="comp-answer">He is born with his eyes open, which no mouse has ever done, and his father says he cannot live like that.</p>
+        <div class="comp-scene">Scene: the moment after Despereaux's birth, when his brother Furlough points out that his eyes are open and his father says he will not survive</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">2</div>
+      <div>
+        <p class="comp-question">What do Despereaux's aunt and uncle say about him when they examine him after his birth?</p>
+        <p class="comp-answer">They say his ears are obscenely large and that he is not well, so they see him as something wrong rather than a member of the family.</p>
+        <div class="comp-scene">Scene: Aunt Florence and Uncle Alfred examining Despereaux, remarking on his ears while his father says the boy is not well</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">3</div>
+      <div>
+        <p class="comp-question">Why does Despereaux's love of light, music, and stories worry his family?</p>
+        <p class="comp-answer">He stands still listening instead of hunting for crumbs, so his family sees him as a mouse who does not behave as he should.</p>
+        <div class="comp-scene">Scene: Despereaux holding still on the castle floor to listen</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">4</div>
+      <div>
+        <p class="comp-question">Why does Despereaux use the knight's words when he speaks to Princess Pea?</p>
+        <p class="comp-answer">He reads the story of the brave knight in the library and the knight's words stay with him, so when he meets Princess Pea he uses them to speak to her.</p>
+        <div class="comp-scene">Scene: Despereaux reading the story of the princess and the brave knight in the library, then shouting "I honor you" to Princess Pea as he retreats into the wall</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">5</div>
+      <div>
+        <p class="comp-question">Why does Despereaux's love for the princess break mouse law?</p>
+        <p class="comp-answer">He allows himself to be seen and speaks directly to the princess, which mice are forbidden to do.</p>
+        <div class="comp-scene">Scene: Despereaux sitting at the king's feet while the princess touches his head, then calling out his name to her before retreating into the wall</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">6</div>
+      <div>
+        <p class="comp-question">How does the Mouse Council justify its decision to punish Despereaux?</p>
+        <p class="comp-answer">The Head Mouse says a mouse who sits with humans and allows them to touch him cannot be trusted, and that his behaviour puts all the castle mice in danger.</p>
+        <div class="comp-scene">Scene: the Mouse Council trial, where the Head Mouse accuses Despereaux of endangering the community by consorting with humans</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">7</div>
+      <div>
+        <p class="comp-question">How does Despereaux react when the Mouse Council sends him to the dungeon?</p>
+        <p class="comp-answer">He decides to be brave for the princess rather than give in to fear, and as he falls into the darkness he repeats her name to hold on.</p>
+        <div class="comp-scene">Scene: Despereaux being pushed down the dungeon stairs by the hooded mice, clinging to the word "Pea" as he tumbles into the dark</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">8</div>
+      <div>
+        <p class="comp-question">Why does the threadmaster act differently from the other mice at Despereaux's trial?</p>
+        <p class="comp-answer">While the rest of the mice shout for Despereaux to be sent to the dungeon, the threadmaster leans in close and whispers that he should be brave for the princess.</p>
+        <div class="comp-scene">Scene: the threadmaster tying the red thread around Despereaux's neck during the trial, leaning in close to whisper "be brave, friend, be brave for the princess"</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="comp-set-label">Section 2 — Darkness, Desire, &amp; Dangerous Wishes</p>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">1</div>
+      <div>
+        <p class="comp-question">Why does Roscuro keep thinking about the light even after Gregory's match goes out?</p>
+        <p class="comp-answer">The flame burned into him and then disappeared before he could do anything about it, so the longing it left behind had no way to be satisfied.</p>
+        <div class="comp-scene">Scene: the young Roscuro nibbling Gregory's rope in the dungeon, and Gregory lighting a match and holding it to the rat's face</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">2</div>
+      <div>
+        <p class="comp-question">What does Roscuro realise when he looks at the red tablecloth back in his nest?</p>
+        <p class="comp-answer">He sees that what he wanted was the light shining behind the cloth, not the cloth itself, so he decides he must go upstairs.</p>
+        <div class="comp-scene">Scene: Roscuro dragging the red tablecloth back to his nest after taking it from the prisoner, staring at it and realising it cannot satisfy his longing for light</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">3</div>
+      <div>
+        <p class="comp-question">Why does Roscuro make his plan to take the princess to the dungeon after she points at him and calls him a rat?</p>
+        <p class="comp-answer">Her look tells him to go back to the darkness where he belongs, and because he cannot have the beauty and light he wanted, he decides to take it away from her instead.</p>
+        <div class="comp-scene">Scene: Roscuro looking back from the tablecloth after the queen's death to see the princess glaring at him with disgust, her look breaking his heart</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">4</div>
+      <div>
+        <p class="comp-question">Why does the king ban soup from the kingdom after the queen dies?</p>
+        <p class="comp-answer">The queen died while eating soup when Roscuro fell into her bowl, so the king outlaws soup and everything connected to it to remove all reminders of how she died.</p>
+        <div class="comp-scene">Scene: the moment after the queen's death in the banquet hall, when the king orders soup and all related items removed from the kingdom</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">5</div>
+      <div>
+        <p class="comp-question">Why does Mig's life at her uncle's farm make it hard for her to believe anyone cares about her?</p>
+        <p class="comp-answer">Her father sold her without looking back and her uncle hit her ears until she was nearly deaf, so she has never had anyone treat her as someone whose wishes matter.</p>
+        <div class="comp-scene">Scene: Miggery's father handing her over on the roadside and walking away, and the uncle's repeated clouts to her ears throughout her years in his service</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">6</div>
+      <div>
+        <p class="comp-question">Why does Miggery want to become a princess?</p>
+        <p class="comp-answer">She sees the royal family ride past in golden crowns and shining robes, and from that moment believes that being a princess would mean having a life that is beautiful and that matters.</p>
+        <div class="comp-scene">Scene: the young Mig standing in the field on her seventh birthday, watching the royal procession pass and seeing the little princess wave from a white horse</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">7</div>
+      <div>
+        <p class="comp-question">What does Chiaroscuro want from Miggery when he approaches her?</p>
+        <p class="comp-answer">He wants her to lead him to Princess Pea and bring her down to the dungeon, and he uses the promise of making her a princess to get her to agree.</p>
+        <div class="comp-scene">Scene: Roscuro falling into step beside Mig on the dungeon stairs and offering to make her a princess if she helps him carry out his plan</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">8</div>
+      <div>
+        <p class="comp-question">Why does Chiaroscuro hide in Miggery's pocket rather than approach the princess himself?</p>
+        <p class="comp-answer">He cannot move through the castle unseen or make the princess come willingly, so he needs Mig to lead her while he hides in her pocket.</p>
+        <div class="comp-scene">Scene: Mig climbing the golden stairs to the princess's room at night with Roscuro hidden in her apron pocket and the kitchen knife in her other pocket</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="comp-set-label">Section 3 — Recalled to the Light</p>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">1</div>
+      <div>
+        <p class="comp-question">What is different about Despereaux when he wakes in the kitchen after leaving the dungeon?</p>
+        <p class="comp-answer">He is physically weak and frightened in a way he was not before, but the need to save the princess is still what makes him get up and act.</p>
+        <div class="comp-scene">Scene: Despereaux waking in the kitchen after being carried out in Gregory's napkin, blinking at the light and immediately thinking of the danger the princess is in</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">2</div>
+      <div>
+        <p class="comp-question">Why does Despereaux forgive his father when Lester asks him to?</p>
+        <p class="comp-answer">Lester looks so old and sad that Despereaux feels his own heart about to break, so he tells his father he forgives him.</p>
+        <div class="comp-scene">Scene: Despereaux finding his father at the Mouse Council table, Lester clasping his paws and asking forgiveness while his whiskers tremble, and Despereaux saying "I forgive you, Pa"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">3</div>
+      <div>
+        <p class="comp-question">Why does Despereaux decide to go back into the dungeon?</p>
+        <p class="comp-answer">He heard Roscuro's plan from inside the napkin and knows that no one else in the castle has this information, so he is the only one who can act on it.</p>
+        <div class="comp-scene">Scene: Despereaux hidden in the napkin on Mig's tray, listening as Roscuro explains his plan to bring the princess to the dungeon</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">4</div>
+      <div>
+        <p class="comp-question">Why does Mig refuse to chain the princess when Roscuro orders her to?</p>
+        <p class="comp-answer">When the princess asks what she truly wants, Mig says she wants her mother, and that is the moment she stops following Roscuro's orders.</p>
+        <div class="comp-scene">Scene: the dungeon chamber, where Roscuro tells Mig she looks ridiculous in the crown, and the princess asks "what do you want, Miggery Sow?" and Mig cries out that she wants her ma</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">5</div>
+      <div>
+        <p class="comp-question">What does Chiaroscuro confess when Despereaux holds the needle to his heart?</p>
+        <p class="comp-answer">He says to kill him, and admits that all he ever wanted was some light of his own.</p>
+        <div class="comp-scene">Scene: Roscuro falling before Despereaux in the dungeon chamber, weeping and saying "kill me" while confessing that light was all he truly wanted</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">6</div>
+      <div>
+        <p class="comp-question">How does Princess Pea treat Chiaroscuro when she confronts him?</p>
+        <p class="comp-answer">She raises her head and stares at him without fear, and when he falls weeping before Despereaux, she offers him soup instead of punishment.</p>
+        <div class="comp-scene">Scene: the confrontation in the dungeon chamber, where the Pea raises her head defiantly and tells Roscuro she will have Cook make him soup if he leads them out</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">7</div>
+      <div>
+        <p class="comp-question">Why does the princess offer Roscuro the right to move between the dungeon and the castle rather than punishing him?</p>
+        <p class="comp-answer">He led them out of the dungeon as she asked and she had already promised him soup and forgiveness, so giving him free passage is how she keeps that promise.</p>
+        <div class="comp-scene">Scene: the closing pages, where the princess grants Roscuro the right to move between the dungeon and the upstairs rooms of the castle, following through on the offer she made in the dungeon</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">8</div>
+      <div>
+        <p class="comp-question">What do the other mice see when they watch Despereaux through the curtain in the banquet hall?</p>
+        <p class="comp-answer">The mice who punished Despereaux for loving the princess watch as that same love earns him the place of honour at her table.</p>
+        <div class="comp-scene">Scene: the closing scene in the banquet hall, where Hovis, Lester, Furlough, and Antoinette watch through the velvet curtain as Despereaux sits beside the princess</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="themes">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Theme Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>A topic is the subject the text explores (1–3 words). A theme is the author's perspective or claim about that topic, expressed as a complete, universal statement. Themes should be universal, arguable, supported by textual evidence, and expressed as complete statements — not single words or plot summaries.</p></div>
+
+  <div class="theme-block">
+    <div class="theme-header">
+      <h3>Forgiveness</h3>
+      <span class="theme-topic-badge">Topic</span>
+    </div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val"><em>Mercy offered without obligation is the only force capable of breaking cycles of harm.</em></div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">The princess offers Roscuro soup in the dungeon despite having every reason not to, and the act dissolves the central conflict entirely; Despereaux forgives his father without being asked, and the gesture reduces Lester to tears for the first time in the narrative.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">In contexts where cycles of harm persist across generations, resolution rarely comes from punishment alone; the narrative reflects how voluntary acts of grace can accomplish what force and law cannot.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>A Monster Calls</em> by Patrick Ness, in which the central character must confront and release guilt rather than be rescued from it, and healing depends entirely on that internal act of letting go.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header">
+      <h3>Belonging</h3>
+      <span class="theme-topic-badge">Topic</span>
+    </div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val"><em>The search for a place to belong becomes destructive when it is pursued at the expense of others.</em></div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Roscuro's longing for the light drives him to kidnap the princess rather than seek connection honestly; Mig's desire to be chosen leads her to follow anyone who offers her a role, regardless of the cost.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">The need for identity and recognition is universal, but when institutions or circumstances deny it systematically, people pursue belonging through whatever channels remain available — including harmful ones.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>Of Mice and Men</em> by John Steinbeck, in which every major character is defined by a version of belonging they cannot reach, and the tragedy emerges from how that longing distorts their choices.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header">
+      <h3>Temptation / Desire</h3>
+      <span class="theme-topic-badge">Topic</span>
+    </div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val"><em>Stories function as survival tools, giving shape and purpose to experience that would otherwise be unbearable.</em></div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Despereaux says "once upon a time" aloud in the dungeon to keep himself from collapsing into fear; the narrator addresses the reader directly in the coda, framing the entire novel as an act of light offered against the dark.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">The human impulse to narrativize difficult experience — whether through literature, testimony, or personal memory — reflects a deep structural need to impose meaning on suffering rather than be consumed by it.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>The Book Thief</em> by Markus Zusak, in which story and language are the primary means by which characters endure and resist an environment designed to erase them.</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<button class="back-to-top-btn" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  const token = sessionStorage.getItem('tl_token');
+  if(!token){ window.location.href='index.html'; return; }
+  document.querySelectorAll('.action-btn[data-file]').forEach(btn=>{
+    btn.addEventListener('click',async function(){
+      const file=this.dataset.file, label=this.dataset.label;
+      const orig=this.textContent; this.textContent='Loading…'; this.disabled=true;
+      try{
+        const r=await fetch('https://crowscallpress-production.up.railway.app/download',{
+          method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+          body:JSON.stringify({file})
+        });
+        if(!r.ok) throw new Error(await r.text());
+        const {url}=await r.json();
+        const a=document.createElement('a'); a.href=url; a.download=label+'.pdf'; a.target='_blank';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      }catch(e){ alert('Download failed: '+e.message); }
+      this.textContent=orig; this.disabled=false;
+    });
+  });
+  const btn=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{ btn.classList.toggle('visible',window.scrollY>400); });
+  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>

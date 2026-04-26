@@ -92,6 +92,7 @@
         <select class="tl-select" id="tl-filter-cefr">
           <option value="">All Levels</option>
           <option value="A1-A2">A1–A2</option>
+          <option value="A2-B1">A2–B1</option>
           <option value="B1-B2">B1–B2</option>
           <option value="B2-C1">B2–C1</option>
           <option value="C1-C2">C1–C2</option>
@@ -136,6 +137,22 @@
     window.location.href = 'index.html';
   });
 
+  // Auto sign-out after 60 minutes of inactivity
+  var INACTIVITY_MS = 60 * 60 * 1000;
+  var inactivityTimer;
+  function resetInactivityTimer() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(function () {
+      sessionStorage.removeItem('tl_token');
+      sessionStorage.removeItem('tl_name');
+      window.location.href = 'index.html?timeout=1';
+    }, INACTIVITY_MS);
+  }
+  ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll', 'click'].forEach(function (evt) {
+    document.addEventListener(evt, resetInactivityTimer, { passive: true });
+  });
+  resetInactivityTimer();
+
   // ── Workbook data (replace with API fetch when backend is ready) ──
   var resources = [
     {
@@ -151,6 +168,160 @@
       fileDevA: 'breakfast-at-tiffanys/dev-a.pdf',
       fileDevB: 'breakfast-at-tiffanys/dev-b.pdf',
       fileVocab: 'breakfast-at-tiffanys/vocab.pdf'
+    },
+    {
+      id: 'amc',
+      title: 'A Monster Calls',
+      author: 'Patrick Ness',
+      level: 'Mythos Level',
+      cefr: 'B2-C1',
+      grade: '7+',
+      cover: '../images/trialpopup.png',
+      synopsis: 'Conor is visited by an ancient monster who tells him three stories — and demands one in return. A novel about grief, guilt, and the terrible weight of truth.',
+      viewUrl: 'a-monster-calls.html',
+      fileDevA: 'a-monster-calls/dev-a.pdf',
+      fileDevB: 'a-monster-calls/dev-b.pdf',
+      fileVocab: 'a-monster-calls/vocab.pdf'
+    },
+    {
+      id: 'ft',
+      title: 'Full Tilt',
+      author: 'Neal Shusterman',
+      level: 'Mythos Level',
+      cefr: 'B2-C1',
+      grade: '7+',
+      cover: '../images/trialpopup.png',
+      synopsis: 'Blake enters a deadly supernatural carnival to rescue his brother, facing a different nightmare ride for each of his deepest fears. A novel of survival, guilt, and the balance between caution and courage.',
+      viewUrl: 'full-tilt.html',
+      fileDevA: 'full-tilt/dev-a.pdf',
+      fileDevB: 'full-tilt/dev-b.pdf',
+      fileVocab: 'full-tilt/vocab.pdf'
+    },
+    {
+      id: 'rg',
+      title: 'The Royal Game',
+      author: 'Stefan Zweig',
+      level: 'Mythos Level',
+      cefr: 'B2-C1',
+      grade: '7+',
+      cover: '../images/trialpopup.png',
+      synopsis: 'On an ocean liner bound for Buenos Aires, a chess grandmaster is challenged by a man whose only preparation was months of Gestapo solitary confinement. A novella of obsession, trauma, and the fragility of the intellect.',
+      viewUrl: 'the-royal-game-a-chess-story.html',
+      fileDevA: 'the-royal-game-a-chess-story/dev-a.pdf',
+      fileDevB: 'the-royal-game-a-chess-story/dev-b.pdf',
+      fileVocab: 'the-royal-game-a-chess-story/vocab.pdf'
+    },
+    {
+      id: 'cor',
+      title: 'Coraline',
+      author: 'Neil Gaiman',
+      level: 'Lexis Level',
+      cefr: 'B1-B2',
+      grade: '5-6',
+      cover: '../images/trialpopup.png',
+      synopsis: 'Coraline discovers a door in her new house that leads to a mirrored world with an "Other Mother" who wants to keep her forever. A dark fantasy about identity, courage, and the danger of easy answers.',
+      viewUrl: 'coraline.html',
+      fileDevA: 'coraline/dev-a.pdf',
+      fileDevB: 'coraline/dev-b.pdf',
+      fileVocab: 'coraline/vocab.pdf'
+    },
+    {
+      id: 'btt',
+      title: 'Bridge to Terabithia',
+      author: 'Katherine Paterson',
+      level: 'Lexis Level',
+      cefr: 'B1-B2',
+      grade: '5-6',
+      cover: '../images/trialpopup.png',
+      synopsis: 'Jess and Leslie, two imaginative outcasts, create a secret kingdom in the woods — until an unexpected tragedy forces Jess to confront loss, friendship, and what it means to be brave.',
+      viewUrl: 'bridge-to-terabithia.html',
+      fileDevA: 'bridge-to-terabithia/dev-a.pdf',
+      fileDevB: 'bridge-to-terabithia/dev-b.pdf',
+      fileVocab: 'bridge-to-terabithia/vocab.pdf'
+    },
+    {
+      id: 'hd',
+      title: 'The Hundred Dresses',
+      author: 'Eleanor Estes',
+      level: 'Lexis Level',
+      cefr: 'B1-B2',
+      grade: '5-6',
+      cover: '../images/trialpopup.png',
+      synopsis: 'Wanda Petronski, a Polish immigrant, claims to own a hundred dresses — but wears the same faded blue one every day. A short novel about cruelty, silence, and the guilt that follows when we fail to act.',
+      viewUrl: 'the-hundred-dresses.html',
+      fileDevA: 'the-hundred-dresses/dev-a.pdf',
+      fileDevB: 'the-hundred-dresses/dev-b.pdf',
+      fileVocab: 'the-hundred-dresses/vocab.pdf'
+    },
+    {
+      id: 'tod',
+      title: 'The Tale of Despereaux',
+      author: 'Kate DiCamillo',
+      level: 'Lexis Level',
+      cefr: 'B1-B2',
+      grade: '5-6',
+      cover: '../images/trialpopup.png',
+      synopsis: 'A small mouse with oversized ears falls in love with a princess and descends into the dungeon to rescue her. A fairy tale of forgiveness, belonging, and the power of a story told in the dark.',
+      viewUrl: 'the-tale-of-despereaux.html',
+      fileDevA: 'the-tale-of-despereaux/dev-a.pdf',
+      fileDevB: 'the-tale-of-despereaux/dev-b.pdf',
+      fileVocab: 'the-tale-of-despereaux/vocab.pdf'
+    },
+    {
+      id: 'dwk',
+      title: 'Diary of a Wimpy Kid',
+      author: 'Jeff Kinney',
+      level: 'Junior Level',
+      cefr: 'A2-B1',
+      grade: '3-4',
+      cover: '../images/trialpopup.png',
+      synopsis: 'Greg Heffley chronicles his first year of middle school in a journal — dodging embarrassment, navigating friendships, and trying to become popular. A comic novel about growing up and self-awareness.',
+      viewUrl: 'diary-of-a-wimpy-kid.html',
+      fileDevA: 'diary-of-a-wimpy-kid/dev-a.pdf',
+      fileDevB: 'diary-of-a-wimpy-kid/dev-b.pdf',
+      fileVocab: 'diary-of-a-wimpy-kid/vocab.pdf'
+    },
+    {
+      id: 'mfd',
+      title: 'My Father\'s Dragon',
+      author: 'Ruth Stiles Gannett',
+      level: 'Junior Level',
+      cefr: 'A2-B1',
+      grade: '3-4',
+      cover: '../images/trialpopup.png',
+      synopsis: 'Elmer Elevator travels to Wild Island armed only with a knapsack of supplies to rescue a captive baby dragon. A quest story about empathy, courage, and the quiet heroism of caring for those who cannot help themselves.',
+      viewUrl: 'my-fathers-dragon.html',
+      fileDevA: 'my-fathers-dragon/dev-a.pdf',
+      fileDevB: 'my-fathers-dragon/dev-b.pdf',
+      fileVocab: 'my-fathers-dragon/vocab.pdf'
+    },
+    {
+      id: 'tfgn',
+      title: 'Tales of a Fourth Grade Nothing',
+      author: 'Judy Blume',
+      level: 'Junior Level',
+      cefr: 'A2-B1',
+      grade: '3-4',
+      cover: '../images/trialpopup.png',
+      synopsis: 'Peter Hatcher navigates life with his unpredictable younger brother Fudge, who steals attention, destroys projects, and generally makes everything harder. A comic novel about fairness, family, and growing up.',
+      viewUrl: 'tales-of-a-fourth-grade-nothing.html',
+      fileDevA: 'tales-of-a-fourth-grade-nothing/dev-a.pdf',
+      fileDevB: 'tales-of-a-fourth-grade-nothing/dev-b.pdf',
+      fileVocab: 'tales-of-a-fourth-grade-nothing/vocab.pdf'
+    },
+    {
+      id: 'zas',
+      title: 'Zoey and Sassafras',
+      author: 'Asia Citro',
+      level: 'Junior Level',
+      cefr: 'A2-B1',
+      grade: '3-4',
+      cover: '../images/trialpopup.png',
+      synopsis: 'When a sick baby dragon appears at Zoey\'s barn, she must use the scientific method to diagnose and treat him before it\'s too late. A science-fantasy adventure about curiosity, persistence, and responsible care.',
+      viewUrl: 'zoey-and-sassafras.html',
+      fileDevA: 'zoey-and-sassafras/dev-a.pdf',
+      fileDevB: 'zoey-and-sassafras/dev-b.pdf',
+      fileVocab: 'zoey-and-sassafras/vocab.pdf'
     }
   ];
 

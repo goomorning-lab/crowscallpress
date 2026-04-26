@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoey and Sassafras — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --ink-mid: #3d3028; --ink-light: #7a6a5a; --ink-faint: #c4b8ad;
+    --cream: #f5f0e8; --cream-deep: #ede6d8; --warm-white: #faf8f4;
+    --rust: #b85c3a; --rust-pale: #f5e2db; --gold: #c9a84c; --gold-pale: #f5ecd0;
+    --sage: #4a6e5a; --sage-pale: #ddeee4; --rule: #d4c9bc;
+    --level-color: #7a2828;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.75; }
+
+  .top-nav { position: sticky; top: 0; z-index: 200; background: var(--rust); color: var(--cream); display: flex; align-items: center; gap: 1rem; padding: 0 2rem; height: 56px; }
+  .top-nav a.back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; transition: color 0.2s; }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+  .top-nav .action-btns { margin-left: auto; display: flex; gap: 0.5rem; }
+  .top-nav .action-btn { padding: 0.35rem 0.9rem; border-radius: 3px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; border: 1px solid rgba(255,255,255,0.25); color: var(--cream); background: transparent; text-decoration: none; transition: background 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+
+  .cover { background: var(--level-color); color: #fff; padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px); pointer-events: none; }
+  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 5.5vw, 52px); line-height: 1.15; margin-bottom: 8px; color: #fff; }
+  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 32px; letter-spacing: 0.08em; }
+  .cover-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
+  .cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cover-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 20px; }
+
+  .toc-bar { background: var(--cream-deep); border-bottom: 1px solid var(--rule); position: sticky; top: 56px; z-index: 100; }
+  .toc-inner { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a { display: block; padding: 11px 13px; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+
+  .container { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+
+  .principle { background: var(--sage-pale); border-left: 3px solid var(--sage); padding: 14px 18px; margin-bottom: 28px; border-radius: 0 4px 4px 0; }
+  .principle strong { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; font-weight: 500; }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+
+  .note { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 11px 15px; margin: 18px 0; border-radius: 0 4px 4px 0; font-size: 13px; color: var(--ink-mid); font-style: italic; }
+  .note strong { font-style: normal; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a10; display: block; margin-bottom: 3px; font-weight: 500; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 22px 0; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px; }
+  .card-level { border-top: 3px solid var(--level-color); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .card .card-sub { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+
+  .plot-stage { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px 20px; margin-bottom: 10px; position: relative; }
+  .plot-stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 5px 0 0 5px; }
+  .plot-stage.stage-begin::before { background: var(--sage); }
+  .plot-stage.stage-mid::before { background: var(--gold); }
+  .plot-stage.stage-climax::before { background: var(--rust); }
+  .plot-stage.stage-end::before { background: var(--ink-light); }
+  .plot-stage h4 { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .plot-stage p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .plot-note { font-size: 12px; color: var(--ink-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--rule); }
+
+  .foreshadow-item { border-left: 2px solid var(--rule); padding: 6px 0 6px 16px; margin-bottom: 14px; }
+  .foreshadow-item h4 { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .foreshadow-item p { font-size: 13px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .arch-group-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 10px; font-weight: 500; }
+  .arch-entry { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--rule); border-radius: 5px; background: #fff; margin-bottom: 8px; overflow: hidden; }
+  .arch-left { padding: 14px 16px; border-right: 1px solid var(--rule); }
+  .arch-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .arch-type { font-size: 11px; letter-spacing: 0.08em; color: var(--rust); font-weight: 500; }
+  .arch-right { padding: 14px 16px; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .true-shadow-box { background: var(--rust-pale); border: 1px solid rgba(184,92,58,0.2); border-left: 3px solid var(--rust); border-radius: 0 5px 5px 0; padding: 16px 20px; margin-bottom: 24px; }
+  .true-shadow-box h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--rust); margin-bottom: 6px; }
+  .true-shadow-box p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .char-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 18px; overflow: hidden; }
+  .char-header { background: var(--cream-deep); padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; }
+  .char-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .char-arch-tag { font-size: 11px; color: var(--rust); letter-spacing: 0.06em; font-weight: 500; }
+  .char-body { padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .char-field label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 500; }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; line-height: 1.6; }
+  .char-traits { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trait-positive, .trait-negative { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; font-size: 13px; }
+  .trait-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 3px; }
+  .trait-positive .trait-label { color: var(--sage); }
+  .trait-negative .trait-label { color: var(--rust); }
+  .char-dev { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .char-dev label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .char-dev-tag { display: inline-block; background: var(--gold-pale); border: 1px solid var(--gold); color: #7a5a10; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; font-weight: 500; }
+  .char-dev p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .allusion-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .allusion-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); }
+  .allusion-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .allusion-type { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .allusion-body { padding: 12px 16px; }
+  .allusion-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; margin-bottom: 6px; font-size: 13.5px; }
+  .allusion-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .allusion-val { color: var(--ink-mid); line-height: 1.6; }
+  .symbol-block { border: 1px solid var(--rule); border-radius: 5px; background: #fff; padding: 14px 18px; margin-bottom: 10px; }
+  .symbol-equation { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .symbol-equation .eq-arrow { color: var(--rust); }
+  .symbol-evidence li { margin-bottom: 4px; }
+
+  .conflict-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 12px; overflow: hidden; }
+  .conflict-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .conflict-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .conflict-tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--rust-pale); color: var(--rust); padding: 2px 8px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
+  .conflict-body { padding: 12px 16px; }
+  .conflict-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; margin-bottom: 8px; font-size: 13.5px; }
+  .conflict-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .conflict-val { color: var(--ink-mid); line-height: 1.6; }
+
+  .comp-set-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 12px; font-weight: 500; }
+  .comp-item { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .comp-body { padding: 16px 18px 14px; display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; }
+  .comp-num { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink-faint); line-height: 1.3; }
+  .comp-question { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+  .comp-answer { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.65; }
+  .comp-scene { font-size: 12px; color: var(--ink-light); font-style: italic; padding: 8px 10px; background: var(--warm-white); border-radius: 3px; border-left: 2px solid var(--rule); }
+
+  .theme-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 14px; overflow: hidden; }
+  .theme-header { background: var(--cream-deep); padding: 12px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .theme-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .theme-topic-badge { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-pale); color: #7a5a10; border: 1px solid var(--gold); padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .theme-body { padding: 14px 16px; }
+  .theme-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; font-size: 13.5px; margin-bottom: 8px; }
+  .theme-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+
+  p { margin-bottom: 10px; } p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+
+  .back-to-top-btn { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; background: var(--ink); color: var(--cream); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 999; }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .char-body { grid-template-columns: 1fr; }
+    .char-traits { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row { grid-template-columns: 1fr; gap: 2px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">Zoey and Sassafras — Teacher Compendium</span>
+  <div class="action-btns">
+    <button class="action-btn" data-file="zoey-and-sassafras/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" data-file="zoey-and-sassafras/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" data-file="zoey-and-sassafras/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>Zoey and Sassafras</h1>
+    <h2>Asia Citro</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Junior Level</span>
+      <span>CEFR A2–B1</span>
+      <span>Science Fantasy · Curiosity &amp; Responsibility</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="section" id="intro">
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">About This Compendium</h2>
+  <p>This compendium provides the book-specific analytical support for the <em>Zoey and Sassafras: Dragons and Marshmallows</em> Junior-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+  <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+  <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+</div>
+
+<div class="section" id="literary-elements">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Literary Elements</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Literary elements function structurally. Students must correctly identify elements, explain how they create tension, meaning, or development, and move beyond summary into structural interpretation. Accuracy of classification and clarity of explanation are prioritized over length.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Setting</h3>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Physical Location</h3>
+      <div class="card-sub">Where the story takes place</div>
+      <p>Zoey's home property, particularly the barn and the nearby forest.</p>
+      <p class="justif">The barn functions as a controlled laboratory space where observation and experimentation can occur safely. The forest operates as a threshold between the ordinary world and the magical one, reinforcing the idea that discovery begins with curiosity and movement beyond the familiar.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Chronological Time</h3>
+      <div class="card-sub">When the story takes place</div>
+      <p>Contemporary, unspecified present day.</p>
+      <p class="justif">The modern setting allows scientific inquiry to feel accessible and ordinary rather than distant or historical. This grounds the fantasy elements in everyday life, reinforcing the theme that science is a practical tool available to children now.</p>
+    </div>
+    <div class="card card-rust">
+      <h3>Society &amp; Values</h3>
+      <div class="card-sub">Cultural context</div>
+      <p>A culture that values education, scientific reasoning, and responsible independence in children.</p>
+      <p class="justif">Zoey is trusted to apply structured reasoning without adult supervision. This reflects a social belief that knowledge and responsibility empower young people, aligning with the novel's emphasis on problem-solving through method rather than magic alone.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:28px 0 14px;">Plot Arc</h3>
+  <div class="plot-stage stage-begin">
+    <h4>Beginning — Exposition</h4>
+    <p>Zoey learns that her mother can see magical creatures and has been assisting them using the scientific method. Her mother requests that she provide temporary support while she goes away. Zoey's mother reveals a magical doorbell that creatures in need can ring for help. A sick baby dragon appears outside the barn while her mother is away. A mysterious blue dragon disappears from sight.</p>
+    <p class="plot-note">Structural Note: The dragon's arrival establishes the central problem immediately and shifts responsibility fully onto Zoey.</p>
+  </div>
+  <div class="plot-stage stage-mid">
+    <h4>Middle — Rising Action</h4>
+    <p>Zoey moves Marshmallow into the barn and begins observing his symptoms. She records data in her scientific journal and forms multiple hypotheses. Early treatments fail, forcing her to revise her assumptions. She isolates variables and carefully tests new possibilities. Tension increases as the dragon's condition does not immediately improve.</p>
+  </div>
+  <div class="plot-stage stage-climax">
+    <h4>Climax</h4>
+    <p>Zoey correctly identifies the cause of Marshmallow's illness — a combination of initial hunger from being the runt of his litter, and her over-feeding him with marshmallows. She administers the successful treatment of a balanced diet that begins restoring his health. This moment resolves the central medical conflict through applied reasoning, as the accumulated tension built through failed attempts and uncertainty finally breaks.</p>
+  </div>
+  <div class="plot-stage stage-end">
+    <h4>End — Falling Action &amp; Resolution</h4>
+    <p>Marshmallow regains strength and grows much larger and healthier. Zoey's mother returns and assists in releasing Marshmallow into the wild. Marshmallow is reunited with the blue dragon seen at the beginning of the story. Zoey completes her journal entry and reflects on the steps she followed. Order is restored to the barn and forest.</p>
+    <p class="plot-note">Interpretive Note: The resolution reinforces empowerment through structured thinking. Healing occurs not through magic alone, but through disciplined observation and persistence.</p>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:28px 0 14px;">Foreshadowing</h3>
+  <div class="foreshadow-item">
+    <h4>The Scientific Journal</h4>
+    <p>Introduced early as a required tool for recording observations. Its presence foreshadows that careful documentation — not guessing — will lead to the correct diagnosis.</p>
+  </div>
+  <div class="foreshadow-item">
+    <h4>Mom's Departure</h4>
+    <p>Zoey's mother leaves for a concert before the dragon appears. This prepares readers for Zoey's independent responsibility and signals that she must solve the problem alone.</p>
+  </div>
+  <div class="foreshadow-item">
+    <h4>The Thinking Goggles</h4>
+    <p>Zoey puts on her "thinking goggles" before beginning her investigation. This ritualized action foreshadows that structured reasoning — rather than magical instinct — will guide the solution.</p>
+  </div>
+  <div class="foreshadow-item">
+    <h4>Failed Hypotheses</h4>
+    <p>Early unsuccessful treatments do not improve Marshmallow's condition. These setbacks foreshadow that the correct answer will emerge only after revising assumptions.</p>
+  </div>
+  <div class="note"><strong>Structural Function</strong>Foreshadowing in <em>Zoey and Sassafras</em> directs attention toward the process of science and learning. It conditions readers to expect resolution through disciplined inquiry, reinforcing the novel's emphasis on scientific method as the pathway to restoration.</div>
+
+  <div class="card-grid" style="margin-top:28px;">
+    <div class="card card-level">
+      <h3>Point of View</h3>
+      <div class="card-sub">Narrative perspective</div>
+      <p>First-person limited (Zoey as narrator).</p>
+      <p class="justif">The reader experiences events only through Zoey's observations and reasoning. This reinforces the investigative structure — readers analyze symptoms alongside her and share the uncertainty of each hypothesis. The limitation prevents access to adults, intensifying her responsibility.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Tone</h3>
+      <div class="card-sub">Primary tone</div>
+      <p>Curious and methodical optimism.</p>
+      <p class="justif">Created through clear step-by-step explanations of the scientific method, direct confident narration from Zoey, and calm presentation of problems rather than panic.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="archetypes">
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Archetypes</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Archetypes should not be treated as personality labels. They represent motivational drives within the Order / Freedom / Ego / Social framework. Characters may express a primary archetype (dominant motivation) and a shadow distortion (when that drive becomes extreme or corrupted).</p></div>
+
+  <div class="true-shadow-box">
+    <h4>True Shadow: Assumptive Thinking</h4>
+    <p>The True Shadow in <em>Zoey and Sassafras</em> is Assumptive Thinking — the impulse to guess, rush, or rely on instinct instead of disciplined observation. This distortion threatens the narrative because incorrect conclusions delay healing and increase risk. The central conflict exists not simply because the dragon is sick, but because the wrong method of thinking would cause harm. The story's tension emerges from the necessity of replacing assumption with structured inquiry. Students should consider how the True Shadow catalyzes character decisions, distorts otherwise healthy motivations, and shapes the novel's central tension.</p>
+  </div>
+
+  <p class="arch-group-label">Characters</p>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Zoey</div><div class="arch-type">Magician · Healer</div></div>
+    <div class="arch-right">Transforms uncertainty into restoration through disciplined experimentation, converting knowledge into tangible healing.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Mom</div><div class="arch-type">Sage · Expert</div></div>
+    <div class="arch-right">Establishes the epistemological rules of the world by modeling structured inquiry, shaping how problems must be solved.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Dad</div><div class="arch-type">Everyman · Silent Majority</div></div>
+    <div class="arch-right">Anchors the magical narrative within ordinary family life, reinforcing that responsibility exists within normalcy.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Sassafras (The Cat)</div><div class="arch-type">Caregiver · Support</div></div>
+    <div class="arch-right">Reinforces focus and steadiness during investigation, assisting process without overtaking leadership.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Pip</div><div class="arch-type">Outlaw · Wild Person</div></div>
+    <div class="arch-right">Emerges from the hidden magical world and disrupts ordinary understanding, initiating the shift that makes belief in magical creatures possible.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Marshmallow (The Dragon)</div><div class="arch-type">Innocent · Shadow Victim</div></div>
+    <div class="arch-right">Embodies vulnerability that depends on correct reasoning, making the cost of error structurally visible.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Blue Dragon</div><div class="arch-type">Caregiver · Parent</div></div>
+    <div class="arch-right">Motivates restoration through protective presence, reinforcing that healing restores relational bonds.</div>
+  </div>
+
+  <p class="arch-group-label">Objects &amp; Concepts</p>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Scientific Method</div><div class="arch-type">Sage · Detective</div></div>
+    <div class="arch-right">Structures the narrative progression from confusion to clarity by requiring observation, hypothesis, and testing.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Question</div><div class="arch-type">Explorer · Seeker</div></div>
+    <div class="arch-right">Drives forward motion by initiating investigation and preventing passive acceptance of symptoms.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Materials</div><div class="arch-type">Everyman · Realist</div></div>
+    <div class="arch-right">Grounds solutions in accessible, tangible tools, reinforcing practicality over fantasy.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Hypothesis</div><div class="arch-type">Creator · Innovator</div></div>
+    <div class="arch-right">Generates potential solutions that transform raw observation into purposeful experimentation.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Steps</div><div class="arch-type">Ruler · Role Model</div></div>
+    <div class="arch-right">Enforces order and sequence, preventing chaotic guessing by modeling disciplined progression.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Conclusion</div><div class="arch-type">Explorer · Iconoclast</div></div>
+    <div class="arch-right">Breaks from incorrect assumptions by confirming or rejecting prior ideas, ensuring truth replaces error.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">Care &amp; Feeding of Reptiles</div><div class="arch-type">Hero · Rescuer</div></div>
+    <div class="arch-right">Provides critical knowledge that enables intervention, functioning as a bridge between research and recovery.</div>
+  </div>
+
+  <p class="arch-group-label">Settings &amp; Forces</p>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Barn</div><div class="arch-type">Magician · Visionary</div></div>
+    <div class="arch-right">A controlled space where hidden causes are revealed and transformed through structured experimentation.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left"><div class="arch-name">The Forest</div><div class="arch-type">Outlaw · Revolutionary</div></div>
+    <div class="arch-right">An untamed threshold that disrupts domestic order and introduces forces requiring disciplined response.</div>
+  </div>
+</div>
+
+<div class="section" id="character-maps">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Character Maps</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Character analysis requires internal logic. Students must distinguish between goal (what a character wants) and motivation (why they want it), identify values and traits supported by textual behavior, and explain development using structural evidence. Character claims must be demonstrated through action, dialogue, or narrative consequence.</p></div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Zoey</h3>
+      <span class="char-arch-tag">Magician · Healer · Round / Dynamic</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>She wants to identify the cause of Marshmallow's illness and restore him to health on her own.</p></div>
+      <div class="char-field"><label>Motivation</label><p>She believes she is capable of applying what she has learned and wants to prove she can handle responsibility independently.</p></div>
+      <div class="char-field"><label>Values</label><p>Responsibility, evidence-based reasoning, persistence, care for vulnerable creatures. She prioritizes disciplined thinking over guesswork when others depend on her.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Careful</strong> — She records observations and follows each step before acting.</div>
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Persistent</strong> — She revises her approach when early attempts fail instead of giving up.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Impatient</strong> — She initially wants quick improvement and feels frustrated by slow progress.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Self-doubting</strong> — She questions her conclusions when results are not immediate.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round / Dynamic</div>
+        <p>Zoey begins as a learner applying borrowed structure but grows into someone who confidently owns the scientific process. By the end, she trusts her reasoning and acts with independent authority rather than relying on imagined guidance.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Mom</h3>
+      <span class="char-arch-tag">Sage · Expert · Flat / Static</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>She wants Zoey to learn how to care for magical creatures using the scientific method.</p></div>
+      <div class="char-field"><label>Motivation</label><p>She believes structured knowledge creates independence and protects others from harm.</p></div>
+      <div class="char-field"><label>Values</label><p>Education, logical sequencing, documentation, responsibility. She emphasizes that correct process prevents preventable mistakes.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Methodical</strong> — She teaches step-by-step problem solving as a consistent routine.</div>
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Trusting</strong> — She allows Zoey meaningful responsibility rather than over-controlling outcomes.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Physically Absent</strong> — She is not present during the central crisis.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>System-focused</strong> — She relies on procedure rather than emotional reassurance.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat / Static</div>
+        <p>Mom does not change throughout the narrative. Her consistency establishes the intellectual framework that enables Zoey's growth.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>The Scientific Method</h3>
+      <span class="char-arch-tag">Sage · Detective · Flat / Static</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>It seeks to move a problem from uncertainty to verified conclusion through ordered steps and understanding.</p></div>
+      <div class="char-field"><label>Motivation</label><p>It operates on the principle that tested evidence must replace assumption.</p></div>
+      <div class="char-field"><label>Values</label><p>Observation, hypothesis, controlled experimentation, logical sequence. It demands structure before action.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Systematic</strong> — It requires documentation and careful sequencing.</div>
+        <div class="trait-positive"><div class="trait-label">Positive</div><strong>Corrective</strong> — It allows revision when evidence disproves an idea.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Slow</strong> — It delays immediate action by requiring process.</div>
+        <div class="trait-negative"><div class="trait-label">Negative</div><strong>Restrictive</strong> — It rejects instinctive answers without proof.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat / Static</div>
+        <p>The Scientific Method does not evolve because its stability is its function. Its unchanging structure contrasts with Zoey's internal growth and reinforces that transformation occurs within the practitioner, not the system.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="allusions">
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Allusions &amp; Symbolism</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. A symbol is a recurring object or image within the text that represents a deeper abstract idea. Students must identify each, explain narrative function, and demonstrate how meaning is built through repetition and character reaction.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Allusions</h3>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>The Scientific Method</h4>
+      <div class="allusion-type">Educational / Scientific</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Scene</div><div class="allusion-val">Zoey follows steps of observation, hypothesis formation, testing, and conclusion throughout her investigation of Marshmallow's illness.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">The formal scientific method embedded in contemporary science education curricula.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Referencing a standardized academic framework positions the plot within a recognizable epistemological system; this changes reader understanding by elevating procedural thinking to the central engine of conflict resolution rather than magic, luck, or instinct.</div></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>Dragon Lore Tradition</h4>
+      <div class="allusion-type">Folkloric / Mythic</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Scene</div><div class="allusion-val">A vulnerable baby dragon appears seeking care rather than posing a threat.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Western dragon mythology, where dragons are typically depicted as powerful, destructive adversaries.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">By invoking a well-known mythic creature and reversing its traditional role, the narrative destabilizes heroic combat expectations and redirects the reader toward stewardship and medical care, reframing fantasy from conquest to responsibility.</div></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>Scientific Journal</h4>
+      <div class="allusion-type">Scientific / Historical</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Scene</div><div class="allusion-val">Zoey records observations, hypotheses, and results in her scientific journal before adjusting treatment.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Field books and laboratory journals used by researchers to document empirical study.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">By invoking the recognizable practice of formal scientific record-keeping, the narrative situates Zoey within an authentic research tradition; this reframes her actions as disciplined investigation rather than a child's guesswork.</div></div>
+    </div>
+  </div>
+
+  <p class="alt-list">The barn as a laboratory (early improvised scientific workspaces) · Zoey's apprenticeship under her mother (master-apprentice traditions in science) · Medical diagnosis through symptoms (veterinary and clinical diagnostic practice)</p>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Symbolism</h3>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">Thinking Goggles <span class="eq-arrow">→</span> Focused Attention</div>
+    <ul class="body-list symbol-evidence">
+      <li>When Zoey puts on her goggles, she chooses to stop reacting emotionally.</li>
+      <li>The goggles help her listen to facts instead of guessing.</li>
+      <li>The goggles signal that she is ready to solve the problem carefully.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Magical Doorbell <span class="eq-arrow">→</span> Responsibility</div>
+    <ul class="body-list symbol-evidence">
+      <li>Pip provided Zoey and her mom the doorbell as a sign of appreciation.</li>
+      <li>The doorbell signals that a magical creature needs help.</li>
+      <li>The doorbell begins the problem Zoey must solve.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Fish <span class="eq-arrow">→</span> Sustenance</div>
+    <ul class="body-list symbol-evidence">
+      <li>Sassafras shares a fish with Marshmallow so his condition will improve.</li>
+      <li>Marshmallow learns to hunt his own fish as he grows into a bigger dragon.</li>
+      <li>The forest and river provide an endless supply of fish.</li>
+    </ul>
+  </div>
+
+  <p class="alt-list">Marshmallows = Overindulgence · The River = Natural Provision · The Scientific Journal = Recorded Knowledge</p>
+</div>
+
+<div class="section" id="conflict">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Conflict Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must classify the conflict type, identify what each side wants, and explain the outcome and how it resolves or reshapes the tension. Conflict is not simply a fight — it is a clash of desires, values, or forces.</p></div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Zoey vs. Marshmallow's Malady</h4>
+      <span class="conflict-tag">Character vs. Nature</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Character</div><div class="conflict-val">To identify the cause of the illness through careful observation and testing.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Nature</div><div class="conflict-val">To persist through biological processes that resist immediate explanation.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Illness correctly diagnosed and restored through disciplined inquiry.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Modern Science vs. Magic</h4>
+      <span class="conflict-tag">Society vs. Nature</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Society</div><div class="conflict-val">To study magical phenomena using structured reasoning and evidence.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Nature</div><div class="conflict-val">To operate outside conventional explanation and remain unpredictable.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Magic integrated into a framework of scientific understanding.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Real World vs. Magical World</h4>
+      <span class="conflict-tag">Society vs. Society</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Real World</div><div class="conflict-val">To maintain secrecy and preserve ordinary routine.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Magical World</div><div class="conflict-val">To demand recognition and responsible care despite remaining hidden.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Balance maintained between domestic order and magical responsibility.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>The Scientific Method vs. A Problem</h4>
+      <span class="conflict-tag">Society vs. Nature</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Method</div><div class="conflict-val">To reduce uncertainty through step-by-step investigation.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Nature</div><div class="conflict-val">To obscure its cause until correctly identified.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Verified conclusion reached through systematic testing.</div></div>
+    </div>
+  </div>
+
+  <p class="alt-list">Responsibility vs. Childhood (Society vs. Self) · Mom vs. Risk (Character vs. Fate) · Sassafras vs. Hunger (Character vs. Nature)</p>
+</div>
+
+<div class="section" id="comprehension">
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Comprehension</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Comprehension questions are organized into three sets that broadly align with the narrative's structural progression. Questions are designed to encourage holistic reading and discussion rather than rigid chapter-by-chapter tracking. Each answer includes a referenced scene for teacher orientation and a model response to guide expectations for textual grounding and analytical depth.</p></div>
+
+  <p class="comp-set-label">Section 1 — Finding a Place</p>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">1</div>
+      <div>
+        <p class="comp-question">What does Zoey do when Sassafras tries to eat the roly-polies?</p>
+        <p class="comp-answer">She stops him and builds a circus for the bugs instead.</p>
+        <div class="comp-scene">Scene: Zoey telling Sassafras no and building twig hoops, rock balancers, and a tightrope for the roly-polies</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">2</div>
+      <div>
+        <p class="comp-question">What does Zoey do with her Thinking Goggles when she needs to think of ideas?</p>
+        <p class="comp-answer">She puts them on top of her head so they are closer to her brain.</p>
+        <div class="comp-scene">Scene: Zoey placing the goggles on her head before coming up with the bug circus idea</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">3</div>
+      <div>
+        <p class="comp-question">What does Zoey see when she finds the photo her mom hides?</p>
+        <p class="comp-answer">She sees her mom as a child with a glowing purple frog on her head.</p>
+        <div class="comp-scene">Scene: Zoey pushing the papers aside and finding the photo under the pile</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">4</div>
+      <div>
+        <p class="comp-question">How does Zoey react when she sees the frog glowing in the photo?</p>
+        <p class="comp-answer">She almost drops the photo and holds it out with a trembling hand.</p>
+        <div class="comp-scene">Scene: Zoey staring at the purple glow and reaching out to show her mom</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">5</div>
+      <div>
+        <p class="comp-question">What does Zoey say when her mom tells her the frog talked?</p>
+        <p class="comp-answer">She says that frogs cannot talk.</p>
+        <div class="comp-scene">Scene: Zoey interrupting her mom to say frogs cannot talk</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">6</div>
+      <div>
+        <p class="comp-question">What does Zoey's mom use to figure out how to help the sick frog?</p>
+        <p class="comp-answer">She uses books and experiments.</p>
+        <div class="comp-scene">Scene: Zoey's mom describing how she read books and ran experiments to help Pip recover</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">7</div>
+      <div>
+        <p class="comp-question">What does Zoey have to do before she can see the magical doorbell?</p>
+        <p class="comp-answer">She has to lie down on the ground and look at the right angle.</p>
+        <div class="comp-scene">Scene: Zoey lying in the grass and lowering her head until the shimmering doorbell appears</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">8</div>
+      <div>
+        <p class="comp-question">What does Zoey say when she offers to help the magical animals while her mom is away?</p>
+        <p class="comp-answer">She says she knows she is just a kid but she could try.</p>
+        <div class="comp-scene">Scene: Zoey looking down at her feet and offering to help any animal that rings the bell</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="comp-set-label">Section 2 — Battles &amp; Bites</p>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">1</div>
+      <div>
+        <p class="comp-question">What does Zoey find at the back door of the barn when the doorbell rings?</p>
+        <p class="comp-answer">She finds a small green scaly animal curled up in a ball.</p>
+        <div class="comp-scene">Scene: Zoey opening the back door and seeing the creature on the ground</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">2</div>
+      <div>
+        <p class="comp-question">How does Zoey react when she opens the barn door and sees the creature?</p>
+        <p class="comp-answer">She whispers that it is cute and scoops it into her arms.</p>
+        <div class="comp-scene">Scene: Zoey bending down to touch the creature and carrying it into the barn</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">3</div>
+      <div>
+        <p class="comp-question">What clues tell Zoey that the creature at the door is a baby dragon?</p>
+        <p class="comp-answer">It has small wings, a long tail, a scaly body, and lets out a spark when it coughs.</p>
+        <div class="comp-scene">Scene: Zoey watching the dragon stretch and seeing its wings, tail, and spark appear on the table</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">4</div>
+      <div>
+        <p class="comp-question">What does Zoey say about why she moves the dragon to the dirt floor pen?</p>
+        <p class="comp-answer">She says that dirt will not catch fire if the dragon coughs again.</p>
+        <div class="comp-scene">Scene: Zoey looking around the barn and choosing the dirt pen to keep the barn safe</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">5</div>
+      <div>
+        <p class="comp-question">What does Zoey remember about the smallest baby snake she saw in the forest?</p>
+        <p class="comp-answer">She remembers that it was much smaller than the others and lay still after hatching.</p>
+        <div class="comp-scene">Scene: Zoey recalling the last egg to hatch and the tiny weak snake lying on the ground</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">6</div>
+      <div>
+        <p class="comp-question">What does Zoey's mom say happens to animals that are runts in a litter?</p>
+        <p class="comp-answer">She says they are smaller and weaker than the rest and usually do not survive.</p>
+        <div class="comp-scene">Scene: Zoey's mom explaining what a runt is while they watch the small snake</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">7</div>
+      <div>
+        <p class="comp-question">What question is Zoey trying to answer with her food experiment?</p>
+        <p class="comp-answer">She wants to know what baby dragons like to eat.</p>
+        <div class="comp-scene">Scene: Zoey writing the question in her science journal before setting up the food plates</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">8</div>
+      <div>
+        <p class="comp-question">What does Zoey's mom always tell her to remember when she runs an experiment?</p>
+        <p class="comp-answer">She says to change only one thing and keep everything else the same.</p>
+        <div class="comp-scene">Scene: Zoey recalling her mom's words as she sets out seven plates with the same amount of each food</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="comp-set-label">Section 3 — Friendship, Courage, and Goodbyes</p>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">1</div>
+      <div>
+        <p class="comp-question">What does Zoey notice when she touches Marshmallow's back?</p>
+        <p class="comp-answer">He feels like a block of ice and is not moving.</p>
+        <div class="comp-scene">Scene: Zoey reaching into the pen and jumping back after touching the cold dragon</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">2</div>
+      <div>
+        <p class="comp-question">What does Zoey remember about Sophie's pet lizard and the heat lamp?</p>
+        <p class="comp-answer">She remembers that Sophie made her promise to always leave the heat lamp on so the lizard would not get sick.</p>
+        <div class="comp-scene">Scene: Zoey thinking back to Sophie dropping off the lizard and explaining the heat lamp</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">3</div>
+      <div>
+        <p class="comp-question">What book does Zoey find on the barn shelf to help Marshmallow?</p>
+        <p class="comp-answer">She finds a book called Care and Feeding of Reptiles.</p>
+        <div class="comp-scene">Scene: Zoey scanning the bookshelf and grabbing the reptile book</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">4</div>
+      <div>
+        <p class="comp-question">What does Zoey say to her mom when her mom comes home?</p>
+        <p class="comp-answer">She says she fed Marshmallow marshmallows and then he got worse and she does not want him to die.</p>
+        <div class="comp-scene">Scene: Zoey running to her mom's office and bursting into tears to explain what happened</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">5</div>
+      <div>
+        <p class="comp-question">What evidence shows that Marshmallow is getting better?</p>
+        <p class="comp-answer">He is walking around with bright eyes and has grown to twice his size.</p>
+        <div class="comp-scene">Scene: Zoey walking into the barn and seeing Marshmallow moving and much bigger than before</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">6</div>
+      <div>
+        <p class="comp-question">What does Zoey's mom say about why Marshmallow cannot stay in the barn?</p>
+        <p class="comp-answer">She says a dragon is not meant to live in a barn and he is meant to be free.</p>
+        <div class="comp-scene">Scene: Zoey's mom looking at the photo of Marshmallow and speaking quietly to Zoey</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">7</div>
+      <div>
+        <p class="comp-question">What does Zoey's mom teach Marshmallow to do at the forest stream?</p>
+        <p class="comp-answer">She teaches him to catch fish.</p>
+        <div class="comp-scene">Scene: Zoey's mom wading into the stream and showing Marshmallow how to find and catch fish</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-item">
+    <div class="comp-body">
+      <div class="comp-num">8</div>
+      <div>
+        <p class="comp-question">What does the blue dragon do when she comes out of the forest?</p>
+        <p class="comp-answer">She greets Marshmallow, then leads him away into the forest.</p>
+        <div class="comp-scene">Scene: the blue dragon stepping out of the bushes, nuzzling Marshmallow, and the two of them leaping into the air together</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="themes">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Theme Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>A topic is the subject the text explores (1–3 words). A theme is the author's perspective or claim about that topic, expressed as a complete, universal statement. Themes should be universal, arguable, supported by textual evidence, and expressed as complete statements — not single words or plot summaries.</p></div>
+
+  <div class="theme-block">
+    <div class="theme-header">
+      <h3>Scientific Inquiry</h3>
+      <span class="theme-topic-badge">Topic</span>
+    </div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val"><em>Structured investigation transforms uncertainty into reliable knowledge.</em></div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Zoey records observations and revises hypotheses before arriving at the correct diagnosis; failed early attempts increase tension until systematic testing leads to resolution.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">In a world shaped by complex information and rapid claims, disciplined inquiry remains essential for distinguishing assumption from verified understanding.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>The Wild Robot</em> by Peter Brown, as both texts depict careful observation and adaptation as the means by which unfamiliar systems become understood and navigable.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header">
+      <h3>Empowerment</h3>
+      <span class="theme-topic-badge">Topic</span>
+    </div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val"><em>Competence develops through responsibility accepted and sustained under pressure.</em></div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Zoey assumes full responsibility for the dragon's care while her mother is absent; her confidence increases as she independently applies the scientific method to reach a solution.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Young people today often navigate challenges without immediate supervision, and empowerment emerges when responsibility is paired with skill rather than impulse.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>My Father's Dragon</em> by Ruth Stiles Gannett, which also centers on a young protagonist who resolves a crisis through resourcefulness and deliberate action.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header">
+      <h3>The Magic of Medicine</h3>
+      <span class="theme-topic-badge">Topic</span>
+    </div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val"><em>Healing occurs when hidden causes are understood rather than merely confronted.</em></div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">The dragon's illness persists until its biological cause is correctly identified; scientific reasoning replaces fear-based reaction, leading to recovery.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Modern healthcare and research depend on identifying root causes instead of reacting to surface symptoms, reflecting the narrative's emphasis on diagnosis over assumption.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Works</div><div class="theme-val"><em>The Evolution of Calpurnia Tate</em> by Jacqueline Kelly, in which scientific observation is framed within everyday life, recognizing knowledge as a tool for interpreting natural phenomena.</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<button class="back-to-top-btn" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  const token = sessionStorage.getItem('tl_token');
+  if(!token){ window.location.href='index.html'; return; }
+  document.querySelectorAll('.action-btn[data-file]').forEach(btn=>{
+    btn.addEventListener('click',async function(){
+      const file=this.dataset.file, label=this.dataset.label;
+      const orig=this.textContent; this.textContent='Loading…'; this.disabled=true;
+      try{
+        const r=await fetch('https://crowscallpress-production.up.railway.app/download',{
+          method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+          body:JSON.stringify({file})
+        });
+        if(!r.ok) throw new Error(await r.text());
+        const {url}=await r.json();
+        const a=document.createElement('a'); a.href=url; a.download=label+'.pdf'; a.target='_blank';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      }catch(e){ alert('Download failed: '+e.message); }
+      this.textContent=orig; this.disabled=false;
+    });
+  });
+  const btn=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{ btn.classList.toggle('visible',window.scrollY>400); });
+  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>

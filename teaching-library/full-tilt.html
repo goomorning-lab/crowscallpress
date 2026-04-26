@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Tilt — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --ink-mid: #3d3028; --ink-light: #7a6a5a; --ink-faint: #c4b8ad;
+    --cream: #f5f0e8; --cream-deep: #ede6d8; --warm-white: #faf8f4;
+    --rust: #b85c3a; --rust-pale: #f5e2db; --gold: #c9a84c; --gold-pale: #f5ecd0;
+    --sage: #4a6e5a; --sage-pale: #ddeee4; --rule: #d4c9bc;
+    --level-color: #263b2a;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.75; }
+
+  .top-nav { position: sticky; top: 0; z-index: 200; background: var(--rust); color: var(--cream); display: flex; align-items: center; gap: 1rem; padding: 0 2rem; height: 56px; }
+  .top-nav a.back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; transition: color 0.2s; }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+  .top-nav .action-btns { margin-left: auto; display: flex; gap: 0.5rem; }
+  .top-nav .action-btn { padding: 0.35rem 0.9rem; border-radius: 3px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; border: 1px solid rgba(255,255,255,0.25); color: var(--cream); background: transparent; text-decoration: none; transition: background 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+
+  .cover { background: var(--level-color); color: #fff; padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px); pointer-events: none; }
+  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 5.5vw, 52px); line-height: 1.15; margin-bottom: 8px; color: #fff; }
+  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 32px; letter-spacing: 0.08em; }
+  .cover-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
+  .cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cover-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 20px; }
+
+  .toc-bar { background: var(--cream-deep); border-bottom: 1px solid var(--rule); position: sticky; top: 56px; z-index: 100; }
+  .toc-inner { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a { display: block; padding: 11px 13px; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+
+  .container { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+
+  .principle { background: var(--sage-pale); border-left: 3px solid var(--sage); padding: 14px 18px; margin-bottom: 28px; border-radius: 0 4px 4px 0; }
+  .principle strong { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; font-weight: 500; }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+
+  .note { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 11px 15px; margin: 18px 0; border-radius: 0 4px 4px 0; font-size: 13px; color: var(--ink-mid); font-style: italic; }
+  .note strong { font-style: normal; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a10; display: block; margin-bottom: 3px; font-weight: 500; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 22px 0; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px; }
+  .card-level { border-top: 3px solid var(--level-color); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .card .card-sub { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+
+  .plot-stage { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px 20px; margin-bottom: 10px; position: relative; }
+  .plot-stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 5px 0 0 5px; }
+  .plot-stage.stage-begin::before { background: var(--sage); }
+  .plot-stage.stage-mid::before { background: var(--gold); }
+  .plot-stage.stage-climax::before { background: var(--rust); }
+  .plot-stage.stage-end::before { background: var(--ink-light); }
+  .plot-stage h4 { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .plot-stage p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .plot-note { font-size: 12px; color: var(--ink-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--rule); }
+
+  .foreshadow-item { border-left: 2px solid var(--rule); padding: 6px 0 6px 16px; margin-bottom: 14px; }
+  .foreshadow-item h4 { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .foreshadow-item p { font-size: 13px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .arch-group-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 10px; font-weight: 500; }
+  .arch-entry { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--rule); border-radius: 5px; background: #fff; margin-bottom: 8px; overflow: hidden; }
+  .arch-left { padding: 14px 16px; border-right: 1px solid var(--rule); }
+  .arch-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .arch-type { font-size: 11px; letter-spacing: 0.08em; color: var(--rust); font-weight: 500; }
+  .arch-right { padding: 14px 16px; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .true-shadow-box { background: var(--rust-pale); border: 1px solid rgba(184,92,58,0.2); border-left: 3px solid var(--rust); border-radius: 0 5px 5px 0; padding: 16px 20px; margin-bottom: 24px; }
+  .true-shadow-box h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--rust); margin-bottom: 6px; }
+  .true-shadow-box p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .char-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 18px; overflow: hidden; }
+  .char-header { background: var(--cream-deep); padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; }
+  .char-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .char-arch-tag { font-size: 11px; color: var(--rust); letter-spacing: 0.06em; font-weight: 500; }
+  .char-body { padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .char-field label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 500; }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; line-height: 1.6; }
+  .char-traits { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trait-positive, .trait-negative { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; font-size: 13px; }
+  .trait-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 3px; }
+  .trait-positive .trait-label { color: var(--sage); }
+  .trait-negative .trait-label { color: var(--rust); }
+  .char-dev { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .char-dev label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .char-dev-tag { display: inline-block; background: var(--gold-pale); border: 1px solid var(--gold); color: #7a5a10; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; font-weight: 500; }
+  .char-dev p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .allusion-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .allusion-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); }
+  .allusion-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .allusion-type { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .allusion-body { padding: 12px 16px; }
+  .allusion-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; margin-bottom: 6px; font-size: 13.5px; }
+  .allusion-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .allusion-val { color: var(--ink-mid); line-height: 1.6; }
+  .symbol-block { border: 1px solid var(--rule); border-radius: 5px; background: #fff; padding: 14px 18px; margin-bottom: 10px; }
+  .symbol-equation { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .symbol-equation .eq-arrow { color: var(--rust); }
+  .symbol-evidence li { margin-bottom: 4px; }
+
+  .conflict-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 12px; overflow: hidden; }
+  .conflict-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .conflict-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .conflict-tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--rust-pale); color: var(--rust); padding: 2px 8px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
+  .conflict-body { padding: 12px 16px; }
+  .conflict-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; margin-bottom: 8px; font-size: 13.5px; }
+  .conflict-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .conflict-val { color: var(--ink-mid); line-height: 1.6; }
+
+  .comp-set-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 12px; font-weight: 500; }
+  .comp-item { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .comp-body { padding: 16px 18px 14px; display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; }
+  .comp-num { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink-faint); line-height: 1.3; }
+  .comp-question { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+  .comp-answer { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.65; }
+  .comp-scene { font-size: 12px; color: var(--ink-light); font-style: italic; padding: 8px 10px; background: var(--warm-white); border-radius: 3px; border-left: 2px solid var(--rule); }
+
+  .theme-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 14px; overflow: hidden; }
+  .theme-header { background: var(--cream-deep); padding: 12px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .theme-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .theme-topic-badge { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-pale); color: #7a5a10; border: 1px solid var(--gold); padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .theme-body { padding: 14px 16px; }
+  .theme-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; font-size: 13.5px; margin-bottom: 8px; }
+  .theme-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+
+  p { margin-bottom: 10px; } p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+
+  .back-to-top-btn { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; background: var(--ink); color: var(--cream); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 999; }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .char-body { grid-template-columns: 1fr; }
+    .char-traits { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row { grid-template-columns: 1fr; gap: 2px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">Full Tilt — Teacher Compendium</span>
+  <div class="action-btns">
+    <button class="action-btn" data-file="full-tilt/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" data-file="full-tilt/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" data-file="full-tilt/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>Full Tilt</h1>
+    <h2>Neal Shusterman</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Mythos Level</span>
+      <span>CEFR B2–C1</span>
+      <span>Supernatural Fiction · Fear &amp; Survival</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="section" id="intro">
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">About This Compendium</h2>
+  <p>This compendium provides the book-specific analytical support for the <em>Full Tilt</em> Mythos-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+  <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+  <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+</div>
+
+<div class="section" id="literary-elements">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Literary Elements</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Literary elements function structurally. Students must correctly identify elements, explain how they create tension, meaning, or development, and move beyond summary into structural interpretation. Accuracy of classification and clarity of explanation are prioritized over length.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Setting</h3>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Physical Location</h3>
+      <div class="card-sub">Where the story takes place</div>
+      <p>A liminal, supernatural amusement park that appears temporarily within an ordinary suburban environment.</p>
+      <p class="justif">The park functions as a constructed psychological arena rather than a recreational space. Each ride externalizes an internal fear, flaw, or unresolved trauma — transforming amusement into existential trial.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Chronological Time</h3>
+      <div class="card-sub">When the story takes place</div>
+      <p>Contemporary late-20th/early-21st century, unfolding over the course of a single night.</p>
+      <p class="justif">The time limit — completion of seven rides by dawn — creates structural compression. The impending sunrise functions as an existential deadline, symbolizing rebirth versus entrapment.</p>
+    </div>
+    <div class="card card-rust">
+      <h3>Society &amp; Values</h3>
+      <div class="card-sub">Cultural context</div>
+      <p>A culture shaped by thrill-seeking, spectacle, and individual testing of limits.</p>
+      <p class="justif">The carnival amplifies contemporary fascination with adrenaline and risk. By turning thrill culture into literal consumption, the text critiques the glorification of extremity and ego-driven bravado.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Plot Arc</h3>
+  <div class="plot-stage stage-begin">
+    <h4>Beginning — Exposition</h4>
+    <p>Blake receives a mysterious invitation to a pop-up carnival. Quinn steals the invitation and enters first, becoming trapped when the carnival reveals its rule: seven rides must be completed before dawn. Blake enters the park with Maggie and Russ to retrieve him.</p>
+    <p class="plot-note">Structural Note: The seven-ride rule establishes a closed system governed by escalating trials and a fixed temporal deadline.</p>
+  </div>
+  <div class="plot-stage stage-mid">
+    <h4>Middle — Rising Action</h4>
+    <p>Blake, Maggie, and Russ move through increasingly symbolic and psychologically revealing rides. Cassandra appears as orchestrator, manipulating perception and emphasizing willpower. Each ride exposes personal fear, imbalance, or vulnerability. Reuniting with Quinn, the two venture into the seventh ride together. Cassandra then demands an additional final ride tied to Blake's unresolved trauma as the price of freedom for the others.</p>
+  </div>
+  <div class="plot-stage stage-climax">
+    <h4>Climax</h4>
+    <p>Blake willingly chooses to undergo the final ride confronting his survivor's guilt and past trauma, rejecting Cassandra's manipulation and asserting control over his fear.</p>
+    <p class="plot-note">Justification: The climax merges external antagonism with internal reckoning; the decisive conflict becomes psychological rather than procedural.</p>
+  </div>
+  <div class="plot-stage stage-end">
+    <h4>End — Resolution</h4>
+    <p>Blake survives the final ride, realizing that his guilt had changed his memory of past events. The park's hold over Quinn, Maggie, and Russ dissolves as dawn approaches. Cassandra's control collapses and the carnival disappears.</p>
+    <p class="plot-note">Interpretive Note: Escape is achieved not by endurance alone, but by confronting imbalance directly.</p>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Foreshadowing</h3>
+  <div class="foreshadow-item"><h4>The Seven-Ride Rule</h4><p>Introduced upon entering the park, this requirement establishes escalating trials and implies that survival will depend on more than endurance alone.</p></div>
+  <div class="foreshadow-item"><h4>Blake's Flashbacks to Past Trauma</h4><p>Early interruptions in the narrative reveal unresolved survivor's guilt, signaling that the ultimate confrontation will be psychological rather than purely physical.</p></div>
+  <div class="foreshadow-item"><h4>Cassandra's Emphasis on Willpower</h4><p>Her repeated insistence that survival depends on strength of mind foreshadows that the decisive battle will center on internal control rather than external escape.</p></div>
+  <div class="foreshadow-item"><h4>Progressive Intensification of the Rides</h4><p>Each attraction becomes more symbolic and personally invasive, preparing readers for a final ride that synthesizes prior fears into a singular, unavoidable reckoning.</p></div>
+  <div class="note"><strong>Structural Function</strong>Foreshadowing in <em>Full Tilt</em> establishes inevitability rather than surprise. It directs reader expectation toward psychological convergence, ensuring the climax emerges as the culmination of internal tension.</div>
+
+  <div class="divider"></div>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Point of View</h3>
+      <div class="card-sub">Narrative perspective</div>
+      <p>First-person central, aligned with Blake. The alignment confines the reader to Blake's perceptions and distortions, preserving uncertainty about Cassandra's omniscience and the park's metaphysical mechanics.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Tone</h3>
+      <div class="card-sub">Emotional register</div>
+      <p>Psychological suspense infused with existential unease. Created through time compression toward dawn, manipulative dialogue from Cassandra, and flashbacks that destabilize narrative continuity.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="archetypes">
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Archetypes</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Archetypes should not be treated as personality labels. They represent motivational drives within the Order / Freedom / Ego / Social framework. Characters may express a primary archetype and a shadow distortion when that drive becomes extreme or corrupted.</p></div>
+
+  <div class="true-shadow-box">
+    <h4>True Shadow: The Works</h4>
+    <p>The True Shadow in <em>Full Tilt</em> is The Works — the totalizing system of distortion that absorbs individuals by magnifying their fears, guilt, and excesses into inescapable spectacle. The Works operates as the underlying force behind every ride and manipulation, exploiting imbalance and transforming psychological vulnerability into structural entrapment. Cassandra notes it as something that existed before herself and will remain long after she is gone.</p>
+  </div>
+
+  <p class="arch-group-label">Characters</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Blake</div><div class="arch-type">Outlaw · Revolutionary</div></div><div class="arch-right">Challenges the carnival's rules and refuses psychological submission.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Quinn</div><div class="arch-type">Outlaw · Rebel</div></div><div class="arch-right">Pursues risk without restraint, triggering entry into the system.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Mom</div><div class="arch-type">Caregiver · Parent</div></div><div class="arch-right">Represents protective structure whose absence exposes vulnerability.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Russ</div><div class="arch-type">Jester · Full</div></div><div class="arch-right">Masks fear with humor while exposing instability beneath bravado.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Maggie</div><div class="arch-type">Lover · Partner</div></div><div class="arch-right">Anchors emotional loyalty and relational commitment under pressure.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Cassandra</div><div class="arch-type">Magician · Shadow Deceiver</div></div><div class="arch-right">Manipulates perception to distort reality and test willpower.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Riders</div><div class="arch-type">Innocent · Shadow Victim</div></div><div class="arch-right">Reflect absorbed individuals stripped of agency by imbalance.</div></div>
+
+  <p class="arch-group-label">Objects / Concepts</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Wheel of Ra</div><div class="arch-type">Creator · Shadow Tyrant</div></div><div class="arch-right">Enforces domination through spectacle and hierarchical control.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Hall of Mirrors</div><div class="arch-type">Lover · Shadow Seducer</div></div><div class="arch-right">Distorts identity through seductive illusion and self-fracture.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Tilt-a-Whirl</div><div class="arch-type">Jester · Shadow Hater</div></div><div class="arch-right">Twists what the characters love into disorientation and hostility.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Willpower</div><div class="arch-type">Magician · Visionary</div></div><div class="arch-right">Operates as the transformative force that reshapes internal reality.</div></div>
+</div>
+
+<div class="section" id="character-maps">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Character Maps</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Character analysis requires internal logic. Students must distinguish between goal (what a character wants) and motivation (why they want it), identify values and traits supported by textual behavior, and explain development using structural evidence.</p></div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Blake</h3>
+      <span class="char-arch-tag">Outlaw · Revolutionary</span>
+      <span class="char-arch-tag" style="color:var(--ink-light);">Round / Dynamic</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants to rescue Quinn and survive the carnival's seven rides before dawn.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He is driven by survivor's guilt and a need to prove that he can protect his brother and correct past failure.</p></div>
+      <div class="char-field"><label>Values</label><p>Responsibility, loyalty, control, balance. He believes that facing fear directly is the only way to restore equilibrium and protect others.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive · Determined</div>He continues forward through escalating psychological trials despite mounting fear.</div>
+        <div class="trait-positive"><div class="trait-label">Positive · Protective</div>He consistently prioritizes Quinn's safety over his own comfort.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Self-Blaming</div>He internalizes past trauma as personal failure.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Rigid</div>He initially believes control must be maintained through force of will alone.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round / Dynamic</div>
+        <p>Blake begins governed by guilt and reactive protection but evolves into someone who confronts trauma directly, shifting from defensive control to conscious balance and self-acceptance.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Quinn</h3>
+      <span class="char-arch-tag">Outlaw · Rebel</span>
+      <span class="char-arch-tag" style="color:var(--ink-light);">Flat / Dynamic</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants to experience the carnival's thrills and assert his independence through risk.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He is driven by a desire to prove fearlessness and resist limitations imposed by others.</p></div>
+      <div class="char-field"><label>Values</label><p>Freedom, adrenaline, rebellion, autonomy. He equates risk-taking with identity and self-definition.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive · Fearless</div>He approaches danger without hesitation.</div>
+        <div class="trait-positive"><div class="trait-label">Positive · Independent</div>He resists reliance on authority or protection.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Impulsive</div>He enters the carnival dismissing the warnings of others.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Defiant</div>He rejects caution even when warnings are explicit.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat / Dynamic</div>
+        <p>Quinn's core rebellious identity remains intact, but his experience in the carnival forces a recalibration of recklessness into moderated awareness.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Cassandra</h3>
+      <span class="char-arch-tag">Magician · Shadow Deceiver</span>
+      <span class="char-arch-tag" style="color:var(--ink-light);">Round / Static</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>She seeks to maintain control over the carnival and absorb riders who fail its trials.</p></div>
+      <div class="char-field"><label>Motivation</label><p>She is driven by a desire to test, manipulate, and dominate through psychological imbalance.</p></div>
+      <div class="char-field"><label>Values</label><p>Power, control, spectacle, superiority. She prioritizes distortion of willpower as proof of dominance.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive · Perceptive</div>She identifies individual vulnerabilities with precision.</div>
+        <div class="trait-positive"><div class="trait-label">Positive · Strategic</div>She structures each ride to escalate psychological pressure.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Manipulative</div>She distorts perception to induce surrender.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Controlling</div>She refuses release without asserting final dominance.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round / Static</div>
+        <p>Cassandra remains structurally consistent in her role as manipulator and tester; her lack of transformation reinforces her function as the persistent externalization of imbalance rather than a character seeking growth.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="allusions">
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Allusions &amp; Symbolism</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. A symbol is a recurring object or image within the text that represents a deeper abstract idea. Students must identify each, explain how characters respond, and state the abstract idea represented.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Allusions</h3>
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Wheel of Ra</h4><div class="allusion-type">Mythological / Religious</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Ra, the Egyptian sun god associated with divine authority, cyclical judgment, and cosmic order.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">By invoking Ra, the ride reframes mechanical rotation as mythic judgment. The carnival assumes the posture of a godlike system that elevates and condemns, reinforcing the idea that riders are being measured within a distorted hierarchy rather than merely entertained.</div></div>
+    </div>
+  </div>
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Wizard of Oz Farmhouse</h4><div class="allusion-type">Literary / Film</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">The Wizard of Oz (L. Frank Baum; 1939 film), particularly the farmhouse as symbol of origin and return.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">The allusion frames Blake's ordeal within a narrative of illusion versus reality. Like Dorothy's journey, the carnival presents spectacle and deception, but resolution depends on recognizing truth and reclaiming internal grounding.</div></div>
+    </div>
+  </div>
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Hall of Mirrors — Notre Dame</h4><div class="allusion-type">Architectural / Cultural</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Notre Dame Cathedral as emblem of sacred structure and spiritual elevation.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">By evoking cathedral imagery within a space of distortion, the narrative inverts sanctity into fragmentation. The setting becomes a corrupted sanctuary where identity is warped rather than affirmed, deepening the existential dimension of Blake's confrontation with self-perception.</div></div>
+    </div>
+  </div>
+  <p class="alt-list">Alternative allusions: "Like a Picasso from hell" (Cubist distortion); Colfax Ravine "as deep as the Grand Canyon"; Quinn referring to himself as "King Tut."</p>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Symbolism</h3>
+  <div class="symbol-block">
+    <div class="symbol-equation">The Red Ride Symbol <span class="eq-arrow">→</span> Obligation</div>
+    <ul class="body-list symbol-evidence">
+      <li>The red ride symbol glows on Blake's hand each time he approaches a trial.</li>
+      <li>It binds him to the carnival's escalating demands.</li>
+      <li>Escape comes at the cost of the red ride symbol's promise.</li>
+    </ul>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol-equation">Quinn's Piercings <span class="eq-arrow">→</span> Defiance</div>
+    <ul class="body-list symbol-evidence">
+      <li>Quinn's piercings mark his visible rejection of limits and caution.</li>
+      <li>They announce his commitment to risk as identity.</li>
+      <li>After the carnival's ordeal, Quinn removes his piercings to accept his family's love.</li>
+    </ul>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol-equation">Columbia University <span class="eq-arrow">→</span> Escape</div>
+    <ul class="body-list symbol-evidence">
+      <li>Blake's envisioned life beyond his circumstances exists only through Columbia University.</li>
+      <li>It represents a structured path away from chaos and guilt.</li>
+      <li>Blake comes to realize Columbia is not just a manner of running away, but of growth.</li>
+    </ul>
+  </div>
+  <p class="alt-list">Alternative symbols: Quinn's Gifted Diamond Stud (Familial Love); The School Bus (Survivor's Guilt); The Turnstile (Commitment).</p>
+</div>
+
+<div class="section" id="conflict">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Conflict Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must classify the conflict type, identify what each side wants, and explain the outcome and how it resolves or reshapes the tension.</p></div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Blake vs. Quinn</h4><span class="conflict-tag">Character vs. Character</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Blake's Solution</div><div class="conflict-val">To impose responsibility and restraint in order to protect Quinn from consequences he does not fully consider.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Quinn's Solution</div><div class="conflict-val">To assert independence through risk and reject Blake's protective control.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Blake ultimately preserves Quinn's life not by controlling him, but by allowing Quinn to confront fear and recalibrate his recklessness.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Blake vs. Cassandra</h4><span class="conflict-tag">Character vs. Fate</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Blake's Solution</div><div class="conflict-val">To confront Cassandra directly and prove survival is not determined by past trauma or fate.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Fate's Solution</div><div class="conflict-val">To enforce inevitability of disorder and chaos, binding Blake to the consequences of the bus accident and his survival.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Blake disrupts the inevitability of his destruction by asserting balance over extremity.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Quinn vs. Isolation</h4><span class="conflict-tag">Character vs. Self</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Quinn's Solution</div><div class="conflict-val">To mask vulnerability with bravado and deny emotional dependence.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Self's Solution</div><div class="conflict-val">To convince Quinn that independence requires emotional distance and self-reliance at all costs.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Quinn acknowledges attachment and expresses love, weakening the hold of isolation over his identity.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Dawn vs. Dusk</h4><span class="conflict-tag">Nature vs. Nature</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Dawn's Solution</div><div class="conflict-val">To restore order through light, closure, and release from the carnival's control.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Dusk's Solution</div><div class="conflict-val">To prolong distortion, suspense, and entrapment within the carnival's dominion.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Dawn overtakes Dusk, dissolving the carnival's authority and allowing reintegration into ordinary reality.</div></div>
+    </div>
+  </div>
+  <p class="alt-list">Alternative conflicts: Blake vs. Survivor's Guilt (Character vs. Self); Willpower vs. Submission (Nature vs. Nature); The Riders vs. The Works (Society vs. Nature).</p>
+</div>
+
+<div class="section" id="comprehension">
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Comprehension Questions</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Questions are organized into three sets reflecting the narrative's structural progression. Specific chapter numbers are intentionally omitted to encourage holistic reading. Each answer includes a model response and a scene anchor for teacher navigation.</p></div>
+
+  <p class="comp-set-label">Section 1 — The Invitation</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div>
+    <p class="comp-question">When Blake volunteers to wait at Icewater Rapids while Quinn rides the Raptor, what does his decision reveal about the dynamic between the two brothers?</p>
+    <p class="comp-answer">Blake positions himself as the one who manages risk while Quinn pursues every thrill without hesitation, establishing a pattern in which caution and compulsion define their roles.</p>
+    <p class="comp-scene">Scene: Blake stepping out of the Raptor queue to wait at Icewater Rapids while Quinn rides with Russ and Maggie.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div>
+    <p class="comp-question">When Blake rides the Kamikaze and fights to suppress a rising memory, what does his reaction reveal about the relationship between the ride and something he refuses to face?</p>
+    <p class="comp-answer">The Kamikaze reaches down and touches something already buried, showing that what Blake is fighting is not the drop itself but a memory he has spent years keeping underground.</p>
+    <p class="comp-scene">Scene: Blake on the Kamikaze gritting his teeth against the rising school bus memory as the ride drops and spins.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div>
+    <p class="comp-question">At the ball-toss booth, what does the way Cassandra selects Blake's prize and then vanishes suggest about her role in what is already happening to him?</p>
+    <p class="comp-answer">The sequence suggests she is not a carnival worker but the architect of something Blake has already been pulled into without realising it.</p>
+    <p class="comp-scene">Scene: Blake meeting Cassandra at the ball-toss booth, winning a bear whose pocket holds the invitation, and turning to find her replaced by a stranger.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div>
+    <p class="comp-question">What does Blake's decision to call Quinn an accident during their fight reveal about what his years of protectiveness have actually cost him?</p>
+    <p class="comp-answer">It reveals that his protectiveness was always carrying guilt and resentment underneath, making the caution as much about his own burden as about Quinn.</p>
+    <p class="comp-scene">Scene: Blake and Quinn's fight in Quinn's room before Quinn collapses.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div>
+    <p class="comp-question">When Blake discovers a one-way ticket to New York in Carl's envelope and hides it rather than discarding it, what does this reveal about what his caution toward Quinn has been masking?</p>
+    <p class="comp-answer">Hiding the ticket rather than throwing it away shows that the caution binding him to Quinn has also been a way of avoiding the terrifying prospect of his own life.</p>
+    <p class="comp-scene">Scene: Blake alone in his room opening Carl's envelope and pressing the plane tickets to the back of his desk drawer.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div>
+    <p class="comp-question">When Blake sees carnival lights reflected in Quinn's dilated pupils as the paramedics take him away, what does this moment establish about where the real danger to Quinn lies?</p>
+    <p class="comp-answer">The lights in his brother's eyes convince Blake that Quinn's body is present but Quinn himself is not, establishing that the real danger is something no doctor in the hospital can reach.</p>
+    <p class="comp-scene">Scene: Blake watching the paramedics lift Quinn onto the gurney and glimpsing carnival lights spinning in his wide, fixed pupils.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div>
+    <p class="comp-question">When Blake turns down Hawking Road and the carnival resolves out of the darkness, what does the approach establish about how entry into this place works?</p>
+    <p class="comp-answer">The symbol on the tree, the road winding toward an abandoned quarry, and the park appearing out of nowhere together establish that entry into this place is not a matter of finding it but of being drawn.</p>
+    <p class="comp-scene">Scene: Blake accelerating down Hawking Road, taking the sharp turn at the symbol, and the carnival emerging from the fog at the quarry's edge.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div>
+    <p class="comp-question">When Blake first steps into the park, what do the conditions at the entrance establish about what this place demands of everyone who enters?</p>
+    <p class="comp-answer">The park reveals itself immediately as a system designed to consume whoever cannot survive it on its own terms, with the broken riders, the looming boat, and the seven-ride rule all working toward that same end.</p>
+    <p class="comp-scene">Scene: Blake, Russ, and Maggie passing through the turnstiles, receiving the branded symbol, and hearing the rules from the cashier.</p>
+  </div></div></div>
+
+  <p class="comp-set-label">Section 2 — The Price of Each Ride</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div>
+    <p class="comp-question">On the carousel, the painted animals come to life and the floor falls away. What does this transformation reveal about the relationship between the park's surfaces and what lies beneath them?</p>
+    <p class="comp-answer">The carousel strips away its own familiar shape and replaces it with something that has been operating underneath all along, showing that the park does not distort reality but unmasks it.</p>
+    <p class="comp-scene">Scene: Blake grabbing the blue lion as the floorboards buckle and fall away into a rocky plain beneath a red sky.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div>
+    <p class="comp-question">When Blake recognises the pull of road rage consuming the riders around him and refuses to give in, what does his resistance reveal about what this park requires in order to trap someone?</p>
+    <p class="comp-answer">The park cannot claim him through anger the way it claims the others, showing that surrender to the carnival's logic is voluntary and requires the rider's own participation.</p>
+    <p class="comp-scene">Scene: Blake navigating the Road Rage bumper car ride while other riders are consumed by fury around him.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div>
+    <p class="comp-question">When Blake finds himself in a bar mid-ride and meets Sammy, who has worked there since being trapped at fifteen, what does Sammy's existence reveal about dawn?</p>
+    <p class="comp-answer">Sammy's thirty years behind the bar show that those caught at dawn are not destroyed but absorbed into the park permanently, with no way back.</p>
+    <p class="comp-scene">Scene: Blake finding Cassandra in a back booth of the tavern and Sammy confirming at the bar how long he has been there.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div>
+    <p class="comp-question">On the swinging boat, Quinn tells Blake he did not want to be saved. How does this admission change what Blake understands about why he came?</p>
+    <p class="comp-answer">It shifts the rescue from a straightforward task to a harder contest, because the danger is no longer only the carnival but Quinn's own willingness to disappear into it.</p>
+    <p class="comp-scene">Scene: Blake finding Quinn on the ratlines of the schooner and Quinn's admission that he did not want to be rescued.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div>
+    <p class="comp-question">In the mirror maze, Russ abandons Maggie when he sees what she has become. Blake stays with her and leads her toward the exit, only to step through the final mirror alone. What does the full arc of this ride reveal about the difference between fear that breaks people and fear that does not?</p>
+    <p class="comp-answer">Russ is broken by what the mirrors show him because he cannot hold what he knows against what he sees, while Blake's helplessness at the final glass shows that what the ride actually tests is not whether a person feels fear but whether they stay present even when it changes nothing.</p>
+    <p class="comp-scene">Scene: Blake discovering Maggie in the mirror cathedral, leading her through mirror after mirror, and pounding on the solid final glass as she is pulled back.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div>
+    <p class="comp-question">On the Zero Tolerance ride, the familiar Kamikaze shape becomes a fighter plane with no lap bar and controls labeled in Japanese. What does this transformation reveal about the relationship between Blake's original fear and what the park forces him to confront here?</p>
+    <p class="comp-answer">The original Kamikaze lets Blake be a passenger gripping a safety bar; the fighter plane removes that and puts him in charge of other lives with nothing to hold on to, turning nameless panic into responsibility for catastrophic failure.</p>
+    <p class="comp-scene">Scene: Blake flying the Japanese Zero with no lap bar, leading an unwilling squadron toward warships.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div>
+    <p class="comp-question">By the time Blake has completed the carousel, the bumper cars, the swinging boat, the mirror maze, and the fighter plane, what does the pattern of those five rides reveal about what the park understands about him?</p>
+    <p class="comp-answer">The rides show that the park was built with precise knowledge of Blake specifically, targeting the points where his need for control, his guilt, and his fear of failure are most likely to break him.</p>
+    <p class="comp-scene">Scene: The sequence of rides from the stampeding blue lion through the burning Zero, each pressing a different fault line in Blake's interior life.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div>
+    <p class="comp-question">When Russ attacks Blake in exchange for Cassandra's promise of release and then falls through a trapdoor the moment he runs for the exit, what does this reveal about the park's logic?</p>
+    <p class="comp-answer">Russ chooses self-preservation over loyalty, but the false exit swallows him immediately, showing that the carnival punishes escape without courage as surely as it punishes fear.</p>
+    <p class="comp-scene">Scene: Russ striking Blake with a steel pole on the midway and falling through the trapdoor while running for the door marked EXIT.</p>
+  </div></div></div>
+
+  <p class="comp-set-label">Section 3 — Facing the Center</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div>
+    <p class="comp-question">When Blake realises midway through the Wheel of Ra that his symbol never glowed at the scanner, what does this reveal about who the park is actually built for?</p>
+    <p class="comp-answer">His symbol never glowing confirms that this ride was not designed for him, showing that the park is built around individual fears rather than as a universal trap for anyone who enters.</p>
+    <p class="comp-scene">Scene: Blake realising mid-ride on the Wheel of Ra that the turnstile symbol never glowed.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div>
+    <p class="comp-question">In the mummification chamber, Blake enters in disguise before he knows whether the plan will work and frees Quinn while Cassandra is still in the room. What does his willingness to go in without certainty reveal about what the deadline has become for him?</p>
+    <p class="comp-answer">It shows that the dawn deadline has become a moral limit rather than a practical one, and that hesitation is now a cost he will not pay.</p>
+    <p class="comp-scene">Scene: Blake rising from a mummy's table in linen wrappings and cutting Quinn's bonds while Cassandra is still at the far end of the chamber.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div>
+    <p class="comp-question">As stakes rise, Cassandra offers Blake the chance to stay as her equal and build a better park. What does his refusal reveal about what he understands the offer to require?</p>
+    <p class="comp-answer">He recognises that a better park still has to be built on the trapped souls of others, making his refusal a rejection of the carnival's logic rather than simply loyalty to his friends.</p>
+    <p class="comp-scene">Scene: Blake finding Russ and Maggie absorbed into the machinery of The Works and refusing Cassandra's offer of shared rule.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div>
+    <p class="comp-question">On the Brain-Jam ride, Quinn's reckless instincts turn out to be exactly what Blake needs to outmaneuver Cassandra. What does this reversal suggest about what each brother has carried that the other was missing?</p>
+    <p class="comp-answer">Inside Blake's own head Quinn's unpredictability becomes the strategic advantage, revealing that what Blake always treated as a liability in his brother was a form of courage he himself lacked.</p>
+    <p class="comp-scene">Scene: Blake and Quinn working together in the spaceship pod inside the Brain-Jam ride, with Quinn's instincts proving essential to disabling Cassandra.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div>
+    <p class="comp-question">When Blake arrives at the sign-field having survived all seven rides and Cassandra emerges weakened but still refuses to release Quinn, what does her deterioration alongside her refusal reveal about what Blake represents to her?</p>
+    <p class="comp-answer">Her visible decline shows that his endurance is the opposite of what the carnival is built to consume, establishing them as genuinely opposed forces rather than simply a trap and its victim.</p>
+    <p class="comp-scene">Scene: Blake and Quinn arriving at the barren ground of road signs and clocks and Cassandra stepping out of the fog visibly diminished.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div>
+    <p class="comp-question">On the school bus teacup ride, Blake relives the crash repeatedly until he recovers the full memory. What does the complete version reveal that the distorted version had hidden?</p>
+    <p class="comp-answer">He had carried the memory of a child who could not open the emergency door, but the full version shows he opened it and jumped before the bus went over.</p>
+    <p class="comp-scene">Scene: Blake spinning the yellow teacup through repeated loops of the school bus crash until the complete memory surfaces.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div>
+    <p class="comp-question">When Blake stops running from the memory and holds the boy he once was as the bus goes over the edge, what does this act reveal about what the carnival has been testing?</p>
+    <p class="comp-answer">The act reveals that the carnival was never testing whether Blake could defeat fear but whether he could remain present inside it without fleeing.</p>
+    <p class="comp-scene">Scene: Blake holding his younger self through the end of the Tilt ride as the bus slides over the cliff.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div>
+    <p class="comp-question">At the end of the novel, Blake reflects as the park collapses around him. What does the fact that he was afraid on every single ride and completed them anyway reveal about what the love behind his choices actually required?</p>
+    <p class="comp-answer">Completing all seven rides shows that the love driving those choices never needed fear to be absent. Blake acted in spite of it, showing the willingness to move forward was proof of love.</p>
+    <p class="comp-scene">Scene: The full arc of Blake's seven rides and his final reflection as the park tears itself apart in the breaking dawn.</p>
+  </div></div></div>
+</div>
+
+<div class="section" id="themes">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Theme Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>A topic is the subject the text explores (1–3 words). A theme is the author's claim about that topic, expressed as a complete, universal statement. Themes must be universal, arguable, supported by textual evidence, and expressed as complete statements — not single words or plot summaries.</p></div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Finding Balance</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val">Psychological survival requires equilibrium between opposing internal extremes rather than surrender to either impulse.</div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Blake identifies himself as "the balance" between Cassandra's opposing forces of heat and cold, allowing him to resist her system. The carnival collapses only when he rejects extremity and refuses both domination and submission.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Modern life often amplifies extremes: ambition versus burnout, independence versus isolation. The narrative suggests endurance emerges not from intensity but from calibrated stability.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Work</div><div class="theme-val"><em>The Strange Case of Dr. Jekyll and Mr. Hyde</em> by Robert Louis Stevenson, which explores the consequences of separating opposing human impulses rather than integrating them.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Overcoming Fear</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val">Fear loses its governing power when confronted directly rather than avoided or suppressed.</div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Each ride externalizes a specific fear, culminating in the yellow teacup that forces a reliving of the bus crash. Escape occurs only after voluntary confrontation of the origin trauma.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Personal anxieties, whether social, academic, or existential, often intensify when deferred. The narrative reflects how exposure, rather than evasion, diminishes fear's control.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Work</div><div class="theme-val"><em>It</em> by Stephen King, where childhood fears manifest physically and can only be defeated through collective confrontation.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Confronting Guilt</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val">Unresolved guilt sustains psychological captivity until it is acknowledged and integrated.</div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Cassandra's claim that Blake "should have been dead" ties his survival to an unprocessed burden. The final ride forces a direct encounter with the bus accident and his perceived responsibility.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Survivor's guilt, regret, and self-blame frequently persist long after events conclude; narratives of recovery often center on acceptance rather than erasure.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Work</div><div class="theme-val"><em>Atonement</em> by Ian McEwan, which examines how guilt shapes identity and resists simple resolution.</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.container -->
+
+<button class="back-to-top-btn" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  const token = sessionStorage.getItem('tl_token');
+  if(!token){ window.location.href='index.html'; return; }
+  document.querySelectorAll('.action-btn[data-file]').forEach(btn=>{
+    btn.addEventListener('click',async function(){
+      const file=this.dataset.file, label=this.dataset.label;
+      const orig=this.textContent; this.textContent='Loading…'; this.disabled=true;
+      try{
+        const r=await fetch('https://crowscallpress-production.up.railway.app/download',{
+          method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+          body:JSON.stringify({file})
+        });
+        if(!r.ok) throw new Error(await r.text());
+        const {url}=await r.json();
+        const a=document.createElement('a'); a.href=url; a.download=label+'.pdf'; a.target='_blank';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      }catch(e){ alert('Download failed: '+e.message); }
+      this.textContent=orig; this.disabled=false;
+    });
+  });
+  const btn=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{ btn.classList.toggle('visible',window.scrollY>400); });
+  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>

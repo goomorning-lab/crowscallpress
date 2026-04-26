@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Monster Calls — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --ink-mid: #3d3028;
+    --ink-light: #7a6a5a;
+    --ink-faint: #c4b8ad;
+    --cream: #f5f0e8;
+    --cream-deep: #ede6d8;
+    --warm-white: #faf8f4;
+    --rust: #b85c3a;
+    --rust-pale: #f5e2db;
+    --gold: #c9a84c;
+    --gold-pale: #f5ecd0;
+    --sage: #4a6e5a;
+    --sage-pale: #ddeee4;
+    --parchment: #e8e0d0;
+    --rule: #d4c9bc;
+    --navy: #1e2d4a;
+    --forest: #263b2a;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── TOP NAV ── */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: var(--rust);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    height: 56px;
+  }
+  .top-nav a.back-link {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+  }
+  .top-nav .action-btns {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .top-nav .action-btn {
+    padding: 0.35rem 0.9rem;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--cream);
+    background: transparent;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--forest);
+    color: #fff;
+    padding: 56px 2rem 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 28px,
+      rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px
+    );
+    pointer-events: none;
+  }
+  .cover-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 18px;
+  }
+  .cover h1 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 5.5vw, 52px);
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .cover h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+    letter-spacing: 0.08em;
+  }
+  .cover-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 20px;
+  }
+  .cover-meta {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 20px;
+  }
+
+  /* ── TOC NAV BAR ── */
+  .toc-bar {
+    background: var(--cream-deep);
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 56px;
+    z-index: 100;
+  }
+  .toc-inner {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a {
+    display: block;
+    padding: 11px 13px;
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── INSTRUCTIONAL PRINCIPLE ── */
+  .principle {
+    background: var(--sage-pale);
+    border-left: 3px solid var(--sage);
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    border-radius: 0 4px 4px 0;
+  }
+  .principle strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+  .principle ul { margin: 6px 0 0 16px; font-size: 13.5px; color: var(--ink-mid); }
+  .principle ul li { margin-bottom: 3px; }
+
+  /* ── NOTE ── */
+  .note {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold);
+    padding: 11px 15px;
+    margin: 18px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 13px;
+    color: var(--ink-mid);
+    font-style: italic;
+  }
+  .note strong {
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8a6a10;
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+
+  /* ── SETTING CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px;
+    margin: 22px 0;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 18px;
+  }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-sage { border-top: 3px solid var(--sage); }
+  .card-navy { border-top: 3px solid var(--navy); }
+  .card-forest { border-top: 3px solid var(--forest); }
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .card .card-sub {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif {
+    font-size: 12.5px;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-top: 8px;
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
+  }
+
+  /* ── PLOT ARC ── */
+  .plot-stage {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .plot-stage::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 5px 0 0 5px;
+  }
+  .plot-stage.stage-begin::before { background: var(--sage); }
+  .plot-stage.stage-mid::before   { background: var(--gold); }
+  .plot-stage.stage-climax::before { background: var(--rust); }
+  .plot-stage.stage-end::before   { background: var(--ink-light); }
+  .plot-stage h4 {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .plot-stage p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .plot-note {
+    font-size: 12px;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── FORESHADOWING ── */
+  .foreshadow-item {
+    border-left: 2px solid var(--rule);
+    padding: 6px 0 6px 16px;
+    margin-bottom: 14px;
+  }
+  .foreshadow-item h4 {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .foreshadow-item p { font-size: 13px; color: var(--ink-mid); margin-bottom: 0; }
+
+  /* ── ARCHETYPES ── */
+  .arch-group-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 28px 0 10px;
+    font-weight: 500;
+  }
+  .arch-entry {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    background: #fff;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .arch-left {
+    padding: 14px 16px;
+    border-right: 1px solid var(--rule);
+  }
+  .arch-name {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .arch-type {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--rust);
+    font-weight: 500;
+  }
+  .arch-right {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+  .arch-right em { font-style: italic; }
+  .true-shadow-box {
+    background: var(--rust-pale);
+    border: 1px solid rgba(184,92,58,0.2);
+    border-left: 3px solid var(--rust);
+    border-radius: 0 5px 5px 0;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+  .true-shadow-box h4 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--rust);
+    margin-bottom: 6px;
+  }
+  .true-shadow-box p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  /* ── CHARACTER MAPS ── */
+  .char-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .char-header {
+    background: var(--cream-deep);
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .char-header h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .char-arch-tag {
+    font-size: 11px;
+    color: var(--rust);
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .char-body {
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+  }
+  .char-field label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; line-height: 1.6; }
+  .char-traits {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .trait-positive, .trait-negative {
+    background: var(--warm-white);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .trait-label {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .trait-positive .trait-label { color: var(--sage); }
+  .trait-negative .trait-label { color: var(--rust); }
+  .char-dev {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+  .char-dev label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .char-dev-tag {
+    display: inline-block;
+    background: var(--gold-pale);
+    border: 1px solid var(--gold);
+    color: #7a5a10;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .char-dev p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  /* ── ALLUSIONS & SYMBOLISM ── */
+  .allusion-block {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .allusion-header {
+    background: var(--cream-deep);
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .allusion-header h4 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .allusion-type {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+  .allusion-body { padding: 12px 16px; }
+  .allusion-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 13.5px;
+  }
+  .allusion-key {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+    font-weight: 500;
+  }
+  .allusion-val { color: var(--ink-mid); line-height: 1.6; }
+  .symbol-block {
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    background: #fff;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .symbol-equation {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .symbol-equation .eq-arrow { color: var(--rust); }
+  .symbol-evidence { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .symbol-evidence li { margin-bottom: 4px; }
+
+  /* ── CONFLICT ── */
+  .conflict-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .conflict-header {
+    background: var(--cream-deep);
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .conflict-header h4 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .conflict-tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--rust-pale);
+    color: var(--rust);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .conflict-body { padding: 12px 16px; }
+  .conflict-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+  }
+  .conflict-key {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+    font-weight: 500;
+  }
+  .conflict-val { color: var(--ink-mid); line-height: 1.6; }
+
+  /* ── COMPREHENSION ── */
+  .comp-set-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 28px 0 12px;
+    font-weight: 500;
+  }
+  .comp-item {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .comp-body {
+    padding: 16px 18px 14px;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0 14px;
+  }
+  .comp-num {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    line-height: 1.3;
+  }
+  .comp-question {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .comp-answer {
+    font-size: 13.5px;
+    color: var(--ink-mid);
+    margin-bottom: 10px;
+    line-height: 1.65;
+  }
+  .comp-scene {
+    font-size: 12px;
+    color: var(--ink-light);
+    font-style: italic;
+    padding: 8px 10px;
+    background: var(--warm-white);
+    border-radius: 3px;
+    border-left: 2px solid var(--rule);
+  }
+
+  /* ── THEMES ── */
+  .theme-block {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .theme-header {
+    background: var(--cream-deep);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .theme-header h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .theme-topic-badge {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--gold-pale);
+    color: #7a5a10;
+    border: 1px solid var(--gold);
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .theme-body { padding: 14px 16px; }
+  .theme-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 8px;
+    font-size: 13.5px;
+    margin-bottom: 8px;
+  }
+  .theme-key {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+    font-weight: 500;
+  }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+
+  /* ── UTILS ── */
+  p { margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+
+  /* ── BACK TO TOP ── */
+  .back-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    z-index: 999;
+  }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .char-body { grid-template-columns: 1fr; }
+    .char-traits { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row { grid-template-columns: 1fr; gap: 2px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">A Monster Calls — Teacher Compendium</span>
+  <div class="action-btns">
+    <button class="action-btn" id="btn-dev-a" data-file="a-monster-calls/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" id="btn-dev-b" data-file="a-monster-calls/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" id="btn-vocab" data-file="a-monster-calls/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
+  </div>
+</nav>
+
+<!-- Cover -->
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>A Monster Calls</h1>
+    <h2>Patrick Ness</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Mythos Level</span>
+      <span>CEFR B2–C1</span>
+      <span>Contemporary Fiction · Grief &amp; Loss</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<!-- TOC Nav -->
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ══════════════════════════════════════════════
+     INTRODUCTION
+══════════════════════════════════════════════ -->
+<div class="section" id="intro">
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">About This Compendium</h2>
+  <p>This compendium provides the book-specific analytical support for the <em>A Monster Calls</em> Mythos-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+  <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document does not replicate that methodology. Instead, it applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+  <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     LITERARY ELEMENTS
+══════════════════════════════════════════════ -->
+<div class="section" id="literary-elements">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Literary Elements</h2>
+
+  <div class="principle">
+    <strong>Instructional Principle</strong>
+    <p>Literary elements function structurally. Students must: correctly identify elements (setting, plot arc, POV, tone, foreshadowing), explain how those elements create tension, meaning, or development, and move beyond summary into structural interpretation. Accuracy of classification and clarity of explanation are prioritised over length.</p>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Setting</h3>
+  <div class="card-grid">
+    <div class="card card-forest">
+      <h3>Physical Location</h3>
+      <div class="card-sub">Where the story takes place</div>
+      <p>A small English town, centred on Conor's house and the yew tree visible from his bedroom window.</p>
+      <p class="justif">The domestic setting traps Conor between ordinary life and encroaching loss. The graveyard's visibility from his window makes death a constant, physical presence rather than an abstract threat.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Chronological Time</h3>
+      <div class="card-sub">When the story takes place</div>
+      <p>Contemporary; events span several weeks as Conor's mother deteriorates.</p>
+      <p class="justif">The compressed timeline creates pressure without urgency Conor can act on. Time moves slowly for him emotionally but accelerates toward an outcome he cannot stop, producing sustained dread.</p>
+    </div>
+    <div class="card card-rust">
+      <h3>Society &amp; Values</h3>
+      <div class="card-sub">Cultural context</div>
+      <p>Contemporary Britain; a culture that values composure and avoids direct conversation about death, especially with children.</p>
+      <p class="justif">Adults soften, deflect, and stay silent throughout the novel. That habit of avoidance is not incidental — it is the social pressure Conor must break through to reach the truth he is hiding from himself.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Plot Arc</h3>
+
+  <div class="plot-stage stage-begin">
+    <h4>Beginning — Exposition</h4>
+    <p>Conor lives with his terminally ill mother and is visited for the first time by the monster, an ancient yew tree that has taken human form. He is exhausted, isolated at school, and plagued by a recurring nightmare he refuses to name or acknowledge. The monster announces it will tell him three stories, and that afterwards Conor must tell a fourth: his own truth.</p>
+    <p class="plot-note">Structural Note: The three monster tales function as a frame. Each story deliberately unsettles Conor's expectation that good and evil are cleanly separable, preparing him for what he must eventually confess.</p>
+  </div>
+  <div class="plot-stage stage-mid">
+    <h4>Middle — Rising Action &amp; Climax</h4>
+    <p>The monster delivers its three stories. Conor's father visits from America but offers no real support. His grandmother arrives to help care for his mother. Each story increases pressure on Conor's denial. His nightmare grows more insistent.</p>
+    <p><strong>Climax:</strong> Conor, during a moment of destruction at his grandmother's house, finally speaks the truth inside his nightmare: he wants his mother's suffering to end, even if it means losing her.</p>
+    <p class="plot-note">Justification: This is the moment of maximum internal rupture. Everything prior has been structured to prevent this admission. Its arrival breaks the denial that has organised Conor's entire emotional life in the novel.</p>
+  </div>
+  <div class="plot-stage stage-end">
+    <h4>End — Falling Action &amp; Resolution</h4>
+    <p>Conor's mother dies. The monster appears one final time, not to punish Conor but to confirm that his truth was not shameful. Conor holds his mother as she passes.</p>
+    <p class="plot-note">Interpretive Note: The resolution does not offer comfort in any conventional sense. The monster's function was never to save Conor's mother but to make it possible for Conor to survive losing her.</p>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Foreshadowing</h3>
+
+  <div class="foreshadow-item">
+    <h4>The Monster's First Arrival at 12:07 A.M.</h4>
+    <p>The repeated time links the monster directly to Conor's nightmare from the start, signalling that the two are connected rather than separate.</p>
+  </div>
+  <div class="foreshadow-item">
+    <h4>Conor's Denial at Calling the Monster</h4>
+    <p>His refusal mirrors the larger denial structuring the novel, establishing early that what Conor consciously refuses does not match what he actually needs.</p>
+  </div>
+  <div class="foreshadow-item">
+    <h4>The Monster's Three Stories</h4>
+    <p>Each tale ends with a morally ambiguous outcome, dismantling Conor's belief that good intentions produce good results and preparing him for the complexity of his own confession.</p>
+  </div>
+  <div class="foreshadow-item">
+    <h4>The Yew Tree</h4>
+    <p>Its presence as background detail before it becomes the monster quietly establishes the tree as a threshold. Its transformation feels earned rather than arbitrary.</p>
+  </div>
+  <div class="note" style="margin-top:18px;"><strong>Structural Function</strong>Foreshadowing in <em>A Monster Calls</em> operates through repetition and withholding rather than symbolic planting. Each instance circles the same suppressed truth from a different angle, creating a tightening effect that makes the climax feel inevitable rather than surprising.</div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Point of View</h3>
+  <p><strong>Narrative Perspective:</strong> Close third-person, limited to Conor.</p>
+  <p>The reader has access to everything Conor perceives but is bound by what he is willing to acknowledge. This alignment makes his denial structurally active: the reader can sense what Conor is avoiding before he names it, which creates dramatic irony without undermining his credibility. The limitation is the point — preventing us from knowing more than what Conor allows himself to know.</p>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Tone</h3>
+  <p><strong>Primary Tone:</strong> Grief-saturated dread with underlying tenderness.</p>
+  <ul class="body-list">
+    <li>Present-tense urgency in scene transitions, with little buffer between Conor's interior and external events</li>
+    <li>The monster's formal, ancient voice set against Conor's barely-controlled fear</li>
+    <li>Deliberate withholding of the mother's diagnosis in early chapters</li>
+    <li>Short declarative sentences at emotional peaks, where simplicity signals weight</li>
+    <li>The fairy-tale register of the monster's stories, which lifts events onto a mythic as well as personal level</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ARCHETYPES
+══════════════════════════════════════════════ -->
+<div class="section" id="archetypes">
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Archetypes</h2>
+
+  <div class="principle">
+    <strong>Instructional Principle</strong>
+    <p>Archetypes should not be treated as personality labels. They represent motivational drives within the Order / Freedom / Ego / Social framework. Characters may express a primary archetype (dominant motivation) and a shadow distortion (when that drive becomes extreme or corrupted).</p>
+  </div>
+
+  <div class="true-shadow-box">
+    <h4>True Shadow — The Abyss</h4>
+    <p>The True Shadow in <em>A Monster Calls</em> is <strong>The Abyss</strong>: the truth Conor cannot face — that he has wished for his mother's death to end his own suffering. This suppressed knowledge does not belong to any single character but operates beneath every major conflict in the novel, driving Conor's isolation, his inability to grieve, and his resistance to the monster's demand for honesty. Students should consider how the True Shadow catalyses character decisions, distorts otherwise healthy motivations, and shapes the novel's central tension.</p>
+  </div>
+
+  <p class="arch-group-label">Characters</p>
+
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">Conor O'Malley</div>
+      <div class="arch-type">Hero · Rescuer</div>
+    </div>
+    <div class="arch-right">Driven to protect his mother from an outcome he cannot control, ultimately forced to rescue himself from the truth he has buried.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Monster</div>
+      <div class="arch-type">Sage · Mentor</div>
+    </div>
+    <div class="arch-right">Arrives not to save but to guide, using stories to dismantle false certainty and make Conor's confession possible.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">Mother</div>
+      <div class="arch-type">Innocent · Shadow Victim</div>
+    </div>
+    <div class="arch-right">Positioned as the object of Conor's need to protect; her deterioration exposes the limits of love as a shield against loss.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">Father</div>
+      <div class="arch-type">Everyman · Realist</div>
+    </div>
+    <div class="arch-right">Represents the ordinary world's inadequacy in the face of extraordinary suffering, offering presence without the capacity to help.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">Grandmother</div>
+      <div class="arch-type">Ruler · Role Model</div>
+    </div>
+    <div class="arch-right">Maintains structure and composure in the face of grief, modelling a form of control Conor resists but ultimately requires.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">Lily</div>
+      <div class="arch-type">Hero · Crusader</div>
+    </div>
+    <div class="arch-right">Acts on Conor's behalf out of moral conviction rather than closeness, continuing to advocate for him even as he pushes her away.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">Harry</div>
+      <div class="arch-type">Jester · Shadow Hater</div>
+    </div>
+    <div class="arch-right">Targets Conor's visible vulnerability in a way that isolates him from relief, making his grief visible through cruelty rather than kindness.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">Miss Kwan</div>
+      <div class="arch-type">Caregiver · Support</div>
+    </div>
+    <div class="arch-right">Offers consistent but limited comfort, unable to reach the depth of what Conor is carrying, but unwilling to abandon the attempt.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Headmaster</div>
+      <div class="arch-type">Ruler · Politician</div>
+    </div>
+    <div class="arch-right">Manages Conor's situation through institutional protocol rather than genuine care, representing authority that protects itself before the individual.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Queen (First Story)</div>
+      <div class="arch-type">Ruler · Shadow Tyrant</div>
+    </div>
+    <div class="arch-right">Maintains power through fear and appearances rather than legitimate authority, exposing how control divorced from justice becomes corruption.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Prince (First Story)</div>
+      <div class="arch-type">Outlaw · Rebel</div>
+    </div>
+    <div class="arch-right">Defies inherited order in pursuit of personal desire, demonstrating that moral simplicity rarely survives contact with ambition.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Apothecary (Second Story)</div>
+      <div class="arch-type">Sage · Expert</div>
+    </div>
+    <div class="arch-right">Holds knowledge others dismiss until desperation forces them to listen, illustrating how truth is often ignored until it becomes the only remaining option.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Parson (Second Story)</div>
+      <div class="arch-type">Ruler · Leader</div>
+    </div>
+    <div class="arch-right">Commands moral authority while pursuing personal gain beneath it, demonstrating how institutional power can mask self-interest behind righteous appearance.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Invisible Man (Third Story)</div>
+      <div class="arch-type">Everyman · Silent Majority</div>
+    </div>
+    <div class="arch-right">Does nothing wrong and suffers for it anyway, reflecting how ordinary people who stay quiet are not protected from loss by their innocence.</div>
+  </div>
+
+  <p class="arch-group-label">Objects &amp; Concepts</p>
+
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Three Stories</div>
+      <div class="arch-type">Sage · Philosopher</div>
+    </div>
+    <div class="arch-right">Questions the assumption that truth is simple and outcomes are earned, systematically dismantling Conor's belief that good intentions protect against grief.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Nightmare</div>
+      <div class="arch-type">Magician · Shadow Deceiver</div>
+    </div>
+    <div class="arch-right">Distorts Conor's inner reality by hiding its own conclusion, functioning as the space where the truth he cannot speak is simultaneously kept and concealed.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">12:07 A.M.</div>
+      <div class="arch-type">Creator · Shadow Destroyer</div>
+    </div>
+    <div class="arch-right">A recurring rupture in Conor's waking life — recognised as the first moment the monster arrives and, later, the moment his mother dies.</div>
+  </div>
+
+  <p class="arch-group-label">Settings &amp; Forces</p>
+
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Monster's World</div>
+      <div class="arch-type">Explorer · Seeker</div>
+    </div>
+    <div class="arch-right">Exists outside the boundaries of ordinary reality, opening a space where the rules of grief and guilt do not apply until Conor is ready to bring them there.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">Conor's House</div>
+      <div class="arch-type">Caregiver · Shadow Slave</div>
+    </div>
+    <div class="arch-right">A domestic space that demands Conor perform normalcy while absorbing the full weight of his mother's illness, trapping him in the role of caretaker without offering care in return.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">Grandmother's House</div>
+      <div class="arch-type">Ruler · Aristocrat</div>
+    </div>
+    <div class="arch-right">Represents inherited order and emotional restraint — a space where grief is managed rather than felt and where Conor's destruction signals the collapse of performed control.</div>
+  </div>
+  <div class="arch-entry">
+    <div class="arch-left">
+      <div class="arch-name">The Hospital</div>
+      <div class="arch-type">Caregiver · Altruist</div>
+    </div>
+    <div class="arch-right">Gives without condition and absorbs suffering it cannot resolve, present at every stage of the mother's decline without the power to change its outcome.</div>
+  </div>
+
+  <p class="alt-list">The Queen as Caregiver · Conor as Innocent · The Monster as Creator</p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     CHARACTER MAPS
+══════════════════════════════════════════════ -->
+<div class="section" id="character-maps">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Character Maps</h2>
+
+  <div class="principle">
+    <strong>Instructional Principle</strong>
+    <p>Character analysis requires internal logic. Students must distinguish between goal (what a character wants) and motivation (why they want it), identify values and traits supported by textual behaviour, and explain development using structural evidence. Character claims must be demonstrated through action, dialogue, or narrative consequence.</p>
+  </div>
+
+  <!-- Conor O'Malley -->
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Conor O'Malley</h3>
+      <span class="char-arch-tag">Hero · Rescuer</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field">
+        <label>Goal</label>
+        <p>To protect his mother from death and maintain the belief that she will survive.</p>
+      </div>
+      <div class="char-field">
+        <label>Motivation</label>
+        <p>Accepting his mother's death would force him to confront the wish he has buried: that her suffering, and his, would simply end.</p>
+      </div>
+      <div class="char-field" style="grid-column:1/-1;">
+        <label>Values</label>
+        <p>Loyalty, control, endurance. He believes that holding on is the same as protecting, and that letting go is a form of betrayal.</p>
+      </div>
+      <div class="char-traits">
+        <div class="trait-positive">
+          <div class="trait-label">Positive — Resilient</div>
+          He continues to function at school and at home despite carrying grief no adult fully acknowledges.
+        </div>
+        <div class="trait-positive">
+          <div class="trait-label">Positive — Protective</div>
+          He positions himself as his mother's defender even when that role costs him every other relationship.
+        </div>
+        <div class="trait-negative">
+          <div class="trait-label">Negative — Avoidant</div>
+          He refuses to name what he feels, which prevents him from processing or releasing it.
+        </div>
+        <div class="trait-negative">
+          <div class="trait-label">Negative — Isolated</div>
+          He pushes away anyone who comes close enough to support him.
+        </div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round · Dynamic</div>
+        <p>Conor begins the novel performing survival, keeping his terror locked inside a nightmare he refuses to finish. The monster's stories progressively dismantle his belief that good intentions justify emotional dishonesty. By the climax, he speaks the truth he has been withholding, because the weight of carrying it has become greater than the fear of releasing it. What shifts is not his love for his mother but his understanding that grief and guilt can coexist without one cancelling the other.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mother -->
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Mother</h3>
+      <span class="char-arch-tag">Innocent · Shadow Victim</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field">
+        <label>Goal</label>
+        <p>She wants Conor to be prepared for a life without her while still hoping, at some level, that she might recover.</p>
+      </div>
+      <div class="char-field">
+        <label>Motivation</label>
+        <p>She loves Conor enough to hold both goals simultaneously, even though they are incompatible.</p>
+      </div>
+      <div class="char-field" style="grid-column:1/-1;">
+        <label>Values</label>
+        <p>Honesty, warmth, Conor's wellbeing. She resists false comfort but cannot fully relinquish the hope that sustains her son.</p>
+      </div>
+      <div class="char-traits">
+        <div class="trait-positive">
+          <div class="trait-label">Positive — Warm</div>
+          She maintains openness with Conor as her health deteriorates.
+        </div>
+        <div class="trait-positive">
+          <div class="trait-label">Positive — Self-Aware</div>
+          She understands more about what is coming than she allows Conor to see.
+        </div>
+        <div class="trait-negative">
+          <div class="trait-label">Negative — Withholding</div>
+          She protects Conor from the full truth of her prognosis in a way that deepens his denial rather than relieving it.
+        </div>
+        <div class="trait-negative">
+          <div class="trait-label">Negative — Passive</div>
+          Her deterioration removes her from active participation in the novel's conflict, leaving Conor without the confrontation he needs.
+        </div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round · Static</div>
+        <p>She does not change across the narrative, but her complexity is fully present from the start. Her structural purpose is to embody the thing Conor cannot afford to lose and cannot bring himself to grieve. Her stasis is not a failure of characterisation but a deliberate condition: she remains the fixed point around which every other force in the novel moves.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Monster -->
+  <div class="char-card">
+    <div class="char-header">
+      <h3>The Monster</h3>
+      <span class="char-arch-tag">Sage · Mentor</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field">
+        <label>Goal</label>
+        <p>To make Conor speak the truth he has buried before it destroys him.</p>
+      </div>
+      <div class="char-field">
+        <label>Motivation</label>
+        <p>He exists at the boundary between life and death and understands that unspoken truth compounds over time.</p>
+      </div>
+      <div class="char-field" style="grid-column:1/-1;">
+        <label>Values</label>
+        <p>Honesty, endurance, the necessity of pain. He believes that surviving grief requires facing it directly, not managing it from a distance.</p>
+      </div>
+      <div class="char-traits">
+        <div class="trait-positive">
+          <div class="trait-label">Positive — Patient</div>
+          He returns repeatedly without punishment or ultimatum, allowing Conor to arrive at the truth on his own terms.
+        </div>
+        <div class="trait-positive">
+          <div class="trait-label">Positive — Unflinching</div>
+          He refuses to soften what Conor needs to hear, even when Conor resists or deflects.
+        </div>
+        <div class="trait-negative">
+          <div class="trait-label">Negative — Withholding</div>
+          He delivers truth through story and indirection rather than directly, which prolongs Conor's suffering.
+        </div>
+        <div class="trait-negative">
+          <div class="trait-label">Negative — Demanding</div>
+          He requires a confession Conor is not yet equipped to make, placing the full weight of resolution on a grieving child.
+        </div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round · Static</div>
+        <p>He does not change across the narrative, but his presence is never simple. His structural purpose is to function as the force that makes Conor's transformation possible without undergoing one itself. His consistency is the point: he remains ancient, certain, and unmoved precisely so that Conor has something stable to push against. What appears as rigidity is the condition that makes the climax possible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ALLUSIONS & SYMBOLISM
+══════════════════════════════════════════════ -->
+<div class="section" id="allusions">
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Allusions &amp; Symbolism</h2>
+
+  <div class="principle">
+    <strong>Instructional Principle — Allusions</strong>
+    <p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. Students must identify the reference, its origin, and its narrative function (why it matters). Allusions deepen meaning by connecting the text to broader cultural or literary traditions.</p>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:0 0 12px;">In-Text Allusions</h3>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>The Yew Tree</h4>
+      <div class="allusion-type">Mythological / Folkloric</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><span class="allusion-key">Scene</span><span class="allusion-val">The monster introduces himself as the yew tree from the churchyard, describing his wood as both poison and medicine.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Reference</span><span class="allusion-val">Ancient European tradition associating the yew with death and regeneration, particularly its presence in churchyards as a symbol of both mortality and endurance.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Meaning</span><span class="allusion-val">The monster's dual nature is grounded in a tradition older than the novel itself, signalling that he represents something beyond threat.</span></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>The Three-Story Structure</h4>
+      <div class="allusion-type">Folkloric / Structural</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><span class="allusion-key">Scene</span><span class="allusion-val">The monster announces he will tell Conor three stories before demanding a fourth in return.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Reference</span><span class="allusion-val">The fairy tale convention of three trials or three gifts, found across European oral tradition from Grimm to Norse mythology, in which the third instance carries the transformative weight.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Meaning</span><span class="allusion-val">The structure primes the reader to expect the third story to break a pattern — which it does, though not by resolving the moral question. Instead it leaves it open, forcing the emotional burden onto Conor's own confession.</span></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header">
+      <h4>Conor's Destruction</h4>
+      <div class="allusion-type">Mythological / Psychological</div>
+    </div>
+    <div class="allusion-body">
+      <div class="allusion-row"><span class="allusion-key">Scene</span><span class="allusion-val">Conor tears apart his grandmother's sitting room in a moment of uncontrolled rage.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Reference</span><span class="allusion-val">The archetype of sacred destruction found across myth (Norse Ragnarok, the Grecian concept of catharsis), in which something must be broken before transformation becomes possible.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Meaning</span><span class="allusion-val">The destruction functions as the novel's psychological turning point — the outward expression of an internal collapse that must happen before truth can surface.</span></div>
+    </div>
+  </div>
+
+  <p class="alt-list">The demand for a fourth story (Scheherazade / One Thousand and One Nights) · The walking tree (Green Man of British folklore) · "There is not always a good guy" (moral complexity of Greek tragedy)</p>
+
+  <div class="divider"></div>
+
+  <div class="principle">
+    <strong>Instructional Principle — Symbolism</strong>
+    <p>A symbol is a recurring object or image within the text that represents a deeper abstract idea. Its meaning is built through repetition, character reaction, and narrative importance. Students should identify the object, explain how characters respond to it, state the abstract idea it represents, and demonstrate interchangeability (Object = Idea).</p>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:0 0 12px;">In-Text Symbolism</h3>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Yew Tree <span class="eq-arrow">→</span> Grief's Demand</div>
+    <ul class="symbol-evidence body-list">
+      <li>The yew tree arrives at Conor's window at the moment his grief becomes too large to contain alone.</li>
+      <li>The yew tree provides Conor with the stories he needs to reach a truth he cannot access on his own.</li>
+      <li>The yew tree remains present at his mother's bedside at the moment Conor finally speaks what he has been hiding.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">Lily's Note <span class="eq-arrow">→</span> Readiness</div>
+    <ul class="symbol-evidence body-list">
+      <li>The note sits unread in Conor's possession throughout the novel — something he carries but refuses to open.</li>
+      <li>The note represents what his mother wants him to understand about her illness and his future without her.</li>
+      <li>The note is finally understood after Conor speaks his truth, becoming accessible only once his denial has broken.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">Grandmother's Clock <span class="eq-arrow">→</span> Time's Indifference</div>
+    <ul class="symbol-evidence body-list">
+      <li>The clock is ever-present in grandmother's house, continuing its rhythm regardless of what the family is enduring.</li>
+      <li>Conor destroys the clock during his moment of uncontrolled grief.</li>
+      <li>The clock is notably absent from the resolution, as Conor moves through his grief toward acceptance.</li>
+    </ul>
+  </div>
+
+  <p class="alt-list">The Drawings = Suppressed Truth · The School's Silence = Performed Normalcy · The Nightmare's Darkness = The Unspeakable</p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     CONFLICT ANALYSIS
+══════════════════════════════════════════════ -->
+<div class="section" id="conflict">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Conflict Analysis</h2>
+
+  <div class="principle">
+    <strong>Instructional Principle</strong>
+    <p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must: classify the conflict type, identify what each side wants (competing solutions), and explain the outcome and how it resolves or reshapes the tension. Conflict is not simply a fight — it is a clash of desires, values, or forces.</p>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Conor O'Malley vs. His Nightmare</h4>
+      <span class="conflict-tag">Character vs. Self</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><span class="conflict-key">Conor's Solution</span><span class="conflict-val">To avoid the nightmare's conclusion by waking before it ends, preserving the denial that keeps him functional.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Self's Solution</span><span class="conflict-val">To force Conor into the moment he has been fleeing, where the truth he has buried cannot be avoided.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Conor finally remains inside the nightmare long enough to speak his truth — that he wanted his mother's suffering to end, even if it meant losing her. The conflict resolves not through external action but through internal acknowledgement.</span></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>The Monster vs. The World</h4>
+      <span class="conflict-tag">Character vs. Society</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><span class="conflict-key">Monster's Solution</span><span class="conflict-val">Force Conor and those around him to acknowledge the truths they have been avoiding — that grief is nonlinear, that people can hold contradictions, and that death must be spoken to be survived.</span></div>
+      <div class="conflict-row"><span class="conflict-key">World's Solution</span><span class="conflict-val">To maintain quiet, composed management of Conor's pain through institutional avoidance, parental deflection, and polite silence.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Conor's truth-telling breaks through the social silence. His grandmother acknowledges their shared grief for the first time, suggesting that the world's composure was always fragile enough to be pierced by honesty.</span></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>The Mother vs. Her Illness</h4>
+      <span class="conflict-tag">Character vs. Fate</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><span class="conflict-key">Mother's Solution</span><span class="conflict-val">To recover, or at least to protect Conor from the full reality of her decline long enough that he might be prepared.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Illness's Solution</span><span class="conflict-val">To advance regardless of what anyone wants, on a timeline no one can negotiate with.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">The illness wins; the mother dies. But whether her death destroys Conor or becomes survivable depends entirely on whether he can speak his truth before the end — which the monster has been working toward from the first page.</span></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header">
+      <h4>Being Invisible vs. Being Seen</h4>
+      <span class="conflict-tag">Character vs. Society</span>
+    </div>
+    <div class="conflict-body">
+      <div class="conflict-row"><span class="conflict-key">Invisible's Solution</span><span class="conflict-val">For school, teachers, and students to continue treating Conor's situation as too uncomfortable to acknowledge directly, allowing him to carry his grief privately.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Seen's Solution</span><span class="conflict-val">For Conor's pain to be recognised — even through confrontation, even through Harry's cruelty — as real and present rather than something to be carefully avoided.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Harry's act of declaring he no longer sees Conor eventually produces the opposite effect — Conor's destruction at school makes his grief visible in a way polite avoidance never could have.</span></div>
+    </div>
+  </div>
+
+  <p class="alt-list">Conor vs. His Father · The Grandmother vs. Her Own Grief · Lily vs. Conor's Rejection</p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     COMPREHENSION QUESTIONS
+══════════════════════════════════════════════ -->
+<div class="section" id="comprehension">
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Comprehension Questions</h2>
+
+  <div class="principle">
+    <strong>Instructional Principle</strong>
+    <p>The comprehension questions are organised into three sets aligned with the narrative's structural progression. Specific chapter numbers are intentionally omitted — questions are designed to encourage holistic reading and discussion. The referenced scene functions as a discussion entry point, not a strict location marker. Each answer includes a model response to guide expectations for textual grounding and analytical depth.</p>
+  </div>
+
+  <div class="comp-set-label">Section 1 — The Monster Arrives</div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">1</span><div><p class="comp-question">When we first meet Conor, how does his recurring nightmare establish the kind of fear he is already living with before the monster appears?</p><p class="comp-answer">Conor's recurring nightmare reveals that he is already consumed by a fear of losing someone he loves, as the dream centres on hands slipping from his grasp no matter how tightly he holds on.</p><div class="comp-scene">Conor waking from the nightmare in which he cannot prevent someone from falling away from him.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">2</span><div><p class="comp-question">Why does Conor insist that he is "too old for monsters," and what does this suggest about how he understands the relationship between fear and growing up?</p><p class="comp-answer">Conor insists he is too old for monsters because he believes maturity means leaving childish fears behind, even though the nightmare he refuses to speak about shows that his real fears are far beyond anything a monster could represent.</p><div class="comp-scene">Conor dismissing the idea of monsters as something only young children need to fear.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">3</span><div><p class="comp-question">When the yew tree transforms into the monster, what does the transformation suggest about the relationship between the natural world and something ancient?</p><p class="comp-answer">The transformation suggests that the natural world contains forces far older and more powerful than everyday life acknowledges, as an ordinary graveyard tree becomes a creature that has walked through countless human ages.</p><div class="comp-scene">The yew tree in the churchyard rising and reshaping itself into the monster in Conor's garden.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">4</span><div><p class="comp-question">Conor claims he is not afraid of the monster. How does his reaction of disappointment instead of terror complicate that claim?</p><p class="comp-answer">Conor's disappointment reveals that he already lives with a fear so consuming that a real monster cannot reach it, suggesting that what he dreads lies somewhere the monster cannot touch.</p><div class="comp-scene">Conor feeling frustrated rather than frightened when the monster reveals itself at his window.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">5</span><div><p class="comp-question">What is the significance of the monster identifying itself with multiple mythic names, and how does this shape its role in Conor's story?</p><p class="comp-answer">By naming itself Herne the Hunter, Cernunnos, and the Green Man, the monster establishes itself as a force present across many cultures and ages, positioning it as something elemental that has always appeared when human beings face the hardest truths.</p><div class="comp-scene">The monster declaring its mythic names while lifting Conor into the night air.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">6</span><div><p class="comp-question">Why does the monster insist that stories are dangerous, and what does Conor's dismissive reaction reveal about how he has been protecting himself?</p><p class="comp-answer">The monster insists that stories chase and hunt the truths people try to hide, and Conor's contemptuous response reveals that he has been using scepticism to keep those truths at a safe distance.</p><div class="comp-scene">The monster announcing it will tell three stories, and Conor responding with contempt for the idea that stories could frighten anyone.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">7</span><div><p class="comp-question">How does the demand for a fourth story shift the power between Conor and the monster?</p><p class="comp-answer">The demand shifts power away from Conor because while he can passively receive the monster's tales, speaking his own truth requires him to confront what he has most carefully buried — and the monster makes clear it will not release him until he does.</p><div class="comp-scene">The monster telling Conor that after its three stories, Conor must tell a fourth — his own truth.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">8</span><div><p class="comp-question">When the monster hints at the hidden truth Conor carries, what does Conor's sudden stillness suggest about the fear he has been avoiding?</p><p class="comp-answer">Conor's sudden stillness suggests that his real fear is not the monster at all, but the knowledge about his mother's illness that he has not been able to face or speak aloud.</p><div class="comp-scene">The monster telling Conor that his own truth is the thing he is most afraid of, and Conor going quiet.</div></div></div></div>
+
+  <div class="comp-set-label" style="margin-top:24px;">Section 2 — Stories, Destruction, &amp; Being Seen</div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">1</span><div><p class="comp-question">In the First Tale, how does the description of the king's loss foreshadow the emotional situation Conor is facing in his own life?</p><p class="comp-answer">The king's grief at being left to raise his grandchild alone foreshadows Conor's own position, as both face the prospect of a child being left behind when the person who anchors their world is gone.</p><div class="comp-scene">The monster's First Tale opening with a grieving king raising his grandson alone after losing his queen.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">2</span><div><p class="comp-question">In the First Tale, why do rumours about the queen become so powerful, and what does this reveal about what the villagers choose to believe when they are afraid?</p><p class="comp-answer">Rumours grow powerful because frightened people reach for the most alarming explanation available, and the villagers choose to believe accusations of dark magic rather than sit with uncertainty. Fear makes people willing to accept stories that give their dread a target.</p><div class="comp-scene">Villagers spreading stories that the queen is a witch using dark arts.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">3</span><div><p class="comp-question">Why is the moment when Conor's bedside clock reads 12:07 significant, and how does this recurring detail connect his inner state to the monster's arrivals?</p><p class="comp-answer">The clock reading 12:07 marks the recurring time at which the monster appears, suggesting that its arrival is tied not to a fixed hour but to the moment Conor's emotional state reaches its breaking point each night.</p><div class="comp-scene">Conor's bedside clock reading 12:07 each time the monster arrives at his window.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">4</span><div><p class="comp-question">In the Second Tale, why does the monster insist on recognising the apothecary as a healer despite his cruelty, and how does this complicate the idea of good versus evil?</p><p class="comp-answer">The monster insists on the apothecary's skill to show that a person can possess genuine capacity to help while also acting from bitterness and spite, making it impossible to reduce him to a simple villain.</p><div class="comp-scene">The monster describing the apothecary's expertise in healing plants alongside his resentment of the parson.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">5</span><div><p class="comp-question">In the Second Tale, what does the monster mean when it says belief is essential to healing, and how does the parson's loss of belief lead directly to tragedy?</p><p class="comp-answer">The monster means that a patient who stops trusting in the possibility of recovery removes the conditions under which healing can occur. The parson's refusal to accept medicine from a man he despises means his daughters die from a cure he would not allow.</p><div class="comp-scene">The parson rejecting the apothecary's medicine for his daughters because he cannot bring himself to trust the man offering it.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">6</span><div><p class="comp-question">After the Second Tale ends, why does Conor struggle to accept who is truly being punished, and what does this reveal about his moral expectations?</p><p class="comp-answer">Conor struggles because he expects the cruel apothecary to be punished and the seemingly good parson to be rewarded, and the reversal forces him to confront that the monster's stories do not deliver the simple justice he has been counting on.</p><div class="comp-scene">Conor arguing with the monster after the Second Tale ends, insisting the wrong person was punished.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">7</span><div><p class="comp-question">In the Third Tale, how does the invisible man's situation reflect Conor's own experience at school?</p><p class="comp-answer">The invisible man's condition mirrors Conor's experience at school, where classmates and teachers look past him rather than acknowledge the reality of what he is going through.</p><div class="comp-scene">Conor standing alone in the schoolyard while classmates ignore him, and Harry declaring he no longer sees him.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">8</span><div><p class="comp-question">In the Third Tale, why is it important that the invisible man calls for the monster himself, and how does this blur the line between helplessness and choice?</p><p class="comp-answer">It is important because it shows that the invisible man actively chooses to summon a destructive force rather than simply being acted upon, suggesting that Conor too has called the monster for reasons he has not yet admitted.</p><div class="comp-scene">The monster revealing during the Third Tale that the invisible man summoned it deliberately.</div></div></div></div>
+
+  <div class="comp-set-label" style="margin-top:24px;">Section 3 — Speaking the Truth</div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">1</span><div><p class="comp-question">After the attack on Harry, Conor wants to be punished. Why does punishment feel comforting to him at this moment?</p><p class="comp-answer">Punishment feels comforting because it would impose order on the guilt and confusion Conor carries, giving him a consequence that matches what he believes he deserves.</p><div class="comp-scene">Conor waiting in the headmistress's office, flooded with relief at the prospect of being excluded from school.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">2</span><div><p class="comp-question">When Conor confronts the monster at the yew tree and demands to know why it failed to save his mother, how does the monster reframe its purpose?</p><p class="comp-answer">The monster reframes its purpose by telling Conor that it did not come to heal his mother but to heal Conor himself, shifting its role from a force that acts on the world to one that has come to help Conor face what he cannot endure alone.</p><div class="comp-scene">Conor confronting the monster at the yew tree in the churchyard, demanding to know why it failed to save his mother.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">3</span><div><p class="comp-question">In the Fourth Tale, what makes this nightmare different from the ones Conor has been having throughout the story?</p><p class="comp-answer">This nightmare is different because Conor does not wake at the moment his mother falls, forcing him to remain inside the dream and face the full truth of what happens when he can no longer hold on.</p><div class="comp-scene">The nightmare continuing past the point where Conor usually wakes, leaving him unable to escape into consciousness.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">4</span><div><p class="comp-question">In the Fourth Tale, what truth does the monster insist Conor must face about his own role in the nightmare?</p><p class="comp-answer">The monster insists that Conor must face the truth that he loosened his grip and let his mother fall, because part of him wanted the unbearable waiting to be over.</p><div class="comp-scene">The monster confronting Conor inside the nightmare, telling him he let her go and must speak why.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">5</span><div><p class="comp-question">After Conor speaks the truth of the nightmare, why does the monster argue that holding two opposing feelings at once is human rather than evil?</p><p class="comp-answer">The monster argues that human beings contradict themselves constantly, and that wanting relief from suffering while also desperately wanting someone to live does not make a person wicked — it makes them human.</p><div class="comp-scene">The monster explaining to Conor on the hillside that he wanted her to go at the same time he was desperate for her to stay.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">6</span><div><p class="comp-question">How does the monster separate thoughts from actions when helping Conor understand his guilt?</p><p class="comp-answer">The monster tells Conor that his life is written in what he does, not in what he thinks, and that wishing for something to be over is not the same as causing it to happen.</p><div class="comp-scene">The monster telling Conor that what he thought is not important, only what he did — and that the thought alone was not a crime.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">7</span><div><p class="comp-question">By the time Conor is found on the hillside, how has his relationship with his grandmother begun to shift?</p><p class="comp-answer">Their relationship moves toward an acknowledgement that they are bound together by the same loss, as his grandmother tells Conor they have something in common and holds him in a way she has not done before.</p><div class="comp-scene">The grandmother finding Conor on the hillside, embracing him, and telling him in the car that his mother is what they share.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">8</span><div><p class="comp-question">At the story's emotional peak, how does speaking the truth finally allow Conor to let go?</p><p class="comp-answer">By telling his mother directly that he does not want her to go, Conor releases the truth he has been holding in silence, and in doing so he is able to hold her without the nightmare pulling at him.</p><div class="comp-scene">Conor taking his mother's hand in the hospital room and speaking the words aloud while the monster holds him up.</div></div></div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     THEME ANALYSIS
+══════════════════════════════════════════════ -->
+<div class="section" id="themes">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Theme Analysis</h2>
+
+  <div class="principle">
+    <strong>Instructional Principle</strong>
+    <p>A topic is the subject or issue the text explores (1–3 words). A theme is the author's perspective or claim about that topic, expressed as a complete, universal statement. Themes must be: universal, arguable, supported by textual evidence, and expressed as complete statements. Avoid reducing theme to a topic, writing moral clichés, or stating plot summary as theme. The theme emerges from how conflict is resolved.</p>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Denial &amp; Acceptance</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><span class="theme-key">Proposed Theme</span><span class="theme-val">Survival requires confronting what the mind works hardest to conceal.</span></div>
+      <div class="theme-row"><span class="theme-key">Evidence</span><span class="theme-val">Conor's nightmare withholds its own conclusion until he is forced to remain inside it, and only by speaking the buried wish aloud does his suffering become bearable.</span></div>
+      <div class="theme-row"><span class="theme-key">Contemporary</span><span class="theme-val">Reflects how avoidance of painful truths tends to compound suffering rather than protect against it, and how acknowledgement is often the condition for recovery rather than its aftermath.</span></div>
+      <div class="theme-row"><span class="theme-key">Similar Works</span><span class="theme-val"><em>The Book Thief</em> by Markus Zusak — a child's suppressed grief eventually surfaces through the act of writing, suggesting that expression and acceptance are structurally linked.</span></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Complexity of Grief</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><span class="theme-key">Proposed Theme</span><span class="theme-val">Grief resists simplification because the emotions it produces are not opposites but coexist.</span></div>
+      <div class="theme-row"><span class="theme-key">Evidence</span><span class="theme-val">Conor loves his mother and has wished for her death simultaneously. The monster's insistence that both can be true without moral contradiction is the novel's central structural argument; the three stories reinforce this by consistently refusing to resolve into clean moral outcomes.</span></div>
+      <div class="theme-row"><span class="theme-key">Contemporary</span><span class="theme-val">Challenges the cultural tendency to treat grief as a linear process with defined stages, reflecting current psychological understanding that mourning is nonlinear and that conflicting emotions are a normal condition of loss.</span></div>
+      <div class="theme-row"><span class="theme-key">Similar Works</span><span class="theme-val"><em>A Little Life</em> by Hanya Yanagihara — refuses to resolve its central character's suffering into acceptance or recovery, arguing instead that trauma and love occupy the same emotional space without cancelling each other.</span></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Storytelling as Truth</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><span class="theme-key">Proposed Theme</span><span class="theme-val">Stories reach what direct speech cannot because they create the distance required to approach an unbearable truth.</span></div>
+      <div class="theme-row"><span class="theme-key">Evidence</span><span class="theme-val">The monster delivers his demand for honesty not through confrontation but through three tales that systematically dismantle Conor's assumptions — each one making direct confession slightly more possible than it was before. Conor cannot speak the truth until the stories have done their structural work.</span></div>
+      <div class="theme-row"><span class="theme-key">Contemporary</span><span class="theme-val">Connects to the therapeutic and literary use of narrative as a means of processing experience that feels too raw to address directly, reflected in practices from bibliotherapy to the use of fiction in trauma recovery.</span></div>
+      <div class="theme-row"><span class="theme-key">Similar Works</span><span class="theme-val"><em>The Perks of Being a Wallflower</em> by Stephen Chbosky — the act of writing letters to an unnamed recipient allows the narrator to approach a suppressed trauma he cannot yet name directly, suggesting that the indirection of storytelling is not evasion but preparation.</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<button class="back-to-top-btn" id="btt" aria-label="Back to top">↑</button>
+
+<script>
+// ── Download buttons ──
+(function () {
+  var token = sessionStorage.getItem('tl_token');
+  document.querySelectorAll('.action-btn[data-file]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var fileId = btn.getAttribute('data-file');
+      var label  = btn.getAttribute('data-label');
+      btn.disabled = true;
+      btn.textContent = 'Preparing…';
+      fetch('https://crowscallpress-production.up.railway.app/api/files/download/' + fileId, {
+        headers: { 'Authorization': 'Bearer ' + (token || '') }
+      })
+      .then(function (res) {
+        if (res.status === 401) { window.location.href = '../teaching-library/index.html'; return null; }
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.url) { window.open(data.url, '_blank'); }
+        btn.disabled = false;
+        btn.textContent = label;
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = label;
+      });
+    });
+  });
+})();
+
+var btt = document.getElementById('btt');
+window.addEventListener('scroll', function() {
+  btt.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+(function () {
+  document.body.style.opacity = '0';
+  requestAnimationFrame(function () {
+    document.body.style.transition = 'opacity 0.25s ease';
+    document.body.style.opacity = '1';
+  });
+  document.querySelectorAll('a[href]').forEach(function (link) {
+    var href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('http') || link.target === '_blank') return;
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.2s ease';
+      document.body.style.opacity = '0';
+      setTimeout(function () { window.location.href = href; }, 200);
+    });
+  });
+})();
+</script>
+</body>
+</html>

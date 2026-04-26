@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridge to Terabithia — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --ink-mid: #3d3028; --ink-light: #7a6a5a; --ink-faint: #c4b8ad;
+    --cream: #f5f0e8; --cream-deep: #ede6d8; --warm-white: #faf8f4;
+    --rust: #b85c3a; --rust-pale: #f5e2db; --gold: #c9a84c; --gold-pale: #f5ecd0;
+    --sage: #4a6e5a; --sage-pale: #ddeee4; --rule: #d4c9bc;
+    --level-color: #7a5c14;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.75; }
+
+  .top-nav { position: sticky; top: 0; z-index: 200; background: var(--rust); color: var(--cream); display: flex; align-items: center; gap: 1rem; padding: 0 2rem; height: 56px; }
+  .top-nav a.back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; transition: color 0.2s; }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+  .top-nav .action-btns { margin-left: auto; display: flex; gap: 0.5rem; }
+  .top-nav .action-btn { padding: 0.35rem 0.9rem; border-radius: 3px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; border: 1px solid rgba(255,255,255,0.25); color: var(--cream); background: transparent; text-decoration: none; transition: background 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+
+  .cover { background: var(--level-color); color: #fff; padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px); pointer-events: none; }
+  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 5.5vw, 52px); line-height: 1.15; margin-bottom: 8px; color: #fff; }
+  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 32px; letter-spacing: 0.08em; }
+  .cover-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
+  .cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cover-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 20px; }
+
+  .toc-bar { background: var(--cream-deep); border-bottom: 1px solid var(--rule); position: sticky; top: 56px; z-index: 100; }
+  .toc-inner { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a { display: block; padding: 11px 13px; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+
+  .container { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+
+  .principle { background: var(--sage-pale); border-left: 3px solid var(--sage); padding: 14px 18px; margin-bottom: 28px; border-radius: 0 4px 4px 0; }
+  .principle strong { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; font-weight: 500; }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+
+  .note { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 11px 15px; margin: 18px 0; border-radius: 0 4px 4px 0; font-size: 13px; color: var(--ink-mid); font-style: italic; }
+  .note strong { font-style: normal; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a10; display: block; margin-bottom: 3px; font-weight: 500; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 22px 0; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px; }
+  .card-level { border-top: 3px solid var(--level-color); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .card .card-sub { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+
+  .plot-stage { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px 20px; margin-bottom: 10px; position: relative; }
+  .plot-stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 5px 0 0 5px; }
+  .plot-stage.stage-begin::before { background: var(--sage); }
+  .plot-stage.stage-mid::before { background: var(--gold); }
+  .plot-stage.stage-climax::before { background: var(--rust); }
+  .plot-stage.stage-end::before { background: var(--ink-light); }
+  .plot-stage h4 { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .plot-stage p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .plot-note { font-size: 12px; color: var(--ink-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--rule); }
+
+  .foreshadow-item { border-left: 2px solid var(--rule); padding: 6px 0 6px 16px; margin-bottom: 14px; }
+  .foreshadow-item h4 { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .foreshadow-item p { font-size: 13px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .arch-group-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 10px; font-weight: 500; }
+  .arch-entry { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--rule); border-radius: 5px; background: #fff; margin-bottom: 8px; overflow: hidden; }
+  .arch-left { padding: 14px 16px; border-right: 1px solid var(--rule); }
+  .arch-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .arch-type { font-size: 11px; letter-spacing: 0.08em; color: var(--rust); font-weight: 500; }
+  .arch-right { padding: 14px 16px; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .true-shadow-box { background: var(--rust-pale); border: 1px solid rgba(184,92,58,0.2); border-left: 3px solid var(--rust); border-radius: 0 5px 5px 0; padding: 16px 20px; margin-bottom: 24px; }
+  .true-shadow-box h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--rust); margin-bottom: 6px; }
+  .true-shadow-box p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .char-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 18px; overflow: hidden; }
+  .char-header { background: var(--cream-deep); padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; }
+  .char-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .char-arch-tag { font-size: 11px; color: var(--rust); letter-spacing: 0.06em; font-weight: 500; }
+  .char-body { padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .char-field label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 500; }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; line-height: 1.6; }
+  .char-traits { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trait-positive, .trait-negative { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; font-size: 13px; }
+  .trait-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 3px; }
+  .trait-positive .trait-label { color: var(--sage); }
+  .trait-negative .trait-label { color: var(--rust); }
+  .char-dev { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .char-dev label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .char-dev-tag { display: inline-block; background: var(--gold-pale); border: 1px solid var(--gold); color: #7a5a10; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; font-weight: 500; }
+  .char-dev p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+
+  .allusion-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .allusion-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); }
+  .allusion-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .allusion-type { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .allusion-body { padding: 12px 16px; }
+  .allusion-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; margin-bottom: 6px; font-size: 13.5px; }
+  .allusion-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .allusion-val { color: var(--ink-mid); line-height: 1.6; }
+  .symbol-block { border: 1px solid var(--rule); border-radius: 5px; background: #fff; padding: 14px 18px; margin-bottom: 10px; }
+  .symbol-equation { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .symbol-equation .eq-arrow { color: var(--rust); }
+  .symbol-evidence li { margin-bottom: 4px; }
+
+  .conflict-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 12px; overflow: hidden; }
+  .conflict-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .conflict-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .conflict-tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--rust-pale); color: var(--rust); padding: 2px 8px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
+  .conflict-body { padding: 12px 16px; }
+  .conflict-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; margin-bottom: 8px; font-size: 13.5px; }
+  .conflict-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .conflict-val { color: var(--ink-mid); line-height: 1.6; }
+
+  .comp-set-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 12px; font-weight: 500; }
+  .comp-item { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .comp-body { padding: 16px 18px 14px; display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; }
+  .comp-num { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink-faint); line-height: 1.3; }
+  .comp-question { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+  .comp-answer { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.65; }
+  .comp-scene { font-size: 12px; color: var(--ink-light); font-style: italic; padding: 8px 10px; background: var(--warm-white); border-radius: 3px; border-left: 2px solid var(--rule); }
+
+  .theme-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 14px; overflow: hidden; }
+  .theme-header { background: var(--cream-deep); padding: 12px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .theme-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .theme-topic-badge { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-pale); color: #7a5a10; border: 1px solid var(--gold); padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .theme-body { padding: 14px 16px; }
+  .theme-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; font-size: 13.5px; margin-bottom: 8px; }
+  .theme-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+
+  p { margin-bottom: 10px; } p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+
+  .back-to-top-btn { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; background: var(--ink); color: var(--cream); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 999; }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .char-body { grid-template-columns: 1fr; }
+    .char-traits { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row { grid-template-columns: 1fr; gap: 2px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">Bridge to Terabithia — Teacher Compendium</span>
+  <div class="action-btns">
+    <button class="action-btn" data-file="bridge-to-terabithia/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" data-file="bridge-to-terabithia/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" data-file="bridge-to-terabithia/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>Bridge to Terabithia</h1>
+    <h2>Katherine Paterson</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Lexis Level</span>
+      <span>CEFR B1–B2</span>
+      <span>Contemporary Fiction · Friendship &amp; Loss</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="section" id="intro">
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">About This Compendium</h2>
+  <p>This compendium provides the book-specific analytical support for the <em>Bridge to Terabithia</em> Lexis-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+  <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+  <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+</div>
+
+<div class="section" id="literary-elements">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Literary Elements</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Literary elements function structurally. Students must correctly identify elements, explain how they create tension, meaning, or development, and move beyond summary into structural interpretation.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Setting</h3>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Physical Location</h3>
+      <div class="card-sub">Where the story takes place</div>
+      <p>Rural farmland community in Virginia; specifically Lark Creek Elementary, the Aarons farm, the wooded creek area, and the imagined kingdom of Terabithia.</p>
+      <p class="justif">The rural environment creates physical isolation and economic modesty, heightening Jess's feelings of limitation. The woods and creek provide a natural threshold between ordinary reality and imaginative freedom.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Chronological Time</h3>
+      <div class="card-sub">When the story takes place</div>
+      <p>Contemporary late-20th-century American childhood.</p>
+      <p class="justif">The period reflects a transitional moment where traditional family expectations, school hierarchies, and emerging individual expressions coexist, reinforcing tensions between conformity and creativity.</p>
+    </div>
+    <div class="card card-rust">
+      <h3>Society &amp; Values</h3>
+      <div class="card-sub">Cultural context</div>
+      <p>A working-class rural culture that values practicality, masculinity, and social conformity.</p>
+      <p class="justif">These expectations shape Jess's internal struggle. His artistic interests conflict with masculine norms, while Leslie's unconventional upbringing challenges community assumptions.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Plot Arc</h3>
+  <div class="plot-stage stage-begin">
+    <h4>Beginning — Exposition</h4>
+    <p>Jess Aarons trains all summer to become the fastest runner in his class. On the first day of school, new student Leslie Burke unexpectedly wins the race. Jess and Leslie form an unusual friendship and discover the wooded creek area, creating the imaginary kingdom of Terabithia.</p>
+    <p class="plot-note">Structural Note: Terabithia functions as both an imaginative refuge and a symbolic boundary separating the pressures of reality from the freedom of creativity.</p>
+  </div>
+  <div class="plot-stage stage-mid">
+    <h4>Middle — Rising Action</h4>
+    <p>Jess and Leslie rule Terabithia together. Leslie encourages Jess's creativity and confidence through art and storytelling. At school they confront social tensions including conflict with Janice Avery. Jess leaves with Miss Edmunds on a spontaneous trip to Washington D.C., leaving Leslie behind. Heavy rain causes the creek to swell dangerously.</p>
+  </div>
+  <div class="plot-stage stage-climax">
+    <h4>Climax</h4>
+    <p>Leslie attempts to cross the creek alone and dies when the rope breaks.</p>
+    <p class="plot-note">Justification: The climax abruptly collapses the imaginative refuge of Terabithia and forces Jess to confront the reality of loss, transforming the story from childhood adventure into a direct confrontation with grief and mortality.</p>
+  </div>
+  <div class="plot-stage stage-end">
+    <h4>End — Resolution</h4>
+    <p>Jess struggles to process the shock and disbelief of Leslie's death. He reflects on Leslie's influence and the meaning of Terabithia. Jess builds a bridge across the creek and invites his younger sister May Belle into the kingdom.</p>
+    <p class="plot-note">Interpretive Note: The resolution transforms Terabithia from a private escape into a shared legacy, suggesting that imagination can endure even after loss.</p>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Foreshadowing</h3>
+  <div class="foreshadow-item"><h4>The Unstable Rope Swing</h4><p>The rope serves as the primary way the children enter Terabithia. Its precarious nature subtly suggests that the boundary between imagination and reality is fragile and potentially dangerous.</p></div>
+  <div class="foreshadow-item"><h4>Heavy Rain &amp; Rising Water Levels</h4><p>Repeated descriptions of rain and the creek's changing conditions hint that the natural environment surrounding Terabithia is unpredictable and likely to disrupt the children's sanctuary.</p></div>
+  <div class="foreshadow-item"><h4>Jess Leaving Leslie for Washington</h4><p>Jess's unexpected decision to go on the trip alone breaks their usual pattern of shared experiences, creating narrative separation that allows the later tragedy to occur.</p></div>
+  <div class="foreshadow-item"><h4>Leslie's Fearlessness</h4><p>Leslie's adventurous spirit and willingness to challenge limits reinforce the sense that she approaches the world without caution, foreshadowing the risk involved in the creek crossing.</p></div>
+  <div class="note"><strong>Structural Function</strong>Foreshadowing gradually destabilises the safety of Terabithia. Hints surrounding the creek, the rope, and Leslie's independence prepare readers for the sudden tragedy while reinforcing the novel's tension between imaginative freedom and unpredictable reality.</div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Point of View</h3>
+  <p><strong>Narrative Perspective:</strong> Third-person limited, focused primarily on Jess Aarons.</p>
+  <p>The narrative closely follows Jess's thoughts and perceptions, allowing readers to experience Terabithia and Leslie through his emotional perspective. This limited viewpoint intensifies the impact of Leslie's death because readers discover the event and its meaning alongside Jess.</p>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Tone</h3>
+  <p><strong>Primary Tone:</strong> Reflective coming-of-age with underlying melancholy.</p>
+  <ul class="body-list">
+    <li>Close alignment with Jess's internal thoughts and emotional development</li>
+    <li>Contrast between imaginative adventure in Terabithia and the hardships of daily life</li>
+    <li>Gradual shift from playful childhood exploration to serious confrontation with grief and mortality</li>
+  </ul>
+</div>
+
+<div class="section" id="archetypes">
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Archetypes</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Archetypes represent motivational drives within the Order / Freedom / Ego / Social framework. Characters may express a primary archetype and a shadow distortion when that drive becomes extreme or corrupted.</p></div>
+
+  <div class="true-shadow-box">
+    <h4>True Shadow — Rebellion</h4>
+    <p>The True Shadow in <em>Bridge to Terabithia</em> is <strong>Rebellion</strong>: the impulse to reject restrictive expectations without fully understanding the consequences of separation from reality. This force drives characters to challenge social norms, but it also exposes the fragile boundary between imaginative freedom and the risks that accompany defying limits.</p>
+  </div>
+
+  <p class="arch-group-label">Characters</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Jess Aarons</div><div class="arch-type">Creator · Artist</div></div><div class="arch-right">Seeks creative expression as a way to reinterpret challenges through imagination; uses art and Terabithia to find an identity outside social expectation.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Leslie Burke</div><div class="arch-type">Explorer · Iconoclast</div></div><div class="arch-right">Challenges social expectations and encourages others to question rules that limit imagination and personal identity.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">May Belle Aarons</div><div class="arch-type">Everyman · Good Person</div></div><div class="arch-right">Represents everyday innocence and loyalty, grounding the story in ordinary emotional reality.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Miss Edmunds</div><div class="arch-type">Magician · Visionary</div></div><div class="arch-right">Encourages artistic perception and intellectual curiosity as an alternative to rigid cultural expectations.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Janice Avery</div><div class="arch-type">Ruler · Shadow Tyrant</div></div><div class="arch-right">Enforces the social hierarchy of the school environment through intimidation and control.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Bill Burke</div><div class="arch-type">Caregiver · Support</div></div><div class="arch-right">Provides a stable foundation that allows independence and unconventional thinking to develop.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Judy Burke</div><div class="arch-type">Sage · Expert</div></div><div class="arch-right">Values intellectual curiosity and reflective thinking within the home environment.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Mr. Aarons</div><div class="arch-type">Innocent · Traditionalist</div></div><div class="arch-right">Reinforces inherited cultural expectations surrounding work, masculinity, and responsibility.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Mrs. Aarons</div><div class="arch-type">Caregiver · Parent</div></div><div class="arch-right">Maintains household stability through practical responsibility and daily care.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Prince Terrien (P.T.)</div><div class="arch-type">Jester · Fool</div></div><div class="arch-right">Introduces playful unpredictability that softens tension and reinforces imaginative freedom.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Terabithians</div><div class="arch-type">Everyman · Silent Majority</div></div><div class="arch-right">Reflects the imagined collective voice that allows fears and challenges to be symbolically reinterpreted.</div></div>
+
+  <p class="arch-group-label">Objects &amp; Concepts</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Imagination</div><div class="arch-type">Magician · Healer</div></div><div class="arch-right">Transforms hardship and emotional uncertainty into creative possibility.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Grief</div><div class="arch-type">Sage · Philosopher</div></div><div class="arch-right">Forces reflection on loss and guides the search for understanding and emotional growth.</div></div>
+
+  <p class="arch-group-label">Settings &amp; Forces</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Terabithia</div><div class="arch-type">Innocent · Utopian</div></div><div class="arch-right">Operates as an imaginative sanctuary where ordinary rules dissolve and identity can be explored freely.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Grove</div><div class="arch-type">Caregiver · Saint</div></div><div class="arch-right">Functions as a sacred sanctuary where the children withdraw from ordinary life — a space of reverence mirroring the structure of a quiet spiritual refuge.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Rain</div><div class="arch-type">Creator · Shadow Destroyer</div></div><div class="arch-right">Destabilises the natural boundary protecting Terabithia, transforming a space of imagination into a site where the illusion of safety is broken.</div></div>
+
+  <p class="alt-list">The Queen as Caregiver · Grief as Creator · Jess as Innocent</p>
+</div>
+
+<div class="section" id="character-maps">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Character Maps</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Character analysis requires internal logic. Students must distinguish between goal and motivation, identify values and traits supported by textual behaviour, and explain development using structural evidence.</p></div>
+
+  <div class="char-card">
+    <div class="char-header"><h3>Jess Aarons</h3><span class="char-arch-tag">Creator · Artist</span></div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>To prove his worth and gain recognition — first by becoming the fastest runner, later by finding confidence through creativity and imagination.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He feels overlooked within his family and school environment and wants to feel capable, respected, and important.</p></div>
+      <div class="char-field" style="grid-column:1/-1;"><label>Values</label><p>Imagination, friendship, courage, loyalty. He gradually learns to value creativity and emotional honesty as ways of understanding himself and the world.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive — Imaginative</div>He transforms the woods into the kingdom of Terabithia and uses creativity to reinterpret struggles in his life.</div>
+        <div class="trait-positive"><div class="trait-label">Positive — Loyal</div>He forms a deep friendship with Leslie and remains committed to their shared world and ideas.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Insecure</div>He frequently doubts himself, especially when comparing his abilities to others.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Hesitant</div>He initially struggles to stand up to social pressures and unfair behaviour around him.</div>
+      </div>
+      <div class="char-dev"><label>Development</label><div class="char-dev-tag">Round · Dynamic</div><p>Jess begins the story searching for validation through competition and social approval. Through his friendship with Leslie, he develops confidence in his imagination and emotional understanding. After Leslie's death, he confronts grief and ultimately transforms Terabithia from a private escape into a legacy he shares with May Belle.</p></div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header"><h3>Leslie Burke</h3><span class="char-arch-tag">Explorer · Iconoclast</span></div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>To explore the world freely and create imaginative possibilities beyond the limitations of social expectations.</p></div>
+      <div class="char-field"><label>Motivation</label><p>She is driven by curiosity and a desire to challenge ordinary ways of thinking.</p></div>
+      <div class="char-field" style="grid-column:1/-1;"><label>Values</label><p>Creativity, independence, curiosity, openness. She values questioning traditions and imagining new possibilities for how people can think and live.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive — Creative</div>She invents the kingdom of Terabithia and constantly reimagines the world through storytelling and play.</div>
+        <div class="trait-positive"><div class="trait-label">Positive — Courageous</div>She challenges school hierarchies and social expectations without fear.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Unconventional</div>She disregards common social norms, which sometimes isolates her from peers.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Risk-Taking</div>She approaches the world with fearless curiosity that occasionally ignores potential danger.</div>
+      </div>
+      <div class="char-dev"><label>Development</label><div class="char-dev-tag">Round · Static</div><p>Leslie remains consistent in her worldview throughout the narrative. Rather than changing herself, she acts as the catalyst that expands Jess's imagination and confidence. Her influence reshapes how Jess understands creativity, courage, and identity.</p></div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header"><h3>Miss Edmunds</h3><span class="char-arch-tag">Magician · Visionary</span></div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>To inspire her students to think creatively and see the world through artistic expression.</p></div>
+      <div class="char-field"><label>Motivation</label><p>She believes that creativity allows young people to understand themselves and the world more deeply.</p></div>
+      <div class="char-field" style="grid-column:1/-1;"><label>Values</label><p>Art, creativity, intellectual curiosity, self-expression. She values environments where imagination and individuality are encouraged.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive — Encouraging</div>She recognises Jess's artistic talent and affirms his creative potential.</div>
+        <div class="trait-positive"><div class="trait-label">Positive — Perceptive</div>She notices students who think differently and supports their individuality.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Distant</div>She appears only briefly and cannot fully see the struggles happening in Jess's personal life.</div>
+        <div class="trait-negative"><div class="trait-label">Negative — Idealistic</div>She focuses on the inspirational side of creativity without recognising the social pressures her students face.</div>
+      </div>
+      <div class="char-dev"><label>Development</label><div class="char-dev-tag">Flat · Static</div><p>Miss Edmunds remains consistent as a mentor figure who introduces Jess to the value of artistic identity. Her presence briefly expands Jess's understanding of what his future could be, reinforcing the importance of imagination within the story.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="allusions">
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Allusions &amp; Symbolism</h2>
+  <div class="principle"><strong>Instructional Principle — Allusions</strong><p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. Students must identify the reference, its origin, and its narrative function.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:0 0 12px;">In-Text Allusions</h3>
+
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Narnia Echo</h4><div class="allusion-type">Literary</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><span class="allusion-key">Scene</span><span class="allusion-val">Leslie names the imaginary kingdom Terabithia and the two children rule it together as king and queen in the woods beyond the creek.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Reference</span><span class="allusion-val">C.S. Lewis, <em>The Chronicles of Narnia</em> — children discover hidden kingdoms and take on heroic roles within imagined realms.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Meaning</span><span class="allusion-val">The structure of a hidden kingdom entered from the ordinary world echoes Narnia, positioning Terabithia as a literary-style imaginative realm where childhood struggles are interpreted through the language of fantasy.</span></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Biblical Naming of Terabithia</h4><div class="allusion-type">Biblical / Cultural</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><span class="allusion-key">Scene</span><span class="allusion-val">Leslie invents the name "Terabithia" when the children establish their kingdom in the woods.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Reference</span><span class="allusion-val">The Bible, Tarshish — a distant land associated with journeys to the edges of the known world.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Meaning</span><span class="allusion-val">The phonetic similarity evokes a destination of mythic adventure, framing Terabithia as a symbolic place beyond the ordinary limits of their community.</span></div>
+    </div>
+  </div>
+
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Arthurian Kingship</h4><div class="allusion-type">Literary / Cultural</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><span class="allusion-key">Scene</span><span class="allusion-val">Jess and Leslie imagine themselves as king and queen ruling over Terabithia and defending it from enemies.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Reference</span><span class="allusion-val">Arthurian legend, King Arthur and the Round Table — medieval stories of chivalric rulers defending their kingdoms.</span></div>
+      <div class="allusion-row"><span class="allusion-key">Meaning</span><span class="allusion-val">The language of royal rule transforms everyday fears into quests worthy of courage, casting their imaginative play within the long tradition of heroic storytelling.</span></div>
+    </div>
+  </div>
+
+  <p class="alt-list">The rope crossing → River Styx (Greek mythology) · Building the bridge → crossing into the Promised Land · Terabithia → Garden of Eden</p>
+
+  <div class="divider"></div>
+  <div class="principle"><strong>Instructional Principle — Symbolism</strong><p>A symbol is a recurring object or image within the text that represents a deeper abstract idea. Its meaning is built through repetition, character reaction, and narrative importance.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:0 0 12px;">In-Text Symbolism</h3>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">Terabithia <span class="eq-arrow">→</span> Escape</div>
+    <ul class="body-list symbol-evidence">
+      <li>Terabithia allows Jess and Leslie to rule together as king and queen, free from school pressures.</li>
+      <li>Terabithia turns ordinary fears into battles and adventures.</li>
+      <li>Jess invites May Belle to Terabithia after Leslie's death, extending the escape to her as well.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Creek <span class="eq-arrow">→</span> Division</div>
+    <ul class="body-list symbol-evidence">
+      <li>The creek separates the woods of Terabithia from the ordinary spaces of school and home.</li>
+      <li>The creek stands between Jess and Leslie and the kingdom they have created.</li>
+      <li>Jess requires courage to cross the creek and enter Terabithia without Leslie.</li>
+    </ul>
+  </div>
+
+  <div class="symbol-block">
+    <div class="symbol-equation">The Rope <span class="eq-arrow">→</span> Trust</div>
+    <ul class="body-list symbol-evidence">
+      <li>The rope carries Jess and Leslie across the creek into Terabithia.</li>
+      <li>The rope allows them to leave the ordinary world behind when they enter their kingdom.</li>
+      <li>The rope snaps during the storm when Leslie attempts to cross alone — trust proves fragile against nature.</li>
+    </ul>
+  </div>
+
+  <p class="alt-list">The Bridge = Continuation · The Grove = Sanctuary · The Rain = Disruption</p>
+</div>
+
+<div class="section" id="conflict">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Conflict Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must classify the conflict type, identify what each side wants, and explain the outcome.</p></div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Jesse Aarons vs. Gender Roles</h4><span class="conflict-tag">Character vs. Self</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><span class="conflict-key">Jess's Solution</span><span class="conflict-val">To pursue drawing, imagination, and friendship despite feeling pressure to conform to traditional masculine roles.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Self's Solution</span><span class="conflict-val">To push Jess toward insecurity, making him believe he must prove himself through strength and competition.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Jess gradually accepts creativity and emotional openness as part of his identity, recognising that his artistic self does not conflict with genuine strength.</span></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Leslie Burke vs. The Boys</h4><span class="conflict-tag">Character vs. Society</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><span class="conflict-key">Leslie's Solution</span><span class="conflict-val">To challenge the boys' dominance by running against them and rejecting the assumption that girls are weaker.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Society's Solution</span><span class="conflict-val">To maintain the existing school hierarchy where boys control status and social access.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Leslie wins the race, disrupting the social order and forcing Jess to reconsider his assumptions about gender and belonging.</span></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Terabithia vs. The Curse of Rain</h4><span class="conflict-tag">Nature vs. Nature</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><span class="conflict-key">Terabithia's Solution</span><span class="conflict-val">To function as a protected natural sanctuary where imagination transforms the woods into a kingdom.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Rain's Solution</span><span class="conflict-val">To alter the creek's conditions, turning the environment unstable and the crossing dangerous.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">The storm breaks the rope crossing, allowing nature to disrupt the safety of Terabithia and ending its existence as a protected space.</span></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>The Aarons vs. The Burkes</h4><span class="conflict-tag">Society vs. Society</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><span class="conflict-key">Aarons' Solution</span><span class="conflict-val">To emphasise practical labour, religious routine, and economic survival as the foundation of family life.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Burkes' Solution</span><span class="conflict-val">To prioritise intellectual freedom, creativity, and unconventional upbringing as the basis for a meaningful life.</span></div>
+      <div class="conflict-row"><span class="conflict-key">Outcome</span><span class="conflict-val">Jess moves between these two value systems, ultimately integrating creativity into his understanding of identity without abandoning his roots.</span></div>
+    </div>
+  </div>
+
+  <p class="alt-list">Jess vs. School Expectations · Leslie vs. Social Conformity · The Rope Crossing vs. The Storm</p>
+</div>
+
+<div class="section" id="comprehension">
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Comprehension Questions</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Questions are organised into three sets aligned with the narrative's structural progression. Specific chapter numbers are intentionally omitted. The referenced scene functions as a discussion entry point, not a strict location marker.</p></div>
+
+  <div class="comp-set-label">Section 1 — Running Toward and Away</div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">1</span><div><p class="comp-question">Why is being the fastest runner so important to Jess?</p><p class="comp-answer">Jess wants to be the fastest because it would make people notice him, especially his dad.</p><div class="comp-scene">Jess running the cow field each morning and imagining his dad being proud.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">2</span><div><p class="comp-question">How does Jess treat May Belle when she follows him, and what does this show about him?</p><p class="comp-answer">Jess pats May Belle's hair and tucks her in before sneaking out, which shows he looks after her even when his mind is on himself.</p><div class="comp-scene">Jess quietly settling May Belle back to sleep before dawn.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">3</span><div><p class="comp-question">Why does Jess keep his drawings hidden from most people in his family?</p><p class="comp-answer">Jess hides his drawings because his dad once made it clear that drawing was not the right thing for a boy to do.</p><div class="comp-scene">Jess recalling his dad's reaction when he said he wanted to be an artist.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">4</span><div><p class="comp-question">Why does Miss Edmunds's encouragement mean more to Jess than praise from anyone else at home or school?</p><p class="comp-answer">His dad and his teachers either disapprove of his drawing or ignore it, so Miss Edmunds is the only adult who treats it as something real.</p><div class="comp-scene">Miss Edmunds telling Jess after class that he is unusually talented.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">5</span><div><p class="comp-question">What does Jess's reaction to Leslie winning the race reveal about his ideas of fairness and gender expectations?</p><p class="comp-answer">Jess is stunned and angry that a girl has beaten the boys, which shows he expected boys to win and did not think a girl belonged in the race.</p><div class="comp-scene">Leslie crossing the finish line first among the boys.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">6</span><div><p class="comp-question">Why do the boys at school react badly when Leslie joins the race, and how does Jess's response differ from theirs?</p><p class="comp-answer">The boys are angry because they think the running is theirs, but Jess decides after his initial shock to accept Leslie and stop pushing her away.</p><div class="comp-scene">Leslie crossing the field to join the boys' race, and Jess deciding in the music room to change his mind.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">7</span><div><p class="comp-question">How does swinging across the creek on the rope change the way Jess and Leslie think about the woods?</p><p class="comp-answer">After crossing on the rope, they stop seeing the woods as somewhere separate and start thinking of it as a place that belongs to them.</p><div class="comp-scene">Jess and Leslie swinging across the creek gully and Leslie suggesting they make it a secret country.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">8</span><div><p class="comp-question">Why does Jess look forward to going to Terabithia more than anything else in his daily life?</p><p class="comp-answer">In Terabithia, Jess feels that nothing from home can touch him and that anything is possible, which is something he does not feel anywhere else.</p><div class="comp-scene">Jess and Leslie in the castle stronghold, where they felt they owned the world.</div></div></div></div>
+
+  <div class="comp-set-label" style="margin-top:24px;">Section 2 — Secrets, Easter, and Belief</div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">1</span><div><p class="comp-question">Why do Jess and Leslie think their plan to trick Janice will work?</p><p class="comp-answer">They think it will work because Leslie knows Janice's biggest weakness is being made to look foolish in front of other people.</p><div class="comp-scene">Jess and Leslie in the castle stronghold after Janice bullies May Belle.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">2</span><div><p class="comp-question">Why does Leslie tell Jess to write the note instead of her?</p><p class="comp-answer">Leslie tells Jess to write it because her handwriting is too neat to pass for something Willard Hughes would actually send.</p><div class="comp-scene">Leslie directing Jess to write the note in the castle stronghold.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">3</span><div><p class="comp-question">What do Jess and Leslie learn about Janice's home life that helps them understand why she is cruel at school?</p><p class="comp-answer">They find out that Janice's father beats her, and that her friends have just told the whole school about it, which shows why she is so angry and hard.</p><div class="comp-scene">Leslie finding Janice crying in the girls' room and telling Jess what she learned about Janice's father.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">4</span><div><p class="comp-question">What does Leslie mean when she says she has "one and one-half friends"?</p><p class="comp-answer">Leslie means that Jess is her one full friend and that Janice, after their talk in the girls' room, counts as half.</p><div class="comp-scene">Leslie telling Jess she now has one and one-half friends.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">5</span><div><p class="comp-question">Why does Jess react so strongly when May Belle admits she followed them?</p><p class="comp-answer">Jess reacts strongly because he needs to keep Terabithia secret and he is scared she might tell someone.</p><div class="comp-scene">Jess confronting May Belle at her bedside after she admits following them.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">6</span><div><p class="comp-question">How does the author show the difference between Jess and Leslie during the church service?</p><p class="comp-answer">Jess jumps every time the preacher shouts and cannot settle, while Leslie watches wide-eyed and says afterwards it was better than a movie.</p><div class="comp-scene">The Easter church service and Jess and Leslie's different reactions.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">7</span><div><p class="comp-question">What does Leslie mean when she says, "You have to believe it, but you hate it. I don't have to believe it, and I think it's beautiful"?</p><p class="comp-answer">Leslie means that Jess is forced to believe the Bible story and resents it, while she can enjoy it freely because nobody is making her accept it as true.</p><div class="comp-scene">Jess and Leslie talking in the car after the Easter church service.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">8</span><div><p class="comp-question">How do Jess and Leslie respond when the rain makes the creek too dangerous to cross easily?</p><p class="comp-answer">When Jess suggests they skip it, Leslie says they can make it and goes first, so Jess crosses too even though he is afraid.</p><div class="comp-scene">Jess and Leslie at the flooded creek on Easter Monday.</div></div></div></div>
+
+  <div class="comp-set-label" style="margin-top:24px;">Section 3 — Courage and Carrying On</div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">1</span><div><p class="comp-question">What does Jess decide he wants to do to face his fear of the water?</p><p class="comp-answer">Jess decides that when the creek calms down he will ask Leslie to teach him to swim, because he does not want to keep being ruled by fear.</p><div class="comp-scene">Jess thinking while milking Miss Bessie, deciding to face his fear.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">2</span><div><p class="comp-question">Why does Jess call his day in Washington with Miss Edmunds "perfect"?</p><p class="comp-answer">Jess calls it perfect because he spends the whole day looking at art and seeing Washington for the first time, with the person he admires most.</p><div class="comp-scene">Jess riding home with Miss Edmunds after visiting the National Gallery and Smithsonian.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">3</span><div><p class="comp-question">How does the author show Jess's shock before he fully understands what has happened to Leslie?</p><p class="comp-answer">Jess walks into a silent kitchen and stares from face to face without knowing what to ask, until Brenda blurts out that Leslie is dead.</p><div class="comp-scene">Jess arriving home from Washington to find the family sitting silently at the table.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">4</span><div><p class="comp-question">Why does Jess keep telling himself that Leslie could swim and would not have drowned?</p><p class="comp-answer">Jess keeps telling himself this because accepting that she is dead is too much to face all at once.</p><div class="comp-scene">Jess saying Leslie could swim and would not drown when his father tells him what happened.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">5</span><div><p class="comp-question">What does Jess mean when he thinks that Leslie "belonged" to him?</p><p class="comp-answer">Jess means that Leslie was the closest person in his world and that losing her is a loss that belongs to him alone.</p><div class="comp-scene">Jess reflecting on Leslie after hearing of her death.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">6</span><div><p class="comp-question">How does Jess feel after Leslie dies, and what does he compare himself to in his mind?</p><p class="comp-answer">Jess feels completely alone, like a puzzle with a huge piece missing where someone's face should be.</p><div class="comp-scene">Jess lying awake thinking about Leslie and feeling as though he was made with a great piece missing.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">7</span><div><p class="comp-question">What does Jess decide he owes to the world because of what Leslie gave him?</p><p class="comp-answer">Jess decides he must pay the world back in beauty and caring for everything Leslie gave him in vision and strength.</p><div class="comp-scene">Jess in the classroom after Leslie's desk is removed, thinking about what she loaned him.</div></div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><span class="comp-num">8</span><div><p class="comp-question">Why does Jess choose May Belle as the new queen of Terabithia?</p><p class="comp-answer">Jess chooses May Belle because he wants Terabithia to go on, so he builds a proper bridge and leads her across to crown her queen.</p><div class="comp-scene">Jess building a bridge from the Burkes' lumber and leading May Belle across the creek.</div></div></div></div>
+</div>
+
+<div class="section" id="themes">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Theme Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>A topic is the subject or issue the text explores (1–3 words). A theme is the author's perspective or claim about that topic, expressed as a complete, universal statement. Themes must be universal, arguable, supported by textual evidence, and expressed as complete statements.</p></div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Escapism</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><span class="theme-key">Proposed Theme</span><span class="theme-val">Imagined worlds offer refuge from difficulty but ultimately gain meaning only when they reshape how reality is understood.</span></div>
+      <div class="theme-row"><span class="theme-key">Evidence</span><span class="theme-val">Jess and Leslie create Terabithia as a kingdom where school fears and personal struggles become adventures and quests, and Jess's invitation of May Belle after Leslie's death shows the imaginative world gaining new purpose.</span></div>
+      <div class="theme-row"><span class="theme-key">Contemporary</span><span class="theme-val">Reflects how people today use creative spaces — games, storytelling, online communities — to process stress and identity.</span></div>
+      <div class="theme-row"><span class="theme-key">Similar Works</span><span class="theme-val"><em>The Chronicles of Narnia</em> by C.S. Lewis — children enter a fantasy world that reframes their understanding of courage and responsibility.</span></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Gender Roles</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><span class="theme-key">Proposed Theme</span><span class="theme-val">Social expectations about identity persist until individuals visibly challenge the assumptions that sustain them.</span></div>
+      <div class="theme-row"><span class="theme-key">Evidence</span><span class="theme-val">Leslie defeats the boys in the race, disrupting the school's hierarchy and exposing how arbitrary the expectation was; Jess's artistic identity is validated only after he sees someone else reject conformity first.</span></div>
+      <div class="theme-row"><span class="theme-key">Contemporary</span><span class="theme-val">Mirrors ongoing conversations about how traditional expectations around gender continue to be questioned in schools, sports, and workplaces.</span></div>
+      <div class="theme-row"><span class="theme-key">Similar Works</span><span class="theme-val"><em>Little Women</em> by Louisa May Alcott — characters negotiating creativity and ambition within restrictive gender expectations.</span></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Navigating Grief</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><span class="theme-key">Proposed Theme</span><span class="theme-val">Loss reshapes meaning rather than erasing it, transforming how memory and identity continue forward.</span></div>
+      <div class="theme-row"><span class="theme-key">Evidence</span><span class="theme-val">Jess builds a bridge and invites May Belle into Terabithia after Leslie's death, preserving the imaginative world as memory rather than escape.</span></div>
+      <div class="theme-row"><span class="theme-key">Contemporary</span><span class="theme-val">Reflects how communities create rituals, memorials, or shared spaces to reinterpret loss and maintain connection to those who have died.</span></div>
+      <div class="theme-row"><span class="theme-key">Similar Works</span><span class="theme-val"><em>Charlotte's Web</em> by E.B. White — friendship and memory endure after loss, reshaping how the surviving character understands the world.</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<button class="back-to-top-btn" id="btt" aria-label="Back to top">↑</button>
+
+<script>
+(function () {
+  var token = sessionStorage.getItem('tl_token');
+  document.querySelectorAll('.action-btn[data-file]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var fileId = btn.getAttribute('data-file');
+      var label  = btn.getAttribute('data-label');
+      btn.disabled = true; btn.textContent = 'Preparing…';
+      fetch('https://crowscallpress-production.up.railway.app/api/files/download/' + fileId, {
+        headers: { 'Authorization': 'Bearer ' + (token || '') }
+      })
+      .then(function (res) {
+        if (res.status === 401) { window.location.href = 'index.html'; return null; }
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.url) { window.open(data.url, '_blank'); }
+        btn.disabled = false; btn.textContent = label;
+      })
+      .catch(function () { btn.disabled = false; btn.textContent = label; });
+    });
+  });
+})();
+
+var btt = document.getElementById('btt');
+window.addEventListener('scroll', function() { btt.classList.toggle('visible', window.scrollY > 400); }, { passive: true });
+btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+(function () {
+  document.body.style.opacity = '0';
+  requestAnimationFrame(function () {
+    document.body.style.transition = 'opacity 0.25s ease';
+    document.body.style.opacity = '1';
+  });
+  document.querySelectorAll('a[href]').forEach(function (link) {
+    var href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('http') || link.target === '_blank') return;
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.2s ease';
+      document.body.style.opacity = '0';
+      setTimeout(function () { window.location.href = href; }, 200);
+    });
+  });
+})();
+</script>
+</body>
+</html>
