@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tales of a Fourth Grade Nothing — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --ink-mid: #3d3028; --ink-light: #7a6a5a; --ink-faint: #c4b8ad;
+    --cream: #f5f0e8; --cream-deep: #ede6d8; --warm-white: #faf8f4;
+    --rust: #b85c3a; --rust-pale: #f5e2db; --gold: #c9a84c; --gold-pale: #f5ecd0;
+    --sage: #4a6e5a; --sage-pale: #ddeee4; --rule: #d4c9bc;
+    --level-color: #7a2828;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.75; }
+  .top-nav { position: sticky; top: 0; z-index: 200; background: var(--rust); color: var(--cream); display: flex; align-items: center; gap: 1rem; padding: 0 2rem; height: 56px; }
+  .top-nav a.back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; transition: color 0.2s; }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+  .top-nav .action-btns { margin-left: auto; display: flex; gap: 0.5rem; }
+  .top-nav .action-btn { padding: 0.35rem 0.9rem; border-radius: 3px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; border: 1px solid rgba(255,255,255,0.25); color: var(--cream); background: transparent; text-decoration: none; transition: background 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+  .cover { background: var(--level-color); color: #fff; padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px); pointer-events: none; }
+  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(24px, 4.5vw, 46px); line-height: 1.15; margin-bottom: 8px; color: #fff; }
+  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 32px; letter-spacing: 0.08em; }
+  .cover-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
+  .cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cover-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 20px; }
+  .toc-bar { background: var(--cream-deep); border-bottom: 1px solid var(--rule); position: sticky; top: 56px; z-index: 100; }
+  .toc-inner { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a { display: block; padding: 11px 13px; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+  .container { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .principle { background: var(--sage-pale); border-left: 3px solid var(--sage); padding: 14px 18px; margin-bottom: 28px; border-radius: 0 4px 4px 0; }
+  .principle strong { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; font-weight: 500; }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+  .note { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 11px 15px; margin: 18px 0; border-radius: 0 4px 4px 0; font-size: 13px; color: var(--ink-mid); font-style: italic; }
+  .note strong { font-style: normal; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a10; display: block; margin-bottom: 3px; font-weight: 500; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 22px 0; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px; }
+  .card-level { border-top: 3px solid var(--level-color); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .card .card-sub { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+  .plot-stage { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px 20px; margin-bottom: 10px; position: relative; }
+  .plot-stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 5px 0 0 5px; }
+  .plot-stage.stage-begin::before { background: var(--sage); }
+  .plot-stage.stage-mid::before { background: var(--gold); }
+  .plot-stage.stage-climax::before { background: var(--rust); }
+  .plot-stage.stage-end::before { background: var(--ink-light); }
+  .plot-stage h4 { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .plot-stage p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .plot-note { font-size: 12px; color: var(--ink-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--rule); }
+  .foreshadow-item { border-left: 2px solid var(--rule); padding: 6px 0 6px 16px; margin-bottom: 14px; }
+  .foreshadow-item h4 { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .foreshadow-item p { font-size: 13px; color: var(--ink-mid); margin-bottom: 0; }
+  .arch-group-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 10px; font-weight: 500; }
+  .arch-entry { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--rule); border-radius: 5px; background: #fff; margin-bottom: 8px; overflow: hidden; }
+  .arch-left { padding: 14px 16px; border-right: 1px solid var(--rule); }
+  .arch-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .arch-type { font-size: 11px; letter-spacing: 0.08em; color: var(--rust); font-weight: 500; }
+  .arch-right { padding: 14px 16px; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .true-shadow-box { background: var(--rust-pale); border: 1px solid rgba(184,92,58,0.2); border-left: 3px solid var(--rust); border-radius: 0 5px 5px 0; padding: 16px 20px; margin-bottom: 24px; }
+  .true-shadow-box h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--rust); margin-bottom: 6px; }
+  .true-shadow-box p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .char-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 18px; overflow: hidden; }
+  .char-header { background: var(--cream-deep); padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; }
+  .char-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .char-arch-tag { font-size: 11px; color: var(--rust); letter-spacing: 0.06em; font-weight: 500; }
+  .char-body { padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .char-field label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 500; }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; line-height: 1.6; }
+  .char-traits { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trait-positive, .trait-negative { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; font-size: 13px; }
+  .trait-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 3px; }
+  .trait-positive .trait-label { color: var(--sage); }
+  .trait-negative .trait-label { color: var(--rust); }
+  .char-dev { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .char-dev label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .char-dev-tag { display: inline-block; background: var(--gold-pale); border: 1px solid var(--gold); color: #7a5a10; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; font-weight: 500; }
+  .char-dev p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .allusion-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .allusion-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); }
+  .allusion-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .allusion-type { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .allusion-body { padding: 12px 16px; }
+  .allusion-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; margin-bottom: 6px; font-size: 13.5px; }
+  .allusion-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .allusion-val { color: var(--ink-mid); line-height: 1.6; }
+  .symbol-block { border: 1px solid var(--rule); border-radius: 5px; background: #fff; padding: 14px 18px; margin-bottom: 10px; }
+  .symbol-equation { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .symbol-equation .eq-arrow { color: var(--rust); }
+  .symbol-evidence li { margin-bottom: 4px; }
+  .conflict-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 12px; overflow: hidden; }
+  .conflict-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .conflict-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .conflict-tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--rust-pale); color: var(--rust); padding: 2px 8px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
+  .conflict-body { padding: 12px 16px; }
+  .conflict-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; margin-bottom: 8px; font-size: 13.5px; }
+  .conflict-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .conflict-val { color: var(--ink-mid); line-height: 1.6; }
+  .comp-set-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 12px; font-weight: 500; }
+  .comp-item { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .comp-body { padding: 16px 18px 14px; display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; }
+  .comp-num { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink-faint); line-height: 1.3; }
+  .comp-question { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+  .comp-answer { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.65; }
+  .comp-scene { font-size: 12px; color: var(--ink-light); font-style: italic; padding: 8px 10px; background: var(--warm-white); border-radius: 3px; border-left: 2px solid var(--rule); }
+  .theme-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 14px; overflow: hidden; }
+  .theme-header { background: var(--cream-deep); padding: 12px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .theme-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .theme-topic-badge { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-pale); color: #7a5a10; border: 1px solid var(--gold); padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .theme-body { padding: 14px 16px; }
+  .theme-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; font-size: 13.5px; margin-bottom: 8px; }
+  .theme-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+  p { margin-bottom: 10px; } p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+  .back-to-top-btn { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; background: var(--ink); color: var(--cream); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 999; }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .char-body { grid-template-columns: 1fr; }
+    .char-traits { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row { grid-template-columns: 1fr; gap: 2px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">Tales of a Fourth Grade Nothing — Teacher Compendium</span>
+  <div class="action-btns">
+    <button class="action-btn" data-file="tales-of-a-fourth-grade-nothing/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" data-file="tales-of-a-fourth-grade-nothing/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" data-file="tales-of-a-fourth-grade-nothing/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>Tales of a Fourth Grade Nothing</h1>
+    <h2>Judy Blume</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Junior Level</span>
+      <span>CEFR A2–B1</span>
+      <span>Realistic Fiction · Family &amp; Growing Up</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="section" id="intro">
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">About This Compendium</h2>
+  <p>This compendium provides the book-specific analytical support for the <em>Tales of a Fourth Grade Nothing</em> Junior-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+  <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+  <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+</div>
+
+<div class="section" id="literary-elements">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Literary Elements</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Literary elements function structurally. Students must correctly identify elements, explain how they create tension, meaning, or development, and move beyond summary into structural interpretation.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Setting</h3>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Physical Location</h3>
+      <div class="card-sub">Where the story takes place</div>
+      <p>New York City (primarily the Hatcher apartment and surrounding neighborhood).</p>
+      <p class="justif">The confined apartment setting intensifies sibling conflict by limiting physical escape. The urban environment reinforces themes of overstimulation and competition for attention.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Chronological Time</h3>
+      <div class="card-sub">When the story takes place</div>
+      <p>Contemporary 1970s childhood (linear progression across a school year).</p>
+      <p class="justif">The ordinary, recognizable timeframe grounds the narrative in everyday realism, making the emotional stakes rely entirely on domestic escalation rather than external adventure.</p>
+    </div>
+    <div class="card card-rust">
+      <h3>Society &amp; Values</h3>
+      <div class="card-sub">Cultural context</div>
+      <p>Middle-class American nuclear family structure emphasizing patience, humor, and parental authority.</p>
+      <p class="justif">The adult expectation that Peter must "understand" Fudge's behavior structurally sustains the central conflict: Peter's emotional experience is minimized in favor of maintaining family harmony.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Plot Arc</h3>
+  <div class="plot-stage stage-begin">
+    <h4>Beginning — Exposition</h4>
+    <p>Peter introduces his frustration with his younger brother, Fudge. Repeated domestic disruptions establish Fudge as the destabilizing force. Dribble, Peter's turtle, is introduced as his prized possession and emotional refuge.</p>
+    <p class="plot-note">Structural Note: The early episodes establish a pattern of imbalance: conflict is recurring, tolerated, and unresolved rather than escalating immediately.</p>
+  </div>
+  <div class="plot-stage stage-mid">
+    <h4>Middle — Rising Action</h4>
+    <p>Fudge's public and private behavior intensifies, including social embarrassments and birthday chaos. Adults consistently minimize Peter's frustration, reinforcing his sense of invisibility. Peter's resentment deepens as Dribble becomes his primary source of stability.</p>
+  </div>
+  <div class="plot-stage stage-climax">
+    <h4>Climax</h4>
+    <p>Fudge swallows Dribble.</p>
+    <p class="plot-note">Justification: This moment represents irreversible consequence. Prior conflicts were disruptive but temporary; this act results in permanent loss, transforming comedic irritation into tangible emotional damage.</p>
+  </div>
+  <div class="plot-stage stage-end">
+    <h4>End — Resolution</h4>
+    <p>Fudge is rushed to the hospital and Dribble cannot be saved. The family regains surface stability after medical intervention. Peter receives a dog as compensation for the loss.</p>
+    <p class="plot-note">Interpretive Note: Order is restored materially, but the underlying family dynamic remains intact. The resolution substitutes loss rather than resolving the structural imbalance.</p>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Foreshadowing</h3>
+  <div class="foreshadow-item"><h4>Peter's Repeated Claims That He "Hates" Fudge</h4><p>His exaggerated declarations foreshadow an eventual breaking point where emotional frustration culminates in tangible loss.</p></div>
+  <div class="foreshadow-item"><h4>Fudge's Pattern of Putting Objects in His Mouth</h4><p>This recurring behavior prepares the reader structurally for the swallowing of Dribble, transforming a childish habit into narrative catastrophe.</p></div>
+  <div class="foreshadow-item"><h4>Dribble as Peter's Prized Possession</h4><p>The emphasis on Dribble's importance elevates the stakes of any threat against him.</p></div>
+  <div class="foreshadow-item"><h4>Adult Dismissal of Peter's Warnings</h4><p>The parents' consistent minimization of Peter's concerns foreshadows their inability to prevent a serious consequence.</p></div>
+  <div class="note"><strong>Structural Function</strong>Foreshadowing operates through repetition rather than subtle symbolism. Recurring behaviors accumulate inevitability, making the climax feel both shocking and structurally prepared.</div>
+
+  <div class="divider"></div>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Point of View</h3>
+      <div class="card-sub">Narrative perspective</div>
+      <p>First-person limited (Peter). The narrative is confined to Peter's perceptions, aligning the reader fully with his frustrations. This limited perspective creates bias; Fudge appears amplified because the reader has no interior access to alternative viewpoints.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Tone</h3>
+      <div class="card-sub">Emotional register</div>
+      <p>Humorous frustration with underlying emotional tension. Created through exaggerated internal monologue, repetition of grievances, episodic comedic set pieces, and understatement during moments of serious consequence.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="archetypes">
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Archetypes</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Archetypes should not be treated as personality labels. They represent motivational drives within the Order / Freedom / Ego / Social framework.</p></div>
+
+  <div class="true-shadow-box">
+    <h4>True Shadow: Distorted Recognition</h4>
+    <p>The True Shadow in <em>Tales of a Fourth Grade Nothing</em> is Comparison or Distorted Recognition — the persistent minimization of an older child's emotional reality that creates imbalance and allows disruption to escalate into irreversible consequence.</p>
+  </div>
+
+  <p class="arch-group-label">Characters</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Peter Warren Hatcher</div><div class="arch-type">Everyman · Realist</div></div><div class="arch-right">Grounds the narrative in ordinary childhood frustration while exposing imbalance through persistent calls for fairness.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Farley Drexel Hatcher (Fudge)</div><div class="arch-type">Ruler · Shadow Tyrant</div></div><div class="arch-right">Exercises control through unchecked impulse, destabilizing shared space and attention.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Mom</div><div class="arch-type">Caregiver · Parent</div></div><div class="arch-right">Protects and nurtures yet structurally redirects validation toward the younger child.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Jimmy Fargo</div><div class="arch-type">Caregiver · Support</div></div><div class="arch-right">Provides rare validation that briefly interrupts the dominant pattern of dismissal.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Dribble (The Turtle)</div><div class="arch-type">Innocent · Shadow Victim</div></div><div class="arch-right">Embodies fragile stability whose destruction marks the cost of ignored warnings.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Sheila</div><div class="arch-type">Sage · Shadow Elitist</div></div><div class="arch-right">Reinforces insecurity through judgmental evaluation rather than empathy.</div></div>
+
+  <p class="arch-group-label">Objects / Forces</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Fudge's Phrases</div><div class="arch-type">Magician · Visionary</div></div><div class="arch-right">Reshape adult attention through fragmented yet commanding language.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">May 10th</div><div class="arch-type">Creator · Shadow Destroyer</div></div><div class="arch-right">Marks the irreversible temporal pivot from irritation to permanent loss.</div></div>
+</div>
+
+<div class="section" id="character-maps">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Character Maps</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Character analysis requires internal logic. Students must distinguish between goal and motivation, identify values and traits supported by textual behavior, and explain development using structural evidence.</p></div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Peter Warren Hatcher</h3>
+      <span class="char-arch-tag">Everyman · Realist</span>
+      <span class="char-arch-tag" style="color:var(--ink-light);">Round / Dynamic</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants to be taken seriously and recognized as responsible and mature within his family.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He feels overshadowed by his younger brother and seeks validation that his emotions and efforts matter.</p></div>
+      <div class="char-field"><label>Values</label><p>Fairness, recognition, responsibility, personal ownership. His desire for maturity masks a deeper need to feel emotionally validated.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive · Responsible</div>He consistently feeds, protects, and monitors Dribble without adult prompting.</div>
+        <div class="trait-positive"><div class="trait-label">Positive · Observant</div>He carefully tracks patterns in Fudge's behaviour and anticipates problems before adults do.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Resentful</div>He repeatedly rehearses his hatred for Fudge, allowing frustration to dominate his thinking.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Reactive</div>He escalates emotionally when ignored, reinforcing the perception that he is overdramatic.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round / Dynamic</div>
+        <p>Peter begins entrenched in resentment, but the loss of Dribble forces him to confront the permanence of consequences and accept a more complicated understanding of family imbalance, even though the external structure remains largely unchanged.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Farley Drexel Hatcher (Fudge)</h3>
+      <span class="char-arch-tag">Ruler · Shadow Tyrant</span>
+      <span class="char-arch-tag" style="color:var(--ink-light);">Flat / Static</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He seeks immediate attention and stimulation through constant interaction and disruption.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He desires control over his environment and affirmation through adult reaction.</p></div>
+      <div class="char-field"><label>Values</label><p>Attention, stimulation, control, novelty. His chaotic engagement masks an instinctive drive to secure presence and response.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive · Energetic</div>He actively engages with people and objects, generating movement within every scene.</div>
+        <div class="trait-positive"><div class="trait-label">Positive · Persistent</div>He continues pursuing what interests him regardless of obstacles or resistance.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Impulsive</div>He acts without considering consequence, particularly when placing objects in his mouth.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Disruptive</div>His behaviour repeatedly destabilizes structured environments.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat / Static</div>
+        <p>Fudge's behavioral patterns remain consistent throughout the narrative, serving as a structural constant that sustains conflict rather than undergoing internal change.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Jimmy Fargo</h3>
+      <span class="char-arch-tag">Caregiver · Support</span>
+      <span class="char-arch-tag" style="color:var(--ink-light);">Flat / Static</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He aims to support his peers and maintain cooperative relationships.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He values social harmony and mutual understanding within friendships.</p></div>
+      <div class="char-field"><label>Values</label><p>Loyalty, steadiness, cooperation, quiet empathy.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive · Attentive</div>He listens to Peter's frustrations without dismissing them.</div>
+        <div class="trait-positive"><div class="trait-label">Positive · Steady</div>He maintains consistent behaviour across situations.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Passive</div>He does not directly intervene in family conflict despite recognizing imbalance.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Peripheral</div>His limited narrative presence restricts his influence on central events.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat / Static</div>
+        <p>Jimmy remains a stable point of peer validation whose consistency highlights the instability within Peter's family rather than transforming himself.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="allusions">
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Allusions &amp; Symbolism</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. A symbol is a recurring object or image within the text that represents a deeper abstract idea.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Allusions</h3>
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>National Geographic</h4><div class="allusion-type">Cultural / Educational</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">National Geographic magazine, associated with exploration, science, and disciplined observation.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Establishes Peter's alignment with structured curiosity and factual understanding, contrasting sharply with the impulsive disruption that defines his brother and the environments he navigates.</div></div>
+    </div>
+  </div>
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Superman Party Decorations</h4><div class="allusion-type">Popular Culture / Americana</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Superman, the iconic American comic-book hero symbolizing strength, heroism, and moral responsibility.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Highlights the irony of celebrating exaggerated heroism in a setting defined by immaturity and chaos, underscoring the distortion between cultural ideals of power and uncontrolled behavior.</div></div>
+    </div>
+  </div>
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Cooties</h4><div class="allusion-type">Folkloric / Childhood Cultural</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Longstanding playground folklore in which "cooties" represent imaginary contamination tied to social exclusion.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Reinforces social dynamics of childhood hierarchy and exclusion, situating the conflicts within recognizable patterns of juvenile social power and extending the theme of distorted recognition beyond the family.</div></div>
+    </div>
+  </div>
+  <p class="alt-list">"Eat it or wear it" parenting logic (mid-20th-century American disciplinary norms); Banging pots and pans (early childhood sensory play); Bloomingdale's (urban consumer culture).</p>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Symbolism</h3>
+  <div class="symbol-block">
+    <div class="symbol-equation">Mother's Flowers <span class="eq-arrow">→</span> Unprotected Boundaries</div>
+    <ul class="body-list symbol-evidence">
+      <li>Fudge eats mother's flowers and faces no lasting consequence.</li>
+      <li>Peter tries eating mother's flowers but recoils at the taste.</li>
+      <li>Mother's flowers are vulnerable to careless handling within the apartment.</li>
+    </ul>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol-equation">The Transportation Project <span class="eq-arrow">→</span> Structured Effort</div>
+    <ul class="body-list symbol-evidence">
+      <li>The Transportation Project requires planning, patience, and independent work from Peter.</li>
+      <li>It displays how success can still occur despite surrounding noise.</li>
+      <li>It stands as something Fudge's actions cannot permanently affect.</li>
+    </ul>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol-equation">The Toddle-Bike <span class="eq-arrow">→</span> Performed Achievement</div>
+    <ul class="body-list symbol-evidence">
+      <li>Fudge's use of the toddle-bike turns unpredictable movement into something adults celebrate.</li>
+      <li>It converts chaos into something worth recognizing.</li>
+      <li>It shifts attention away from discipline and toward spectacle.</li>
+    </ul>
+  </div>
+  <p class="alt-list">Bloomingdale's (Urban Identity); Picture Dictionary (Communication &amp; Language); Banging Pots &amp; Pans (Noise as Power).</p>
+</div>
+
+<div class="section" id="conflict">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Conflict Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must classify the conflict type, identify what each side wants, and explain the outcome.</p></div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Peter vs. Fudge</h4><span class="conflict-tag">Character vs. Character</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Peter's Solution</div><div class="conflict-val">To assert maturity and demand consistent boundaries.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Fudge's Solution</div><div class="conflict-val">To dominate attention through disruption and noise.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Fudge's behavior culminates in irreversible consequence through Dribble's death.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Adults vs. Children</h4><span class="conflict-tag">Society vs. Society</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Adults' Solution</div><div class="conflict-val">To interpret behavior through leniency and developmental excuse.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Children's Solution</div><div class="conflict-val">To push boundaries in order to test power and presence.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Adult structures remain intact but inconsistently enforced.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Fudge vs. Growing Up</h4><span class="conflict-tag">Character vs. Fate</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Fudge's Solution</div><div class="conflict-val">To preserve immediate gratification and avoid regulation.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Fate's Solution</div><div class="conflict-val">To impose understanding of consequence through natural progression and social expectation.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Fudge remains behaviorally unchanged within the novel's timeframe.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Peter vs. Resentment</h4><span class="conflict-tag">Character vs. Self</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Peter's Solution</div><div class="conflict-val">To protect dignity by rehearsing grievance and distancing emotionally.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Self's Solution</div><div class="conflict-val">To demand emotional adjustment and acceptance of imperfection.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Peter gains limited perspective following permanent loss but does not fully relinquish resentment.</div></div>
+    </div>
+  </div>
+  <p class="alt-list">Peter vs. Invisibility (Character vs. Society); Fudge vs. Consequence (Character vs. Nature); Order vs. Chaos (Nature vs. Nature).</p>
+</div>
+
+<div class="section" id="comprehension">
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Comprehension Questions</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Questions are organized into three sets reflecting the narrative's structural progression. Each answer includes a model response and a scene anchor for teacher navigation.</p></div>
+
+  <p class="comp-set-label">Section 1 — Big Winners and Bigger Problems</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div>
+    <p class="comp-question">What does Peter win at Jimmy Fargo's birthday party?</p>
+    <p class="comp-answer">Peter wins a tiny green turtle in a glass bowl, which he names Dribble on the walk home.</p>
+    <p class="comp-scene">Scene: Peter guessing closest to the number of jelly beans and Mrs. Fargo announcing him the big winner.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div>
+    <p class="comp-question">Who does Peter say is his biggest problem at the start of the story?</p>
+    <p class="comp-answer">Peter says his biggest problem is his brother Farley Drexel Hatcher, who everybody calls Fudge.</p>
+    <p class="comp-scene">Scene: Peter listing his problems and then naming Fudge as the real one.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div>
+    <p class="comp-question">When Mrs. Yarby gives Peter the picture dictionary, how does he respond to her?</p>
+    <p class="comp-answer">Peter says thank you and tells her it is just what he always wanted, even though he already has a regular dictionary and thinks the gift is for babies.</p>
+    <p class="comp-scene">Scene: Peter unwrapping the picture dictionary in front of the Yarbys in the living room.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div>
+    <p class="comp-question">What does Fudge do during the Yarby visit that gets him carried out of the room at dinner?</p>
+    <p class="comp-answer">Fudge walks in carrying Dribble's bowl and holds the turtle under Mrs. Yarby's nose, making her shriek.</p>
+    <p class="comp-scene">Scene: Fudge appearing at the dinner table with Dribble's bowl while the adults are eating roast beef.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div>
+    <p class="comp-question">Name two things Peter's parents try in order to get Fudge to eat his dinner.</p>
+    <p class="comp-answer">Peter's father does tricks like juggling oranges, and Peter's mother lets Fudge eat on the floor like a dog.</p>
+    <p class="comp-scene">Scene: The extended eating strike, from Peter standing on his head in the kitchen to Fudge crawling under the table.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div>
+    <p class="comp-question">How does Peter react when his parents let Fudge eat on the floor like a dog?</p>
+    <p class="comp-answer">Peter thinks about how great it would be to trade Fudge in for a cocker spaniel.</p>
+    <p class="comp-scene">Scene: Fudge barking and eating under the table while Peter watches from his chair.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div>
+    <p class="comp-question">What happens when Fudge decides he is a bird and jumps from the jungle gym?</p>
+    <p class="comp-answer">Fudge falls to the ground and knocks out his two front teeth.</p>
+    <p class="comp-scene">Scene: Fudge flapping his arms and calling himself a birdie at the top of the jungle gym in Central Park.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div>
+    <p class="comp-question">When Peter's mother comes back to the park after the accident, what does she say to Peter?</p>
+    <p class="comp-answer">She tells Peter she is disgusted with him and that she cannot trust him for ten minutes.</p>
+    <p class="comp-scene">Scene: Peter's mother arriving at the playground, scooping up Fudge, then following Peter into the kitchen to blame him.</p>
+  </div></div></div>
+
+  <p class="comp-set-label">Section 2 — Parties, Problems, and Patience</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div>
+    <p class="comp-question">What does Ralph do at Fudge's birthday party after eating his second piece of cake?</p>
+    <p class="comp-answer">Ralph throws up.</p>
+    <p class="comp-scene">Scene: Ralph finishing his second slice of birthday cake at the kitchen table and immediately being sick.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div>
+    <p class="comp-question">What does Jennie do on the living room rug during Fudge's birthday party?</p>
+    <p class="comp-answer">Jennie makes a puddle on purpose after asking Peter if Dribble makes tinkles.</p>
+    <p class="comp-scene">Scene: Jennie standing over Dribble's bowl and then deliberately wetting the rug while Peter watches.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div>
+    <p class="comp-question">How do the nurse and the other people at Dr. Brown's office treat Fudge when he arrives?</p>
+    <p class="comp-answer">The nurse calls Fudge her favorite patient, gives him a hug, and hands him a book to read.</p>
+    <p class="comp-scene">Scene: The Hatcher family arriving at Dr. Brown's office on the Saturday morning appointment.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div>
+    <p class="comp-question">What does Peter do that finally gets Fudge to open his mouth for Dr. Brown?</p>
+    <p class="comp-answer">Peter opens his own mouth very wide for Dr. Brown first, and Fudge opens his to prove he can do it just as well.</p>
+    <p class="comp-scene">Scene: Dr. Brown asking Peter to demonstrate while Fudge sits in the big chair.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div>
+    <p class="comp-question">When Peter goes into his room and looks under his bed, what does he find?</p>
+    <p class="comp-answer">He finds Fudge holding up the transportation poster, which is covered all over in Magic Marker scribbles.</p>
+    <p class="comp-scene">Scene: Peter coming home from school to find Fudge under his bed with the ruined poster.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div>
+    <p class="comp-question">After Fudge ruins the poster, how does Peter's mother respond to him?</p>
+    <p class="comp-answer">She comes into Peter's room, sits on his bed, apologizes, tells him she will buy a new posterboard, and says Fudge has been spanked.</p>
+    <p class="comp-scene">Scene: Peter throwing his shoe at the wall and slamming the door, then his mother knocking and coming in.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div>
+    <p class="comp-question">What does Peter say to his mother when she tells him he does not really hate Fudge?</p>
+    <p class="comp-answer">Peter says he means it and that he really cannot stand that kid.</p>
+    <p class="comp-scene">Scene: Peter on his bed telling his mother he wishes Fudge had never been born.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div>
+    <p class="comp-question">Where does Peter's father put the new chain latch on Peter's bedroom door?</p>
+    <p class="comp-answer">He puts it high enough that Peter can reach it on tiptoe but Fudge cannot reach it at all.</p>
+    <p class="comp-scene">Scene: Peter's father coming home with the chain latch after Fudge cuts his own hair into Dribble's bowl.</p>
+  </div></div></div>
+
+  <p class="comp-set-label">Section 3 — Trouble, Worry, and Something New</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div>
+    <p class="comp-question">Where does Peter's father take Peter and Fudge on the Friday morning their mother leaves for Boston?</p>
+    <p class="comp-answer">He takes them to his advertising agency office.</p>
+    <p class="comp-scene">Scene: Peter's mother leaving in a taxi for the airport, then Peter's father taking the boys to his glass office building.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div>
+    <p class="comp-question">When Mr. Vincent points across the room and says he has found the right kid, what does Peter think?</p>
+    <p class="comp-answer">Peter thinks Mr. Vincent means him, and he gets excited imagining all his friends seeing him on TV riding the Toddle-Bike.</p>
+    <p class="comp-scene">Scene: The waiting room full of children and mothers, and Mr. Vincent pointing toward Peter and Fudge.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div>
+    <p class="comp-question">How does Fudge cause the film to stop at the movie theater?</p>
+    <p class="comp-answer">Fudge slips away from his seat and walks all the way down to the front row to try to touch the bears on the screen, so the staff have to stop the film and search the theater to find him.</p>
+    <p class="comp-scene">Scene: Peter turning to ask Fudge for popcorn and finding the seat empty, then the lights coming on.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div>
+    <p class="comp-question">What does Peter call out when he walks down the aisle looking for his brother?</p>
+    <p class="comp-answer">Peter calls out "Here, Fudge" down the aisle, like someone calling a dog.</p>
+    <p class="comp-scene">Scene: Peter's father telling him to walk the aisle and call Fudge's name while the audience waits.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div>
+    <p class="comp-question">When Peter gets home from school and checks on Dribble, what does he find in the bowl?</p>
+    <p class="comp-answer">He finds the rocks and the water but no turtle. Dribble is gone.</p>
+    <p class="comp-scene">Scene: Peter noticing the unhooked chain latch and the open door, then running to his dresser.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div>
+    <p class="comp-question">How does Peter's mother react when Fudge tells her he swallowed Dribble?</p>
+    <p class="comp-answer">She turns pale, picks Fudge up, calls the operator to ask for an ambulance, and runs to the front door with Fudge wrapped in blankets.</p>
+    <p class="comp-scene">Scene: Fudge rubbing his stomach in the kitchen and saying Dribble is in his tummy.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div>
+    <p class="comp-question">At the hospital, what does the nurse give Peter while he waits alone on the bench?</p>
+    <p class="comp-answer">The nurse gives Peter paper and crayons and tells him to draw pictures.</p>
+    <p class="comp-scene">Scene: Peter being pointed to the hard wooden bench in the emergency hallway while the nurses wheel Fudge away.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div>
+    <p class="comp-question">What does Peter name his new dog?</p>
+    <p class="comp-answer">Peter names him Turtle, to remind him of Dribble.</p>
+    <p class="comp-scene">Scene: Peter reaching into the box, feeling something warm and furry, and the dog jumping up to lick him on the last page.</p>
+  </div></div></div>
+</div>
+
+<div class="section" id="themes">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Theme Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>A topic is the subject the text explores. A theme is the author's claim about that topic, expressed as a complete, universal statement. Themes must be universal, arguable, and supported by textual evidence.</p></div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Growing Up</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val">Growing up involves recognizing imbalance and adapting to it rather than eliminating it.</div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Peter gains limited perspective only after Dribble's death, while Fudge remains behaviorally unchanged, showing that maturation occurs unevenly within the same household.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Reflects how personal growth often follows disruption rather than guidance, and how individuals within the same environment develop at different rates.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Work</div><div class="theme-val"><em>The Catcher in the Rye</em> by J.D. Salinger, which portrays the instability and resistance embedded in the transition from childhood toward maturity.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Respect</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val">Recognition shapes relationships when it is distributed unevenly within shared systems.</div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Peter's steady responsibility is frequently overlooked, while Fudge's disruptive behavior consistently redirects adult attention.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Reflects how modern environments sometimes reward visibility over sustained effort, creating tension around fairness and acknowledgment.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Work</div><div class="theme-val"><em>Lord of the Flies</em> by William Golding, which examines how authority and recognition shift according to spectacle rather than consistent responsibility.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Temptation / Desire</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val">Social order depends on consistent enforcement of expectations across participants.</div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Adult leniency toward Fudge contrasts with stricter expectations placed on Peter, allowing disruption to persist without stable consequence.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Reflects how inconsistent rule enforcement in contemporary systems can weaken trust in shared standards.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Work</div><div class="theme-val"><em>Little Women</em> by Louisa May Alcott, which explores how behavioral expectations operate within structured family systems and influence development.</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.container -->
+
+<button class="back-to-top-btn" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  const token = sessionStorage.getItem('tl_token');
+  if(!token){ window.location.href='index.html'; return; }
+  document.querySelectorAll('.action-btn[data-file]').forEach(btn=>{
+    btn.addEventListener('click',async function(){
+      const file=this.dataset.file, label=this.dataset.label;
+      const orig=this.textContent; this.textContent='Loading…'; this.disabled=true;
+      try{
+        const r=await fetch('https://crowscallpress-production.up.railway.app/download',{
+          method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+          body:JSON.stringify({file})
+        });
+        if(!r.ok) throw new Error(await r.text());
+        const {url}=await r.json();
+        const a=document.createElement('a'); a.href=url; a.download=label+'.pdf'; a.target='_blank';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      }catch(e){ alert('Download failed: '+e.message); }
+      this.textContent=orig; this.disabled=false;
+    });
+  });
+  const btn=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{ btn.classList.toggle('visible',window.scrollY>400); });
+  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>

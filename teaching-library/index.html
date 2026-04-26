@@ -55,6 +55,12 @@
     return;
   }
 
+  // Show timeout message if redirected after inactivity
+  if (new URLSearchParams(window.location.search).get('timeout')) {
+    var err = document.getElementById('tl-error');
+    err.textContent = 'You were signed out after 60 minutes of inactivity.';
+  }
+
   // Show/hide password toggle
   document.getElementById('tl-show-pw').addEventListener('click', function () {
     var input = document.getElementById('tl-password');

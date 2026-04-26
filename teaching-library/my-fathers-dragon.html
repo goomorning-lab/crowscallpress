@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Father's Dragon — Teacher Compendium · Crow's Call Press</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/CCP-LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --ink-mid: #3d3028; --ink-light: #7a6a5a; --ink-faint: #c4b8ad;
+    --cream: #f5f0e8; --cream-deep: #ede6d8; --warm-white: #faf8f4;
+    --rust: #b85c3a; --rust-pale: #f5e2db; --gold: #c9a84c; --gold-pale: #f5ecd0;
+    --sage: #4a6e5a; --sage-pale: #ddeee4; --rule: #d4c9bc;
+    --level-color: #7a2828;
+    --page-max: 880px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.75; }
+  .top-nav { position: sticky; top: 0; z-index: 200; background: var(--rust); color: var(--cream); display: flex; align-items: center; gap: 1rem; padding: 0 2rem; height: 56px; }
+  .top-nav a.back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; transition: color 0.2s; }
+  .top-nav a.back-link:hover { color: #fff; }
+  .top-nav .sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+  .top-nav .doc-title { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+  .top-nav .action-btns { margin-left: auto; display: flex; gap: 0.5rem; }
+  .top-nav .action-btn { padding: 0.35rem 0.9rem; border-radius: 3px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; border: 1px solid rgba(255,255,255,0.25); color: var(--cream); background: transparent; text-decoration: none; transition: background 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .top-nav .action-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
+  .cover { background: var(--level-color); color: #fff; padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px); pointer-events: none; }
+  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 5.5vw, 52px); line-height: 1.15; margin-bottom: 8px; color: #fff; }
+  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 32px; letter-spacing: 0.08em; }
+  .cover-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
+  .cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cover-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 20px; }
+  .toc-bar { background: var(--cream-deep); border-bottom: 1px solid var(--rule); position: sticky; top: 56px; z-index: 100; }
+  .toc-inner { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-inner a { display: block; padding: 11px 13px; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+  .toc-inner a:hover { color: var(--ink); border-bottom-color: var(--rust); }
+  .container { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .principle { background: var(--sage-pale); border-left: 3px solid var(--sage); padding: 14px 18px; margin-bottom: 28px; border-radius: 0 4px 4px 0; }
+  .principle strong { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; font-weight: 500; }
+  .principle p { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+  .note { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 11px 15px; margin: 18px 0; border-radius: 0 4px 4px 0; font-size: 13px; color: var(--ink-mid); font-style: italic; }
+  .note strong { font-style: normal; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a10; display: block; margin-bottom: 3px; font-weight: 500; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 22px 0; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px; }
+  .card-level { border-top: 3px solid var(--level-color); }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-rust { border-top: 3px solid var(--rust); }
+  .card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .card .card-sub { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .card .justif { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+  .plot-stage { background: #fff; border: 1px solid var(--rule); border-radius: 5px; padding: 18px 20px; margin-bottom: 10px; position: relative; }
+  .plot-stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 5px 0 0 5px; }
+  .plot-stage.stage-begin::before { background: var(--sage); }
+  .plot-stage.stage-mid::before { background: var(--gold); }
+  .plot-stage.stage-climax::before { background: var(--rust); }
+  .plot-stage.stage-end::before { background: var(--ink-light); }
+  .plot-stage h4 { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .plot-stage p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .plot-note { font-size: 12px; color: var(--ink-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--rule); }
+  .foreshadow-item { border-left: 2px solid var(--rule); padding: 6px 0 6px 16px; margin-bottom: 14px; }
+  .foreshadow-item h4 { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .foreshadow-item p { font-size: 13px; color: var(--ink-mid); margin-bottom: 0; }
+  .arch-group-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 10px; font-weight: 500; }
+  .arch-entry { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--rule); border-radius: 5px; background: #fff; margin-bottom: 8px; overflow: hidden; }
+  .arch-left { padding: 14px 16px; border-right: 1px solid var(--rule); }
+  .arch-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .arch-type { font-size: 11px; letter-spacing: 0.08em; color: var(--rust); font-weight: 500; }
+  .arch-right { padding: 14px 16px; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .true-shadow-box { background: var(--rust-pale); border: 1px solid rgba(184,92,58,0.2); border-left: 3px solid var(--rust); border-radius: 0 5px 5px 0; padding: 16px 20px; margin-bottom: 24px; }
+  .true-shadow-box h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--rust); margin-bottom: 6px; }
+  .true-shadow-box p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .char-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 18px; overflow: hidden; }
+  .char-header { background: var(--cream-deep); padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; }
+  .char-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .char-arch-tag { font-size: 11px; color: var(--rust); letter-spacing: 0.06em; font-weight: 500; }
+  .char-body { padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .char-field label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 500; }
+  .char-field p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; line-height: 1.6; }
+  .char-traits { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trait-positive, .trait-negative { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; font-size: 13px; }
+  .trait-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 3px; }
+  .trait-positive .trait-label { color: var(--sage); }
+  .trait-negative .trait-label { color: var(--rust); }
+  .char-dev { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .char-dev label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; font-weight: 500; }
+  .char-dev-tag { display: inline-block; background: var(--gold-pale); border: 1px solid var(--gold); color: #7a5a10; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; font-weight: 500; }
+  .char-dev p { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 0; }
+  .allusion-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .allusion-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); }
+  .allusion-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .allusion-type { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .allusion-body { padding: 12px 16px; }
+  .allusion-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; margin-bottom: 6px; font-size: 13.5px; }
+  .allusion-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .allusion-val { color: var(--ink-mid); line-height: 1.6; }
+  .symbol-block { border: 1px solid var(--rule); border-radius: 5px; background: #fff; padding: 14px 18px; margin-bottom: 10px; }
+  .symbol-equation { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .symbol-equation .eq-arrow { color: var(--rust); }
+  .symbol-evidence li { margin-bottom: 4px; }
+  .conflict-card { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 12px; overflow: hidden; }
+  .conflict-header { background: var(--cream-deep); padding: 10px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .conflict-header h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .conflict-tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--rust-pale); color: var(--rust); padding: 2px 8px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
+  .conflict-body { padding: 12px 16px; }
+  .conflict-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; margin-bottom: 8px; font-size: 13.5px; }
+  .conflict-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .conflict-val { color: var(--ink-mid); line-height: 1.6; }
+  .comp-set-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin: 28px 0 12px; font-weight: 500; }
+  .comp-item { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+  .comp-body { padding: 16px 18px 14px; display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; }
+  .comp-num { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink-faint); line-height: 1.3; }
+  .comp-question { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+  .comp-answer { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.65; }
+  .comp-scene { font-size: 12px; color: var(--ink-light); font-style: italic; padding: 8px 10px; background: var(--warm-white); border-radius: 3px; border-left: 2px solid var(--rule); }
+  .theme-block { background: #fff; border: 1px solid var(--rule); border-radius: 5px; margin-bottom: 14px; overflow: hidden; }
+  .theme-header { background: var(--cream-deep); padding: 12px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .theme-header h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .theme-topic-badge { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-pale); color: #7a5a10; border: 1px solid var(--gold); padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .theme-body { padding: 14px 16px; }
+  .theme-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; font-size: 13.5px; margin-bottom: 8px; }
+  .theme-key { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; font-weight: 500; }
+  .theme-val { color: var(--ink-mid); line-height: 1.6; }
+  .theme-val em { font-style: italic; }
+  p { margin-bottom: 10px; } p:last-child { margin-bottom: 0; }
+  ul.body-list { margin: 10px 0 10px 20px; font-size: 13.5px; color: var(--ink-mid); }
+  ul.body-list li { margin-bottom: 4px; }
+  .alt-list { margin: 10px 0; font-size: 13px; color: var(--ink-light); font-style: italic; }
+  .alt-list::before { content: 'Alternative options: '; font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .divider { height: 1px; background: var(--rule); margin: 22px 0; }
+  .back-to-top-btn { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; background: var(--ink); color: var(--cream); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 999; }
+  .back-to-top-btn.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top-btn:hover { background: var(--rust); }
+  @media (max-width: 640px) {
+    .arch-entry { grid-template-columns: 1fr; }
+    .arch-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .char-body { grid-template-columns: 1fr; }
+    .char-traits { grid-template-columns: 1fr; }
+    .conflict-row, .theme-row, .allusion-row { grid-template-columns: 1fr; gap: 2px; }
+    .top-nav .doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="dashboard.html" class="back-link">← Library</a>
+  <span class="sep">›</span>
+  <span class="doc-title">My Father's Dragon — Teacher Compendium</span>
+  <div class="action-btns">
+    <button class="action-btn" data-file="my-fathers-dragon/dev-a.pdf" data-label="Dev Response A">Dev Response A</button>
+    <button class="action-btn" data-file="my-fathers-dragon/dev-b.pdf" data-label="Dev Response B">Dev Response B</button>
+    <button class="action-btn btn-gold" data-file="my-fathers-dragon/vocab.pdf" data-label="Vocabulary">Vocabulary</button>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="container">
+    <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
+    <h1>My Father's Dragon</h1>
+    <h2>Ruth Stiles Gannett</h2>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <span>Junior Level</span>
+      <span>CEFR A2–B1</span>
+      <span>Adventure · Justice &amp; Courage</span>
+      <span>© 2025 Crow's Call Publishing</span>
+    </div>
+    <div class="cover-badge">Answer Key &amp; Instructional Compendium</div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="toc-inner">
+    <a href="#literary-elements">Literary Elements</a>
+    <a href="#archetypes">Archetypes</a>
+    <a href="#character-maps">Character Maps</a>
+    <a href="#allusions">Allusions &amp; Symbolism</a>
+    <a href="#conflict">Conflict Analysis</a>
+    <a href="#comprehension">Comprehension</a>
+    <a href="#themes">Themes</a>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="section" id="intro">
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">About This Compendium</h2>
+  <p>This compendium provides the book-specific analytical support for the <em>My Father's Dragon</em> Junior-level workbook. It is designed to function in conjunction with the Crow's Call Methodology and offers structured exemplar responses, clarifying notes, and interpretive guidance aligned with each section of the student text.</p>
+  <p>The CROW framework (Collect → Reframe → Oppose → Wield) establishes the instructional architecture used across levels and literary works. This document applies it directly to the novel at hand, grounding abstract instructional principles in concrete textual analysis.</p>
+  <div class="note"><strong>Use of This Compendium</strong>This document is intended as a professional reference. Instructional principles define evaluative standards. Exemplar responses model clarity without limiting defensible alternatives. Teachers are encouraged to adapt discussion depth while maintaining alignment with the Crow's Call analytical framework.</div>
+</div>
+
+<div class="section" id="literary-elements">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Literary Elements</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Literary elements function structurally. Students must correctly identify elements, explain how they create tension, meaning, or development, and move beyond summary into structural interpretation.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Setting</h3>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Physical Location</h3>
+      <div class="card-sub">Where the story takes place</div>
+      <p>Wild Island (primary), reached from Port of Cranberry on the Island of Tangerina.</p>
+      <p class="justif">Wild Island functions as a contained testing ground. Its dense jungle, river crossings, and animal territories create structured obstacles that require wit rather than force.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Chronological Time</h3>
+      <div class="card-sub">When the story takes place</div>
+      <p>Indeterminate modern period (implied early 20th-century domestic setting).</p>
+      <p class="justif">The lack of specific historical anchoring universalizes the quest, aligning with the Hero's Journey structure rather than realism.</p>
+    </div>
+    <div class="card card-rust">
+      <h3>Society &amp; Values</h3>
+      <div class="card-sub">Cultural context</div>
+      <p>Two contrasting systems: human domestic order and Wild Island's survival hierarchy where animals exploit the dragon for utility.</p>
+      <p class="justif">Elmer moves between systems and disrupts the exploitative one, reinforcing the restorative resolution.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Plot Arc</h3>
+  <div class="plot-stage stage-begin">
+    <h4>Beginning — Exposition</h4>
+    <p>Elmer meets the Alley Cat and learns about the dragon's captivity on Wild Island. His mother dismisses his concerns, prompting him to run away. Elmer carefully packs practical supplies for the journey.</p>
+    <p class="plot-note">Structural Note: The departure from home functions as both emotional rupture and narrative threshold, initiating the quest structure.</p>
+  </div>
+  <div class="plot-stage stage-mid">
+    <h4>Middle — Rising Action</h4>
+    <p>Elmer secretly boards a ship and travels to the Island of Tangerina. He crosses into Wild Island and enters the dense jungle. He encounters multiple animals (boars, tigers, rhinoceros, lion, gorilla, monkeys, crocodiles). Each confrontation is resolved through strategic use of items from his pack. The animals begin to suspect interference and tension escalates.</p>
+  </div>
+  <div class="plot-stage stage-climax">
+    <h4>Climax</h4>
+    <p>Elmer reaches the baby dragon, unties the rope binding him, and begins their escape as the animals pursue.</p>
+    <p class="plot-note">Justification: The climax centers on the direct confrontation with injustice — the dragon's captivity — representing the culmination of Elmer's preparation and perseverance.</p>
+  </div>
+  <div class="plot-stage stage-end">
+    <h4>End — Resolution</h4>
+    <p>Elmer and the dragon evade the pursuing animals. The dragon gains freedom from Wild Island. The exploitative control over the dragon is broken.</p>
+    <p class="plot-note">Interpretive Note: The resolution affirms that courage guided by planning and compassion can overturn systems built on control and greed.</p>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">Foreshadowing</h3>
+  <div class="foreshadow-item"><h4>Elmer's Careful Packing</h4><p>His deliberate preparation foreshadows that problem-solving, not strength, will resolve conflicts.</p></div>
+  <div class="foreshadow-item"><h4>The Alley Cat's Detailed Account of Wild Island</h4><p>The description of animal behaviors anticipates the types of challenges Elmer will face.</p></div>
+  <div class="foreshadow-item"><h4>The Rope Binding the Dragon</h4><p>Early mention of the dragon's captivity signals that liberation, not adventure alone, is the narrative's true objective.</p></div>
+  <div class="foreshadow-item"><h4>Elmer's Habit of Leaving Tangerines Behind</h4><p>The scattered fruit anticipates pursuit, increasing later tension during the escape.</p></div>
+  <div class="note"><strong>Structural Function</strong>Foreshadowing builds inevitability. Each later solution feels earned rather than accidental because groundwork is established in advance.</div>
+
+  <div class="divider"></div>
+  <div class="card-grid">
+    <div class="card card-level">
+      <h3>Point of View</h3>
+      <div class="card-sub">Narrative perspective</div>
+      <p>Third-person limited, focused on Elmer. The narration closely follows Elmer's actions and perceptions, aligning the reader with his strategic thinking while maintaining emotional lightness appropriate for Junior tier.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Tone</h3>
+      <div class="card-sub">Emotional register</div>
+      <p>Playfully adventurous with controlled tension. Created through matter-of-fact narration of dangerous situations, calm description of absurd animal demands, and repetition of practical problem-solving patterns.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="archetypes">
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Archetypes</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Archetypes should not be treated as personality labels. They represent motivational drives within the Order / Freedom / Ego / Social framework. Characters may express a primary archetype and a shadow distortion when that drive becomes extreme or corrupted.</p></div>
+
+  <div class="true-shadow-box">
+    <h4>True Shadow: Exploitative Control / Injustice</h4>
+    <p>The True Shadow in <em>My Father's Dragon</em> is Exploitative Control — the normalization of using another being for convenience and collective comfort. The animals sustain this system by treating the dragon as a utility rather than a life, creating the injustice that Elmer must confront.</p>
+  </div>
+
+  <p class="arch-group-label">Characters</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Elmer Elevator</div><div class="arch-type">Explorer · Seeker</div></div><div class="arch-right">Initiates movement across physical and moral boundaries, advancing the quest structure through deliberate exploration and pursuit of freedom.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Father's Mother</div><div class="arch-type">Caregiver · Parent</div></div><div class="arch-right">Represents domestic stability and protection, functioning as the structural anchor Elmer departs from in order to mature.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Alley Cat</div><div class="arch-type">Sage · Mentor</div></div><div class="arch-right">Introduces hidden knowledge and initiates the quest, transferring insight that propels narrative action.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Baby Dragon</div><div class="arch-type">Innocent · Shadow Victim</div></div><div class="arch-right">Captivity exposes the cost of injustice, serving as the moral center that justifies the quest.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Gorilla</div><div class="arch-type">Ruler · Shadow Tyrant</div></div><div class="arch-right">Enacts brute dominance, embodying control without moral restraint.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">The Crocodiles</div><div class="arch-type">Lover · Shadow Seducer</div></div><div class="arch-right">Lure through desire and false promises, testing Elmer's discernment.</div></div>
+
+  <p class="arch-group-label">Objects / Settings / Forces</p>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Tangerines</div><div class="arch-type">Caregiver · Support</div></div><div class="arch-right">Sustain Elmer's progress and later signal pursuit, functioning as both nourishment and narrative trail.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Wild Island</div><div class="arch-type">Outlaw · Wild Person</div></div><div class="arch-right">Operates outside ethical structure, permitting power to function unchecked.</div></div>
+  <div class="arch-entry"><div class="arch-left"><div class="arch-name">Freedom</div><div class="arch-type">Outlaw · Revolutionary</div></div><div class="arch-right">Disrupts oppressive order, redefining power through liberation rather than control.</div></div>
+</div>
+
+<div class="section" id="character-maps">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Character Maps</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Character analysis requires internal logic. Students must distinguish between goal and motivation, identify values and traits supported by textual behavior, and explain development using structural evidence.</p></div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Elmer Elevator</h3>
+      <span class="char-arch-tag">Explorer · Seeker</span>
+      <span class="char-arch-tag" style="color:var(--ink-light);">Round / Dynamic</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants to rescue the baby dragon from Wild Island and complete his adventure.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He desires independence and meaningful action after feeling dismissed at home.</p></div>
+      <div class="char-field"><label>Values</label><p>Freedom, fairness, preparation, and self-reliance. He pushes against injustice by choosing courage and empathy.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive · Strategically Prepared</div>He gathers specific tools in advance of danger.</div>
+        <div class="trait-positive"><div class="trait-label">Positive · Emotionally Controlled</div>He responds to threats with planning rather than panic.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Impulsive</div>He runs away without fully considering consequences.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Detached from Authority</div>He rejects adult guidance rather than negotiating.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Round / Dynamic</div>
+        <p>Elmer begins driven by wounded pride and the thrill of adventure, but grows into a deliberate rescuer who prioritizes justice over thrill. His curiosity matures into principled action.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>Father's Mother</h3>
+      <span class="char-arch-tag">Caregiver · Parent</span>
+      <span class="char-arch-tag" style="color:var(--ink-light);">Flat / Static</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>She wants to maintain household order and raise Elmer within stable routines.</p></div>
+      <div class="char-field"><label>Motivation</label><p>She believes structure and discipline protect children from harm.</p></div>
+      <div class="char-field"><label>Values</label><p>Obedience, social norms, and predictable domestic life.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive · Enforces Boundaries</div>She maintains routine and expectations.</div>
+        <div class="trait-positive"><div class="trait-label">Positive · Instinctively Protective</div>Her rules are structured around safety.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Dismissive</div>She minimizes Elmer's emotional experience as imaginative and impractical.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Rigid</div>She does not adapt when confronted with unconventional situations.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat / Static</div>
+        <p>She does not change internally. Instead, her role is reframed through Elmer's departure: what once felt restrictive becomes the stable world he chooses to leave. Her stasis reinforces the necessity of separation for growth.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-header">
+      <h3>The Baby Dragon</h3>
+      <span class="char-arch-tag">Innocent · Shadow Victim</span>
+      <span class="char-arch-tag" style="color:var(--ink-light);">Flat / Dynamic</span>
+    </div>
+    <div class="char-body">
+      <div class="char-field"><label>Goal</label><p>He wants to escape captivity and gain freedom from Wild Island.</p></div>
+      <div class="char-field"><label>Motivation</label><p>He seeks relief from exploitation and physical restraint.</p></div>
+      <div class="char-field"><label>Values</label><p>Trust in helpers, safety, and companionship.</p></div>
+      <div class="char-traits">
+        <div class="trait-positive"><div class="trait-label">Positive · Trusting</div>He accepts Elmer's help without manipulation.</div>
+        <div class="trait-positive"><div class="trait-label">Positive · Cooperative</div>He participates actively in securing freedom.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Physically Vulnerable</div>He cannot free himself independently.</div>
+        <div class="trait-negative"><div class="trait-label">Negative · Dependent Under Captivity</div>His survival relies on external intervention.</div>
+      </div>
+      <div class="char-dev">
+        <label>Development</label>
+        <div class="char-dev-tag">Flat / Dynamic</div>
+        <p>The dragon's innocence remains constant, but his condition transforms from captive to liberated. He does not undergo psychological change; rather, his circumstances shift, restoring balance and fulfilling the narrative's moral trajectory from exploitation to freedom.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="allusions">
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Allusions &amp; Symbolism</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>An allusion is an indirect reference to a historical, religious, mythological, or literary source. A symbol is a recurring object or image within the text that represents a deeper abstract idea.</p></div>
+
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Allusions</h3>
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Dragon Captivity Motif</h4><div class="allusion-type">Literary / Mythic</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Saint George and the Dragon tradition.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Reverses the traditional dragon-slaying narrative. Instead of being a monster to defeat, the dragon is a victim to free. This reframing shifts the heroic act from destruction to liberation, reinforcing the story's moral alignment with justice rather than conquest.</div></div>
+    </div>
+  </div>
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Child Hero Against Powerful Beasts</h4><div class="allusion-type">Biblical / Literary</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">David and Goliath.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">Establishes imbalance between size/strength versus intelligence and courage. The reference amplifies Elmer's vulnerability while elevating his ingenuity, aligning him with the archetype of the underestimated hero who prevails through wit.</div></div>
+    </div>
+  </div>
+  <div class="allusion-block">
+    <div class="allusion-header"><h4>Structured Quest Pattern</h4><div class="allusion-type">Literary / Structural</div></div>
+    <div class="allusion-body">
+      <div class="allusion-row"><div class="allusion-key">Reference</div><div class="allusion-val">Joseph Campbell's Hero's Journey.</div></div>
+      <div class="allusion-row"><div class="allusion-key">Meaning</div><div class="allusion-val">The narrative follows the departure-initiation-return arc, embedding the novella within a universal quest structure. This positions Elmer's adventure as a rite of courage rather than a random sequence of events.</div></div>
+    </div>
+  </div>
+  <p class="alt-list">Elmer's patterned animal encounters (folktale trial sequences); Elmer's misdirection and tricks (trickster figures); a lone child venturing to confront danger (island-adventure narratives).</p>
+
+  <div class="divider"></div>
+  <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 14px;">In-Text Symbolism</h3>
+  <div class="symbol-block">
+    <div class="symbol-equation">The Rope <span class="eq-arrow">→</span> Control</div>
+    <ul class="body-list symbol-evidence">
+      <li>The rope keeps the dragon confined to one place.</li>
+      <li>The rope prevents the dragon from acting on his own will.</li>
+      <li>The rope maintains the animals' authority over him.</li>
+    </ul>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol-equation">The Tangerines <span class="eq-arrow">→</span> Sustained Support</div>
+    <ul class="body-list symbol-evidence">
+      <li>The tangerines provide Elmer with steady nourishment during the journey.</li>
+      <li>The tangerines create moments of distraction that allow Elmer to move forward.</li>
+      <li>The tangerines allow progress without confrontation.</li>
+    </ul>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol-equation">The Alley <span class="eq-arrow">→</span> Threshold</div>
+    <ul class="body-list symbol-evidence">
+      <li>The alley is the space where Elmer first encounters the possibility of change.</li>
+      <li>The alley separates Elmer's ordinary life from the beginning of risk.</li>
+      <li>The alley marks the shift from safety to uncertainty.</li>
+    </ul>
+  </div>
+  <p class="alt-list">The River (Direction); Wild Island (Unchecked Power); The Jungle (Concealed Threat).</p>
+</div>
+
+<div class="section" id="conflict">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Conflict Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Conflict is the structural tension between opposing forces that drives the narrative forward. Students must classify the conflict type, identify what each side wants, and explain the outcome.</p></div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Elmer vs. Animals of Wild Island</h4><span class="conflict-tag">Character vs. Society</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Elmer's Solution</div><div class="conflict-val">To dismantle the system of captivity by freeing the dragon through strategy and planning.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Society's Solution</div><div class="conflict-val">To preserve collective convenience by keeping the dragon restrained and maintaining control.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Elmer succeeds in freeing the dragon, disrupting the island's exploitative structure and restoring balance through liberation.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Humans vs. Wild Island</h4><span class="conflict-tag">Society vs. Nature</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Society's Solution</div><div class="conflict-val">To impose foresight, tools, and structured problem-solving onto a space governed by instinct and dominance.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Nature's Solution</div><div class="conflict-val">To operate through strength, appetite, and territorial power without moral restraint.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Human strategy outmaneuvers brute force, demonstrating that intellect can navigate and redirect untamed environments.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>The Dragon vs. Animals of Wild Island</h4><span class="conflict-tag">Character vs. Society</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Dragon's Solution</div><div class="conflict-val">To regain autonomy and escape enforced labor.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Society's Solution</div><div class="conflict-val">To retain control of the dragon as a resource that benefits their survival and comfort.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">The dragon is liberated, breaking the animals' control and exposing the fragility of power built on restraint.</div></div>
+    </div>
+  </div>
+
+  <div class="conflict-card">
+    <div class="conflict-header"><h4>Elmer vs. Himself</h4><span class="conflict-tag">Character vs. Self</span></div>
+    <div class="conflict-body">
+      <div class="conflict-row"><div class="conflict-key">Character's Solution</div><div class="conflict-val">To transform wounded pride and desire for adventure into purposeful courage and responsibility.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Self's Solution</div><div class="conflict-val">To retreat into impulsive independence driven by ego rather than justice.</div></div>
+      <div class="conflict-row"><div class="conflict-key">Outcome</div><div class="conflict-val">Elmer matures into a deliberate rescuer, proving that independence guided by principle is stronger than reactive defiance.</div></div>
+    </div>
+  </div>
+  <p class="alt-list">The Dragon vs. Captivity (Character vs. Fate); Wild Island vs. Human Order (Nature vs. Society); Animals vs. Each Other (Society vs. Society).</p>
+</div>
+
+<div class="section" id="comprehension">
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Comprehension Questions</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>Questions are organized into three sets reflecting the narrative's structural progression. Each answer includes a model response and a scene anchor for teacher navigation.</p></div>
+
+  <p class="comp-set-label">Section 1 — Setting Out</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div>
+    <p class="comp-question">What does Elmer's mother do when he brings the alley cat home?</p>
+    <p class="comp-answer">She tells him she will not give the cat any milk and throws the cat out the door.</p>
+    <p class="comp-scene">Scene: Elmer's mother finding the cat's saucer in the cellar.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div>
+    <p class="comp-question">What do the animals force the baby dragon to do all day and night?</p>
+    <p class="comp-answer">They force him to carry passengers across the river, and they beat him if he complains.</p>
+    <p class="comp-scene">Scene: The cat telling Elmer about the dragon during their walk in the park.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div>
+    <p class="comp-question">What does the cat promise Elmer the dragon will do if Elmer rescues him?</p>
+    <p class="comp-answer">The cat promises that the dragon will let Elmer ride him and fly anywhere he wants.</p>
+    <p class="comp-scene">Scene: Elmer and the cat talking in the park.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div>
+    <p class="comp-question">Name three items Elmer and the cat pack in the knapsack.</p>
+    <p class="comp-answer">Answers will vary. Three examples are chewing gum, pink lollipops, and hair ribbons.</p>
+    <p class="comp-scene">Scene: Elmer and the cat packing behind the rock in the park.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div>
+    <p class="comp-question">How does Elmer get past the night watchman and onto the ship?</p>
+    <p class="comp-answer">The cat makes loud noises to distract the watchman while Elmer runs over the gangplank.</p>
+    <p class="comp-scene">Scene: Elmer and the cat at the docks on the night before sailing.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div>
+    <p class="comp-question">What does Elmer do with the grain bag to get himself unloaded at Cranberry?</p>
+    <p class="comp-answer">He climbs inside the bag with his knapsack and seals the top shut with a rubber band.</p>
+    <p class="comp-scene">Scene: Elmer hiding in the hold as the ship nears Cranberry.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div>
+    <p class="comp-question">What does the fisherman say will happen to anyone who goes to Wild Island?</p>
+    <p class="comp-answer">He says that many people have tried to explore it but not one has ever come back alive.</p>
+    <p class="comp-scene">Scene: Elmer meeting the fisherman on the shore of Tangerina.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div>
+    <p class="comp-question">What does Elmer land on by mistake when he is crossing the rocks in the dark?</p>
+    <p class="comp-answer">He jumps onto the back of a small whale that is sleeping between two rocks.</p>
+    <p class="comp-scene">Scene: Elmer crossing the Ocean Rocks at night.</p>
+  </div></div></div>
+
+  <p class="comp-set-label">Section 2 — Into the Jungle</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div>
+    <p class="comp-question">How does Elmer decide which direction to walk to find the river?</p>
+    <p class="comp-answer">He reasons that the river must flow into the ocean, so he walks along the beach.</p>
+    <p class="comp-scene">Scene: Elmer under the wahoo bush at the edge of the jungle.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div>
+    <p class="comp-question">What does the mouse do after it sniffs Elmer's knapsack near the grass clump?</p>
+    <p class="comp-answer">It hurries away, saying it must tell somebody.</p>
+    <p class="comp-scene">Scene: Elmer hiding in the clump of tall grass in the afternoon.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div>
+    <p class="comp-question">What does Elmer say when a voice in the dark asks what he has on his back?</p>
+    <p class="comp-answer">He says yes when a voice guesses he must be carrying his sick grandmother to the doctor.</p>
+    <p class="comp-scene">Scene: Elmer sneezing on the night walk and speaking to the tortoises in the dark.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div>
+    <p class="comp-question">What three signs of invasion do the wild boars describe to each other?</p>
+    <p class="comp-answer">They name fresh tangerine peels near the Ocean Rocks, a strange rock that then disappeared, and more tangerine peels found nearby.</p>
+    <p class="comp-scene">Scene: Elmer nearly walking into the two boars in the dark.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div>
+    <p class="comp-question">What problem does Elmer have when he tries to walk along the riverbank?</p>
+    <p class="comp-answer">The ground is so swampy and muddy that it nearly pulls his boots off his feet.</p>
+    <p class="comp-scene">Scene: Elmer following the riverbank after reaching the river at dawn.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div>
+    <p class="comp-question">What does Elmer tell the tigers the chewing gum will do if they chew it long enough?</p>
+    <p class="comp-answer">He tells them it will turn green and then grow into a whole new supply if they plant it.</p>
+    <p class="comp-scene">Scene: Elmer facing the seven tigers in the jungle clearing.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div>
+    <p class="comp-question">What do the two boars plan to do after they find the tigers chewing gum and the rhinoceros brushing his tusk?</p>
+    <p class="comp-answer">They plan to find the invader, and one boar heads toward the dragon while the other goes back through the clearing.</p>
+    <p class="comp-scene">Scene: Elmer hiding behind the mahogany tree as the boars pass on the trail.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div>
+    <p class="comp-question">What does Elmer use from his pack to help the rhinoceros at the weeping pool?</p>
+    <p class="comp-answer">He uses a toothbrush and toothpaste to scrub the rhinoceros's tusk white again.</p>
+    <p class="comp-scene">Scene: The rhinoceros holding Elmer over the weeping pool by his trousers.</p>
+  </div></div></div>
+
+  <p class="comp-set-label">Section 3 — Bridge to Freedom</p>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">1</div><div>
+    <p class="comp-question">What does Elmer do with the comb, brush, and ribbons to stop the lion from eating him?</p>
+    <p class="comp-answer">He brushes and combs the lion's forelock and braids it with a ribbon, and the lion grabs the brush and forgets all about Elmer.</p>
+    <p class="comp-scene">Scene: The lion prancing and clawing at his tangled mane in the small clearing.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">2</div><div>
+    <p class="comp-question">What do the signs at the crossroads tell Elmer about where to go?</p>
+    <p class="comp-answer">One sign points straight ahead to the Beginning of the River, one points left to the Ocean Rocks, and one points right to the Dragon Ferry.</p>
+    <p class="comp-scene">Scene: Elmer stopping to read the signpost at the crossroads.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">3</div><div>
+    <p class="comp-question">What do the six monkeys do when Elmer gives each of them a magnifying glass?</p>
+    <p class="comp-answer">They use the glasses to look for fleas on the gorilla's chest and immediately find hundreds.</p>
+    <p class="comp-scene">Scene: The gorilla grabbing Elmer at the river bank under the palm tree.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">4</div><div>
+    <p class="comp-question">Why does Elmer not use the crank to call the dragon?</p>
+    <p class="comp-answer">He knows the gorilla would hear him and come running.</p>
+    <p class="comp-scene">Scene: Elmer finding the flagpole and crank sign by the river.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">5</div><div>
+    <p class="comp-question">How does Elmer use lollipops and rubber bands to get the crocodiles to line up across the river?</p>
+    <p class="comp-answer">He fastens a lollipop to the tail of each crocodile with a rubber band and asks them to line up so he can hand the lollipops out one by one.</p>
+    <p class="comp-scene">Scene: The first crocodile surfacing at the river bank after Elmer offers it a lollipop.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">6</div><div>
+    <p class="comp-question">What do the crocodiles do while the animals are crossing the river on their backs?</p>
+    <p class="comp-answer">They finish their lollipops and swim away down the river, carrying all the animals with them.</p>
+    <p class="comp-scene">Scene: The animals stampeding onto the crocodile bridge in the final chase.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">7</div><div>
+    <p class="comp-question">What does the dragon do the moment Elmer cuts the rope?</p>
+    <p class="comp-answer">He races around in circles and tries to turn a somersault.</p>
+    <p class="comp-scene">Scene: Elmer sawing through the rope with his jackknife on the far bank.</p>
+  </div></div></div>
+
+  <div class="comp-item"><div class="comp-body"><div class="comp-num">8</div><div>
+    <p class="comp-question">How do Elmer and the dragon get away from Wild Island at the end?</p>
+    <p class="comp-answer">Elmer climbs onto the dragon's back and they fly up over the jungle, the river, and all the animals below, and spend the night on the beach of Tangerina.</p>
+    <p class="comp-scene">Scene: Elmer climbing onto the dragon's back after cutting the rope, flying away over Wild Island.</p>
+  </div></div></div>
+</div>
+
+<div class="section" id="themes">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Theme Analysis</h2>
+  <div class="principle"><strong>Instructional Principle</strong><p>A topic is the subject the text explores. A theme is the author's claim about that topic, expressed as a complete, universal statement. Themes must be universal, arguable, supported by textual evidence, and expressed as complete statements.</p></div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Bravery</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val">Bravery becomes meaningful when it is directed toward correcting injustice rather than seeking personal adventure.</div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Elmer enters Wild Island despite its dangers and unties the rope binding the dragon even while the animals close in around him.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Reflects how courage today often involves stepping into risky situations in order to challenge unfair systems rather than simply proving personal boldness.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Work</div><div class="theme-val"><em>The Lion, the Witch and the Wardrobe</em> by C.S. Lewis, which portrays courage as confronting oppressive power for the sake of restoration rather than personal glory.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Empathy</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val">Empathy disrupts systems that normalize the suffering of others.</div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">The animals treat the dragon as a source of fire rather than a being, while Elmer responds to the dragon's captivity as unjust and acts to restore his freedom.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Reflects how recognizing individual harm within accepted systems can prompt action that challenges exploitation or indifference in modern institutions.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Work</div><div class="theme-val"><em>Charlotte's Web</em> by E.B. White, which centers on compassion for a vulnerable creature within a community that views him as expendable.</div></div>
+    </div>
+  </div>
+
+  <div class="theme-block">
+    <div class="theme-header"><h3>Self-Sacrifice</h3><span class="theme-topic-badge">Topic</span></div>
+    <div class="theme-body">
+      <div class="theme-row"><div class="theme-key">Theme</div><div class="theme-val">Personal risk becomes transformative when it is undertaken for another's freedom.</div></div>
+      <div class="theme-row"><div class="theme-key">Evidence</div><div class="theme-val">Elmer leaves the safety of home and knowingly faces physical danger on Wild Island in order to free the dragon.</div></div>
+      <div class="theme-row"><div class="theme-key">Contemporary</div><div class="theme-val">Highlights how meaningful protection in contemporary life often requires individuals to accept uncertainty or danger for the benefit of others.</div></div>
+      <div class="theme-row"><div class="theme-key">Similar Work</div><div class="theme-val"><em>Harry Potter and the Sorcerer's Stone</em> by J.K. Rowling, which frames growth through willingly confronting danger to prevent harm and restore balance.</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.container -->
+
+<button class="back-to-top-btn" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  const token = sessionStorage.getItem('tl_token');
+  if(!token){ window.location.href='index.html'; return; }
+  document.querySelectorAll('.action-btn[data-file]').forEach(btn=>{
+    btn.addEventListener('click',async function(){
+      const file=this.dataset.file, label=this.dataset.label;
+      const orig=this.textContent; this.textContent='Loading…'; this.disabled=true;
+      try{
+        const r=await fetch('https://crowscallpress-production.up.railway.app/download',{
+          method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+          body:JSON.stringify({file})
+        });
+        if(!r.ok) throw new Error(await r.text());
+        const {url}=await r.json();
+        const a=document.createElement('a'); a.href=url; a.download=label+'.pdf'; a.target='_blank';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      }catch(e){ alert('Download failed: '+e.message); }
+      this.textContent=orig; this.disabled=false;
+    });
+  });
+  const btn=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{ btn.classList.toggle('visible',window.scrollY>400); });
+  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>
