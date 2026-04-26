@@ -424,14 +424,17 @@
 
 .tl-card-cover {
   width: 100%;
-  background: var(--parchment, #e8e0d0);
+  height: 120px;
   overflow: hidden;
   border-bottom: 1px solid rgba(0,0,0,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.tl-card-cover img {
-  width: 100%;
-  height: auto;
-  display: block;
+.tl-cover-emoji {
+  font-size: 64px;
+  line-height: 1;
+  filter: grayscale(1) brightness(0.15);
 }
 
 .tl-card-body {
