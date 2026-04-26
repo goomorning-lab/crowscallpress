@@ -16,7 +16,6 @@
     --rust: #b85c3a; --rust-pale: #f5e2db; --gold: #c9a84c; --gold-pale: #f5ecd0;
     --sage: #4a6e5a; --sage-pale: #ddeee4; --rule: #d4c9bc;
     --level-color: #7a5c14;
-    --cover-bg: #f5ecd0;
     --page-max: 880px;
     --font-display: 'Fraunces', Georgia, serif;
     --font-body: 'DM Sans', sans-serif;
@@ -35,15 +34,14 @@
   .top-nav .action-btn.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
   .top-nav .action-btn.btn-gold:hover { background: #b8942a; }
 
-  .cover { background: var(--cover-bg); color: var(--ink); padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
-  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(0,0,0,0.03) 28px, rgba(0,0,0,0.03) 29px); pointer-events: none; }
-  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 18px; }
-  .cover-emoji { font-size: 72px; margin-bottom: 24px; display: block; line-height: 1; filter: grayscale(1) brightness(0.15); }
-  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 5.5vw, 52px); line-height: 1.15; margin-bottom: 8px; color: var(--ink); }
-  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: var(--ink-light); margin-bottom: 32px; letter-spacing: 0.08em; }
-  .cover-rule { width: 48px; height: 1px; background: var(--level-color); margin: 0 auto 20px; }
-  .cover-meta { font-size: 11px; color: var(--ink-light); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-  .cover-badge { display: inline-block; background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.12); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mid); margin-top: 20px; }
+  .cover { background: var(--level-color); color: #fff; padding: 56px 2rem 48px; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px); pointer-events: none; }
+  .cover-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+  .cover h1 { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 5.5vw, 52px); line-height: 1.15; margin-bottom: 8px; color: #fff; }
+  .cover h2 { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 32px; letter-spacing: 0.08em; }
+  .cover-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
+  .cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cover-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 20px; }
 
   .toc-bar { background: var(--cream-deep); border-bottom: 1px solid var(--rule); position: sticky; top: 56px; z-index: 100; }
   .toc-inner { max-width: var(--page-max); margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
@@ -192,7 +190,6 @@
 <div class="cover">
   <div class="container">
     <p class="cover-label">Crow's Call Press · Teacher Compendium</p>
-    <div class="cover-emoji">🌉</div>
     <h1>Bridge to Terabithia</h1>
     <h2>Katherine Paterson</h2>
     <div class="cover-rule"></div>
