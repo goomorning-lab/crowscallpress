@@ -21,12 +21,7 @@
 <link rel="icon" type="image/png" href="/images/CCP-LOGO.png">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DRFNF20Z92"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-DRFNF20Z92');
-</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
@@ -172,25 +167,6 @@
 </div>
 
 <script src="../main.js"></script>
-<script>
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var form = e.target;
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    body: new FormData(form)
-  }).then(function(r) { return r.json(); }).then(function(json) {
-    if (json.success) {
-      document.getElementById('form-success').style.display = 'block';
-      form.reset();
-    } else {
-      document.getElementById('form-error').style.display = 'block';
-    }
-  }).catch(function() {
-    document.getElementById('form-error').style.display = 'block';
-  });
-});
-</script>
 
 </body>
 </html>

@@ -1,3 +1,9 @@
+// Google Analytics initialization
+window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DRFNF20Z92');
+
 // Back to top button
 (function() {
   var btt = document.createElement('button');
@@ -144,6 +150,33 @@ function goSlide(n) {
         document.getElementById('trial-popup-success').style.display = 'block';
       }
     }).catch(function() {});
+  });
+})();
+
+// Contact form handler (index.html + contact/index.html)
+(function() {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var successEl = document.getElementById('form-success');
+    var errorEl   = document.getElementById('form-error');
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    }).then(function(r) { return r.json(); }).then(function(json) {
+      if (json.success) {
+        if (successEl) successEl.style.display = 'block';
+        if (errorEl)   errorEl.style.display   = 'none';
+        form.reset();
+      } else {
+        if (errorEl)   errorEl.style.display   = 'block';
+        if (successEl) successEl.style.display = 'none';
+      }
+    }).catch(function() {
+      if (errorEl)   errorEl.style.display   = 'block';
+      if (successEl) successEl.style.display = 'none';
+    });
   });
 })();
 
