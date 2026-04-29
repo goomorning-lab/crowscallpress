@@ -16,10 +16,17 @@ const supabase = createClient(
  * Returns: { token, name }
  */
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const email    = typeof req.body.email    === 'string' ? req.body.email.trim().toLowerCase().slice(0, 254) : '';
+  const password = typeof req.body.password === 'string' ? req.body.password.slice(0, 128) : '';
 
   if (!email || !password) {
     return res.status(400).json({ message: 'Email and password are required.' });
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ message: 'Invalid email format.' });
+  }
+  if (password.length < 6) {
+    return res.status(400).json({ message: 'Invalid credentials.' });
   }
 
   try {
