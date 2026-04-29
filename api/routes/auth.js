@@ -16,8 +16,9 @@ const supabase = createClient(
  * Returns: { token, name }
  */
 router.post('/login', async (req, res) => {
-  const email    = typeof req.body.email    === 'string' ? req.body.email.trim().toLowerCase().slice(0, 254) : '';
-  const password = typeof req.body.password === 'string' ? req.body.password.slice(0, 128) : '';
+  const email        = typeof req.body.email        === 'string' ? req.body.email.trim().toLowerCase().slice(0, 254) : '';
+  const password     = typeof req.body.password     === 'string' ? req.body.password.slice(0, 128) : '';
+  const captchaToken = typeof req.body.captchaToken === 'string' ? req.body.captchaToken : '';
 
   if (!email || !password) {
     return res.status(400).json({ message: 'Email and password are required.' });
@@ -31,7 +32,11 @@ router.post('/login', async (req, res) => {
 
   try {
     // Validate credentials against Supabase Auth
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+      options: { captchaToken }
+    });
 
     if (error || !data.user) {
       return res.status(401).json({ message: 'Incorrect email or password. Please try again.' });
