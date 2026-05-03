@@ -5,6 +5,14 @@ function switchTab(level, btn) {
   btn.classList.add('active');
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.level-tab[data-tab]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      switchTab(this.dataset.tab, this);
+    });
+  });
+});
+
 var BOOKS = {
   civic: [
     { month:'Jan', genre:'Step into Reading: Step 4', title:'Ben Franklin and the Magic Squares', link:'https://product.kyobobook.co.kr/detail/S000002480708' },

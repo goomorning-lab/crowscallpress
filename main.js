@@ -102,6 +102,20 @@ function goSlide(n) {
   dots[slideIndex].classList.add('active');
 }
 
+// Slideshow event listeners (curriculum/index.html)
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var prev = document.getElementById('slide-prev');
+    var next = document.getElementById('slide-next');
+    if (prev) prev.addEventListener('click', function() { moveSlide(-1); });
+    if (next) next.addEventListener('click', function() { moveSlide(1); });
+    [0,1,2,3].forEach(function(i) {
+      var dot = document.getElementById('slide-dot-' + i);
+      if (dot) dot.addEventListener('click', function() { goSlide(i); });
+    });
+  });
+})();
+
 // Trial popup — show after 15–20% scroll, once per session
 // Only runs if the popup element exists (index.html)
 (function() {

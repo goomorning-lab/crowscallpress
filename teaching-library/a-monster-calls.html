@@ -1522,59 +1522,6 @@
 
 <button class="back-to-top-btn" id="btt" aria-label="Back to top">↑</button>
 
-<script>
-// ── Download buttons ──
-(function () {
-  var token = sessionStorage.getItem('tl_token');
-  document.querySelectorAll('.action-btn[data-file]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var fileId = btn.getAttribute('data-file');
-      var label  = btn.getAttribute('data-label');
-      btn.disabled = true;
-      btn.textContent = 'Preparing…';
-      fetch('https://crowscallpress-production.up.railway.app/api/files/download/' + fileId, {
-        headers: { 'Authorization': 'Bearer ' + (token || '') }
-      })
-      .then(function (res) {
-        if (res.status === 401) { window.location.href = '../teaching-library/index.html'; return null; }
-        return res.json();
-      })
-      .then(function (data) {
-        if (data && data.url) { window.open(data.url, '_blank'); }
-        btn.disabled = false;
-        btn.textContent = label;
-      })
-      .catch(function () {
-        btn.disabled = false;
-        btn.textContent = label;
-      });
-    });
-  });
-})();
-
-var btt = document.getElementById('btt');
-window.addEventListener('scroll', function() {
-  btt.classList.toggle('visible', window.scrollY > 400);
-}, { passive: true });
-btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
-(function () {
-  document.body.style.opacity = '0';
-  requestAnimationFrame(function () {
-    document.body.style.transition = 'opacity 0.25s ease';
-    document.body.style.opacity = '1';
-  });
-  document.querySelectorAll('a[href]').forEach(function (link) {
-    var href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('http') || link.target === '_blank') return;
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.body.style.transition = 'opacity 0.2s ease';
-      document.body.style.opacity = '0';
-      setTimeout(function () { window.location.href = href; }, 200);
-    });
-  });
-})();
-</script>
+<script src="js/book.js"></script>
 </body>
 </html>

@@ -404,8 +404,8 @@
   <div class="wheel-col">
     <svg id="wheelSvg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"></svg>
     <div class="controls">
-      <button class="btn accent" onclick="spinWheel()">✦ Spin the Wheel</button>
-      <button class="btn" onclick="clearSelection()">Reset</button>
+      <button class="btn accent" id="btnSpinWheel">✦ Spin the Wheel</button>
+      <button class="btn" id="btnClearSelection">Reset</button>
     </div>
     <div class="hint">or click any segment directly</div>
   </div>
@@ -1026,5 +1026,7 @@ buildExplorer();
   });
 })();
 </script>
+<script src="../js/teaching-library.js"></script>
+<script src="archetype-wheel.js"></script>
 </body>
 </html>
